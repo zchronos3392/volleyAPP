@@ -1,0 +1,248 @@
+ 	$("#btnIngreso").click(function(){ 
+    //QUE SE RECARGUE CUANDO PRESIONO CLICK..
+    	//alert('Submit activado');
+        // Guardamos el select de cursos
+        if( ($("#nombre").val() != '') &&  ($("#clubabr").val() != '') )
+        {
+        // el otro, activado en CLICK, envia a otro script el valor de los campos cargados.. 	
+        //data: { id : ESTE ES EL SELECT DESDE DONDE TOMAMOS EL ID PARA EL QUERY : alumnos.val() }
+		var parametros = {
+        	"nombre" : $("#nombre").val(),
+        	"clubabr" : $("#clubabr").val()
+	};		         
+         
+         $.ajax({ //el signo de pregunta apunta a la direccion url base que es donde corre equipos.php
+            url:   './abms/insertar_club.php',
+            type:  'POST',
+            data: parametros,
+            beforeSend: function (){
+				// Bloqueamos el SELECT de los cursos
+    			$("#iclub").prop('disabled', true);
+            },
+            
+            success:  function (r){
+               	// DESBloqueamos el SELECT de los cursos
+    			$("#iclub").prop('disabled', false);
+            },
+            //error: function() {
+			error: function (xhr, ajaxOptions, thrownError) {
+			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+				$("#iclub").append('<option value="9998">' + 'SUBMIT:: Error en el servidor ..</option>');
+            }
+            }); // FIN funcion ajax
+        } // else THIS.VAL <> ''
+        else // SI EL VAL ES EMPTY, CARGO UN MENSAJE EN EL SELECT:
+        {
+        }
+    }); // parentesis el .CLICK BTNINGRESO
+
+BOTON
+INGRESOcancha
+	CAMPOOS
+	cancha
+	direc_can
+	gym1
+	gym2
+	gym3
+					
+btnSedes
+	sedenom
+	direxsede
+AltaCiudad
+	ciudad
+	provCity
+
+	
+
+
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 20-04-2018 a las 15:17:11
+-- Versión del servidor: 5.7.14
+-- Versión de PHP: 5.6.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de datos: `volleyapp`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vappcancha`
+--
+
+CREATE TABLE `vappcancha` (
+  `idclub` int(11) NOT NULL,
+  `idsede` int(11) NOT NULL,
+  `idcancha` int(11) NOT NULL,
+  `nombre` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `foto` blob NOT NULL,
+  `ubicacion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `dimensiones` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vappcategoria`
+--
+
+CREATE TABLE `vappcategoria` (
+  `idcategoria` int(11) NOT NULL,
+  `descripcion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `EdadInicio` int(11) NOT NULL,
+  `EdadFin` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vappciudad`
+--
+
+CREATE TABLE `vappciudad` (
+  `idCiudad` int(11) NOT NULL,
+  `Nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `Provincia` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- -------------------------------------------------------
+
+
+--
+-- Estructura de tabla para la tabla `vappclub`
+--
+
+CREATE TABLE `vappclub` (
+  `idclub` int(11) NOT NULL,
+  `nombre` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `clubabr` varchar(10) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vappequipo`
+--
+
+CREATE TABLE `vappequipo` (
+  `idclub` int(11) NOT NULL,
+  `idjugador` int(11) NOT NULL,
+  `numero` int(11) NOT NULL,
+  `nombre` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `edad` int(11) NOT NULL,
+  `ingresoClub` date NOT NULL,
+  `categoria` int(11) NOT NULL,
+  `categoriaInicio` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vappjugpartido`
+--
+
+CREATE TABLE `vappjugpartido` (
+  `idpartido` int(11) NOT NULL,
+  `secuencia` int(11) NOT NULL,
+  `jugador` int(11) NOT NULL,
+  `posicionIni` int(11) NOT NULL,
+  `TitulaSupl` int(11) NOT NULL,
+  `hora` timestamp NOT NULL,
+  `posicion` int(11) NOT NULL,
+  `entraSale` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vappnumeros`
+--
+
+CREATE TABLE `vappnumeros` (
+  `TABLA` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `ultnumero` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vapppartido`
+--
+
+CREATE TABLE `vapppartido` (
+  `Fecha` int(11) NOT NULL,
+  `idPartido` int(11) NOT NULL,
+  `categoria` int(11) NOT NULL,
+  `ClubA` int(11) NOT NULL,
+  `ClubB` int(11) NOT NULL,
+  `CanchaClub` int(11) NOT NULL,
+  `CanchaSede` int(11) NOT NULL,
+  `CanchaId` int(11) NOT NULL,
+  `competencia` int(11) NOT NULL,
+  `ciudad` int(11) NOT NULL,
+  `HoraIni` timestamp NOT NULL,
+  `Horafin` timestamp NOT NULL,
+  `ClubARes` int(11) NOT NULL,
+  `ClubBRes` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vappposicion`
+--
+
+CREATE TABLE `vappposicion` (
+  `idPosicion` int(11) NOT NULL,
+  `nombre` varchar(60) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vappsancion`
+--
+
+CREATE TABLE `vappsancion` (
+  `idSancion` int(11) NOT NULL,
+  `descripcion` varchar(60) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vappsede`
+--
+
+CREATE TABLE `vappsede` (
+  `idclub` int(11) NOT NULL,
+  `idsede` int(11) NOT NULL,
+  `direccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `extras` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vappset`
+--
+
+CREATE TABLE `vappset` (
+  `idpartido` int(11) NOT NULL,
+  `secuencia` int(11) NOT NULL,
+  `setnumero` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `jugadorid` int(11) NOT NULL,
+  `equipoid` int(11) NOT NULL,
+  `descripcion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `numero` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+

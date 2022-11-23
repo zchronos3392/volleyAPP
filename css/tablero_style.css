@@ -1,0 +1,276 @@
+
+
+/*********************** NUEVO ABM JUGADOR, DNI JUGADOR **************/
+
+.LetrasBlancas{
+	color: white;
+}
+.xControlLiberos{
+		DISPLAY:GRID;
+    	grid-template-columns: 33% 33% 33%;
+		height:2em;
+		position: relative;
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 3px;    
+/*borde redondeado*/
+}
+.xControlLiberos .itemL{
+		background-color: #e29d1d;
+		color: #091551;
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+/*borde redondeado*/
+}
+
+
+.xcanchaTablero
+{
+    font-size: 1em;
+
+    display: grid;
+    width: 100%;
+    padding: 2%;
+    border: 1px solid white;
+    background-color: #017ce4;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 33% 34%;
+}
+
+.xcanchaBTablero
+{
+    font-size: 1em;
+    display: grid;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2%;
+    border: 1px solid white;
+    background-color: #017ce4;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 33% 34%;
+}
+
+
+
+
+
+.xpunto21 {
+    display: grid;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 0em;
+    grid-template-columns: 100%;
+}
+
+.xpunto21 div {
+    color: #000;
+    background: #fff;
+    border: 1pxsolid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    padding: 5px;
+}
+
+
+.xpunto21 div.parciales {
+    background: #5ed5e6;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    font-size: 9pt;
+    width: auto;
+}
+
+
+
+
+
+.itmidclub1a{grid-area: itemidClubAa; text-align: center;}
+.itmidclub2a{grid-area: itemidClubBa; text-align: center;}
+.itmidclub2a img{
+	width: 7em;
+    height: 7em;
+
+}
+
+
+.grillaIdClubv20{
+	display: grid;
+	grid-template-areas: 'itemidClubBa' 
+						 'itemidClubAa';
+	padding: 0;
+	margin: 0;
+}
+
+
+.marcoTablero{
+	padding: .5em;
+	background-blend-mode: screen;
+	border: #000 solid 2px;
+}
+
+.itemTablero1A{
+	grid-area: itemTablero1a;
+}
+.itemTablero1B{
+	grid-area: itemTablero1b;
+}
+.itemTablero1
+{
+	display: grid;
+	grid-template-areas: 'itemTablero1a itemTablero1b';
+	grid-area: itTem1;
+	background-color: #20bde5;
+	text-align: center;
+	font-weight: bold;
+}
+.itemTablero2{grid-area: itTem2;}
+.itemTablero3{grid-area: itTem3;background-color: #01181e;text-align: center;font-weight: bold;color: #fff;}
+
+.TableroFondo{
+	background-color: #fff;
+	display: grid;
+	grid-template-areas: 'itTem1' 'itTem2' 'itTem3';
+}
+
+.itclub1{  grid-area:itclub1; }
+.itclub2{  grid-area:itclub2; }
+.itclub3{  grid-area:itclub3; }
+.itclub4{  grid-area:itclub4; }
+.itclub5{  grid-area:itclub5; }
+.itclub6{  grid-area:itclub6; }
+
+.Espacioclub{
+	display: grid;
+	grid-template-areas: 'itclub1 itclub2 itclub3 itclub4 '
+						 'itclub5 itclub5 itclub6 itclub6 ';
+}
+
+.itemEC2_1{  grid-area:it2club1; }
+.itemEC2_2{  grid-area:it2club2; }
+.itemEC2_3{  grid-area:it2club3; }
+.itemEC2_4{  grid-area:it2club4; }
+.itemEC2_4A{  grid-area:it2club4a; }
+.itemEC2_4B{  grid-area:it2club4b; }
+.itemEC2_5{  grid-area:it2club5; }
+.itemEC2_6{  grid-area:it2club6; }
+
+.Espacioclub2{
+	display: grid;
+	grid-template-areas: 'it2club1 it2club2 it2club3 it2club4 '
+						 'it2club4a it2club4a it2club4b it2club4b '
+						 'it2club5 it2club5 it2club6 it2club6 ';
+}
+
+.it3club1{  grid-area:it3club1; }
+.it3club2{  grid-area:it3club2; }
+.Espacioclub3{
+	display: grid;
+	grid-template-areas: 'it3club1 it3club2';
+}
+
+
+
+.tiempo{ width:50%;    border: 1px solid #000000; margin: auto;}
+
+@media (min-width:451px) and (max-width: 768px)
+{
+
+
+}
+
+@media (max-width: 450px)
+{
+
+
+.itemTablero1A{
+	grid-area: itemTablero1a;
+}
+.itemTablero1B{
+	grid-area: itemTablero1b;
+}
+.itemTablero1
+{
+	display: grid;
+	grid-template-areas: 'itemTablero1a' 'itemTablero1b';
+	grid-area: itTem1;
+	background-color: #20bde5;
+	text-align: center;
+	font-weight: bold;
+}
+
+.itemEC2_1{  grid-area:it2club1;
+		     border: solid #000000;
+	    	 			   /*top, right, bottom y left.*/
+	    	 border-width: 0.5px   0px    0.2px   0.2px ;
+}
+.itemEC2_2{  
+				grid-area:it2club2; 
+			     border: solid #000000;
+		    	 			   /*top, right, bottom y left.*/
+		    	 border-width: 0.5px   0.2px    0.2px   0px ;
+			}
+.itemEC2_3{ 
+			 grid-area:it2club3;
+			 border: solid #000000;
+	    	 			   /*top, right, bottom y left.*/
+	    	 border-width: 0.5px   0px    0.2px   0.2px ;
+		 
+			  }
+.itemEC2_4{  
+				grid-area:it2club4; 
+			     border: solid #000000;
+		    	 			   /*top, right, bottom y left.*/
+		    	 border-width: 0.5px   0.2px    0.2px   0px ;				
+				}
+.itemEC2_4A{  grid-area:it2club4a; }
+.itemEC2_4B{  grid-area:it2club4b; }
+.itemEC2_5{  
+			grid-area:it2club5;
+			     border: solid #2a6770;
+
+	    	 			   /*top, right, bottom y left.*/
+	    	 border-width: 0.5px   0.2px    0.2px   0.2px ;
+			 }
+.itemEC2_6{ 
+				 grid-area:it2club6; 
+			     border: solid #2a6770;
+		    	 			   /*top, right, bottom y left.*/
+		    	 border-width: 0.5px   0.2px    0.2px   0px ;				
+			 }
+
+
+.Espacioclub2
+{
+	display: grid;
+	grid-template-areas: 'it2club1 it2club2 it2club3 it2club4 '
+						 'it2club4a it2club4a it2club4b it2club4b '
+						 'it2club5 it2club5 it2club6 it2club6 ';
+	
+}  
+
+
+
+.itmidclub1a{grid-area: itemidClubAa; text-align: center;}
+.itmidclub2a{grid-area: itemidClubBa; text-align: center;}
+.itmidclub2a img{
+	width: 5em;
+    height: 5em;
+
+}
+
+.grillaIdClubv20{
+	display: grid;
+	grid-template-areas: 'itemidClubBa' 
+						 'itemidClubAa';
+	padding: 0;
+	margin: 0;
+}
+
+
+    
+}

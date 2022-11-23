@@ -1,0 +1,622 @@
+<codestructure version="5.15">
+<phptree>
+<treenode node="./abms/obtener_resumenv20.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\TableroGrandev20.php;f10;686;39;686;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/Jugador.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\Cjugadores.php;f10;1;28;1;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/Jugador.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\test_errores.php;f9;6;27;6;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/JugadorPartidoCab.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\test_errores.php;f9;7;37;7;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/Partido.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\test_errores.php;f9;5;27;5;;;;vpos;;v;;a;;r&#10;Description&#10;     Insertar una nueva Club en la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/Jugador.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\ABMjugadores.php;f10;1;28;1;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/SesionTabla.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\includes\newmenu.php;f17;9;39;9;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/JugadorPartido.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\pedirtiempo_set.php;f14;3;39;3;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/Partido.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\pedirtiempo_set.php;f14;4;32;4;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/Set.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\pedirtiempo_set.php;f10;2;24;2;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="../sesioner.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_numeros2.php;f9;4;24;4;;C:\laragon\www\volleyAPP_desa\abms\obtener_numeros.php;f9;4;24;4;;;;vpos;;v;;a;;r&#10;Description&#10;     Obtiene todas las Clubs de la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/Cancha.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\numeros.php;f14;26;31;26;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/Jugador.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\EstadisticasClub.php;f10;1;28;1;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/obtener_resumen.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\Tablero.php;f10;282;36;282;;C:\laragon\www\volleyAPP_desa\TableroGrande.php;f10;451;36;451;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/Rotaciones.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\test_errores2.php;f9;3;30;3;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/SesionTabla.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\includes\menu.php;f17;19;39;19;;C:\laragon\www\volleyAPP_desa\css\session_scripts.php;f15;3;37;3;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="./abms/Set.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\test_errores2.php;f9;2;23;2;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="__ROOT__;PHP:PHP Word;C:\laragon\www\volleyAPP_desa\abms\obtener_partidosClub.php;f8;30;16;30;;C:\laragon\www\volleyAPP_desa\abms\Errores.php;f8;7;16;7;;C:\laragon\www\volleyAPP_desa\abms\cerrarsetdata.php;f8;4;16;4;;C:\laragon\www\volleyAPP_desa\abms\cerrar_partido.php;f8;2;16;2;;C:\laragon\www\volleyAPP_desa\abms\cambiar_estado_partido.php;f8;3;16;3;;C:\laragon\www\volleyAPP_desa\abms\insertarsetdata.php;f8;4;16;4;;C:\laragon\www\volleyAPP_desa\abms\sube_foto.php;f8;6;16;6;;C:\laragon\www\volleyAPP_desa\abms\insertar_competencia.php;f8;7;16;7;;C:\laragon\www\volleyAPP_desa\abms\obtener_varios.php;f8;5;16;5;;;;vpos;;v;;a;;r&#10;Description&#10;     Obtiene todas carpetas de fotos del año qe llego por parametro;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="abms/mysql_login.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\index.php;f16;21;36;21;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="abms/Partido.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\CSets2.php;f20;584;36;584;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="abms/SesionTabla.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\AdministrarAPP.php;f17;590;37;590;;C:\laragon\www\volleyAPP_desa\abms\controlVoleyApp.php;f17;544;37;544;;C:\laragon\www\volleyAPP_desa\controlVoleyApp.php;f17;669;37;669;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="abms/Set.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\DEPRECDANovedadesSet20.php;f12;412;24;412;;C:\laragon\www\volleyAPP_desa\DEPRECADANovedadesSetBACK.php;f12;696;24;696;;C:\laragon\www\volleyAPP_desa\DEPRECADANovedadesSet20.php;f12;412;24;412;;C:\laragon\www\volleyAPP_desa\DEPRECADANovedadesSet.php;f12;500;24;500;;C:\laragon\www\volleyAPP_desa\BACKNovedadesSet30.php;f12;1346;24;1346;;C:\laragon\www\volleyAPP_desa\DEPRECADANovedadesSet30.php;f12;1435;24;1435;;C:\laragon\www\volleyAPP_desa\VerCSetsold2.php;f17;264;29;264;;C:\laragon\www\volleyAPP_desa\VerCSets_old.php;f17;264;29;264;;C:\laragon\www\volleyAPP_desa\DEPRECADAVerCSetsold2.php;f17;264;29;264;;C:\laragon\www\volleyAPP_desa\DEPRECADAVerCSets_old.php;f17;264;29;264;;C:\laragon\www\volleyAPP_desa\DEPRECADACSets.php;f17;471;29;471;;C:\laragon\www\volleyAPP_desa\CSets.php;f17;472;29;472;;C:\laragon\www\volleyAPP_desa\VerCSets.php;f15;427;27;427;;C:\laragon\www\volleyAPP_desa\CSets2.php;f15;550;27;550;;C:\laragon\www\volleyAPP_desa\NovedadesSet00.php;f12;1802;24;1802;;C:\laragon\www\volleyAPP_desa\NovedadesSet.php;f12;1743;24;1743;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Cancha.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_clubesporanio.php;f23;10;33;10;;C:\laragon\www\volleyAPP_desa\abms\obtener_cancha_sede.php;f10;4;20;4;;C:\laragon\www\volleyAPP_desa\abms\obtener_cancha.php;f10;4;20;4;;C:\laragon\www\volleyAPP_desa\abms\insertar_cancha.php;f9;5;19;5;;C:\laragon\www\volleyAPP_desa\abms\borrar_cancha.php;f9;6;19;6;;C:\laragon\www\volleyAPP_desa\abms\actualiza_cancha.php;f10;4;20;4;;C:\laragon\www\volleyAPP_desa\abms\obtener_canchas.php;f10;4;20;4;;;;vpos;;v;;a;;r&#10;Description&#10;     Obtiene todas las Clubs de la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Categoria.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_clubesporanio.php;f26;11;39;11;;C:\laragon\www\volleyAPP_desa\abms\obtener_categorias.php;f10;4;23;4;;C:\laragon\www\volleyAPP_desa\abms\insertar_categoria.php;f10;5;23;5;;C:\laragon\www\volleyAPP_desa\abms\borrar_categ.php;f9;6;22;6;;C:\laragon\www\volleyAPP_desa\abms\activar_categoria.php;f10;5;23;5;;C:\laragon\www\volleyAPP_desa\abms\setcate.php;f10;4;23;4;;C:\laragon\www\volleyAPP_desa\abms\obtener_clubes.php;f15;9;28;9;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Ciudad.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_ciudades.php;f10;8;20;8;;C:\laragon\www\volleyAPP_desa\abms\obtener_ciudad_por_id.php;f10;8;20;8;;C:\laragon\www\volleyAPP_desa\abms\insertar_ciudad.php;f9;5;19;5;;C:\laragon\www\volleyAPP_desa\abms\borrar_ciudad.php;f9;6;19;6;;C:\laragon\www\volleyAPP_desa\abms\actualiza_ciudad.php;f10;4;20;4;;C:\laragon\www\volleyAPP_desa\obtener_ciudades.php;f10;9;20;9;;;;vpos;;v;;a;;r&#10;Description&#10;     Obtiene todas las Clubs de la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Club.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_partidosClub.php;f14;34;22;34;;C:\laragon\www\volleyAPP_desa\abms\obtener_club_por_id.php;f9;6;17;6;;C:\laragon\www\volleyAPP_desa\abms\obtener_club_escudosvacios.php;f9;6;17;6;;C:\laragon\www\volleyAPP_desa\abms\borrar_club.php;f9;6;17;6;;C:\laragon\www\volleyAPP_desa\abms\actualizar_club.php;f9;5;17;5;;C:\laragon\www\volleyAPP_desa\obtener_clubes.php;f9;9;17;9;;C:\laragon\www\volleyAPP_desa\abms\obtener_clubes.php;f10;8;18;8;;C:\laragon\www\volleyAPP_desa\abms\insertar_club.php;f9;5;17;5;;C:\laragon\www\volleyAPP_desa\abms\actualiza_club.php;f10;4;18;4;;;;vpos;;v;;a;;r&#10;Description&#10;     Obtiene todas las Clubs de la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Competencia.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_comp_por_id.php;f10;4;25;4;;C:\laragon\www\volleyAPP_desa\abms\borrar_comp.php;f9;6;24;6;;C:\laragon\www\volleyAPP_desa\abms\obtener_comps.php;f10;4;25;4;;C:\laragon\www\volleyAPP_desa\abms\setcomp.php;f10;4;25;4;;C:\laragon\www\volleyAPP_desa\abms\actualiza_competencia.php;f10;4;25;4;;C:\laragon\www\volleyAPP_desa\abms\insertar_competencia.php;f10;5;25;5;;;;vpos;;v;;a;;r&#10;Description&#10;     Insertar una nueva Club en la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="DATABASE;PHP:PHP Word;C:\laragon\www\volleyAPP_desa\abms\mysql_login.php;f8;9;16;9;;C:\laragon\www\volleyAPP_desa\mysql_login000.php;f8;9;16;9;;;;vpos;;v;;a;;r&quot;c0990415_voleyap&quot;;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="database.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\SesionTabla.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Sede.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Provincia.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Numeros.php;f15;6;27;6;;C:\laragon\www\volleyAPP_desa\abms\Fotos.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Estado.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\EquipoAnio.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php;f14;3;26;3;;C:\laragon\www\volleyAPP_desa\abms\Club.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Posicion.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Set.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f14;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f14;6;26;6;;;;vpos;;v;;a;;r&#10;Description&#10;     Representa el la estructura de las sedes almacenadas en la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Database.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\Equipo.php;f14;6;26;6;;;;vpos;;v;;a;;r&#10;Description&#10;     Representa el la estructura de las equipos almacenadas en la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="EquipoAnio.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_clubesporanio.php;f15;8;29;8;;C:\laragon\www\volleyAPP_desa\abms\abm_clubesporanio.php;f15;8;29;8;;;;vpos;;v;;a;;r&#10;Description&#10;     Obtiene todas las Clubs de la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Errores.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\insertar_jugadores_sets.php;f14;6;25;6;;C:\laragon\www\volleyAPP_desa\abms\cambiar_jugador_partido.php;f14;9;25;9;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Estado.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_estados.php;f10;4;20;4;;C:\laragon\www\volleyAPP_desa\abms\insertar_estado.php;f10;5;20;5;;;;vpos;;v;;a;;r&#10;Description&#10;     Obtiene todas las Clubs de la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="HOSTNAME;PHP:PHP Word;C:\laragon\www\volleyAPP_desa\abms\mysql_login.php;f8;8;16;8;;C:\laragon\www\volleyAPP_desa\mysql_login000.php;f8;8;16;8;;;;vpos;;v;;a;;r&#10;Description&#10;     Provee las constantes;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="includes/menuApps.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\includes\newmenu.php;f17;22;38;22;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="includes/menuconapp.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\includes\menu.php;f15;30;38;30;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="includes/newmenu.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\Partidos.php;f17;106;37;106;;C:\laragon\www\volleyAPP_desa\DEPRECDANovedadesSet20.php;f17;410;37;410;;C:\laragon\www\volleyAPP_desa\DEPRECADAPartidos.php;f17;106;37;106;;C:\laragon\www\volleyAPP_desa\DEPRECADANovedadesSetBACK.php;f17;694;37;694;;C:\laragon\www\volleyAPP_desa\DEPRECADANovedadesSet20.php;f17;410;37;410;;C:\laragon\www\volleyAPP_desa\DEPRECADANovedadesSet.php;f17;498;37;498;;C:\laragon\www\volleyAPP_desa\AdministrarAPP.php;f15;594;35;594;;C:\laragon\www\volleyAPP_desa\EstadisticasClub.php;f17;466;37;466;;C:\laragon\www\volleyAPP_desa\abms\MigrarCatjugadores.php;f17;231;37;231;;C:\laragon\www\volleyAPP_desa\abms\controlVoleyApp.php;f15;548;35;548;;C:\laragon\www\volleyAPP_desa\MigrarCatjugadores.php;f17;475;37;475;;C:\laragon\www\volleyAPP_desa\jugadores_set.php;f17;265;37;265;;C:\laragon\www\volleyAPP_desa\BACKNovedadesSet30.php;f17;1344;37;1344;;C:\laragon\www\volleyAPP_desa\DEPRECADANovedadesSet30.php;f17;1433;37;1433;;C:\laragon\www\volleyAPP_desa\VerCSetsold2.php;f17;261;37;261;;C:\laragon\www\volleyAPP_desa\VerCSets_old.php;f17;261;37;261;;C:\laragon\www\volleyAPP_desa\DEPRECADAVerCSetsold2.php;f17;261;37;261;;C:\laragon\www\volleyAPP_desa\DEPRECADAVerCSets_old.php;f17;261;37;261;;C:\laragon\www\volleyAPP_desa\DEPRECADACSets.php;f17;468;37;468;;C:\laragon\www\volleyAPP_desa\CSets.php;f17;469;37;469;;C:\laragon\www\volleyAPP_desa\VerCSets.php;f15;425;35;425;;C:\laragon\www\volleyAPP_desa\abms\index.php;f16;20;36;20;;C:\laragon\www\volleyAPP_desa\torneos.php;f17;19;37;19;;C:\laragon\www\volleyAPP_desa\ModPartido.php;f17;472;37;472;;C:\laragon\www\volleyAPP_desa\indexold.php;f18;151;38;151;;C:\laragon\www\volleyAPP_desa\index.php;f15;222;35;222;;C:\laragon\www\volleyAPP_desa\historial.php;f17;18;37;18;;C:\laragon\www\volleyAPP_desa\Csedes.php;f17;115;37;115;;C:\laragon\www\volleyAPP_desa\Configuracion.php;f17;47;37;47;;C:\laragon\www\volleyAPP_desa\Configpartidos.php;f17;113;37;113;;C:\laragon\www\volleyAPP_desa\Configjugadores.php;f17;113;37;113;;C:\laragon\www\volleyAPP_desa\Configclubes.php;f17;19;37;19;;C:\laragon\www\volleyAPP_desa\CNumeros.php;f17;96;37;96;;C:\laragon\www\volleyAPP_desa\Cclubes.php;f17;85;37;85;;C:\laragon\www\volleyAPP_desa\Cciudades.php;f17;107;37;107;;C:\laragon\www\volleyAPP_desa\Ccanchas20.php;f17;147;37;147;;C:\laragon\www\volleyAPP_desa\Ccanchas.php;f17;181;37;181;;C:\laragon\www\volleyAPP_desa\canchas.php;f17;18;37;18;;C:\laragon\www\volleyAPP_desa\CEstados.php;f17;45;37;45;;C:\laragon\www\volleyAPP_desa\CCategorias.php;f17;46;37;46;;C:\laragon\www\volleyAPP_desa\CSets2.php;f15;548;35;548;;C:\laragon\www\volleyAPP_desa\Ccompetencia.php;f17;95;37;95;;C:\laragon\www\volleyAPP_desa\CPuestos.php;f17;45;37;45;;C:\laragon\www\volleyAPP_desa\CDELUPD.php;f17;662;37;662;;C:\laragon\www\volleyAPP_desa\controlVoleyApp.php;f15;673;35;673;;C:\laragon\www\volleyAPP_desa\CargarJugadores.php;f15;288;35;288;;C:\laragon\www\volleyAPP_desa\ABMjugadores.php;f17;533;37;533;;C:\laragon\www\volleyAPP_desa\Cpartidos.php;f17;308;37;308;;C:\laragon\www\volleyAPP_desa\NovedadesSet00.php;f17;1800;37;1800;;C:\laragon\www\volleyAPP_desa\NovedadesSet.php;f17;1741;37;1741;;C:\laragon\www\volleyAPP_desa\Cjugadores.php;f17;866;37;866;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Jugador.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_partidoCab.php;f14;10;25;10;;C:\laragon\www\volleyAPP_desa\abms\obtener_jugpartido.php;f14;9;25;9;;C:\laragon\www\volleyAPP_desa\abms\migrar_jugador.php;f9;5;20;5;;C:\laragon\www\volleyAPP_desa\abms\eliminar_jugador.php;f10;4;21;4;;C:\laragon\www\volleyAPP_desa\abms\crea_jugadordetalle.php;f9;5;20;5;;C:\laragon\www\volleyAPP_desa\abms\insertar_sets.php;f14;6;25;6;;C:\laragon\www\volleyAPP_desa\abms\obtener_stats.php;f10;4;21;4;;C:\laragon\www\volleyAPP_desa\abms\obtener_jugadores.php;f10;8;21;8;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugador_partido.php;f14;5;25;5;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugador.php;f9;5;20;5;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugadorabm.php;f9;5;20;5;;C:\laragon\www\volleyAPP_desa\abms\modificar_jugadorabm.php;f9;5;20;5;;C:\laragon\www\volleyAPP_desa\abms\insertar_partido.php;f9;6;20;6;;C:\laragon\www\volleyAPP_desa\abms\obtener_jugadoresALL.php;f10;8;21;8;;C:\laragon\www\volleyAPP_desa\abms\obtener_partidos.php;f14;57;25;57;;C:\laragon\www\volleyAPP_desa\abms\obtener_set_partido.php;f10;3;21;3;;C:\laragon\www\volleyAPP_desa\abms\obtener_jugpartido2.php;f14;10;25;10;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="JugadorPartido.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\insertar_sets_20.php;f14;3;32;3;;C:\laragon\www\volleyAPP_desa\abms\inserta_jugador_set.php;f14;3;32;3;;C:\laragon\www\volleyAPP_desa\abms\eliminar_set.php;f14;3;32;3;;C:\laragon\www\volleyAPP_desa\abms\check-insertar_jugadores_sets.php;f14;3;32;3;;C:\laragon\www\volleyAPP_desa\abms\borrar_partido.php;f14;4;32;4;;C:\laragon\www\volleyAPP_desa\abms\borrar_jugadores_sets.php;f9;5;27;5;;C:\laragon\www\volleyAPP_desa\abms\insertar_sets.php;f14;3;32;3;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugadores_sets.php;f14;3;32;3;;C:\laragon\www\volleyAPP_desa\abms\cambiar_jugador_partido.php;f9;5;27;5;;C:\laragon\www\volleyAPP_desa\abms\obtener_partidos.php;f14;58;32;58;;C:\laragon\www\volleyAPP_desa\abms\obtener_set_partido.php;f14;5;32;5;;C:\laragon\www\volleyAPP_desa\abms\obtener_jugpartido2.php;f14;9;32;9;;;;vpos;;v;;a;;r&#10;Description&#10;     Obtiene todas las Clubs de la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="JugadorPartidoCab.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\check-insertar_jugadores_sets.php;f14;4;35;4;;C:\laragon\www\volleyAPP_desa\abms\borrar_partido.php;f14;5;35;5;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugador_partido.php;f9;6;30;6;;C:\laragon\www\volleyAPP_desa\abms\modificar_jugadorabm.php;f14;7;35;7;;C:\laragon\www\volleyAPP_desa\abms\borrar_jugador_partido.php;f9;5;30;5;;C:\laragon\www\volleyAPP_desa\abms\obtener_jugpartidoCab.php;f14;9;35;9;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugadores_sets.php;f14;4;35;4;;C:\laragon\www\volleyAPP_desa\abms\cambiar_jugador_partido.php;f14;8;35;8;;C:\laragon\www\volleyAPP_desa\abms\insertar_partido.php;f9;7;30;7;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="JugadorPuestos.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_puestojug.php;f10;4;28;4;;C:\laragon\www\volleyAPP_desa\abms\obtener_clubesporanio.php;f18;12;36;12;;C:\laragon\www\volleyAPP_desa\abms\crea_jugadordetalle.php;f9;6;27;6;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugador_partido.php;f14;7;32;7;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugador.php;f14;7;32;7;;C:\laragon\www\volleyAPP_desa\abms\delete_puesto_catjugador.php;f14;5;32;5;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugadorabm.php;f9;6;27;6;;C:\laragon\www\volleyAPP_desa\abms\modificar_jugadorabm.php;f9;6;27;6;;C:\laragon\www\volleyAPP_desa\abms\obtener_jugpartidoCab.php;f14;10;32;10;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="mysql_login.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\database.php;f15;6;30;6;;;;vpos;;v;;a;;r&#10;Description&#10;     Clase que envuelve una instancia de la clase PDO para el manejo de la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Numeros.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_numeros2.php;f10;6;21;6;;C:\laragon\www\volleyAPP_desa\abms\obtener_numeros.php;f10;10;21;10;;C:\laragon\www\volleyAPP_desa\abms\insertar_numero.php;f9;5;20;5;;C:\laragon\www\volleyAPP_desa\abms\actualiza_numero.php;f9;5;20;5;;C:\laragon\www\volleyAPP_desa\abms\obtener_jugadores.php;f15;9;26;9;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Partido.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_resumenv20.php;f10;47;21;47;;C:\laragon\www\volleyAPP_desa\abms\obtener_resumen.php;f10;129;21;129;;C:\laragon\www\volleyAPP_desa\abms\obtener_partidosClub.php;f10;33;21;33;;C:\laragon\www\volleyAPP_desa\abms\obtener_partidoCab.php;f10;8;21;8;;C:\laragon\www\volleyAPP_desa\abms\insertar_sets_20.php;f14;4;25;4;;C:\laragon\www\volleyAPP_desa\abms\eliminar_set.php;f14;4;25;4;;C:\laragon\www\volleyAPP_desa\abms\check-insertar_jugadores_sets.php;f14;5;25;5;;C:\laragon\www\volleyAPP_desa\abms\cerrarsetdata.php;f15;8;26;8;;C:\laragon\www\volleyAPP_desa\abms\cerrar_partido.php;f15;5;26;5;;C:\laragon\www\volleyAPP_desa\abms\cambiar_estado_partido.php;f15;6;26;6;;C:\laragon\www\volleyAPP_desa\abms\borrar_partido.php;f15;2;26;2;;C:\laragon\www\volleyAPP_desa\abms\insertar_sets.php;f14;5;25;5;;C:\laragon\www\volleyAPP_desa\abms\insertarsetdata.php;f15;8;26;8;;C:\laragon\www\volleyAPP_desa\abms\modificar_partido.php;f9;5;20;5;;C:\laragon\www\volleyAPP_desa\abms\verifica_partido.php;f10;10;21;10;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugadores_sets.php;f14;5;25;5;;C:\laragon\www\volleyAPP_desa\abms\insertar_partido.php;f9;5;20;5;;C:\laragon\www\volleyAPP_desa\abms\obtener_partidos.php;f10;55;21;55;;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f14;7;25;7;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="PASSWORD;PHP:PHP Word;C:\laragon\www\volleyAPP_desa\abms\mysql_login.php;f8;11;16;11;;C:\laragon\www\volleyAPP_desa\mysql_login000.php;f8;11;16;11;;;;vpos;;v;;a;;r&quot;kefaKA24fu&quot;;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Posicion.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\insertar_posicion.php;f10;5;22;5;;C:\laragon\www\volleyAPP_desa\abms\obtener_puestos.php;f10;4;22;4;;C:\laragon\www\volleyAPP_desa\abms\modifica_posicion.php;f10;5;22;5;;C:\laragon\www\volleyAPP_desa\abms\eliminar_posicion.php;f10;5;22;5;;;;vpos;;v;;a;;r&#10;Description&#10;     Insertar una nueva Club en la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Rotaciones.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\eliminar_set.php;f14;5;28;5;;C:\laragon\www\volleyAPP_desa\abms\borrar_partido.php;f14;6;28;6;;C:\laragon\www\volleyAPP_desa\abms\insertar_sets.php;f14;4;28;4;;C:\laragon\www\volleyAPP_desa\abms\insertarsetdata.php;f15;9;29;9;;C:\laragon\www\volleyAPP_desa\abms\cambiar_jugador_partido.php;f9;7;23;7;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Sede.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\obtener_sede_por_id.php;f10;4;18;4;;C:\laragon\www\volleyAPP_desa\abms\obtener_clubesporanio.php;f19;9;27;9;;C:\laragon\www\volleyAPP_desa\abms\insertar_sede.php;f10;5;18;5;;C:\laragon\www\volleyAPP_desa\abms\borrar_sede.php;f9;6;17;6;;C:\laragon\www\volleyAPP_desa\abms\actualiza_sede.php;f10;4;18;4;;C:\laragon\www\volleyAPP_desa\abms\sedesxclub.php;f10;4;18;4;;C:\laragon\www\volleyAPP_desa\abms\obtener_sedes.php;f10;4;18;4;;;;vpos;;v;;a;;r&#10;Description&#10;     Obtiene todas las Clubs de la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="sesioner.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\Tablero.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\obtener_clubes.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\obtener_ciudades.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\DEPRECDANovedadesSet20.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\DEPRECADOCargarPosicionesBACK.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\DEPRECADANovedadesSet20.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\DEPRECADACargarPosiciones2.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\AdministrarAPP.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\EstadisticasClub.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\abms\MigrarCatjugadores.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\abms\controlVoleyApp.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\MigrarCatjugadores.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\jugadores_set.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\BACKNovedadesSet30.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\CargarPosiciones2.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\DEPRECADANovedadesSet30.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\VerCSetsold2.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\VerCSets_old.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\DEPRECADAVerCSetsold2.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\DEPRECADAVerCSets_old.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\DEPRECADACSets.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\CSets.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\ActualizarPosicionJugPart.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\VerCSets.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\TableroGrande.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\torneos.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\ModPartido.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\indexold.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\index.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Csedes.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Configuracion.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Configpartidos.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Configjugadores.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Configclubes.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\CNumeros.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Cclubes.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Cciudades.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Ccanchas20.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Ccanchas.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\CEstados.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\CCategorias.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\CSets2.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Ccompetencia.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\CPuestos.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\CDELUPD.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\controlVoleyApp.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\CargarJugadores.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\ABMjugadores.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Cpartidos.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\NovedadesSet00.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\NovedadesSet.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\VerPosiciones.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\CargarPosiciones.php;f15;0;27;0;;C:\laragon\www\volleyAPP_desa\Cjugadores.php;f15;0;27;0;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="SesionTabla.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\grabarsesion.php;f14;8;29;8;;C:\laragon\www\volleyAPP_desa\abms\salirsesion.php;f14;8;29;8;;;;vpos;;v;;a;;r&#10;Description&#10;     Obtiene todas las Sesion de la base de datos;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Set.php;PHP:PHP Include;C:\laragon\www\volleyAPP_desa\abms\updatehoras_set.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\obtener_setinicial.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\obtener_resumenv20.php;f14;48;21;48;;C:\laragon\www\volleyAPP_desa\abms\obtener_resumen.php;f14;130;21;130;;C:\laragon\www\volleyAPP_desa\abms\obtener_partidoCab.php;f14;9;21;9;;C:\laragon\www\volleyAPP_desa\abms\insertar_sets_20.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\inserta_jugador_set.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\eliminar_set.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\check-insertar_jugadores_sets.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\cerrarsetdata.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\borrar_partido.php;f10;3;17;3;;C:\laragon\www\volleyAPP_desa\abms\insertar_sets.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\insertarsetdata.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\insertar_jugadores_sets.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\cambiar_jugador_partido.php;f9;6;16;6;;C:\laragon\www\volleyAPP_desa\abms\obtener_sets.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\obtener_partidos.php;f14;56;21;56;;C:\laragon\www\volleyAPP_desa\abms\obtener_set_partido.php;f10;2;17;2;;C:\laragon\www\volleyAPP_desa\abms\obtener_jugpartido2.php;f14;11;21;11;;;;vpos;;v;;a;;r;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="USERNAME;PHP:PHP Word;C:\laragon\www\volleyAPP_desa\abms\mysql_login.php;f8;10;16;10;;C:\laragon\www\volleyAPP_desa\mysql_login000.php;f8;10;16;10;;;;vpos;;v;;a;;r&quot;c0990415_voleyap&quot;;;d-1,-1;;b0,0;;m0;;e">
+</treenode>
+<treenode node="Cancha;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f0;8;1;230;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="ActualizaCancha;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f18;161;5;175;;;;vpos;;v;;a;;r&#10;Definition&#10;    ActualizaCancha($idcancha,$idclub,$idsede,$nombre,$direccion,$dimensiones)&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador&#10;&#10;Parameters:&#10;     $idclub - identificador&#10;     $nombre - nuevo titulo;;d4,162;;b1,5;;m0;;eidcancha;;pidclub;;pidsede;;pnombre;;pdireccion;;pdimensiones;;p">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f17;103;5;118;;;;vpos;;v;;a;;r;;d4,104;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f18;220;5;229;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($club,$sede,$cancha)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idclub - identificador de la club&#10;&#10;Return:&#10;   Respuesta de la eliminaci?n;;d4,221;;b1,5;;m0;;eclub;;psede;;pcancha;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f18;20;5;45;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappclub&apos;&#10;&#10;Parameters:&#10;     $idclub - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getAllFiltro;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f18;49;5;77;;;;vpos;;v;;a;;r;;d4,50;;b1,5;;m0;;efiltro;;p">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f18;128;5;150;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idcancha,$idclub,$idsede)&#10;&#10;Description&#10;     Obtiene los campos de una cancha con un identificador determinado&#10;&#10;Parameters:&#10;     $idcancha - Identificador de la cancha;;d4,129;;b1,5;;m0;;eidcancha;;pidclub;;pidsede;;p">
+</treenode>
+<treenode node="getBySede;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f18;79;5;100;;;;vpos;;v;;a;;r;;d4,80;;b1,5;;m0;;eidclub;;pidsede;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f18;204;5;212;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($club,$sede,$canchaid,$nombre,$foto,$ubicacion,$dimensiones)&#10;&#10;Description&#10;     Insertar un nuevo club&#10;&#10;Parameters:&#10;     $idclub - titulo del nuevo registro&#10;     $nombre - descripci?n del nuevo registro;;d94,204;;b1,5;;m0;;eclub;;psede;;pcanchaid;;pnombre;;pfoto;;pubicacion;;pdimensiones;;p">
+</treenode>
+<treenode node="ultID;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Cancha.php;f17;177;5;194;;;;vpos;;v;;a;;r;;d4,178;;b1,5;;m0;;e">
+</treenode>
+</treenode>
+<treenode node="Categoria;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f0;8;1;201;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f17;73;5;88;;;;vpos;;v;;a;;r;;d4,74;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f18;191;5;200;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idcategoria)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idcategoria - identificador de la categoria&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,192;;b1,5;;m0;;e $idcategoria;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f18;20;5;38;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll($activas)&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappCategoria&apos;&#10;&#10;Parameters:&#10;     $idCategoria - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e $idCategoria;;p">
+</treenode>
+<treenode node="getAllConJugadores;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f18;40;2;70;;;;vpos;;v;;a;;r;;d60,40;;b1,5;;m0;;eianio;;piclub;;p">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f18;115;5;139;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idcategoria)&#10;&#10;Description&#10;     Obtiene los campos de una categoria con un identificador determinado&#10;&#10;Parameters:&#10;     $idcategoria - Identificador de la categoria;;d4,116;;b1,5;;m0;;e $idcategoria;;p">
+</treenode>
+<treenode node="getcate;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f15;90;5;106;;;;vpos;;v;;a;;r;;d4,91;;b1,5;;m0;;eidcate;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f18;172;5;183;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($descripcion,$edadini,$edadfin,$setM,$activar)&#10;&#10;Description&#10;     Insertar un nuevo categoria&#10;&#10;Parameters:&#10;     $idcategoria - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d80,172;;b1,5;;m0;;edescripcion;;pedadini;;pedadfin;;psetM;;pactivar;;p">
+</treenode>
+<treenode node="update;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Categoria.php;f18;149;5;163;;;;vpos;;v;;a;;r&#10;Definition&#10;    update( $categoria, $descripcion,$edadini,$edadfin,$setM,$activar)&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador&#10;&#10;Parameters:&#10;     $idcategoria - identificador&#10;     $nombre - nuevo titulo;;d4,150;;b1,5;;m0;;ecategoria;;pdescripcion;;pedadini;;pedadfin;;psetM;;pactivar;;p">
+</treenode>
+</treenode>
+<treenode node="Ciudad;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f0;8;1;198;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="ActualizaCiudad;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f18;141;5;154;;;;vpos;;v;;a;;r&#10;Definition&#10;    ActualizaCiudad($idcity,$citynom,$cityprov)&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador&#10;&#10;Parameters:&#10;     $idciudad - identificador&#10;     $nombre - nuevo titulo;;d4,142;;b1,5;;m0;;eidcity;;pcitynom;;pcityprov;;p">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f17;64;5;79;;;;vpos;;v;;a;;r;;d4,65;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f18;188;5;197;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idciudad)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idciudad - identificador de la ciudad&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,189;;b1,5;;m0;;e $idciudad;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappciudad&apos;&#10;&#10;Parameters:&#10;     $idciudad - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getAllFiltro;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f18;45;5;62;;;;vpos;;v;;aLISTA;;r&#10;Definition&#10;    getAllFiltro($filtro)&#10;&#10;Description&#10;     &#10;&#10;Parameters:&#10;    &#10;&#10;Return:&#10;   DE CIUDADDES COINCIDENTES CON EL NOMBRE INGRESADO;;d4,46;;b1,5;;m0;;e;;p">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f18;108;5;131;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idciudad)&#10;&#10;Description&#10;     Obtiene los campos de una ciudad con un identificador determinado&#10;&#10;Parameters:&#10;     $idciudad - Identificador de la ciudad;;d4,109;;b1,5;;m0;;e $idciudad;;p">
+</treenode>
+<treenode node="getPorNombre;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f17;81;5;98;;;;vpos;;v;;a;;r;;d4,82;;b1,5;;m0;;enombre;;pprovincia;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Ciudad.php;f14;163;1;180;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($nombre,$provincia)&#10;&#10;Description&#10;     Insertar un nuevo ciudad&#10;&#10;Parameters:&#10;     $idciudad - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d0,164;;b1,5;;m0;;e $idciudad;;p $nombre;;p">
+</treenode>
+</treenode>
+<treenode node="Club;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f0;8;1;286;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="ActualizaClub;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f18;233;5;249;;;;vpos;;v;;a;;r&#10;Definition&#10;    ActualizaClub($icluba,$iciudad,$nombre,$clubabr,$escudo)&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador&#10;&#10;Parameters:&#10;     $idclub - identificador&#10;     $nombre - nuevo titulo;;d4,234;;b1,5;;m0;;eicluba;;piciudad;;pnombre;;pclubabr;;pescudo;;p">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f17;136;5;151;;;;vpos;;v;;a;;r;;d4,137;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f18;276;5;285;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idclub)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idclub - identificador de la club&#10;&#10;Return:&#10;   Respuesta de la eliminaci?n;;d4,277;;b1,5;;m0;;e $idclub;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappclub&apos;&#10;&#10;Parameters:&#10;     $idclub - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getAllconFiltro;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f18;40;5;64;;;;vpos;;v;;a;;r;;d4,41;;b1,5;;m0;;efiltro;;p">
+</treenode>
+<treenode node="getAllConJugadores;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f18;86;5;108;;;;vpos;;v;;a;;r;;d4,87;;b1,5;;m0;;eianio;;p">
+</treenode>
+<treenode node="getAllConJugadoresFiltro;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f18;110;5;134;;;;vpos;;v;;a;;r;;d4,111;;b1,5;;m0;;eianio;;pfiltro;;p">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f18;161;5;187;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idClub)&#10;&#10;Description&#10;     Obtiene los campos de una club con un identificador determinado&#10;&#10;Parameters:&#10;     $idclub - Identificador de la club;;d4,162;;b1,5;;m0;;e $idclub;;p">
+</treenode>
+<treenode node="getByIdStatsClub;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f18;196;5;222;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getByIdStatsClub($idClub)&#10;&#10;Description&#10;     Obtiene los campos de una club con un identificador determinado&#10;&#10;Parameters:&#10;     $idclub - Identificador de la club;;d4,197;;b1,5;;m0;;e $idclub;;p">
+</treenode>
+<treenode node="getclubessinescudo;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f18;67;5;84;;;;vpos;;v;;a;;r;;d4,68;;b1,5;;m0;;e">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Club.php;f18;258;5;268;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($nombre,$clubabr,$escudo,$iciudad)&#10;&#10;Description&#10;     Insertar un nuevo club&#10;&#10;Parameters:&#10;     $idclub - titulo del nuevo registro&#10;     $nombre - descripci?n del nuevo registro;;d68,258;;b1,5;;m0;;enombre;;pclubabr;;pescudo;;piciudad;;p">
+</treenode>
+</treenode>
+<treenode node="Competencia;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f0;8;1;186;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="ActualizaCompetencia;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f18;133;5;147;;;;vpos;;v;;a;;r&#10;Definition&#10;    ActualizaCompetencia($idcompetencia,$compnombre,$setsmaxnum,$competenciaActivar)&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador&#10;&#10;Parameters:&#10;     $idcategoria - identificador&#10;     $nombre - nuevo titulo;;d4,134;;b1,5;;m0;;eidcompetencia;;pcompnombre;;psetsmaxnum;;pcompetenciaActivar;;p">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f17;57;5;72;;;;vpos;;v;;a;;r;;d4,58;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f18;176;5;185;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idcomp)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idcategoria - identificador de la categoria&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,177;;b1,5;;m0;;e $idcategoria;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappCategoria&apos;&#10;&#10;Parameters:&#10;     $idCategoria - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getAllFiltro;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f18;39;5;56;;;;vpos;;v;;a;;r;;d4,40;;b1,5;;m0;;efiltro;;p">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f18;101;5;123;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idcomp)&#10;&#10;Description&#10;     Obtiene los campos de una categoria con un identificador determinado&#10;&#10;Parameters:&#10;     $idcategoria - Identificador de la categoria;;d4,102;;b1,5;;m0;;e $idcategoria;;p">
+</treenode>
+<treenode node="getsetcomp;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f19;74;5;91;;;;vpos;;v;;a;;r;;d4,75;;b1,5;;m0;;eidcomp;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Competencia.php;f18;156;5;168;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($nombre,$setnmax,$competenciaActivar,$archivoLogo)&#10;&#10;Description&#10;     Insertar un nuevo categoria&#10;&#10;Parameters:&#10;     $idcategoria - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d84,156;;b1,5;;m0;;enombre;;psetnmax;;pcompetenciaActivar;;parchivoLogo;;p">
+</treenode>
+</treenode>
+<treenode node="Database;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\database.php;f0;9;1;81;;;;vpos;;v;;a;;r;;d0,10;;b0,0;;m0;;e">
+<treenode node="__clone;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\database.php;f20;73;5;75;;;;vpos;;v;;a;;r&#10;Definition&#10;    __clone()&#10;&#10;Description&#10;     Evita la clonaci?n del objeto;;d4,74;;b2,0;;m0;;e">
+</treenode>
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\database.php;f18;22;5;32;;;;vpos;;v;;a;;r;;d4,23;;b3,0;;m0;;e">
+</treenode>
+<treenode node="_destructor;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\database.php;f4;77;5;80;;;;vpos;;v;;a;;r;;d4,78;;b0,0;;m0;;e">
+</treenode>
+<treenode node="getDb;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\database.php;f11;51;5;68;;;;vpos;;v;;aPDO;;r&#10;Definition&#10;    getDb()&#10;&#10;Description&#10;     Crear una nueva conexi?n PDO basada en los datos de conexi?n&#10;&#10;Return:&#10;   Objeto PDO;;d4,52;;b1,0;;m0;;e">
+</treenode>
+<treenode node="getInstance;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\database.php;f18;38;5;44;;;;vpos;;v;;aDatabase;;r&#10;Definition&#10;    getInstance()&#10;&#10;Description&#10;     Retorna en la ?nica instancia de la clase&#10;&#10;Return:&#10;   |null;;d4,39;;b1,5;;m0;;e">
+</treenode>
+</treenode>
+<treenode node="equipo;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Equipo.php;f0;8;1;151;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Equipo.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Equipo.php;f17;38;5;53;;;;vpos;;v;;a;;r;;d4,39;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Equipo.php;f18;141;5;150;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idclub,$idjugador)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idequipo - identificador de la equipo&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,142;;b1,5;;m0;;eidclub;;pidjugador;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Equipo.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappequipo&apos;&#10;&#10;Parameters:&#10;     $idequipo - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Equipo.php;f18;63;5;90;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idclub,$idjugador)&#10;&#10;Description&#10;     Obtiene los campos de una equipo con un identificador determinado&#10;&#10;Parameters:&#10;     $idequipo - Identificador de la equipo;;d4,64;;b1,5;;m0;;eidclub;;pidjugador;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Equipo.php;f18;124;5;133;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($numero,$nombre,$edad,$ingrClu,$cate,$cateIini,$idclub)&#10;&#10;Description&#10;     Insertar un nuevo equipo&#10;&#10;Parameters:&#10;     $idequipo - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d89,124;;b1,5;;m0;;enumero;;pnombre;;pedad;;pingrClu;;pcate;;pcateIini;;pidclub;;p">
+</treenode>
+<treenode node="update;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Equipo.php;f18;100;5;115;;;;vpos;;v;;a;;r&#10;Definition&#10;    update($numero,$nombre,$edad,$ingrClu,$cate,$cateIini,$idclub,$idjugador)&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador&#10;&#10;Parameters:&#10;     $idequipo - identificador&#10;     $nombre - nuevo titulo;;d4,101;;b1,5;;m0;;enumero;;pnombre;;pedad;;pingrClu;;pcate;;pcateIini;;pidclub;;pidjugador;;p">
+</treenode>
+</treenode>
+<treenode node="EquipoAnio;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\EquipoAnio.php;f0;8;1;86;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\EquipoAnio.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\EquipoAnio.php;f18;76;5;85;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idequipoanio)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idclub - identificador de la club&#10;&#10;Return:&#10;   Respuesta de la eliminaci?n;;d4,77;;b1,5;;m0;;e $idclub;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\EquipoAnio.php;f18;21;5;47;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll($ianio,$idclub)&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappclub&apos;&#10;&#10;Parameters:&#10;     $idclub - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,22;;b1,5;;m0;;eianio;;pidclub;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\EquipoAnio.php;f18;57;5;68;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert( $idclub, $ianio)&#10;&#10;Description&#10;     Insertar un nuevo club / ianio&#10;&#10;Parameters:&#10;     $idclub - equipo cargado para el año&#10;     $ianio - anio de juego;;d51,57;;b1,5;;m0;;e $idclub;;p $ianio;;p">
+</treenode>
+</treenode>
+<treenode node="errorGrabado;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Errores.php;f0;11;1;139;;;;vpos;;v;;a;;r;;d0,12;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Errores.php;f4;13;5;15;;;;vpos;;v;;a;;r;;d4,14;;b0,0;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Errores.php;f18;129;5;138;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($iderror)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idequipo - identificador de la equipo&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,130;;b1,5;;m0;;e $idequipo;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Errores.php;f18;23;5;40;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappequipo&apos;&#10;&#10;Parameters:&#10;     $idequipo - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,24;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Errores.php;f18;50;5;72;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($iderror)&#10;&#10;Description&#10;     Obtiene los campos de una equipo con un identificador determinado&#10;&#10;Parameters:&#10;     $idequipo - Identificador de la equipo;;d4,51;;b1,5;;m0;;e $idequipo;;p">
+</treenode>
+<treenode node="getByTipo;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Errores.php;f18;81;5;103;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getByTipo($tipo)&#10;&#10;Description&#10;     Obtiene los campos de una equipo con un identificador determinado&#10;&#10;Parameters:&#10;     $idequipo - Identificador de la equipo;;d4,82;;b1,5;;m0;;e $idequipo;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Errores.php;f18;112;5;121;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($tipo,$scriptPrograma,$funcion,$parametros)&#10;&#10;Description&#10;     Insertar un nuevo error&#10;&#10;Parameters:&#10;     $idequipo - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d77,112;;b1,5;;m0;;etipo;;pscriptPrograma;;pfuncion;;pparametros;;p">
+</treenode>
+</treenode>
+<treenode node="Estado;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Estado.php;f0;8;1;148;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Estado.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Estado.php;f17;38;5;53;;;;vpos;;v;;a;;r;;d4,39;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Estado.php;f18;138;5;147;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idestado)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idcategoria - identificador de la categoria&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,139;;b1,5;;m0;;e $idcategoria;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Estado.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappCategoria&apos;&#10;&#10;Parameters:&#10;     $idCategoria - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Estado.php;f18;63;5;85;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idestado)&#10;&#10;Description&#10;     Obtiene los campos de una categoria con un identificador determinado&#10;&#10;Parameters:&#10;     $idcategoria - Identificador de la categoria;;d4,64;;b1,5;;m0;;e $idcategoria;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Estado.php;f18;119;5;130;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($descripcion)&#10;&#10;Description&#10;     Insertar un nuevo categoria&#10;&#10;Parameters:&#10;     $idcategoria - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d47,119;;b1,5;;m0;;edescripcion;;p">
+</treenode>
+<treenode node="update;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Estado.php;f18;95;5;110;;;;vpos;;v;;a;;r&#10;Definition&#10;    update( $descripcion,$idestado)&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador&#10;&#10;Parameters:&#10;     $idcategoria - identificador&#10;     $nombre - nuevo titulo;;d4,96;;b1,5;;m0;;e $idcategoria;;p $nombre;;p">
+</treenode>
+</treenode>
+<treenode node="fotos;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Fotos.php;f0;8;1;195;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Fotos.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Fotos.php;f18;181;5;190;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idpartido,$fecha,$idfoto)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idsede - identificador de la sede&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,182;;b1,5;;m0;;eidpartido;;pfecha;;pidfoto;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Fotos.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappequipo &apos;&#10;&#10;Parameters:&#10;    no - tiene&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Fotos.php;f18;41;5;64;;;;vpos;;v;;a;;r;;d4,42;;b1,5;;m0;;epartido;;pfecha;;pidfoto;;p">
+</treenode>
+<treenode node="getByPartido;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Fotos.php;f18;66;5;89;;;;vpos;;v;;a;;r;;d4,67;;b1,5;;m0;;epartido;;pfecha;;p">
+</treenode>
+<treenode node="getLast;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Fotos.php;f18;92;5;114;;;;vpos;;v;;a;;r;;d4,93;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Fotos.php;f18;146;5;173;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($idpartido,$fecha,$nombre,$extension,$carpeta)&#10;&#10;Description&#10;     Insertar un nuevo sede&#10;&#10;Parameters:&#10;     $idsede - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d4,147;;b1,5;;m0;;eidpartido;;pfecha;;pnombre;;pextension;;pcarpeta;;p">
+</treenode>
+<treenode node="update;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Fotos.php;f18;122;5;137;;;;vpos;;v;;a;;r&#10;Definition&#10;    update($partido,$fecha,$idfoto,$activa )&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador;;d4,123;;b1,5;;m0;;epartido;;pfecha;;pidfoto;;pactiva;;p">
+</treenode>
+</treenode>
+<treenode node="fx;PHP:Class Name;C:\laragon\www\volleyAPP_desa\Funciones.php;f0;7;1;132;;;;vpos;;v;;a;;r&#10;Definition&#10;    class fx&#10;&#10;Description&#10;     Representa el la estructura de las sedes almacenadas en la base de datos;;d0,8;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\Funciones.php;f4;9;5;11;;;;vpos;;v;;a;;r;;d4,10;;b0,0;;m0;;e">
+</treenode>
+<treenode node="antirotar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\Funciones.php;f18;25;5;29;;;;vpos;;v;;a;;r;;d4,26;;b1,5;;m0;;eposi;;pposii;;pposiii;;pposiv;;pposv;;pposvi;;p">
+</treenode>
+<treenode node="detectaGanador;PHP:Function Name;C:\laragon\www\volleyAPP_desa\Funciones.php;f18;30;5;131;;;;vpos;;v;;a;;r;;d4,31;;b1,5;;m0;;eClubARes;;pClubBRes;;pClubA;;pClubB;;psetsnmax;;p">
+</treenode>
+<treenode node="rotar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\Funciones.php;f18;19;5;23;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    rotar($posi,$posii,$posiii,$posiv,$posv,$posvi)&#10;&#10;Description&#10;     Retorna vector/Array con las posiciones cambiadas&#10;&#10;Parameters:&#10;     $posi - ,posii,posiii,posiv,posv,posvi Identificador de jugador en posicion i&#10;&#10;Return:&#10;   de posiciones de jugadores, pero rotados un lugar;;d4,20;;b1,5;;m0;;eposi;;pposii;;pposiii;;pposiv;;pposv;;pposvi;;p">
+</treenode>
+</treenode>
+<treenode node="jugador;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f0;8;1;533;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f17;278;5;293;;;;vpos;;v;;a;;r;;d4,279;;b1,5;;m0;;e">
+</treenode>
+<treenode node="contarConsulta;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f17;297;5;339;;;;vpos;;v;;a;;r;;d4,298;;b1,5;;m0;;eclub;;pcategoria;;panio;;pxnombre;;p">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;494;5;503;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idclub,$idjugador,$anioe,$categoria)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idsede - identificador de la sede&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,495;;b1,5;;m0;;eidclub;;pidjugador;;panioe;;pcategoria;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappequipo &apos;&#10;&#10;Parameters:&#10;    no - tiene&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;349;5;378;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idclub,$idjugador,$idcategoria )&#10;&#10;Description&#10;     Obtiene los campos de una sede con un identificador determinado&#10;&#10;Parameters:&#10;     $idsede - Identificador de la sede;;d4,350;;b1,5;;m0;;eidclub;;pidjugador;;pidcategoria;;p">
+</treenode>
+<treenode node="getByIdABM;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;402;5;421;;;;vpos;;v;;a;;r;;d4,403;;b1,5;;m0;;eanio;;punJugador;;pclub;;pcategoria;;p">
+</treenode>
+<treenode node="getByIdABM2;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;380;5;399;;;;vpos;;v;;a;;r;;d4,381;;b1,5;;m0;;eanio;;punJugador;;pclub;;pcategoria;;p">
+</treenode>
+<treenode node="getId;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;63;5;83;;;;vpos;;v;;a;;r;;d4,64;;b1,5;;m0;;eiclubescab;;pianio;;pingresoClub;;p">
+</treenode>
+<treenode node="getJugadorPartido;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;243;5;273;;;;vpos;;v;;a;;r;;d4,244;;b1,5;;m0;;epartido;;pfecha;;pclub;;pcategoria;;panio;;p">
+</treenode>
+<treenode node="getJugadorPartidoInsert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;165;5;204;;;;vpos;;v;;a;;r;;d4,166;;b1,5;;m0;;epartido;;pfecha;;pclub;;pcategoria;;panio;;pjugador;;pcategoriaPartido;;p">
+</treenode>
+<treenode node="getJugadorPartidoInsert2;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;206;5;241;;;;vpos;;v;;a;;r;;d4,207;;b1,5;;m0;;epartido;;pfecha;;pclub;;pcategoria;;panio;;psetnum;;p">
+</treenode>
+<treenode node="getJugadorxClub;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;87;5;109;;;;vpos;;v;;a;;r;;d4,88;;b1,5;;m0;;eclub;;panio;;p">
+</treenode>
+<treenode node="getJugadorxClubCate;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;113;5;163;;;;vpos;;v;;a;;r;;d4,114;;b1,5;;m0;;eclub;;pcategoria;;panio;;pinicio;;pTAMANO_PAGINA;;pxnombre;;p">
+</treenode>
+<treenode node="getJugadorxNombreAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;39;5;61;;;;vpos;;v;;a;;r;;d4,40;;b1,5;;m0;;e">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;472;5;486;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($idclub,$anioEquipo,$numero,$nombre,$edad,$ingresoClub,$categoria,$categoriaInicio)&#10;&#10;Description&#10;     Insertar un nuevo sede&#10;&#10;Parameters:&#10;     $idsede - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d4,473;;b1,5;;m0;;eidclub;;panioEquipo;;pnumero;;pnombre;;pedad;;pingresoClub;;pcategoria;;pcategoriaInicio;;p">
+</treenode>
+<treenode node="jugadoresEnClubCat;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;505;5;530;;;;vpos;;v;;a;;r;;d4,506;;b1,5;;m0;;eidclub;;panioe;;p">
+</treenode>
+<treenode node="update;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;429;5;444;;;;vpos;;v;;a;;r&#10;Definition&#10;    update($nombre,$categoria,$jugadorid )&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador;;d4,430;;b1,5;;m0;;enombre;;pcategoria;;pjugadorid;;p">
+</treenode>
+<treenode node="updateABM;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Jugador.php;f18;446;5;462;;;;vpos;;v;;a;;r;;d4,447;;b1,5;;m0;;eidclub;;panioEquipo;;pidjugador;;pnumero;;pnombre;;pedad;;pingresoClub;;pcategoria;;pcategoriaInicio;;pegresoClub;;p">
+</treenode>
+</treenode>
+<treenode node="Numeros;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Numeros.php;f0;8;1;135;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Numeros.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Numeros.php;f15;68;2;86;;;;vpos;;v;;a;;r;;d1,69;;b1,5;;m0;;efiltro;;p">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Numeros.php;f18;21;5;43;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getById($tabla)&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappclub&apos;&#10;&#10;Parameters:&#10;     $idclub - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,22;;b1,5;;m0;;e $idclub;;p">
+</treenode>
+<treenode node="getPaginas;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Numeros.php;f18;45;5;65;;;;vpos;;v;;a;;r;;d4,46;;b1,5;;m0;;etabla;;p">
+</treenode>
+<treenode node="setnumeros;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Numeros.php;f14;88;1;108;;;;vpos;;v;;a;;r;;d0,89;;b1,5;;m0;;etabla;;pnumero;;p">
+</treenode>
+<treenode node="updnumeros;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Numeros.php;f14;111;1;131;;;;vpos;;v;;a;;r;;d0,112;;b1,5;;m0;;etabla;;pnumero;;p">
+</treenode>
+</treenode>
+<treenode node="Partido;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f0;8;1;623;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="actualiza;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f18;562;5;578;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado ,$setmax,$tbset,$finset,$descripcionp)&#10;&#10;Description&#10;     Modificar parametros del partido;;d4,563;;b1,5;;m0;;eidPartido;;pFecha;;pcategoria;;pClubA;;pClubB;;pCanchaId;;pcompetencia;;pciudad;;pHoraIni;;pHorafin;;pClubARes;;pClubBRes;;pestado;;psetmax;;ptbset;;pfinset;;pdescripcionp;;p">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f17;339;5;354;;;;vpos;;v;;a;;r;;d4,340;;b1,5;;m0;;e">
+</treenode>
+<treenode node="contarStatsClub;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f17;254;5;336;;;;vpos;;v;;a;;r;;d4,255;;b1,5;;m0;;eicomp;;picate;;piclub;;picity;;pfecDde;;pfecHta;;pfecOrden;;pestado;;p">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f18;613;5;622;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idpartido,$Fecha)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idsede - identificador de la sede&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,614;;b1,5;;m0;;eidpartido;;pFecha;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f18;20;5;56;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vapppartido&apos;&#10;&#10;Parameters:&#10;     $idsede - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getAllcparms;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f14;59;3;150;;;;vpos;;v;;a;;r;;d4,60;;b1,5;;m0;;eicomp;;picate;;piclub;;picity;;pfecDde;;pfecHta;;pfecOrden;;pestado;;p">
+</treenode>
+<treenode node="getAllcparmsClub;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f15;155;3;249;;;;vpos;;v;;a;;r;;d4,156;;b1,5;;m0;;eicomp;;picate;;piclub;;picity;;pfecDde;;pfecHta;;pfecOrden;;pestado;;p">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f18;434;5;470;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idpartido,$fecha )&#10;&#10;Description&#10;     Obtiene los campos de una sede con un identificador determinado&#10;&#10;Parameters:&#10;     $idsede - Identificador de la sede;;d4,435;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="getfinset;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f18;384;5;402;;;;vpos;;v;;a;;r;;d4,385;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="getPartidoId;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f18;404;5;425;;;;vpos;;v;;a;;r;;d4,405;;b1,5;;m0;;eFecha;;pcategoria;;pClubA;;pClubB;;pcompetencia;;p">
+</treenode>
+<treenode node="getResultados;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f18;364;5;382;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getResultados($idpartido,$fecha)&#10;&#10;Description&#10;     Obtiene los campos Resultado de cada Equipo&#10;&#10;Parameters:&#10;     $idpartido - Identificador del partido;;d4,365;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f18;588;5;605;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado ,$setmax,$tbset,$finset,$descripcionp)&#10;&#10;Description&#10;     Insertar un nuevo sede&#10;&#10;Parameters:&#10;     $idsede - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d4,589;;b1,5;;m0;;eFecha;;pcategoria;;pClubA;;pClubB;;pCanchaId;;pcompetencia;;pciudad;;pHoraIni;;pHorafin;;pClubARes;;pClubBRes;;pestado;;psetmax;;ptbset;;pfinset;;pdescripcionp;;p">
+</treenode>
+<treenode node="update;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f18;478;5;505;;;;vpos;;v;;a;;r&#10;Definition&#10;    update(&#10;    $categoria,$ClubA,$ClubB,&#10;    $CanchaClub, $CanchaSede,$CanchaId,$competencia,&#10;    $ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,&#10;    $Fecha,$idPartido )&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador;;d4,483;;b1,5;;m0;;ecategoria;;pClubA;;pClubB;;pCanchaClub;;pCanchaSede;;pCanchaId;;pcompetencia;;pciudad;;pHoraIni;;pHorafin;;pClubARes;;pClubBRes;;pFecha;;pidPartido;;p">
+</treenode>
+<treenode node="UpdResultados;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f17;540;5;556;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    UpdResultados($idPartido,$fecha,$resultadoA,$resultadoB )&#10;&#10;Description&#10;     actualizar resultado de alguno de los equipos en un partido dado&#10;&#10;Parameters:&#10;     $idpartido - partido que se quiere actualizar&#10;     $resultadoA - numero que identifica al estado del partido&#10;     $resultadoB - numero que identifica al estado del partido;;d1,541;;b1,5;;m0;;eidPartido;;pfecha;;presultadoA;;presultadoB;;p">
+</treenode>
+<treenode node="UpdSts;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Partido.php;f17;514;5;528;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    UpdSts($idPartido,$fecha,$estado )&#10;&#10;Description&#10;     actualizar el estado de un partido dado&#10;&#10;Parameters:&#10;     $idpartido - partido que se quiere actualizar&#10;     $estado - nuemero que identifica al estado del partido;;d1,515;;b1,5;;m0;;eidPartido;;pfecha;;pestado;;p">
+</treenode>
+</treenode>
+<treenode node="partjug;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f0;8;1;581;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f17;355;5;370;;;;vpos;;v;;a;;r;;d4,356;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;476;5;490;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($partido,$fecha,$iclub,$icate,$jugador)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idsede - identificador de la sede&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,477;;b1,5;;m0;;epartido;;pfecha;;piclub;;picate;;pjugador;;p">
+</treenode>
+<treenode node="delete2;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;508;5;521;;;;vpos;;v;;a;;r;;d4,509;;b1,5;;m0;;epartido;;psetnumero;;pfecha;;p">
+</treenode>
+<treenode node="deleteAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;522;5;534;;;;vpos;;v;;a;;r;;d4,523;;b1,5;;m0;;epartido;;pfecha;;p">
+</treenode>
+<treenode node="deletePosiciones;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;492;5;506;;;;vpos;;v;;a;;r;;d4,493;;b1,5;;m0;;epartido;;pfecha;;piclub;;psetnumero;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vapppartido&apos;&#10;&#10;Parameters:&#10;     $idsede - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getCantJugSetLoad;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f14;316;5;349;;;;vpos;;v;;a;;r;;d4,317;;b1,5;;m0;;epartido;;pfecha;;piclub;;pianioe;;pset;;p">
+</treenode>
+<treenode node="getJugadorEnSet;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;102;5;125;;;;vpos;;v;;a;;r;;d4,103;;b1,5;;m0;;epartido;;pfecha;;piclub;;picate;;pjugador;;psetnumero;;p">
+</treenode>
+<treenode node="getJugadoresListaInicial;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f14;154;5;184;;;;vpos;;v;;a;;r;;d4,155;;b1,5;;m0;;epartido;;pfecha;;piclub;;psetnumero;;p">
+</treenode>
+<treenode node="getJugadoresLoad;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f14;127;5;151;;;;vpos;;v;;a;;r;;d4,128;;b1,5;;m0;;epartido;;pfecha;;piclub;;p">
+</treenode>
+<treenode node="getJugadorPosIni;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;78;5;100;;;;vpos;;v;;a;;r;;d4,79;;b1,5;;m0;;epartido;;pfecha;;piclub;;picate;;pjugador;;p">
+</treenode>
+<treenode node="getJugadorxPartido;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;39;5;56;;;;vpos;;v;;a;;r;;d4,40;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="getJugSetLoad;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f14;188;5;226;;;;vpos;;v;;a;;r;;d4,189;;b1,5;;m0;;epartido;;pfecha;;piclub;;pianioe;;pset;;pcategoriaPartido;;p">
+</treenode>
+<treenode node="getJugSetVer;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f14;275;5;311;;;;vpos;;v;;a;;r;;d4,276;;b1,5;;m0;;epartido;;pfecha;;piclub;;pianioe;;pset;;pjugadorX;;p">
+</treenode>
+<treenode node="getJugXSetVer;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f14;230;5;273;;;;vpos;;v;;a;;r;;d4,231;;b1,5;;m0;;epartido;;pfecha;;piclub;;pianioe;;pset;;p">
+</treenode>
+<treenode node="getlastset;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;59;5;76;;;;vpos;;v;;a;;r;;d4,60;;b1,5;;m0;;eidpartido;;pfecha;;piclub;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;411;5;421;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($partido,$fecha,$iclub,$icate,$jugador,$puesto,$setnumero,$mensajeAlta)&#10;&#10;Description&#10;     Insertar un nuevo gede&#10;&#10;Parameters:&#10;     $idsede - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d4,412;;b1,5;;m0;;epartido;;pfecha;;piclub;;picate;;pjugador;;ppuesto;;psetnumero;;pmensajeAlta;;p">
+</treenode>
+<treenode node="insertSet;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;435;5;446;;;;vpos;;v;;a;;r;;d4,436;;b1,5;;m0;;epartido;;pfecha;;piclub;;picate;;pjugador;;psetnumero;;ppuesto;;pmensajeAlta;;p">
+</treenode>
+<treenode node="setPos;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;449;5;467;;;;vpos;;v;;a;;r;;d4,450;;b1,5;;m0;;epartido;;pfecha;;piclub;;picate;;pjugador;;pposicioninicial;;pposicionact;;ppuestoAct;;phora;;psetnumero;;p">
+</treenode>
+<treenode node="updateEntra;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;558;5;577;;;;vpos;;v;;a;;r;;d4,559;;b1,5;;m0;;epartido;;pfecha;;piclub;;picate;;pset;;pjugadorEntra;;pposicionEnSet;;p">
+</treenode>
+<treenode node="updateSale;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php;f18;536;5;556;;;;vpos;;v;;a;;r;;d4,538;;b1,5;;m0;;eidpartido;;pfecha;;piclub;;picate;;pjugadorSale;;pset;;p">
+</treenode>
+</treenode>
+<treenode node="partjugCab;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f0;8;1;291;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f17;168;5;183;;;;vpos;;v;;a;;r;;d4,169;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f18;243;5;257;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($partido,$fecha,$iclub,$icate,$jugador)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idsede - identificador de la sede&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,244;;b1,5;;m0;;epartido;;pfecha;;piclub;;picate;;pjugador;;p">
+</treenode>
+<treenode node="deleteAllJPCab;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f18;276;5;288;;;;vpos;;v;;a;;r;;d4,277;;b1,5;;m0;;epartido;;pfecha;;p">
+</treenode>
+<treenode node="deleteJugadorBajaPartidos;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f14;259;1;274;;;;vpos;;v;;a;;r;;d0,260;;b1,5;;m0;;eegresoClub;;piclubescab;;picatcab;;pidjugador;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vapppartido&apos;&#10;&#10;Parameters:&#10;     $idsede - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getJugListaInicial;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f14;63;5;120;;;;vpos;;v;;a;;r;;d4,64;;b1,5;;m0;;epartido;;pfecha;;piclub;;picate;;pianioe;;pcategoriaPartido;;p">
+</treenode>
+<treenode node="getJugListaInicio;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f14;124;5;162;;;;vpos;;v;;a;;r;;d4,125;;b1,5;;m0;;epartido;;pfecha;;piclub;;pianioe;;picategoriaPartido;;p">
+</treenode>
+<treenode node="getJugPartidoCab;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f18;39;5;56;;;;vpos;;v;;a;;r;;d4,40;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php;f18;224;5;234;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($partido,$fecha,$iclub,$icate,$jugador,$puesto,$mensajeAlta)&#10;&#10;Description&#10;     Insertar un nuevo gede&#10;&#10;Parameters:&#10;     $idsede - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d4,225;;b1,5;;m0;;epartido;;pfecha;;piclub;;picate;;pjugador;;ppuesto;;pmensajeAlta;;p">
+</treenode>
+</treenode>
+<treenode node="Posicion;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Posicion.php;f0;8;1;145;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Posicion.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Posicion.php;f17;38;5;53;;;;vpos;;v;;a;;r;;d4,39;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Posicion.php;f18;135;5;144;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idposicion)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idposicion - identificador de la posicion&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,136;;b1,5;;m0;;e $idposicion;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Posicion.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappposicion&apos;&#10;&#10;Parameters:&#10;     $idposicion - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Posicion.php;f18;63;5;84;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idposicion)&#10;&#10;Description&#10;     Obtiene los campos de una posicion con un identificador determinado&#10;&#10;Parameters:&#10;     $idposicion - Identificador de la posicion;;d4,64;;b1,5;;m0;;e $idposicion;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Posicion.php;f18;117;5;127;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($nombre,$codigo,$color)&#10;&#10;Description&#10;     Insertar un nuevo posicion&#10;&#10;Parameters:&#10;     $idposicion - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d57,117;;b1,5;;m0;;enombre;;pcodigo;;pcolor;;p">
+</treenode>
+<treenode node="update;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Posicion.php;f18;96;5;108;;;;vpos;;v;;a;;r&#10;Definition&#10;    update($idposicion,$posicion,$codigo,$color)&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador&#10;&#10;Parameters:&#10;     $idposicion - identificador&#10;     $nombre - nuevo titulo;;d4,97;;b1,5;;m0;;eidposicion;;pposicion;;pcodigo;;pcolor;;p">
+</treenode>
+</treenode>
+<treenode node="Provincia;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Provincia.php;f0;8;1;150;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Provincia.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Provincia.php;f17;38;5;53;;;;vpos;;v;;a;;r;;d4,39;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Provincia.php;f18;140;5;149;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idProvincia)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idProvincia - identificador de la Provincia&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,141;;b1,5;;m0;;e $idProvincia;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Provincia.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappProvincia&apos;&#10;&#10;Parameters:&#10;     $idProvincia - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Provincia.php;f18;63;5;87;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idProvincia)&#10;&#10;Description&#10;     Obtiene los campos de una Provincia con un identificador determinado&#10;&#10;Parameters:&#10;     $idProvincia - Identificador de la Provincia;;d4,64;;b1,5;;m0;;e $idProvincia;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Provincia.php;f18;123;5;132;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($nombre,$Provinciaabr)&#10;&#10;Description&#10;     Insertar un nuevo Provincia&#10;&#10;Parameters:&#10;     $idProvincia - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d56,123;;b1,5;;m0;;e $idProvincia;;p $nombre;;p">
+</treenode>
+<treenode node="update;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Provincia.php;f18;97;5;114;;;;vpos;;v;;a;;r&#10;Definition&#10;    update(&#10;        $nombre,$idProvincia&#10;    )&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador&#10;&#10;Parameters:&#10;     $idProvincia - identificador&#10;     $nombre - nuevo titulo;;d4,100;;b1,5;;m0;;e $idProvincia;;p $nombre;;p">
+</treenode>
+</treenode>
+<treenode node="puestojugador;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f0;8;1;223;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f17;147;5;162;;;;vpos;;v;;a;;r;;d4,148;;b1,5;;m0;;eidjugador;;p">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f18;184;5;193;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idjugador,$idpuestoJug)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idsede - identificador de la sede&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,185;;b1,5;;m0;;eidjugador;;pidpuestoJug;;p">
+</treenode>
+<treenode node="deletePuestoCat;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f18;195;5;205;;;;vpos;;v;;a;;r;;d4,196;;b1,5;;m0;;eidjugador;;pidpuestoJug;;pidclub;;pianio;;p">
+</treenode>
+<treenode node="existePuesto;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f14;122;1;142;;;;vpos;;v;;a;;r;;d0,123;;b1,5;;m0;;eidjugador;;pianio;;piclubescab;;pindice;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f18;20;5;48;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll($idjugador,$ianio,$iclub)&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vapppartido&apos;&#10;&#10;Parameters:&#10;     $idsede - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;eidjugador;;pianio;;piclub;;p">
+</treenode>
+<treenode node="getControlJugPuestos;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f14;59;5;89;;;;vpos;;v;;aLista;;r&#10;Definition&#10;    getControlJugPuestos($iclub,$ianioe,$icategoriaPartido)&#10;&#10;Description&#10;     &#10;&#10;Parameters:&#10;    int $iclub&#10;    int $ianioe&#10;    int $icategoriaPartido&#10;&#10;Return:&#10;   de Los puestos asignados al jugador de un club y una categoria dados del año analizado;;d4,60;;b1,5;;m0;;eint $iclub;;pint $ianioe;;pint $icategoriaPartido;;p">
+</treenode>
+<treenode node="getRemeraCategoria;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f18;92;5;120;;;;vpos;;v;;a;;r;;d4,93;;b1,5;;m0;;eidjugador;;pianio;;piclub;;pcategoria;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f18;165;5;176;;;;vpos;;v;;a;;r;;d4,166;;b1,5;;m0;;eidjugador;;pindice;;pfecha;;premeraNum;;picate;;ppuestoCate;;pianio;;piclubescab;;p">
+</treenode>
+<treenode node="update;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php;f18;207;5;219;;;;vpos;;v;;a;;r;;d4,208;;b1,5;;m0;;eidjugador;;pidpuestoJug;;premeraNum;;picate;;ppuestoCate;;pianio;;piclubescab;;pactualizaClub;;p">
+</treenode>
+</treenode>
+<treenode node="Rotaciones;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php;f0;5;1;140;;;;vpos;;v;;a;;r;;d0,6;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php;f4;7;5;9;;;;vpos;;v;;a;;r;;d4,8;;b0,0;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php;f18;108;5;118;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idpartido,$fecha,$setnumero,$secuenciaSet)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idclub - identificador de la club&#10;&#10;Return:&#10;   Respuesta de la eliminaci?n;;d4,109;;b1,5;;m0;;eidpartido;;pfecha;;psetnumero;;psecuenciaSet;;p">
+</treenode>
+<treenode node="delete2;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php;f17;119;5;128;;;;vpos;;v;;a;;r;;d4,120;;b1,5;;m0;;eidpartido;;psetnumero;;pfecha;;p">
+</treenode>
+<treenode node="deleteAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php;f17;130;5;139;;;;vpos;;v;;a;;r;;d4,131;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="getLastRotacion;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php;f18;17;5;36;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getLastRotacion($idpartido,$fecha,$setnumero)&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappclub&apos;&#10;&#10;Parameters:&#10;     $idclub - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,18;;b1,5;;m0;;eidpartido;;pfecha;;psetnumero;;p">
+</treenode>
+<treenode node="getRotacionSetX;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php;f18;38;5;58;;;;vpos;;v;;a;;r;;d4,39;;b1,5;;m0;;eidpartido;;pfecha;;psetnumero;;psecuenciaSet;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php;f18;65;5;76;;;;vpos;;v;;a;;r&#10;Definition&#10;    insert($idpartido,$fecha,$setnumero,$secuenciaSet,$a1,$a2,$a3,$a4,$a5,$a6,$b1,$b2,$b3,$b4,$b5,$b6,$mensaje,$clubRota)&#10;&#10;Description&#10;     Insertar una nueva rotacion;;d144,65;;b1,5;;m0;;eidpartido;;pfecha;;psetnumero;;psecuenciaSet;;pa1;;pa2;;pa3;;pa4;;pa5;;pa6;;pb1;;pb2;;pb3;;pb4;;pb5;;pb6;;pmensaje;;pclubRota;;p">
+</treenode>
+<treenode node="updateclubrota;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php;f18;88;5;99;;;;vpos;;v;;a;;r&#10;Definition&#10;    updateclubrota($idpartido,$fecha,$setnumero,$secuenciaSet,$clubRota)&#10;&#10;Description&#10;     UPDATE CLUB ROTA: LLAMADO CICLICAMENTE PARA ACTUALIZAR EL CAMPO NUEVO, ES UN COOKER&#10;&#10;Parameters:&#10;     $idpartido&#10;     $fecha&#10;     $setnumero&#10;     $secuenciaSet&#10;     $clubRota;;d95,88;;b1,5;;m0;;e $idpartido;;p $fecha;;p $setnumero;;p $secuenciaSet;;p $clubRota;;p">
+</treenode>
+</treenode>
+<treenode node="sede;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Sede.php;f0;8;1;166;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Sede.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="ActualizaSede;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Sede.php;f18;117;5;130;;;;vpos;;v;;a;;r&#10;Definition&#10;    ActualizaSede($idclub,$idsede,$nombresede,$direccion)&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador&#10;&#10;Parameters:&#10;     $idsede - identificador&#10;     $nombre - nuevo titulo;;d4,118;;b1,5;;m0;;eidclub;;pidsede;;pnombresede;;pdireccion;;p">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Sede.php;f17;58;5;73;;;;vpos;;v;;a;;r;;d4,59;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Sede.php;f18;156;5;165;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idsede)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idsede - identificador de la sede&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,157;;b1,5;;m0;;e $idsede;;p">
+</treenode>
+<treenode node="getAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Sede.php;f18;20;5;37;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getAll()&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappsede&apos;&#10;&#10;Parameters:&#10;     $idsede - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;e">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Sede.php;f18;83;5;107;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idclub,$idsede)&#10;&#10;Description&#10;     Obtiene los campos de una sede con un identificador determinado&#10;&#10;Parameters:&#10;     $idsede - Identificador de la sede;;d4,84;;b1,5;;m0;;eidclub;;pidsede;;p">
+</treenode>
+<treenode node="getSedexClub;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Sede.php;f19;40;5;56;;;;vpos;;v;;a;;r;;d4,41;;b1,5;;m0;;eidclub;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Sede.php;f18;139;5;148;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert($direccion,$idclub,$extras)&#10;&#10;Description&#10;     Insertar un nuevo sede&#10;&#10;Parameters:&#10;     $idsede - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d61,139;;b1,5;;m0;;edireccion;;pidclub;;pextras;;p">
+</treenode>
+</treenode>
+<treenode node="SesionTabla;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\SesionTabla.php;f0;16;1;121;;;;vpos;;v;;a;;r;;d0,17;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\SesionTabla.php;f4;18;5;20;;;;vpos;;v;;a;;r;;d4,19;;b0,0;;m0;;e">
+</treenode>
+<treenode node="deletesession;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\SesionTabla.php;f18;109;5;118;;;;vpos;;v;;abool;;r&#10;Definition&#10;    deletesession($ipconeccion)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idcategoria - identificador de la categoria&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,110;;b1,5;;m0;;e $idcategoria;;p">
+</treenode>
+<treenode node="getsession;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\SesionTabla.php;f18;28;5;46;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getsession($valor)&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vappCategoria&apos;&#10;&#10;Parameters:&#10;     $usuario - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,29;;b1,5;;m0;;e $usuario;;p">
+</treenode>
+<treenode node="getusuariocon;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\SesionTabla.php;f15;48;2;66;;;;vpos;;v;;a;;r;;d1,49;;b1,5;;m0;;eipconeccion;;p">
+</treenode>
+<treenode node="setsession;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\SesionTabla.php;f16;92;5;102;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    setsession($clave, $valor)&#10;&#10;Description&#10;     Insertar un nuevo categoria&#10;&#10;Parameters:&#10;     $idcategoria - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d2,93;;b1,5;;m0;;e $idcategoria;;p $nombre;;p">
+</treenode>
+</treenode>
+<treenode node="Sett;PHP:Class Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f0;8;1;516;;;;vpos;;v;;a;;r;;d0,9;;b0,0;;m0;;e">
+<treenode node="__construct;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f4;10;5;12;;;;vpos;;v;;a;;r;;d4,11;;b0,0;;m0;;e">
+</treenode>
+<treenode node="contar;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f17;251;5;266;;;;vpos;;v;;a;;r;;d4,252;;b1,5;;m0;;e">
+</treenode>
+<treenode node="delete;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;484;5;493;;;;vpos;;v;;abool;;r&#10;Definition&#10;    delete($idpartido,$setNum,$secuencia,$fecha)&#10;&#10;Description&#10;     Eliminar el registro con el identificador especificado&#10;&#10;Parameters:&#10;     $idsede - identificador de la sede&#10;&#10;Return:&#10;   Respuesta de la eliminación;;d4,485;;b1,5;;m0;;eidpartido;;psetNum;;psecuencia;;pfecha;;p">
+</treenode>
+<treenode node="deleteAll;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;506;5;515;;;;vpos;;v;;a;;r;;d4,507;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="deleteAllSet;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;495;5;504;;;;vpos;;v;;a;;r;;d4,496;;b1,5;;m0;;eidpartido;;psetNum;;pfecha;;p">
+</treenode>
+<treenode node="getById;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;295;5;325;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getById($idpartido,$setnum,$sec,$fecha )&#10;&#10;Description&#10;     Obtiene los campos de una sede con un identificador determinado&#10;&#10;Parameters:&#10;     $idsede - Identificador de la sede;;d4,296;;b1,5;;m0;;eidpartido;;psetnum;;psec;;pfecha;;p">
+</treenode>
+<treenode node="getByIdUltimoRegistro;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;334;5;357;;;;vpos;;v;;amixed;;r&#10;Definition&#10;    getByIdUltimoRegistro($idpartido,$setnum,$sec,$fecha )&#10;&#10;Description&#10;     Obtiene los campos de una sede con un identificador determinado&#10;&#10;Parameters:&#10;     $idsede - Identificador de la sede;;d4,335;;b1,5;;m0;;eidpartido;;psetnum;;psec;;pfecha;;p">
+</treenode>
+<treenode node="getHoraInicioHoraFin;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;58;5;84;;;;vpos;;v;;a;;r;;d4,59;;b1,5;;m0;;eidpartido;;pfecha;;psetnumero;;p">
+</treenode>
+<treenode node="getResumenPartido;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;383;5;406;;;;vpos;;v;;a;;r;;d4,384;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="getSetData;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;20;5;56;;;;vpos;;v;;aarray;;r&#10;Definition&#10;    getSetData($idpartido,$fecha,$setnum)&#10;&#10;Description&#10;     Retorna en la fila especificada de la tabla &apos;vapppartido&apos;&#10;&#10;Parameters:&#10;     $idsede - Identificador del registro&#10;&#10;Return:&#10;   Datos del registro;;d4,21;;b1,5;;m0;;eidpartido;;pfecha;;psetnum;;p">
+</treenode>
+<treenode node="getSetDataInicial;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;87;5;121;;;;vpos;;v;;a;;r;;d4,88;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="getSetPosInicialesGrabadas;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f15;131;2;151;;;;vpos;;v;;aVECTOR;;r&#10;Definition&#10;    getSetPosInicialesGrabadas($idpartido,$set,$fecha)&#10;&#10;Description&#10;     &#10;&#10;Parameters:&#10;    &#10;    &#10;    &#10;&#10;Return:&#10;   CON EL PRIMER REGISTRO GRABADO CUANDO SETEAMOS POSICION INICIAL;;d74,131;;b1,5;;m0;;e;;p;;p;;p">
+</treenode>
+<treenode node="insert;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;465;5;476;;;;vpos;;v;;aPDOStatement;;r&#10;Definition&#10;    insert( $idpartido, $secuencia, $setnumero, $fecha,$hora,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$mensaje,$contadorpausasA,$contadorpausasB)&#10;&#10;Description&#10;     Insertar un nuevo sede&#10;&#10;Parameters:&#10;     $idsede - titulo del nuevo registro&#10;     $nombre - descripción del nuevo registro;;d4,466;;b1,5;;m0;;eidpartido;;psecuencia;;psetnumero;;pfecha;;phora;;pA1;;pA2;;pA3;;pA4;;pA5;;pA6;;pB1;;pB2;;pB3;;pB4;;pB5;;pB6;;pestado;;ppuntoa;;ppuntob;;psaque;;pmensaje;;pcontadorpausasA;;pcontadorpausasB;;p">
+</treenode>
+<treenode node="setRotacionesData;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f17;270;5;287;;;;vpos;;v;;a;;r;;d4,271;;b1,5;;m0;;e">
+</treenode>
+<treenode node="TiempoTranscurrido;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f14;177;5;225;;;;vpos;;v;;a;;r;;d4,178;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="ultSecuencia;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;154;5;174;;;;vpos;;v;;a;;r;;d4,155;;b1,5;;m0;;eidpartido;;pset;;pfecha;;p">
+</treenode>
+<treenode node="ultSetNum;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;228;5;248;;;;vpos;;v;;a;;r;;d4,229;;b1,5;;m0;;eidpartido;;pfecha;;p">
+</treenode>
+<treenode node="update;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;416;5;431;;;;vpos;;v;;a;;r&#10;Definition&#10;    update($jugadorid,$equipoid,$descripcion,$numeroA,$numeroB,$estado,$idPartido,$setnum,$secuencia,$mensaje)&#10;&#10;Description&#10;     Actualiza un registro de la bases de datos basado en los nuevos valores relacionados con un identificador;;d4,417;;b1,5;;m0;;ejugadorid;;pequipoid;;pdescripcion;;pnumeroA;;pnumeroB;;pestado;;pidPartido;;psetnum;;psecuencia;;pmensaje;;p">
+</treenode>
+<treenode node="updateHoraByIdRegistro;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;363;5;381;;;;vpos;;v;;a;;r&#10;Definition&#10;    updateHoraByIdRegistro($idpartido,$setnum,$sec,$fecha,$horamod )&#10;&#10;Description&#10;     ;;d4,364;;b1,5;;m0;;eidpartido;;psetnum;;psec;;pfecha;;phoramod;;p">
+</treenode>
+<treenode node="updateMensajeSecuencia;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\Set.php;f18;439;5;455;;;;vpos;;v;;a;;r&#10;Definition&#10;    updateMensajeSecuencia($idPartido,$fecha,$setnum,$secuencia,$conteoA,$conteoB,$mensaje)&#10;&#10;Description&#10;     Actualiza un registro de set, de un partido especifico en la secuencia dada..;;d4,440;;b1,5;;m0;;eidPartido;;pfecha;;psetnum;;psecuencia;;pconteoA;;pconteoB;;pmensaje;;p">
+</treenode>
+</treenode>
+<treenode node="armarJugador;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\obtener_partidos.php;f0;18;1;46;;;;vpos;;v;;a;;r;;d49,18;;b0,0;;m0;;ejugadoresLista;;pidAbuscar;;p">
+</treenode>
+<treenode node="buscarJugador;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\obtener_partidos.php;f0;2;1;15;;;;vpos;;v;;a;;r;;d50,2;;b0,0;;m0;;ejugadoresLista;;pidAbuscar;;p">
+</treenode>
+<treenode node="guardarPosicionesActuales;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\cambiar_jugador_partido.php;f0;156;1;198;;;;vpos;;v;;a;;r;;d53,157;;b0,0;;m0;;elistaInicial;;pjugEntra;;pjugSale;;ppartidox;;pfechax;;pxiclub;;pxset;;pxsetData;;p">
+</treenode>
+<treenode node="listadoSubDirectoriov2;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\obtener_varios.php;f0;175;1;230;;;;vpos;;v;;a;;r;;d0,176;;b0,0;;m0;;edirectorio;;ppadre;;pnivel;;parchivos;;p">
+</treenode>
+<treenode node="procesarLogoCompetencia;PHP:Function Name;C:\laragon\www\volleyAPP_desa\abms\insertar_competencia.php;f0;36;1;59;;;;vpos;;v;;a;;r;;d0,37;;b0,0;;m0;;e">
+</treenode>
+</phptree>
+</codestructure>

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="es">
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>VOLLEY.APP</title>
+        <meta name="title" content="Tablero partidos volleyAPP"/>
+        <meta name="ROBOTS" content="INDEX,FOLLOW"/>
+        <meta http-equiv="Content-Language" content="es"/>
+        <meta name="keywords" content="Nicolás Sanz, Sanz, curriculum, edición, montaje, informática, servicios"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	   <!-- ESTILOS -->
+	   <link rel="stylesheet" href="./css/nsanz_style.css">
+    </head>
+    <body>
+   	<header>
+   			<Section class="LogoApp">
+			<a href="index.php"><span id="medidas">
+			<img  class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png" />	
+			</a>
+		</Section>
+		    
+   </header>
+ 
+    
+    
+<section class="tablero" id="tablero" >
+<!-- FILA 0-->
+<div class="itemT1" id="competencia">COMPETENCIA:</div>	
+<div class="itemT1" id="fecha">FECHA</div>
+<div class="itemT1" id="cancha">Cancha</div>	
+<!-- FILA 1-->
+<div class="itemT1" id="cluba">HACOAJ</div>	
+<div class="itemT1" id="categoria">Categoria</div>
+<div class="itemT1" id="clubb">Ferro</div>	
+<!-- FILA 2-->
+<div class="itemT1" id="lv">LOCAL</div>	
+<div class="itemT1" id="saque">< -saque-  ></div>
+<div class="itemT1" id="lv">VISITANTE</div>	
+<!-- FILA 3	-->
+<div class="itemT2">
+	 <section class="punto">
+		<div class="numero" id="puntosA">23</div>
+		<div class="tiempo" id="tiempoA1">T</div>
+		<div class="tiempo" id="tiempoA2">T</div>
+		<div class="tiempo" id="negro"></div>
+	 </section>
+ </div>	
+<div class="itemT2">
+<section class="periodo">
+	<div class="periodorenglon" >SET ACTIVO</div>
+	<div class="periodorenglon fuenteGrande" id="periodo" >05</div>
+</section>
+</div>
+<div class="itemT2">
+	 <section class="punto">
+		<div class="numero" id="puntosB">23</div>
+		<div class="tiempo" id="tiempoB1">T</div>
+		<div class="tiempo" id="tiempoB2">T</div>
+		<div class="tiempo" id="negro"></div>
+	 </section>
+</div>	
+<!-- FILA 4-->
+<div class="itemT2">
+	 <section class="SetNum">
+		<div class="snumero" >SET</div>
+		<div class="snumero" id="numSetA">1</div>
+	</section>	
+</div>
+<div class="itemT2">
+<section class="periodo">
+	<div class="periodorenglon" >TIEMPO</div>
+	<div class="periodorenglon fuenteGrande" id="tiempoTot">22:03</div>
+</section>
+</div>
+<div class="itemT2">
+	 <section class="SetNum">
+		<div class="snumero" >SET</div>
+		<div class="snumero" id="numSetB">2</div>
+	</section>	
+</div>	
+</section>
+</body>
+</html>

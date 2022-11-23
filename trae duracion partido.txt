@@ -1,0 +1,5 @@
+SELECT d.idpartido, (select t.hora from vappset t where t.fecha='2019-08-29' and t.idpartido=1 order by t.idpartido and t.hora desc Limit 1) as HoraInicial, d.hora as HoraFinal,
+TIMEDIFF (d.hora , (select t.hora from vappset t where t.idpartido=1 and t.fecha='2019-08-29' order by t.idpartido and t.hora desc Limit 1) )  as algo
+FROM vappset d where d.fecha='2019-08-29' and d.idpartido=1 order by d.hora desc limit 1
+
+

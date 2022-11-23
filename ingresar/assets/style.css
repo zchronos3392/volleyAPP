@@ -1,0 +1,26 @@
+body{
+    background-color: #1e1e1e
+}
+.btn-primary{
+    transform: scale(1.25);
+}
+.btn-danger{    
+    transform: scale(1.25);
+}
+/*TODO make smoother*/
+tbody .fa-times:hover {
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: red;
+    color:white;
+}
+
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}

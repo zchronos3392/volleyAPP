@@ -1,0 +1,3221 @@
+@charset "utf-8";
+/* CSS Document */
+
+html, body{
+	margin:0px;
+	height:100%;
+	background: url('../img/pelotita.png') repeat;
+/*	background: url('../img/logo volley APP fondo.png') repeat ;*/
+	background-size: 3rem;
+	background-clip: padding-box;
+
+}
+* { /*PARA QUITAR MARGENES POR DEFECTO QUE CREAN LOS NAVEGADORES*/
+	margin: 0;
+	padding: 0;
+}
+
+hr { /*linea horizontal final*/
+    height: 1px;
+    border: 0;
+    background-color: red;
+}
+
+
+#cuadro{
+	width: 200px;
+	height: 200px;
+}	
+section#banner {
+	width: 100%;
+	background-color: #000000;
+	background-attachment: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+section#entrada{
+   width: 100%;
+   height: 15px;
+   padding-left: 40%;
+   padding-top:10%;
+   vertical-align: middle;
+}
+
+
+section#medio{
+   width: 60%;
+   height: 500px;
+   padding-left: 1rem;
+   margin: auto;
+   vertical-align: middle;
+}
+
+section#medioH{
+   width: 100%;
+   height: 300px;
+   vertical-align: middle;
+   padding-right: 250px;
+}
+
+.wrapper {
+	background: #99ccff;
+	height: 70%;
+	max-width: 900px;
+	margin: auto;
+	padding: 0;
+}
+
+.wrapper h3 {
+	padding-left: 20%;
+}
+
+
+section#salida{
+   width: 100%;
+   height: 50px;
+/*   padding-left: 40%;*/
+  
+}
+
+
+img#logo {
+	float: left;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	margin-top: 110px;
+	/*margin-left: 30px;*/
+	/*margin-right: 30px;*/
+	width: 770px;
+	height: 430px;
+	-webkit-transition: width .5s, height .5s, margin-right .5s, margin-top .5s;
+	padding-left: 0px;
+}
+
+.LogoApp
+{
+	height:3rem;
+	width:180px;
+	float:left;
+}
+
+/* BARRA SUPERIOR, CON LOGO...*/
+nav {
+	display: table; /*se ajusta al contenido de su interior.*/
+	margin-left: 20%; /* poner un numero para que sea fijo siempre*/
+	/*margin-top: 15px; /*ESTO ES PARA LA SEPARACION DEL BORDE SUPERIOR, DEL MENU.*/
+	height: 30px;/*sin altura no se muestra aunque esté presente en la estructura*/
+	/*background-color: #ed3e12;*/
+	/*background-color: #ff80bf ; /* para navegadores que no soportan gradientes*/
+
+}
+
+
+.barraSuperior ul {
+	display: block;
+	float: left;
+	list-style: none;
+	
+	}
+	
+.barraSuperior ul li {
+	float: left;
+	margin: 10px;
+	padding: 2px;
+	/*extras:*/
+	color:#FFFFFF;
+	text-decoration: none;
+}
+
+.barraSuperior a {
+	color: white;	/*color de la letra...*/
+}	
+
+header {
+	/*position: fixed; /*mantiene el header en un mismo lugar.*/
+	width: 100%; /*Responsive*/
+	/*background-color: green ;*/ /*ACTIVAR para pruebas visuales*/
+	background-color: #ff80bf ;/*#FAAC58; /*color inicial*/
+	background: linear-gradient(#f20ddb,#85e4e2); /* Sintaxis standard (must be -webkit-transition: margin .5s;*/
+	height: 3rem;
+}
+
+/********************************************/
+/*			ESTILOS DEL NUEVO MENU.. */
+.headerbar{
+  width: 100%;
+  background-color: #ff80bf ;/*#FAAC58; /*color inicial*/
+  background: linear-gradient(#f20ddb,#85e4e2); /* Sintaxis standard (must be -webkit-transition: margin .5s;*/
+  height: 3rem;
+}
+.botonMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;    
+    height: 3rem;
+    position: fixed;
+    top: 0rem;
+    right: 0rem;
+    background-color:#4eb73c; 
+    border: 0;
+    color: white;
+    cursor: pointer;
+}
+.botonMenu:focus {
+    outline: none;
+}
+.botonMenu:focus + .principal {
+    transform: translateX(0rem);
+}
+nav.principal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 15rem;
+    z-index: 10;
+    background-color: #e1eef9;
+    transform: translateX(15rem);
+    transition: 1s all;
+}
+
+nav.principal ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+nav.principal a {
+    display: block;
+    color: black;
+    padding-right: 1em;
+    padding-top: 1em;
+    transition: .5s all;
+}
+nav.principal a:hover {
+    text-decoration: none;
+    background-color:#1866c5;
+    color:white;
+}
+
+/*			ESTILOS DEL NUEVO MENU.. */
+/********************************************/
+
+
+
+
+
+/********************************************/
+/*			ESTILOS DEL NUEVO MENU 3.. */
+.botonMenu2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;    
+    height: 3rem;
+    position: fixed;
+    top: 3rem;
+    right: 0rem;
+    background-color:#4eb73c; 
+    border: 0;
+    color: white;
+    cursor: pointer;
+}
+.botonMenu2:focus {
+    outline: none;
+}
+.botonMenu2:focus + .gridmenuapps {
+    transform: translateX(-0.5rem);
+}
+
+
+.gridmenuapps {
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-rows: 50px 50px 50px;
+    position: fixed;
+    top: 5rem;
+    right: 0;
+    bottom: 0;
+    width: 15rem;
+    background-color: #e1eef9;
+    transform: translateX(25rem);
+    transition: 1s all;
+    /*parte 2:mover a la derecha: valores negativos, y opuesto: izquierda*/
+}
+/*estilo del menu, fondo, color letra, tipo, etc*/
+.itemapp {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.itemapp a {
+    display: inline-block;
+    color: black;
+    padding-left: 1em;/*ancho del menu..*/
+    padding-bottom: 0.5em;
+    width: 100%;
+    transition: .5s all;
+}
+.itemapp a:hover {
+    text-decoration: none;
+    background-color:#1866c5;
+    color:white;
+}
+
+.itemapp a img{
+	height:50px;
+	width: 50px;
+}
+
+/*			ESTILOS DEL NUEVO MENU 3.. */
+/********************************************/
+
+
+#banner {
+	width: 100%;
+	
+	background-color:#000000;
+}
+
+
+h1 {
+	font-family:bebas-neue;
+	font-size: 93px;
+	margin-left: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#textosalida{
+	margin-top: !important;
+	padding: 1em;
+	align-content: space-around;
+	width:100%;	
+}
+
+/********GRIDS *******************************/
+/********GRID i-tablero *******************************/
+.seccionMedio360{
+	padding-top: 2em;
+	width: 100%;
+	height: 100%;
+}
+
+.itablero{
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 45%;
+  margin: 0 auto;/**RESPONSIVE**/
+  grid-template-columns: 100%;
+  grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  grid-gap: 1px; /**SEPARACION ENTRE LAS CELDAS..***/
+  border: 1px solid white;
+  text-align: center;
+  color:white;
+  background: #e76700;
+}
+
+.itabrenglon1{
+	  border: 1px solid white;
+	  /*#9ca6a9;*/
+}
+
+.irenglon11{
+		  border: 1px solid white;
+		  background-color: #1aa3ff;
+		  width: 50%;
+		  float: left;
+		  height: 50%;
+}
+
+.irenglon110{
+	background-color: #041471;
+	font-size: 5em;
+}
+
+.puntoderecha{
+	background-color:#041471;
+	float: right;
+	width: auto;
+	font-size: 2em;
+}	
+
+.puntoizquierdaA{
+	background-color: #041471;
+	float: left;
+	font-size: 2em;
+}
+
+.puntoizquierda{
+	background-color: #1aa3ff;
+	float: left;
+	width: 25%;
+}
+
+.itabrenglon2{
+	
+}
+
+/********GRID i-tablero *******************************/
+
+
+
+/*******************GRID FORM BOTONERA***********************************************************/
+.grid-10 {
+  padding-top: 3%;
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 80%;
+  max-height: 50%;
+  margin: 0 auto;/**RESPONSIVE**/
+/*  grid-template-columns: repeat(9);
+  grid-template-rows: auto;*/
+  grid-template-columns: 100%;
+  grid-gap: 5px; /**SEPARACION ENTRE LAS CELDAS..***/
+}
+
+.grid-10 div {
+  color: white;/*color de la fuente */
+  font-size: 20px;
+  padding: 10px;
+  }
+
+  
+.grid-10 .item-10 {
+  background: #99ccff;
+}
+.grid-10 .centro{
+		margin-left:25%;
+		margin-right:15%;
+}
+/*******************GRID FORM BOTONERA***********************************************************/
+
+/*******************GRID I***********************************************************/
+.grid-1 {
+  padding-top: 40px;
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  max-width: 950px;
+  max-height: 20px;
+  margin: 0 auto;/**RESPONSIVE**/
+/*  grid-template-columns: repeat(9);
+  grid-template-rows: auto;*/
+  grid-template-columns: 7% 7% 7% 20% 20% 20% 7% 7% 7%;
+  grid-gap: 5px; /**SEPARACION ENTRE LAS CELDAS..***/
+}
+
+/* items */
+.grid-1 div {
+  color: gray;/*color de la fuente */
+  font-size: 20px;
+  padding: 20px;
+  background:    #f2f2f2;	/*;	/*#003366 ;#b3cccc;  */
+  }
+
+/* specific item styles */
+
+.item-1 {
+  background: #ffffb3;
+}
+.item-2 {
+  background: #ffffb3;
+}
+.item-3 {
+  background: #ffffb3;
+}
+.item-4 {
+  background: #ffffb3;
+  text-align:center; /*solo a este le da bola*/
+}
+.item-5 {
+  background: #ffffb3;
+  text-align:center; /*solo a este le da bola*/
+}
+.item-6 {
+  background: #ffffb3;
+  text-align:center; /*solo a este le da bola*/
+}
+.item-7 {
+  background: #ffffb3;
+}
+.item-8 {
+  background: #ffffb3;
+}
+.item-9 {
+  background: #ffffb3;
+}
+/*******************GRID I***********************************************************/
+
+/**************GRID 2*******************************************/
+.grid-2 {
+  padding-top: 70px;
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  max-width: 950px;
+  max-height: 20px;
+  margin: 0 auto;/**RESPONSIVE**/
+/*  grid-template-columns: repeat(9);
+  grid-template-rows: auto;*/
+  grid-template-columns: 7% 7% 7% 61.1% 7% 7% 7% ;
+  grid-gap: 5px; /**SEPARACION ENTRE LAS CELDAS..***/
+}
+
+/* items */
+.grid-2 div {
+  color: gray;/*color de la fuente */
+  font-size: 20px;
+  padding: 20px;
+  background:  #f2f2f2; /*/*#b3cccc;  */
+  }
+
+/* specific item styles */
+
+.grid-2 .item-1 {
+  background: #f2f2f2;
+}
+.grid-2 .item-2 {
+  background: #f2f2f2;
+}
+.grid-2 .item-3 {
+  background: #f2f2f2;
+}
+.grid-2 .item-4 {
+  background: #f2f2f2;
+  text-align:center; /*solo a este le da bola*/
+}
+.grid-2 .item-7 {
+  background: #f2f2f2;
+}
+.grid-2 .item-8 {
+  background: #f2f2f2;
+}
+.grid-2 .item-9 {
+  background: #f2f2f2;
+}
+/**************GRID 2*******************************************/
+
+/**************GRID 3*******************************************/
+.grid-3 {
+  padding-top: 70px;
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  max-width: 950px;
+  max-height: 40px;
+  margin: 0 auto;/**RESPONSIVE**/
+/*  grid-template-columns: repeat(9);
+  grid-template-rows: auto;*/
+  grid-template-columns: 7% 7% 7% 7% 7% 31% 7% 7% 22% ;
+  grid-gap: 5px; /**SEPARACION ENTRE LAS CELDAS..***/
+}
+
+/* items */
+.grid-3 div {
+  color: gray;/*color de la fuente */
+  font-size: 20px;
+  padding: 20px;
+  background:  #f2f2f2 ;/*#b3cccc;  */
+  height: 170px; /*altura de las celdas*/
+  }
+
+/* specific item styles */
+
+.grid-3 .item-1 {
+  background: #f2f2f2;
+}
+.grid-3 .item-2 {
+  background: #f2f2f2;
+}
+.grid-3 .item-3 {
+  background: #f2f2f2;
+}
+.grid-3 .item-4 {
+  background: #f2f2f2;
+  text-align:center; /*solo a este le da bola*/
+  grid-column: 4 / 6;
+}
+
+.grid-3 .item-6 {
+  background: #f2f2f2;
+  text-align:center; /*solo a este le da bola*/
+  grid-column: 7 / 9;
+}
+
+.grid-3 .item-7 {
+  background: #f2f2f2;
+}
+.grid-3 .item-8 {
+  background: #f2f2f2;
+}
+.grid-3 .item-9 {
+  background: #f2f2f2;
+}
+/**************GRID 3*******************************************/
+
+/**************GRID 4*******************************************/
+.grid-4 {
+  padding-top: 5px; /*esto hace que se separe del bloque anterior*/
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  max-height: 40px;
+/*  background:#ed12dd;*/
+  margin: 0 12%;/**RESPONSIVE**/
+/*  grid-template-columns: repeat(9);
+  grid-template-rows: auto;*/
+  grid-template-columns: 20% 20% ;
+  grid-gap: 5px; /**SEPARACION ENTRE LAS CELDAS..***/
+}
+
+/* items */
+.grid-4 div {
+  color: gray;/*color de la fuente */
+  font-size: 20px;
+  padding: 20px;
+  background:  #003366 ;/*#b3cccc;  */
+  height: 170px; /*altura de las celdas*/
+  }
+
+/* specific item styles */
+
+.grid-4 .item-1 {
+  background: #f2f2f2;
+  height: 70px;
+}
+.grid-4 .item-2 {
+  background: #f2f2f2;
+  height: 70px;  
+}
+.grid-4 .item-3 {
+  background: #f2f2f2;
+	grid-column: 1 / 3;
+  }
+
+/**************GRID 4*******************************************/
+
+/**************GRID 5*******************************************/
+.grid-5 {
+  padding-top: 200px;
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  max-height: 80%;
+/*  background: #f0eb0f;*/
+  margin: 0 12%;/**RESPONSIVE**/
+  grid-template-columns: 50% 50% ;
+  grid-gap: 5px; /**SEPARACION ENTRE LAS CELDAS..***/
+}
+
+/*******************GRID TABLERO***********************************************************/
+.tablero {
+  padding-top: 1.5%;/*40px ESPACIO DE ARRIBA UNICAMENTE..*/
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 80%;
+  /*max-width: 950px;*/
+  max-height: 20px;
+  margin: 0 auto;/**RESPONSIVE**/
+  grid-template-columns: 33% 33% 33%;   /*tres columnas grandes..*/
+  grid-gap: 1.5px; /**SEPARACION ENTRE LAS CELDAS..***/
+/*
+  border-radius: 40px 40px 40px 40px;
+ -moz-border-radius: 40px 40px 40px 40px;
+ -webkit-border-radius: 40px 40px 40px 40px;
+ border: 40px solid #000000;    
+*/  
+}
+
+.tablero div { /* items */
+  color:white;	/*#47d147; /*color de la fuente */
+  padding: 7% 7.46% 7% 7.46%; /*ESTO ES PARA EL INTERIOR DE CADA DIV, DENTRO DEL TABLERO, itemT1 e itemT2*/
+  /*como el total(width) es 268, y esto tenia un 20px, eso corresponde a un 7.46%
+  pero solo es valido para el ancho, para el alto es distinto
+  padding: top right bottom left*/
+  background: #000;	
+  text-align: center;
+}
+
+/* specific item styles */
+.itemT1 {
+  background: #001;
+  height:100%;
+  font-size: 1.2em; /*TAMAÑO DEL TEXTO PARA TODO EL TABLERO...*/
+}
+
+.itemT2 {
+  background: #FFF;
+  height: 100%;/*185px;*/
+}
+
+/*****************************************************************/
+/*			GRID TABLERO	*/
+/*****************************************************************/
+
+/*****************************************************************/
+/*			GRID TABLERO --> PUNTAJE	*/
+/*****************************************************************/
+.punto { /*GRID PRINCIPAL*/
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  margin: 0 auto; /**RESPONSIVE**/
+  grid-template-columns: 50% 50%;   /*tres columnas grandes..*/
+  width: 100%;
+}
+
+.punto div { /*COLUMNAS*/
+background: #FFF;
+color:#000;	
+}
+
+.numero{
+	grid-row: 1 / 4;
+	font-size: 4em;/*60px;*/
+	margin:auto;
+}
+
+.tiempo{
+	margin:auto;
+}
+
+#negro{background:black;height:0;}
+/*****************************************************************/
+/*			GRID TABLERO --> PUNTAJE	*/
+/*****************************************************************/
+
+/*****************************************************************/
+/*			GRID TABLERO --> PERIODO	*/
+/*****************************************************************/
+.periodo{
+	display:grid;
+	grid-rows: 25% 75%;
+	grid-gap:1.5px;
+}
+
+.periodo div {
+}
+
+
+
+.periodo .periodorenglon{
+	background: #0099ff;
+}
+
+.fuenteGrande {font-size:50px; padding:0;}
+/*****************************************************************/
+/*			GRID TABLERO --> PERIODO	*/
+/*****************************************************************/
+
+
+/*****************************************************************/
+/*			GRID TABLERO --> set numero	*/
+/*****************************************************************/
+.SetNum{
+	display:grid;
+	grid-columns: 50% 50%;
+	grid-gap:1.5px;
+	
+}
+
+.SetNum div {
+	background:#fff;
+	color:red;
+	margin:auto;
+}
+
+.snumero div {
+	
+}
+
+
+/*****************************************************************/
+/*			GRID TABLERO --> set numero	*/
+/*****************************************************************/
+
+/*****************************************************************/
+/*			GRID BUSQUEDA 	*/
+/*****************************************************************/
+.busque{
+	display:grid;
+	grid-template-columns: 15% 40% 15% 15% 15%;
+	height: 4em;
+	grid-gap: 1.5px;
+	background-color: #e6e6e6; /*#ff9966; /*#a3a3c2;*/
+	border:2px solid #000000;
+}
+
+.busque div {
+/*	background: #e8d217;*/
+	margin: auto;
+	width: 100%;
+	margin-top: 0.5em
+}
+
+.inputSearch {
+	height: 2em;
+	margin-top: 0.5em;
+}
+.busque button {
+	text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 15px;
+    color: #000;
+	background-color: #99c2ff;
+    border-radius: 6px;
+	border: 2px solid #000000;
+}
+
+.busque button:hover {
+  background: gold;
+}
+
+#iclub2{
+	width: 100%;
+}
+
+.btnBuscar2{
+		text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 15px;
+    color: #000;
+ 	background-color: #99c2ff;
+    border-radius: 6px;
+ 	border: 2px solid #000000;
+}
+
+.btnBuscar2:hover{
+	  background: gold;	
+}
+
+
+/*****************************************************************/
+/*			pantalla POPUP --> set numero	*/
+/*****************************************************************/
+
+#popupAltaPosI {
+  display: inline-block;
+  opacity: 0;
+  position: absolute;
+  top: 5rem;
+  left: 25rem;
+  width: 50%;
+  padding-left: 2em;
+  padding-bottom: 1em;
+  background: #fff;
+  border: 1px solid #888;
+  box-shadow: 1px 1px .5em 0 rgba(0, 0, 0, .5);
+}
+
+#popupAltaPosI.hidden {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+
+#saqueA,#saqueB{
+width: 10%;
+padding-left: 10px;
+}
+/*.enLinea{
+	display: inline-block;
+}*/
+
+#jugA{
+	width: 55%;
+}
+
+#jugATitulo{
+	width: 55%	;
+}
+
+#jugB{
+		width: 55%;
+}
+
+#jugBTitulo{
+	width: 55%;
+}
+
+
+/*LUEGO CREAR LOS MISMOS ESTILOS PARA 300-450 Y 451 - 768*/
+ #ElegirJugadores{
+  display: grid;
+  height: auto;
+  grid-template-columns: 50% 50% ;
+  grid-template-rows: 100% 100%;	
+  border: 1px solid black;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  }
+
+  #ElegirJugadores div{ 	
+    border: 1px solid black;
+	height: 70px;
+	text-align: center;
+	vertical-align: middle;
+  }
+  
+  #jugSel{ 	
+    border: 1px solid black;
+	height: 70px;
+	width: 90%;
+	text-align: center;
+	padding-top: 1em;
+	vertical-align: middle;
+  }      
+#jugCheckSaque{
+	width:100%;
+}
+#jugCheckSaque label{
+	width:100px;
+	display: inline;
+}
+    #jugCheckSaque input{
+	width:25px;
+	display: inline;
+	height: 25px;
+}	 
+
+
+/*ESTILO POSICIONES*/
+.CuadroJugadores{
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25% 25%;
+	grid-template-rows: 100%;	
+	border: 5px dashed transparent;
+	background: #87CEFA;
+	margin: 0;
+	min-height: 8em;
+	padding: 0;
+	width: 100%;
+	grid-gap:1rem;
+	font-size: 16px;
+}
+
+
+
+
+.CuadroJugadores .item{ 	
+  border: 3px solid #FFF;
+  border-radius: 10px 10px 10px 10px;
+  background: #98FB98;
+  color:#808080;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1em;
+  width:7rem;
+  height:5em;
+  font-size: 16px;
+}
+
+.CuadroJugadores select{
+		background-color: #017ce4;
+}
+
+.CuadroJugadores option{
+	  background-color:#00abe3; 
+	/*	background-color: #017ce4;*/
+
+}
+
+/*GRID DIBUJO DE LA CANCHA ESTILO*/
+.canchaBeta{
+display: grid;
+width: 78%;
+padding: 2%;
+grid-template-columns: 50% 50%    ;
+grid-template-rows: 100% 100% 100%;
+}
+
+
+/*va a recibir el DROP PERO TAMBIEN ES ORIGEN DE DRAG..*/	
+.gridcanchaBeta{
+  border:1px solid white;
+   margin: auto;
+   padding: 0;
+  background-color:#00abe3; 
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+/*va a recibir el DROP PERO TAMBIEN ES ORIGEN DE DRAG..*/	
+
+.canchaBeta .item{ 	
+  border: 3px solid #FFF;
+  border-radius: 10px 10px 10px 10px;
+  background: #98FB98;
+  color:#808080;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1em;
+  width:5em;
+  height:2em;
+}
+
+/*DIBUJO DE LA CANCHA ESTILO POSICIONES*/
+
+
+	  
+#cargajug{width: 70%;padding-left:3em;}	  
+
+.regridjug2
+{
+  display: grid;
+  width: 70%;
+  border:0px solid black;
+  grid-template-columns: 2rem 10% 100%  ;
+}	  
+.regridjug
+{
+  display: grid;
+  width: 70%;
+  border:0px solid black;
+  grid-template-columns: 15% 40% 100%  ;
+}
+
+.regjug{
+  color:white; /*color de la letra para identificarlo*/	
+
+}
+
+
+/*PARA MOSTRAR LOS VALORES POSIBLES PARA UN JUGADOR*/
+.gridPos{
+  display: grid;	/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  max-height: 7px;
+  /**RESPONSIVE**/
+  grid-template-columns: 11% 11% 11% 11% 11% 11% 11.11% 11.11% 11.11%;
+  grid-gap: 0.5px; 	/**SEPARACION ENTRE LAS CELDAS..***/
+	
+}
+
+.gridposelem{
+ background-color:#fe8386;	
+  font-style: normal;
+
+}
+
+.valorGrid{
+  display: grid;	/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  max-height: 20px;
+  /**RESPONSIVE**/
+  grid-template-columns: 70% 30%;
+  
+}
+
+.valoresGrid{
+  font-style: normal;
+}
+
+
+#lineaAltaJug.hidden{
+	display: none;	
+}
+
+#popupAltaPosI.fade-in {
+  opacity: 1;
+  display: block;
+  z-index: 10;
+}
+
+
+button.btnPop {
+  background:#57e61a;
+  border: 0;
+  width: auto;
+  
+}
+
+button.btnPop:hover {
+  background: gold;
+}
+
+button.btnPop2 {
+  background:#57e61a;
+  border: 0;
+  width: auto;
+  border:1px solid #e6e9ea;
+  
+}
+
+button.btnPop2:hover {
+  background: gold;
+}
+
+
+
+
+/*****************************************************************/
+/*			fin pantalla POPUP --> set numero	*/
+/*****************************************************************/
+
+/*****************************************************************/
+/*			GRID BUSQUEDA --> set numero	*/
+/*****************************************************************/
+
+/*******************GRID PARTIDOS-LISTA***********************************************************/
+/*************************************************************************************************/
+.grid-ListaPart {
+  padding-top: 40px;
+  margin-left: 25%;
+  display: grid;	/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  max-width: 950px;
+  max-height: 10px;
+  /**RESPONSIVE**/
+  grid-template-columns: 30% 10% 20%;
+  grid-gap: 1px; 	/**SEPARACION ENTRE LAS CELDAS..***/
+
+}
+
+/* items */
+.grid-1 div {
+  color: gray;	/*color de la fuente */
+/*  background:    #f2f2f2;	/*;	/*#003366 ;#b3cccc;  */
+
+  }
+
+/* specific item styles */
+
+.ilp1 {
+/*  background: #ffffb3;*/
+  text-align: center;
+  padding-top: 0.5em;
+  border:1px solid black;
+}
+
+.ilp11 {
+/*  background: #ffffb3;*/
+  text-align: center;
+  padding-top: 0.5em;
+  border:1px solid black;	
+  width: 40%;
+}
+
+.ilp2 {
+/*  background:#e6f2ff;*/
+  text-align: center;
+  padding-top: 0.5em;
+  text-align: left;
+  font-style: normal;
+  grid-column: 1/3;
+  border:1px solid black;
+}
+
+
+.imgEstado{
+	height: 45px;
+	width: 45px;
+	/*margin-left: 10px;*/ /*esto hacia que la imagen del estado del Set o Partido estuviera corrida
+	hacia la DERECHA DE SU CAJITA*/	
+}
+
+.ilp2 div.imgdiv{
+	background-color:#265f77;
+
+}
+.margen {margin-top:5px ;}
+
+  
+/*******************GRID PARTIDOS-DETALLE-REGISTRO***********************************************************/
+/*************************************************************************************************/
+
+.grid-LPReg {
+  display: grid;	/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  grid-template-columns: 30% 10% 30% 10% 20%;
+  grid-template-rows: 50% 50%;
+  grid-gap: 1px; 	/**SEPARACION ENTRE LAS CELDAS..***/
+  margin: 0px; /*porcentaje segun el 100, dependiendo si estado usandose o no*/
+  padding: 0px;
+  border:1px solid black;
+
+}
+
+/* items */
+.grid-LPReg div {
+  color: black;	 /*gray;	/*color de la fuente */
+ /* background:  #1aa3ff;  /*#f2f2f2;	/*;	/*#003366 ;#b3cccc;  */
+  width:100%;
+   border:1px solid #0016b0;
+ }
+
+#ilp22_2{
+	grid-column: 1/6;
+/*	background:#da4e0a;*/
+}
+
+ /*******************************pseudo update*******************************************************/
+.btnFinPArtido{
+  width:50px;
+  height:50px;
+  
+	 position:relative;
+  	 margin-right:15%;
+  	 margin-bottom:1px;
+  
+  border-radius:100%;
+  background:#61ea0f;
+  border:none;
+  margin:0;
+ /* outline:none;*/
+  color:#FFF;
+  font-size:12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+
+}
+
+.btnFinPArtido:hover{
+	  transform:rotate(360deg);
+}
+
+.btnFinPArtido:active{
+	  transform:scale(1.1);
+}
+
+.btnVerSet {
+  width:50px;
+  height:50px;
+  border-radius:100%;
+  background:#ffaa00;
+  border:none;
+  margin:0;
+ /* outline:none;*/
+  color:#FFF;
+  font-size:12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+}
+
+.btnVerSet:hover span{
+  transform:rotate(360deg);
+}
+
+.btnVerSet:active{
+  transform:scale(1.1);
+}
+
+.btnVerSet:hover{
+  background-color: #002266;
+}
+
+.ilp22{
+ padding: 15%;
+
+}
+ 
+/*
+.LPR1 {
+  background: #ffffb3;
+  text-align: center;
+  padding-top: 0.5em;
+  border:1px solid black;
+}
+*/
+/*******************GRID PARTIDOS-DETALLE-REGISTRO***********************************************************/
+/*************************************************************************************************/
+
+
+
+.grid-ListaPart button{
+  width:60px;
+  height:60px;
+  border-radius:100%;
+  background:#F44336;
+  /*right:0;
+  bottom:0; ESTO LO UBICA ABAJO AL FONDO..*/
+  right: 20%;
+  bottom: 70%;
+  position:absolute;
+  margin-right:16px;
+  margin-bottom:16px;
+  border:none;
+  outline:none;
+  color:#FFF;
+  font-size:36px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+}
+
+span{
+  transition:.5s;  
+}
+.grid-ListaPart button:hover span{
+  transform:rotate(360deg);
+}
+.grid-ListaPart button:active{
+  transform:scale(1.1);
+}
+
+.grid-ListaPart button:hover{
+  background-color: #eaaf15;
+}
+
+.btnSet {
+  width:35px;
+  height:35px;
+  border-radius:100%;
+  background:#5bb847;
+  border:none;
+ /* outline:none;*/
+  color:#FFF;
+  font-size:15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+}
+
+.btnSet:hover span{
+  transform:rotate(360deg);
+}
+
+.btnSet:active{
+  transform:scale(1.1);
+}
+
+.btnSet:hover{
+  background-color: #eaaf15;
+}
+
+
+.derecha{
+	text-align: center;
+}
+
+
+.grid-ListaPart button:hover{
+  background-color: #eaaf15;
+}
+
+/*************************************************************************************************/
+/***********************************GRID PARTIDOS-LISTA*******************************************/
+
+/*****************************************************************/
+/*****************************************************************/
+/*				este es el formulario que hay que adaptar		*/
+/*****************************************************************/
+/****************************************************************
+
+*/
+label {
+  text-align: right;
+  display: block;
+  padding: 0.5em 1.5em 0.5em 0;
+}
+
+
+input:focus {
+  outline: 3px solid gold;
+}
+
+/*****************************************************************/
+/*****************************************************************/
+/*				este es el formulario que hay que adaptar		*/
+/*****************************************************************/
+/*****************************************************************/
+
+
+
+
+div .clubes{
+	margin-left : 50%;
+}
+
+div .clubesWide{
+	margin-left : 50%;
+	width: 100%;
+}
+
+.SelList {
+	/*margin-left: 20%;*/
+}
+
+/***************************************************************/
+/***************************************************************/
+.gridClub  {
+  padding-top: 40px;
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  grid-template-columns: 33% 33% 33% ;
+  grid-template-rows: 100% 100% 100%;
+  grid-gap: 5px; 
+}
+
+
+  
+.icc1 {
+  background: #fff;
+}
+.icc2 {
+  background: #fff;
+}
+
+.icc3 {
+  background: #fff;
+}
+.icc4 {
+  background: #fff;
+}
+.icc5 {
+  background: #fff;
+  height: 30%;
+  grid-auto-rows: 1/3;
+}
+.icc6 {
+  background: #fff;
+}
+.icc7 {
+  background: #fff;
+}
+.icc8 {
+  background: #fff;
+}
+.icc9 {
+  background: #fff;
+}
+/***************************************************************/
+/***************************************************************/
+
+.gridClub2  {
+  display: grid;
+  width: 70%;
+  padding-left: 20rem;
+  grid-template-columns: 100% ;
+  grid-template-rows: 100% 100% 100% 100% 100% 100% 100%;
+  grid-gap: 5px; 
+}
+
+.gridClub2 label {
+	display: inline;
+	text-align: left;
+	width:100%;
+}
+
+  
+.icc12 {
+  background: #fff;
+}
+.icc22 {
+  background: #fff;
+}
+
+.icc32 {
+  background: #fff;
+}
+.icc42 {
+  background: #fff;
+}
+.icc52 {
+  background: #fff;
+  height: 190px;
+  grid-auto-rows: 1/3;
+}
+.icc62 {
+  background: #fff;
+}
+.icc72 {
+  background: #fff;
+}
+.icc82 {
+  background: #fff;
+}
+.icc92 {
+  background: #fff;
+}
+/***************************************************************/
+/***************************************************************/
+
+#ClubForm{
+	border:1px solid #000;
+	margin:auto;
+	padding:1em;
+}
+
+#ClubForm button{
+    text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 15px;
+    color: #000;
+    background-color: #99c2ff;
+    border-radius: 6px;
+    border: 2px solid #000000;
+}
+
+#ClubForm button:hover {
+  background-color:gold;
+}
+
+.formConfigUpd {
+ /* background:#dcc023;		/* #e9e916;/*#f9f9f9;*/
+position:absolute;
+top: 5%;
+ margin-top:3%;
+  width: 45%;
+    max-width: 45%;
+  margin-left: 53%;
+
+  text-align:center;
+}
+
+.formConfigUpd button {
+  text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+}
+
+.formConfigUpd button:hover {
+  background-color:gold;
+}
+
+
+.formConfigUpd label {
+	display:inline-block; /*para mostrar en linea a los labels..*/	
+}
+
+.formConfigUpd input {
+	display:inline-block;
+	width:50%;
+	padding:5px;	
+}
+
+
+
+
+/***************************************************************/
+/***************************************************************/
+.gridPartido  {
+  display: grid;
+  width: 50%;
+  margin: 0 auto;
+  grid-template-columns: 100%   ;
+  grid-template-rows: 100% 100% 100% 100% 100% 100% 100%;
+  grid-gap: 5px;
+ 
+}
+/*columnas de la grilla*/
+.gridPartido .ipp1 {
+ display: inline;
+ border: 2px solid #0016b0;
+ padding-top: 1rem;
+ padding-left: 1rem;
+ padding-right: 15%;
+
+}
+
+.gridPartido .ipp1 span{
+float: right;
+}
+
+
+/***************************************************************/
+.gridEdad  {
+  display: grid;
+  width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  grid-template-columns: 50% 50%   ;
+  grid-template-rows: 100%;
+  grid-gap: 5px;
+ 
+}
+/*columnas de la grilla*/
+.gridEdad div {
+	height: auto;
+}
+/*columnas de la grilla*/
+.edad1 .edad2 label {
+	text-align: left;
+}
+/***************************************************************/
+
+
+/***************************************************************/
+.gridPartido  #FormPartidoC {
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  padding: 1em;
+  width: 100%;
+  margin: auto;
+}
+/*personalizacion del FORMULARIO INTERNO CABECERA*/
+#FormPartidoC{
+/*	max-width: 950px;	*/
+}
+
+#FormPartidoC input {
+  margin-bottom: 1rem;
+  background: #fff;
+  width: auto;
+  border: 1px solid #9c9c9c;
+}
+
+#FormPartidoC .inputSets{
+	width: 100px;
+	display: inline;
+}
+#FormPartidoC .btnNew {
+  width:60px;
+  height:60px;
+  border-radius:100%;
+  background:#1269ed;
+  right: 30%;
+  bottom: 80%;
+  position:absolute;
+  margin-right:10px;
+  margin-bottom:10px;
+  border:none;
+  outline:none;
+  color:#FFF;
+  font-size:25px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+
+}
+
+#FormPartidoC select {
+  margin-bottom: 1rem;
+  background: #fff;
+  border: 1px solid #9c9c9c;
+}
+
+/*boton de configuracion de todos lados..*/
+#FormPartidoC button {
+text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+}
+#FormPartidoC button:hover {
+  background: gold;
+}
+
+#FormPartidoC label {
+  text-align: left;
+  display: inline;
+  width: auto;
+  padding: 0.5em 1.5em 0.5em 0;
+}
+#FormPartidoC h3 {
+  text-align: center;
+  display: block;
+  padding: 0.5em 1.5em 0.5em 0;
+}
+
+.gridPartido  #FormPartidoC input:focus {
+  outline: 3px solid gold;
+}
+
+/***************************************************************/
+
+
+
+/**************************************************************/
+/**************************************************************/
+/*/ formularios para esta parte    */
+/**************************************************************/
+
+#formConfig {
+ /* background:#dcc023;		/* #e9e916;/*#f9f9f9;*/
+  /*border: 1px solid #c1c1c1;*/
+  border: 1px solid #000000;
+  /*height: 7em;*/
+  margin-left: 0;
+  padding:0.5em;
+  padding-right:2em;
+  margin-right: auto;
+
+}
+
+#SetMaxCate {
+		width: 100px;
+		display: inline;
+
+}
+
+.formProvs{
+	background: #1c99e3;
+}
+
+.formSedes{
+	background:#95eb14;
+}
+
+#Sedesf{
+	border:1px solid #000;
+	padding:1rem;
+	padding-bottom:1em;	
+}
+
+#Sedesf select {
+	width: 70%;
+}
+
+#Sedesf button{
+    text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 15px;
+    color: #000;
+    background-color: #99c2ff;
+    border-radius: 6px;
+    border: 2px solid #000000;
+}	
+	
+		
+#Sedesf button:hover{
+	background:gold;	
+}
+
+
+#Sedessearchf{
+	border:1px solid #000;
+	padding:1rem;	
+	background:#FFF;
+}
+
+#Sedessearchf select {
+	width: 70%;
+}
+
+#Sedessearchf button{
+    text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 15px;
+    color: #000;
+    background-color: #99c2ff;
+    border-radius: 6px;
+    border: 2px solid #000000;
+}	
+	
+		
+#Sedessearchf button:hover{
+	background:gold;	
+}
+
+.formCanchas {
+		background:#e24f1d;
+}
+
+.formCiudad {
+	background: #FFF;
+	
+}
+
+#formCiudad{
+	border:1px solid #000;
+	padding:1rem;
+	padding-bottom:1em;	
+}
+
+#CiudadForm{
+	border:1px solid #000;
+	padding:1rem;	
+}
+
+
+
+.formCategoria {
+	background:#e4bc1b;
+}
+
+.formClubes {
+	background:#1780e8;
+	margin:5px;
+}
+
+
+
+.gridClub #formConfig input {
+  margin-bottom: 1rem;
+  background: #fff;
+  border: 1px solid #9c9c9c;
+}
+/*cago el estilo del btningreso*/
+/*boton de configuracion de todos lados..*/
+.gridClub #formConfig button {
+  text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 20px;
+    color: #ffffff;
+	display:block;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+      
+}
+
+.gridClub #formConfig button:hover {
+  background: gold;
+}
+
+.gridClub #formConfig label {
+  float: left;
+  width:50%;
+  padding: 0.5em 1.5em 0.5em 0;
+}
+
+.gridClub #formConfig input {
+  width: 50%;
+    float: right;
+  padding: 0.7em;
+  margin-bottom: 0.5rem;
+ }
+ 
+.gridClub #formConfig select {
+  width: 100%;
+ } 
+ 
+.gridClub #formConfig input:focus {
+  outline: 3px solid gold;
+}
+
+/*********************************************************************************/
+
+.gridClub	.green{
+background:url(img/green.gif);
+padding:0px 6px;
+border:1px solid #3b6e22;
+height:24px; 
+line-height:24px;
+color:#FFFFFF;
+font-size:12px;
+margin-right:10px;
+display:inline-block;
+text-decoration:none;
+}
+
+/******************************** ACA COMIENZA EL OTRO CODIGO**********************************************************/
+/******************************************FIN BLOQUE GRIDS ***********************************************************/
+
+/*MENU DESPLEGABLE*/
+ input#abrir-cerrar { visibility:hidden; position: absolute; top: -9999px; }
+ 
+ input#abrir-cerrar:checked ~ #sidebar {
+        width:180px;
+    }
+    input#abrir-cerrar:checked + label[for="abrir-cerrar"], input#abrir-cerrar:checked ~ #contenido {
+        margin-left:30px; /*era 300*/
+        transition: margin-left .4s;
+    }
+    input#abrir-cerrar:checked + label[for="abrir-cerrar"] .cerrar { 
+        display:inline;
+    }
+    input#abrir-cerrar:checked + label[for="abrir-cerrar"] .abrir {
+        display:none;
+    }
+    
+label[for="abrir-cerrar"] {
+    cursor: pointer;
+    padding: 0;
+    background-color: #333;
+    color: #fff;
+    display: inline-block;
+    width: 150px;
+    margin: auto;
+}
+       
+.sidebar {
+    position: fixed;
+    /*height: 100%;*/
+    width: 0;
+    /*top: 0;*/
+    left: 0;
+    z-index: 1;
+    background-color:#e2d69a;	/*:#34cb6c; /*#00324b;*/
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding: 1rem 0;
+    box-sizing: border-box;
+    
+}
+
+.sidebar ul {
+    margin: 4rem auto;
+    display: block;
+    width: 80%;
+    min-width: 200px;
+}
+.sidebar ul, .sidebar li {
+    margin: 0;
+    padding: 0;
+    list-style: none inside;
+}   
+
+
+.under-menu{
+    margin-top: 60px!important;
+}
+
+.box-result{
+    background: #777777;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: 40px;
+}
+
+.box-result table td, .box-result table th{
+    text-align: center;
+}
+
+.col-res{
+    width: 100px;
+}
+
+.sets-column{
+    width: 150px;
+}
+
+.box-result, .title-box-result{
+    color: #e7e7e7;
+    padding: 8px;
+}
+
+.rojo{
+    color: #F00;
+}
+
+.nombre-club{
+    text-align: left!important;
+}
+
+table th{
+    color: rgba(255, 252, 40, 0.38);
+}
+
+.saque{
+    color: #F00;
+    font-weight: bold;
+    font-size: 33px;
+    /*background: transparent url('../img/punto_rojo.png') no-repeat center;*/
+    background: transparent url('../img/pelotita.png') no-repeat center;
+    background-size: 3rem;
+	background-clip: padding-box;
+}
+
+.title-box-result{
+    background: #666666 url('../img/striped-bg.png');
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-shadow: 1px 1px 0 #111111;
+    text-align: center;
+}
+
+.front-container{
+    padding: 15px;
+    border-radius: 5px;
+    background: transparent url('../img/main-bg.jpg') no-repeat;
+    box-shadow: 0 0 7px -3px #000000;
+}
+
+.bloque{
+    background-color: #fff;
+    margin-left: 15px;
+    width: 97.5%;
+    border-radius: 5px;
+    padding: 15px 15px 0 15px;
+}
+
+.link-box:hover{
+    text-decoration:none;
+}
+
+.aviso-finalizado{
+    color: #ff6462;
+    float: left;
+}
+
+.categoria-box-result{
+    margin-bottom: 15px;
+    color: #5f5f5f;
+}
+
+.sin-partidos{
+    text-align: center;
+    font-weight: bold;
+    color: #5f5f5f;
+    font-size: 17px;
+    padding-bottom: 10px;
+}
+
+.img-logo-club-front{
+    width:20px;
+    height:20px;
+}
+/*	STOP`WATCH STILOSS	*/
+.incremento {
+  width:60px;
+  height:60px;
+  border-radius:100%;
+  background:#1269ed;
+/*  right: 20%;
+  bottom: 70%;
+  position:absolute; */
+/*  margin-right:10px;
+  margin-bottom:10px;*/
+  border:none;
+  outline:none;
+  color:#FFF;
+  font-size:15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  /*transition:.3s;*/  
+
+}
+
+/*
+.incremento:hover,.decremento:hover {
+  background: gold;
+}
+*/
+
+.decremento{
+	  width:60px;
+  height:60px;
+  border-radius:100%;
+  background:#dd22d3;
+/*  right: 30%;
+  bottom: 70%;
+  position: relative;
+  margin-right:10px;
+  margin-bottom:10px;*/
+  border:none;
+  outline:none;
+  color:#FFF;
+  font-size:15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  /*transition:.3s;*/
+}
+
+/*GRID DE CRONOCONTROLESSS*/
+.cronocontroles{
+  display: grid;
+  width: 50%;
+  margin: 0 auto;
+  border:1px solid black;
+  grid-template-columns: 25% 25% 25% 25%   ;
+  grid-template-rows: 100% 100%;
+
+}
+
+.cronocontrolesCAB{
+  display: grid;
+  width: 50%;
+  margin: 0 auto;
+  border:1px solid black;
+  grid-template-columns: 50% 50%   ;
+  grid-template-rows: 100%;
+	
+}
+
+.gridcol{
+	  border:1px solid #ab570c;
+	   margin: auto;
+	   padding: 0;
+}
+
+
+.gridcolEsp1{
+	  border:1px solid #ab570c;
+	   margin: auto;
+	   padding: 0;
+	   grid-column: 1/3;
+	   width: 100%;
+	   text-align: center;
+	   font-size: 50px;
+}
+
+.gridcolEsp2{
+	  border:1px solid #ab570c;
+	   margin: auto;
+	   padding: 0;
+	   grid-column: 3/5;
+	   width: 100%;
+	   height: 100%;
+	   text-align: center;
+	   font-size: 50px;
+}
+
+.gridcolcab{
+   	   border:1px solid #ab570c;
+	   margin: auto;
+	   padding: 0;
+	
+}
+/*GRID DE BOTONERA LATERAL A LOS CRONOCONTROLES*/
+.botoneraAx{
+  display: grid;
+  width: 7%;
+  left: 79%;
+  top: 20%;
+  margin: 0 auto;
+  position: absolute;
+  border:0px solid black;
+  grid-template-columns: 100%   ;
+  grid-template-rows: 20% 20% 20%;
+	
+}
+
+.GridBotCol{
+	  border:0px solid #ab570c;
+	   margin: auto;
+	   padding: 0;
+}
+
+.GridBotCol button:hover{
+	background:gold;
+}
+
+
+.cerrar{
+  width:60px;
+  height:60px;
+  border-radius:100%;
+  background:#1269ed;
+  border:none;
+  outline:none;
+  color:#FFF;
+  font-size:15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+}
+
+.cerrar:hover {
+  transform:rotate(360deg);
+  background-color: #eaaf15;
+}
+
+.cerrar:active{
+  transform:scale(1.1);
+}
+
+
+
+
+/*GRID DE BOTONERA LATERAL A LOS CRONOCONTROLES*/
+
+
+
+/*	STOP`WATCH STILOSS	*/
+
+/*GRID DIBUJO DE LA CANCHA ESTILO*/
+.cancha{
+  display: grid;
+  width: 80%;
+  padding: 2%;
+  margin: 0 auto;
+  border:1px solid white;
+  background-color: #017ce4;
+  grid-template-columns: 50% 50%    ;
+  grid-template-rows: 100% 100% 100%;
+ /* grid-gap: 5px;*/
+
+}
+
+
+.gridcancha{
+	  border:1px solid white;
+	   margin: auto;
+	   padding: 0;
+	  background-color:#00abe3; 
+	  width: 100%;
+	  height: 100%;
+	  text-align: center;
+	   
+}
+
+.bordeLeft{
+	border-left-width: 1em;
+}
+
+.bordeRight{
+	border-right-width: 1em;
+}
+
+/*DIBUJO DE LA CANCHA ESTILO*/
+
+
+/*pantallas grandes sin media queries*/
+.medioset{
+	padding-left: 90px;
+	position: relative;
+	
+}
+/*GRID setcontrolcol ESTILO*/
+.setcontrol{
+  display: grid;
+  width: 85%;
+  margin: 0 auto;
+  border:1px solid white;
+  background-color: #017ce4;
+  grid-template-columns: 25% 25% 25% 25%   ;
+  grid-template-rows: 100%;
+
+}
+.setcontrolcol{
+  border:1px solid white;
+   margin: auto;
+   padding: 0;
+  background-color:#bedbdc; 
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+/*DIBUJO DE setcontrolcol ESTILO*/
+
+
+/*GRID jugadores abm*/
+.JugadoresGrid{
+  display: grid;
+  width: 95%;
+  padding: 1%;/*espacio desde el borde de la grid total*/
+  margin: 2% 5%; /*MARGENES DE ARRIBA Y ABAJO Y LUEGO DERECHA, IZQUIERDA*/
+  border:1px solid white;
+  background-color:#e9e6b1;
+  grid-template-columns: 60% 40%    ;
+/*  grid-template-rows: 20% 80%; */
+
+}
+/*formulario multiples registros*/
+#altajugador {
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+}
+#altajugador  input {
+  margin-bottom: 1rem;
+  background: #fff;
+  border: 1px solid #9c9c9c;
+}
+
+/**/
+.jugdata{
+	  border:1px solid white;
+	   margin: auto;
+	   padding: 0;
+	  background-color:#00abe3; 
+	  width: 100%;
+	  height: 100%;
+	  text-align: center;
+	   
+}
+
+.jugdata div .formregjug {
+  background: #f9f9f9; /*blanco*/
+  border: 1px solid #c1c1c1;
+}
+.jugdata  div .formregjug input {
+  background: #fff;
+  border: 1px solid #9c9c9c;
+}
+
+
+.GridAltaJug{
+  display: grid;
+  width: 100%;
+  border:1px solid white;
+  background-color:#e0d1de;
+  grid-template-columns: 35% 6% 6% 18% 8% ;
+  grid-template-rows: 50% 50% ;
+}
+
+.GridAltaJug button{
+		/*aca va logica de boton*/
+  width:25px;
+  height:25px;
+  border-radius:100%;
+  background: #ff9900; /*naranja*/
+  /*right:0;
+  bottom:0; ESTO LO UBICA ABAJO AL FONDO..*/
+/*  bottom: 70%;*/
+  /*position:absolute; ESTO LO POSICIONA DENTRO DEL DIV SIN EMPUJARLO A OTRO SECTOR */ 
+/*  margin-right:16px; MOVEMOS ESTO PARA QUE NO TENGO ESPACIOS AL FIN DENTRO DEL div
+  margin-bottom:16px;*/
+  border:1px solid black;
+  outline:none;
+  color:#FFF;
+  font-size:15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+	
+}
+
+.GridAltaJug button:hover{
+		/*aca va logica de boton*/
+  transform:scale(1.5);		
+}
+
+
+.GridAltaJug button:active{
+		/*aca va logica de boton*/
+  transform:rotate(360deg);	  
+  background-color:#ff33ff;
+}
+
+
+
+.grid_det_jug{
+	  border:1px solid white;
+	  
+	  padding: 0;
+	  margin: auto;
+	  
+	  /*background-color:#00abe3;*/ 
+	  width: 100%;
+	  text-align: center;
+}
+
+.grid_det_jugSeCl{
+	text-align: left;
+	grid-column:1/7;
+}
+
+.GridVerJug{
+  display: grid;
+  width: 100%;
+  border:1px solid white;
+  background-color:#e0d1de;
+  grid-template-columns: 40% 40% 25% ;
+  grid-template-rows: 100% 100%  ;
+}
+
+.grid_det_ver_jug{
+	  border:1px solid white;
+	  margin: auto;
+	  padding: 0;
+	  /*background-color:#00abe3;*/ 
+	  width: 100%;
+	  height: 100%;
+	  text-align: left;
+}
+
+
+.grid_det_ver_jugSC{
+	  border:1px solid white;
+	  margin: auto;
+	  padding: 0;
+	  /*background-color:#00abe3;*/ 
+	  width: 100%;
+	  text-align: left;
+	  grid-column:1/4;
+}
+
+.grid_det_ver_jug button{
+/*aca va logica de boton*/
+  width:45px;
+  height:25px;
+  border-radius:50%;
+  background: #ff9900; /*naranja*/
+  /*right:0;
+  bottom:0; ESTO LO UBICA ABAJO AL FONDO..*/
+/*  bottom: 70%;*/
+  /*position:absolute; ESTO LO POSICIONA DENTRO DEL DIV SIN EMPUJARLO A OTRO SECTOR */ 
+/*  margin-right:16px; MOVEMOS ESTO PARA QUE NO TENGO ESPACIOS AL FIN DENTRO DEL div
+  margin-bottom:16px;*/
+  border:1px solid black;
+  outline:none;
+  color:#FFF;
+  font-size:15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+	
+}
+
+
+.grid_det_ver_jug button:hover{
+		/*aca va logica de boton*/
+  transform:scale(1.5);		
+}
+
+
+.grid_det_ver_jug button:active{
+		/*aca va logica de boton*/
+  transform:rotate(360deg);	  
+  background-color:#ff33ff;
+}
+
+
+
+
+.derbut{
+	text-align:right;
+	margin-left:-30px;
+}
+
+
+.regridjug{
+  display: grid;
+  width: 100%;
+  border:1px solid white;
+  background-color:#e0d1de;
+  grid-template-columns: 15% 60% 25%  ;
+}
+
+.regridjugPop{
+  display: grid;
+  width: 100%;
+  border:1px solid white;
+  background-color:#e0d1de;
+  grid-template-columns: 15% 40% 100%  ;
+}
+
+.regjug{
+ background-color:#ee5f11;
+ color:white; /*color de la letra para identificarlo*/	
+
+}
+
+
+
+.regridjug1{
+  display: grid;
+  width: 100%;
+  border:1px solid white;
+  background-color:#e0d1de;
+  grid-template-columns: 15% 85% ;
+}
+
+.regjug1{
+ background-color:#ee5f11;
+ color:white; /*color de la letra para identificarlo*/	
+}
+
+
+.regjugNom{
+ background-color:#ee5f11;
+ color:white; /*color de la letra para identificarlo*/	
+ grid-column: 2 /5;
+}
+
+.regjugNom2{
+ background-color:#ee5f11;
+ color:white; /*color de la letra para identificarlo*/	
+ font-size: 20px;
+}
+
+.iclubescab,.iclubescab1{
+	font-size: 12px;
+	color:#1d942c;
+}
+.gencuantos{
+  width:100%;	
+}
+
+input{
+	width: 100%;
+}
+/*GRID jugadores abm*/
+
+/***GRID BOTONERA UPDATES Y DELETES***/
+.acciones{
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width:80%;
+  margin: 0 auto;/**RESPONSIVE**/
+  grid-template-rows: 100%;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-gap: 1px; /**SEPARACION ENTRE LAS CELDAS..***/
+  border: 1px solid white;
+  text-align: center;
+  color:white;
+  padding: 0 2em 0 2em;
+  /*(padding-top, padding-right, padding-bottom, padding-left).*/
+  background: #e76700;
+}
+.ren{
+	border: 1px solid white;
+}
+
+/***GRID BOTONERA UPDATES Y DELETES***/
+/********************************************************************************/
+/********************************************************************************/
+/********************************************************************************/
+/********************************************************************************/
+ /*ACA VA EL CONTENIDO RESPONSIVO PARA PANTALLAS PEQUEÑAS..*/
+@media (min-width: 300px) and (max-width: 450px) {
+
+html, body{
+	margin:auto;
+	height:0;
+	font-style: normal;
+	font-size: 1em;
+	background: url('../img/pelotita.png') repeat;
+	background-size: 3rem;
+	background-clip: padding-box;
+}
+
+/********GRID i-tablero *******************************/
+.seccionMedio360{
+	padding-top: 2em;
+	width: 100%;
+	height: 100%;
+}
+.itablero{
+  display: grid;/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  margin: 0 auto;/**RESPONSIVE**/
+  grid-template-columns: 100%;
+  grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  grid-gap: 1px; /**SEPARACION ENTRE LAS CELDAS..***/
+  border: 1px solid white;
+  text-align: center;
+  color:white;
+  background: #e76700;
+}
+.itabrenglon1{
+	  border: 1px solid white;
+	  /*#9ca6a9;*/
+}
+.irenglon11{
+		  border: 1px solid white;
+		  background-color: #1aa3ff;
+		  width: 50%;
+		  float: left;
+		  height: 50%;
+}
+.irenglon110{
+	background-color: #041471;
+	font-size: 5em;
+}
+.puntoderecha{
+	background-color:#041471;
+	float: right;
+	width: auto;
+	font-size: 2em;
+}	
+.puntoizquierdaA{
+	background-color: #041471;
+	float: left;
+	font-size: 2em;
+}
+.puntoizquierda{
+	background-color: #1aa3ff;
+	float: left;
+	width: 25%;
+}
+.itabrenglon2{
+	
+}
+/********GRID i-tablero *******************************/
+
+
+
+.gridClub  {
+  padding-top: 40px;
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  grid-template-columns: 10% 80% 10% ;
+  grid-template-rows: 100% 100% 100%;
+  grid-gap: 5px; 
+}
+
+/********************************************/
+/*			ESTILOS DEL NUEVO MENU 2.. */
+.botonMenu2:focus + .principal2 {
+/*este es el que controla cuanto sale desde el borde izquierdo*/	
+    transform: translateX(-6em);
+}
+nav.principal2 {
+    position: fixed;
+    overflow: scroll !important;
+    top: 5.5rem;/*esto lo coloca justo debajo del boton*/
+    left: 0rem;/*posicion inicial del menu, "escondido" parte 1*/
+    bottom: 0;
+    width: -26em;
+    background-color: #e1eef9;
+    /*parte 2:mover a la derecha: valores negativos, y opuesto: izquierda*/
+    transform: translateX(-26em);
+    transition: 1s all;
+}
+
+/*			ESTILOS DEL NUEVO MENU 2.. */
+/********************************************/
+
+/*******************GRID PARTIDOS-LISTA***********************************************************/
+/*************************************************************************************************/
+.grid-ListaPart {
+  padding-top: 2.5rem; /*(40px)*/
+  display: grid;	/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+  width: 100%;
+  margin-left: 0;
+/*  max-width: 360px;*/
+/*  max-height: 10px;*/
+  /**RESPONSIVE**/
+  grid-template-columns: 60% 20% 45%;
+  grid-gap: 1px; 	/**SEPARACION ENTRE LAS CELDAS..***/
+ position: relative;
+ z-index: -1;
+}
+
+
+.ilp1 {
+/*  background: #ffffb3;*/
+  text-align: center;
+  padding-top: 0.5em;
+  border:1px solid black;
+}
+
+.ilp2 {
+/*  background:#e6f2ff;*/
+  text-align: center;
+  padding-top: 0.5em;
+  text-align: left;
+  font-style: normal;
+  grid-column: 1/3;
+  border:1px solid black;
+}
+
+.ilp11 {
+/*  background: #ffffb3;*/
+  text-align: center;
+  padding-top: 0.5em;
+  border:1px solid black;	
+  width: 40%;
+}
+
+.imgEstado{
+	height: 2rem;
+	width: 2rem;
+	/*margin-left: 10px;*/ /*esto hacia que la imagen del estado del Set o Partido estuviera corrida
+	hacia la DERECHA DE SU CAJITA*/	
+}
+
+.ilp2 div.imgdiv{
+	background-color:#265f77;
+
+}
+.margen {margin-top:5px ;}
+/*BOTON NUEVO PARTIDO*/
+
+/*******************GRID PARTIDOS-LISTA***********************************************************/
+/*************************************************************************************************/
+section#medio{
+   width: 65%;
+   /*height: 500px;*/
+   padding: 0;
+   margin: auto;
+/*   vertical-align: middle;*/
+}
+
+/*GRID setcontrolcol ESTILO*/
+.setcontrol{
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  border:1px solid white;
+  background-color: #017ce4;
+  grid-template-columns: 25% 25% 25% 25%   ;
+  grid-template-rows: 100%;
+  font-size: 1em;
+
+}
+.setcontrolcol{
+  border:1px solid white;
+   margin: auto;
+   padding: 0;
+  background-color:#bedbdc; 
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 1em;
+}
+/*DIBUJO DE setcontrolcol ESTILO*/
+
+/*GRID DE CRONOCONTROLESSS*/
+.cronocontroles{
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  border:1px solid black;
+  grid-template-columns: 25% 25% 25% 25%   ;
+  grid-template-rows: 100% 100%;
+  font-size: 1em;
+}
+
+.cronocontrolesCAB{
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  border:1px solid black;
+  grid-template-columns: 50% 50%   ;
+  grid-template-rows: 100%;
+   font-size: 1em;	
+}
+
+/*GRID DIBUJO DE LA CANCHA ESTILO*/
+.cancha{
+  display: grid;
+  width: 100%;
+  padding: 2%;
+  margin: 0 auto;
+  border:1px solid white;
+  background-color: #017ce4;
+  grid-template-columns: 50% 50%    ;
+  grid-template-rows: 100% 100% 100%;
+ /* grid-gap: 5px;*/
+   font-size: 1em;
+}
+
+.medioset{
+	padding-left: 3rem;
+	position: relative;
+}
+
+#popupAltaPosI {
+  display: inline-block;
+  opacity: 0;
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  padding-left: 0.5em;
+  padding-bottom: 1em;
+  background: #fff;
+  border: 1px solid #888;
+  box-shadow: 1px 1px .5em 0 rgba(0, 0, 0, .5);
+}
+
+/***************GRILA DE ALTA DE PARTIDOSS VERSION 300 A 450 *************/
+/***************************************************************/
+.gridPartido  {
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  grid-template-columns: 100%   ;
+  grid-template-rows: 100% 100% 100% 100% 100% 100% 100%;
+  grid-gap: 5px;
+  padding-left: 3rem;
+ 
+}
+/*columnas de la grilla*/
+.gridPartido .ipp1 {
+ display: inline;
+ border: 2px solid #0016b0;
+ padding-top: 1rem;
+ padding-left: 1rem;
+ padding-right: 15%;
+
+}
+
+.gridPartido .ipp1 span{
+float: right;
+}
+.gridPartido .ipp1 select {
+    padding-right: 3rem;
+}
+
+/***************************************************************/
+/***************************************************************/
+	.gridPartido  #FormPartidoC {
+	  background: #f9f9f9;
+	  border: 1px solid #c1c1c1;
+	  padding-left: 1em;
+	  width: 100%;
+	  margin: auto;
+	}
+	/*personalizacion del FORMULARIO INTERNO CABECERA*/
+	#FormPartidoC{
+	/*	max-width: 950px;	*/
+	}
+
+	#FormPartidoC input {
+	  margin-bottom: 1rem;
+	  background: #fff;
+	  width: auto;
+	  border: 1px solid #9c9c9c;
+	}
+
+	#FormPartidoC .inputSets{
+		width: 100px;
+		display: inline;
+	}
+	#FormPartidoC .btnNew {
+	  width:60px;
+	  height:60px;
+	  border-radius:100%;
+	  background:#1269ed;
+	  right: 30%;
+	  bottom: 80%;
+	  position:absolute;
+	  margin-right:10px;
+	  margin-bottom:10px;
+	  border:none;
+	  outline:none;
+	  color:#FFF;
+	  font-size:25px;
+	  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	  transition:.3s;  
+
+	}
+
+	#FormPartidoC select {
+	  margin-bottom: 1rem;
+	  width: 15rem;
+	  background: #fff;
+	  border: 1px solid #9c9c9c;
+	}
+
+	/*boton de configuracion de todos lados..*/
+	#FormPartidoC button {
+	text-decoration: none;
+	    padding: 3px;
+	    font-weight: 150;
+	    font-size: 15px;
+	    color: #ffffff;
+	    background-color: #1883ba;
+	    border-radius: 6px;
+	    border: 2px solid #0016b0;
+	}
+	#FormPartidoC button:hover {
+	  background: gold;
+	}
+
+	#FormPartidoC label {
+	  text-align: left;
+	  display: inline;
+	  width: auto;
+	  padding: 0.5em 1.5em 0.5em 0;
+	}
+	#FormPartidoC h3 {
+	  text-align: center;
+	  display: block;
+	  padding: 0.5em 1.5em 0.5em 0;
+	}
+
+	.gridPartido  #FormPartidoC input:focus {
+	  outline: 3px solid gold;
+	}
+/***************************************************************/
+/***************************************************************/
+
+/***************GRILA DE ALTA DE PARTIDOSS *********************/
+/***************************************************************/
+
+/*****************************************************************/
+/*			GRID BUSQUEDA  for media 300 to 450	*/
+/*****************************************************************/
+#formConfig {
+  border: 1px solid #000000;
+  width: 100%;
+}
+
+.busque{
+	display:grid;
+	grid-template-columns: 15% 40% 19% 25% ;
+	height: 4em;
+	grid-gap: 1.5px;
+	background-color: #e6e6e6; /*#ff9966; /*#a3a3c2;*/
+	border:2px solid #000000;
+}
+
+.busque div {
+/*	background: #e8d217;*/
+	margin: auto;
+	width: 100%;
+	margin-top: 0.5em
+}
+
+.inputSearch {
+	height: 2em;
+	margin-top: 0.5em;
+}
+.busque button {
+	text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 15px;
+    color: #000;
+ 	background-color: #99c2ff;
+    border-radius: 6px;
+ 	border: 2px solid #000000;
+}
+
+.busque button:hover {
+  background: gold;
+}
+
+.btnBuscar2{
+		text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 15px;
+    color: #000;
+ 	background-color: #99c2ff;
+    border-radius: 6px;
+ 	border: 2px solid #000000;
+}
+
+.btnBuscar2:hover{
+	  background: gold;	
+}
+
+.gridClub2  {
+  display: grid;
+  width: 100%;
+  padding-left: 0rem;
+  grid-template-columns: 100% ;
+  grid-template-rows: 100% 100% 100% 100% 100% 100% 100%;
+  grid-gap: 5px; 
+}
+
+
+.gridClub2 label {
+	display: inline;
+	text-align: left;
+	width:100%;
+}
+
+#iclub2{
+	width: 100%;
+}
+/*****************************************************************/
+/*			GRID BUSQUEDA  for media 300 to 450	*/
+/*****************************************************************/
+
+
+.CuadroJugadores{
+	display: grid;
+	grid-template-columns: 25% 25% 25% ;
+	grid-template-rows: 100%;	
+	border: 5px dashed transparent;
+	background: #87CEFA;
+	margin: 0;
+	min-height: 8em;
+	padding: 0;
+	width: 100%;
+	grid-gap:2rem;
+	font-size: 16px;
+}
+
+
+
+
+.CuadroJugadores .item{ 	
+  border: 3px solid #FFF;
+  border-radius: 10px 10px 10px 10px;
+  background: #98FB98;
+  color:#808080;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1em;
+  width:7rem;
+  height:5em;
+  font-size: 16px;
+}
+
+.CuadroJugadores option{
+	  background-color:#00abe3; 
+	/*	background-color: #017ce4;*/
+
+} 	
+
+.regridjug2
+{
+  display: grid;
+  width: 100%;
+  border:0px solid black;
+  grid-template-columns: 2rem 10% 90%  ;
+}
+
+
+/*LUEGO CREAR LOS MISMOS ESTILOS PARA 300-450 Y 451 - 768*/
+ #ElegirJugadores{
+  display: grid;
+  height: auto;
+  grid-template-columns: 100% ;
+  grid-template-rows: 100% 100% 100%;	
+  border: 1px solid black;
+  padding:0;
+  font-size: 1em;
+  }
+  
+  
+  #ElegirJugadores div{ 	
+    border: 1px solid black;
+	height: 70px;
+	text-align: center;
+	vertical-align: middle;
+  }
+  
+
+#ClubForm{
+	border:1px solid #000;
+	margin:auto;
+	padding:1em;
+}
+
+#ClubForm button{
+    text-decoration: none;
+    padding: 3px;
+    font-weight: 150;
+    font-size: 15px;
+    color: #000;
+    background-color: #99c2ff;
+    border-radius: 6px;
+    border: 2px solid #000000;
+}
+
+#ClubForm button:hover {
+  background-color:gold;
+}  
+  
+
+
+}
+/********************************************************************************/
+/********************************************************************************/
+/********************************************************************************/
+/********************************************************************************/
+ /*ACA VA EL CONTENIDO RESPONSIVO PARA PANTALLAS PEQUEÑAS MIN WIDTH 300..*/
+
+
+
+@media (max-width: 768px){
+/*CONTENIDO RESPONSIVO PARA PANTALLAS MEDIANAS...*/
+html, body{
+	margin:auto;
+	height:0;
+	font-style: normal;
+	background: url('../img/pelotita.png');
+	background-repeat: repeat;
+	background-size: 3rem;
+	background-clip: padding-box;
+}
+
+@media (min-width: 451px){
+	.grid-ListaPart { /*MAXIMA 768, MINIMA: 450*/
+	  padding-top: 2.5rem; /*(40px)*/
+	  display: grid;	/*CLAVE PARA QUE SE COMPORTE COMO GRID*/
+	  width: 100%;
+	  /**RESPONSIVE**/
+	  grid-template-columns: 60% 20% 45%;
+	  grid-gap: 1px; 	/**SEPARACION ENTRE LAS CELDAS..***/
+	 margin-left: 0.2rem;
+	 position: relative;
+	 z-index: -1;
+	}
+}
+
+
+.ilp1 {
+/*  background: #ffffb3;*/
+  text-align: center;
+  padding-top: 0.5em;
+  border:1px solid black;
+}
+
+.ilp2 {
+/*  background:#e6f2ff;*/
+  text-align: center;
+  padding-top: 0.5em;
+  text-align: left;
+  font-style: normal;
+  grid-column: 1/3;
+  border:1px solid black;
+}
+
+.ilp11 {
+/*  background: #ffffb3;*/
+  text-align: center;
+  padding-top: 0.5em;
+  border:1px solid black;	
+  width: 40%;
+}
+
+.imgEstado{
+	height: 2rem;
+	width: 2rem;
+	/*margin-left: 10px;*/ /*esto hacia que la imagen del estado del Set o Partido estuviera corrida
+	hacia la DERECHA DE SU CAJITA*/	
+}
+
+.ilp2 div.imgdiv{
+	background-color:#265f77;
+
+}
+.margen {margin-top:5px ;}
+/*BOTON NUEVO PARTIDO*/
+.grid-ListaPart button{
+  width:2.81rem;
+  height:2.81rem;
+  border-radius:100%;
+  background:#F44336;
+  /*right:0;
+  bottom:0; ESTO LO UBICA ABAJO AL FONDO..*/
+/*  bottom: 40%;*/
+  position: relative;
+/*  margin-right:16px;
+  margin-bottom:16px;*/
+  border:none;
+  outline:none;
+  color:#FFF;
+  font-size:36px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+}
+
+span{
+  transition:.5s;  
+}
+.grid-ListaPart button:hover span{
+  transform:rotate(360deg);
+}
+.grid-ListaPart button:active{
+  transform:scale(1.1);
+}
+
+.grid-ListaPart button:hover{
+  background-color: #eaaf15;
+}
+
+
+#popupAltaPosI {
+  display: inline-block;
+  opacity: 0;
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  padding-left: 0.5em;
+  padding-bottom: 1em;
+  background: #fff;
+  border: 1px solid #888;
+  box-shadow: 1px 1px .5em 0 rgba(0, 0, 0, .5);
+}
+/*******************GRID PARTIDOS-LISTA***********************************************************/
+/*************************************************************************************************/
+
+/***************GRILA DE ALTA DE PARTIDOSS VERSION A 768 *************/
+/***************************************************************/
+.gridPartido  {
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  grid-template-columns: 100%   ;
+  grid-template-rows: 100% 100% 100% 100% 100% 100% 100%;
+  grid-gap: 5px;
+  padding-left: 3rem;
+ 
+}
+/*columnas de la grilla*/
+.gridPartido .ipp1 {
+ display: inline;
+ border: 2px solid #0016b0;
+ padding-top: 1rem;
+ padding-left: 1rem;
+ padding-right: 15%;
+
+}
+
+.gridPartido .ipp1 span{
+float: right;
+}
+.gridPartido .ipp1 select {
+    padding-right: 3rem;
+}
+
+
+/***************************************************************/
+/***************************************************************/
+	.gridPartido  #FormPartidoC {
+	  background: #f9f9f9;
+	  border: 1px solid #c1c1c1;
+	  padding-left: 1em;
+	  width: 100%;
+	  margin: auto;
+	}
+	/*personalizacion del FORMULARIO INTERNO CABECERA*/
+	#FormPartidoC{
+	/*	max-width: 950px;	*/
+	}
+
+	#FormPartidoC input {
+	  margin-bottom: 1rem;
+	  background: #fff;
+	  width: auto;
+	  border: 1px solid #9c9c9c;
+	}
+
+	#FormPartidoC .inputSets{
+		width: 100px;
+		display: inline;
+	}
+	#FormPartidoC .btnNew {
+	  width:60px;
+	  height:60px;
+	  border-radius:100%;
+	  background:#1269ed;
+	  right: 0px;
+	  bottom: 60%;
+	  position:absolute;
+	  margin-right:10px;
+	  margin-bottom:10px;
+	  border:none;
+	  outline:none;
+	  color:#FFF;
+	  font-size:25px;
+	  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	  transition:.3s;  
+
+	}
+
+@media (min-width: 410px){
+	#FormPartidoC select {
+	  margin-bottom: 1rem;
+	  width: 20rem;
+	  background: #fff;
+	  border: 1px solid #9c9c9c;
+	}
+}
+	/*boton de configuracion de todos lados..*/
+	#FormPartidoC button {
+	text-decoration: none;
+	    padding: 3px;
+	    font-weight: 150;
+	    font-size: 15px;
+	    color: #ffffff;
+	    background-color: #1883ba;
+	    border-radius: 6px;
+	    border: 2px solid #0016b0;
+	}
+	#FormPartidoC button:hover {
+	  background: gold;
+	}
+
+	#FormPartidoC label {
+	  text-align: left;
+	  display: inline;
+	  width: auto;
+	  padding: 0.5em 1.5em 0.5em 0;
+	}
+	#FormPartidoC h3 {
+	  text-align: center;
+	  display: block;
+	  padding: 0.5em 1.5em 0.5em 0;
+	}
+
+	.gridPartido  #FormPartidoC input:focus {
+	  outline: 3px solid gold;
+	}
+/***************************************************************/
+/***************************************************************/
+
+/***************************************************************/
+
+
+}
+

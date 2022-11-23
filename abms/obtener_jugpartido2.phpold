@@ -1,0 +1,94 @@
+<?php
+/**
+ * Obtiene todas las Clubs de la base de datos
+ */
+// el RETURN FUNCIONA OK
+// pero como habia agregado el REQUIRE DE ESTA PAGINA EN LA PAGINA DE DESTINO, 
+// EL ECHO ME IMPRIMIA LO MISMO QUE DEVOLVIA EL ECHO !!!!! FUUCCKK
+// solo que hay que saber que se esta recibiendo del lado del ajax
+
+require_once('JugadorPartido.php');
+//echo($_SERVER['REQUEST_METHOD']);
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    // Manejar peticion GET
+   	$partido =	$_GET["idpartido"];
+	$fecha	 =	"'".$_GET["fechapartido"]."'";
+	$iclub	 =	$_GET["iclubescab"];
+	$setnum = $_GET["setdata"];
+	//$icate 	 =	$_GET["icatcab"];
+ 
+    
+	//$jugadores = partjug::getJugadoresLoad($partido,$fecha,$iclub,$setnum); 
+	$jugadores = partjug::getJugSetLoad($partido,$fecha,$iclub,$setnum); 
+	if ($jugadores)
+	    {
+	        $datos["estado"] = 1;
+	        $datos["Jugadores"] = $jugadores;//es un array
+	        echo json_encode($datos);
+        }
+     else
+     {
+			// alta los nuevos registros por set, y luego retorno lo que iba a retornar originalmente
+			// primero: traigo ultimo registro que tenga cargado setnumero y posiciones
+			// recorro el ultimo registro y grabo el nuevo: 
+			$jugadorSet = partjug::getlastset($partido,$fecha,$iclub);
+			// query: select last jugador, categoria, posiciones van en 0			
+			// chequear que sea asi..
+//			ALTER TABLE `vappjugpartido` ADD `secuencia` INT NULL DEFAULT NULL AFTER `jugador`;
+/*ALTER TABLE `vappjugpartido`
+  DROP PRIMARY KEY,
+   ADD PRIMARY KEY(
+     `idpartido`,
+     `Fecha`,
+     `idclub`,
+     `idcategoria`,
+     `jugador`,
+     `secuencia`);
+*/
+//ALTER TABLE `vappjugpartido` CHANGE `secuencia` `secuencia` INT(11) NOT NULL AUTO_INCREMENT;	
+		// si viene vacio
+		 if( empty($jugadorSet) && is_array($jugadorSet) )
+		 {	 
+	          // listo jugadores sin discriminar por set porque aun no cargue ninguno, seria el primer set siempre..
+			$jugadores = partjug::getJugadoresLoad($partido,$fecha,$iclub);
+				if ($jugadores)
+				{
+					$datos["estado"] = 1;
+					$datos["Jugadores"] = $jugadores;//es un array
+					echo json_encode($datos);
+				};
+		 }
+          else 
+		  {	// no es el primer set, entonces traigo los jugadores seleccionados y los cargo	 
+			if( !empty($jugadorSet) && is_array($jugadorSet) )
+			{
+				// los traigo a todos los de la base original y creo una nueva sin posiciones..
+				$jugador00 = partjug::getJugadoresLoad($partido,$fecha,$iclub);
+				if($jugador00){
+					for($contador=0; $contador < count($jugador00);$contador++ )
+					{ // recorro vector de jugadores del equipo A
+					  $retsecuencia=partjug::getJugadorEnSet($partido,$fecha,$iclub,(int)$jugador00[$contador]['categoria'],(int)$jugador00[$contador]['idjugador'],$setnum);
+    					//print_r($retsecuencia);
+    				// ESTE CONTROL LO COMENTE PORQUE ANDABA MAL, PERO ES EL QUE EVITARIA DUPLICADOS POR SET !!!	
+    						echo($retsecuencia[0]["secuencia"]);
+    						if($retsecuencia[0]["secuencia"]== 0 )
+    						{
+    							$retorno3 = partjug::insertSet($partido,$fecha,$iclub,(int)$jugador00[$contador]['categoria'],(int)$jugador00[$contador]['idjugador'],$setnum);
+							};
+					};
+				};
+			};
+			// cargo de nuevo, si es que grabo
+			// chequear que no necesite traer la ultima secuencia grabada del jugador paa ese SET
+			$jugadores2 = partjug::getJugSetLoad($partido,$fecha,$iclub,$setnum);
+			if ($jugadores2)
+			{
+				$datos["estado"] = 1;
+				$datos["Jugadores"] = $jugadores2;//es un array
+				echo json_encode($datos);
+			};
+           };			
+//	        echo json_encode($datos);
+	};   
+}        
+?>

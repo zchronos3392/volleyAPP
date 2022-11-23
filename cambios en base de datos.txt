@@ -1,0 +1,16 @@
+ALTER TABLE `vappset` ADD `numeroB` INT NOT NULL AFTER `numeroA`, ADD `estado` INT NOT NULL AFTER `numeroB`;
+
+ALTER TABLE `vappset` CHANGE `secuencia` `secuencia` INT(11) NOT NULL AUTO_INCREMENT;
+
+SELECT `idpartido`, `secuencia`, `setnumero`, `fecha`, `hora`, `jugadorid`, `equipoid`, `descripcion`, `numeroA`, `numeroB`, `estado` FROM `vappset` WHERE 1
+
+ALTER TABLE `vappset` CHANGE `secuencia` `secuencia` INT(11) NOT NULL;
+
+
+SELECT idpartido, secuencia, setnumero, fecha, hora, jugadorid, equipoid, descripcion, numeroA, numeroB, estado FROM vappset 
+			inner join vappjugpartido
+
+ALTER TABLE `vappjugpartido`
+  DROP `posicionIni`;
+
+ALTER TABLE `vappjugpartido` ADD `libero` INT NOT NULL AFTER `entraSale`;

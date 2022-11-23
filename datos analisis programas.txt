@@ -1,0 +1,40 @@
+::GET ALL CON INNER JOIN :
+
+SELECT  `vappclub`.`clubabr`, `vappsede`.`extras` ,`vappcancha`. * FROM `vappcancha` 
+ inner join `vappclub`
+   on `vappclub`.`idclub` = `vappcancha`.`idclub`
+ inner join `vappsede`
+   on `vappsede`.`idclub` = `vappcancha`.`idclub`
+   and `vappsede`.`idsede` = `vappcancha`.`idsede`
+WHERE 1
+
+<section id="busque" name="busque" class="busque">
+	 	<div><label for="itext">Buscar</label></div>	
+	 	<div><input type="text" id="itext" name="itext" class="inputSearch"/></div>
+	 	<div><button id="btnBuscarCancha"   name="btnBuscarCancha" value="..." class="btnBuscar">Sape...</button></div>
+ 	</section>
+
+		<script type="text/javascript">
+		/**************************************************************/
+		$(document).ready(function(){
+
+			//**************** busqueda clubes con jquery *********************************************/      
+			$("#btnBuscarCity").click(function(){ 
+			        var textoSearch =	$("#itext").val().toUpperCase();
+			 //               $("#iclub option:contains("+textoSearch+")").attr('selected', true).css({"font-size":"40px","color":"red"});
+			                //$("#iclub option:contains("+textoSearch+")").attr('selected', true).css({"font-size":"40px","color":"red"});
+			        if(textoSearch != ''){
+					$("#icity option:contains("+textoSearch+")").each(function(){
+			    			$(this).attr('selected', true).css({"font-size":"40px","color":"red"});
+							//else $(this).attr('selected', true).css('');
+					});
+					} else
+					$("#icity option:contains("+textoSearch+")").each(function(){
+			    			$(this).attr('selected', true).css("");
+					});
+					return false;
+			}); // parentesis el .CLICK buscar club
+			//**************** PARTIDPS *********************************************/ 
+	     });	
+			
+		</script>

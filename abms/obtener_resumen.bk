@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="es">
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		  <title>VOLLEY.APP :: Tablero</title>
+        <meta name="title" content="Tablero partidos volleyAPP">
+        <meta name="ROBOTS" content="INDEX,FOLLOW">
+        <meta http-equiv="Content-Language" content="es">
+        <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	   <!-- ESTILOS -->
+	   <!-- <link rel="stylesheet" href="./VOLLEY.APPtablero_files/nsanz_style.css"> -->
+	   <style>
+				.infopunto{	border:1px solid black;	background-color:#428bca;font-size:1em; }
+				.infosinpunto{border:1px solid black; background-color:white;color: white;}
+
+				.setinfoceldas {
+						display:grid;
+						grid-template-columns: 14px;
+						grid-template-rows: 100% 100%;
+						height:1.3em;
+						margin-left:0.5em;						
+						float: left;
+				} 
+
+				.seccioninfoSet{
+					display:block;
+					height:3em;
+					border:1px solid green;
+					width: 100%;
+					padding: 0.5em;
+				}
+
+				.seccioninfoTodo{
+					display:grid;
+					grid-template-rows:	16% 16% 16% 16% 16% 17% ;	/*33% 1fr 1fr;*/
+					margin: 0;
+					border:2px solid red;
+					margin-right: 1em;
+					padding: 2em;
+				} 		
+	   </style>
+</head>
+<body>
+<?php
+/*
+* DEVUELVE UN RESUMEN POR PUNTOS DE CADA SET DEL PARTIDO...
+*/
+require ('Partido.php');
+require_once('Set.php'); 
+
+//echo($_SERVER['REQUEST_METHOD']."<br>");
+if ($_SERVER['REQUEST_METHOD'] == 'GET')
+{
+    // Manejar petici�n GET
+    //$registros = Partido::contar();
+    // ESTA VOLVIENDO UN VECTOR DE VECTORES
+	$partidoid = 0;
+	if(isset($_GET["id"])) $partidoid = (int) $_GET["id"];
+	// 29-08-2018
+	$fecpartido="''";// sera string 
+	if(isset($_GET["fechapart"])) $fecpartido = "'".$_GET["fechapart"]."'";
+	
+	$resumenarray =  Sett::getResumenPartido($partidoid,$fecpartido);
+	//print json_encode($resumenarray);
+	//$datos['resumen']= $resumenarray; 
+	//print_r($resumenarray);
+	
+	//echo(".cuadrado {width: 100px; height: 100px; background: #428bca;}");	
+	
+	echo "<section id='seccioninfoTodo' name='seccioninfoTodo' class='seccioninfoTodo'> <!--GRID DE TRES FILAS, 100% DE ANCHO, ALTO 50% -->";
+$setnumero=0;
+/* LEER DATOS DEL SET ACA: */
+for($j=0;$j<sizeof($resumenarray);$j++)	
+{
+
+	if($setnumero <> $resumenarray[$j]['setnumero']	)
+	{
+    $setnumero = $resumenarray[$j]['setnumero']	;		
+	echo "<section id='seccioninfoSet' name='seccioninfoSet' class='seccioninfoSet'> <!--GRID DE UNA FILA Y CINCO COLUMNAS 20% DE ANCHO, ALTO 100% -->";
+		echo "<div id='setinfoceldas' name='setinfoceldas' class='setinfoceldas'>"; //Set ".$resumenarray[$i]['setnumero'];
+	for($i=0;$i<sizeof($resumenarray);$i++)
+	{
+	  if($resumenarray[$i]['setnumero']==$setnumero)
+	  {
+	   if($i == 0){	}
+	   else
+	   {
+		if(($resumenarray[$i-1]['puntoa'] == $resumenarray[$i]['puntoa']) &&($resumenarray[$i-1]['puntob'] != $resumenarray[$i]['puntob']))
+			echo "<div id='infosinpunto' name='infosinpuntoa' class='infosinpunto'>".$resumenarray[$i]['puntoa']."</div>";
+		else {
+			   if( ($resumenarray[$i]['puntoa'] == $resumenarray[$i]['puntob']) ){}
+				else //$puntajeA = "PUNTO A";	//PODRIA HABER ERROR...
+					echo "<div id='infopunto' name='infopuntoa' class='infopunto'>".$resumenarray[$i]['puntoa']."</div>";
+		     }
+				// cubrimos el bug de resultados repetidos por mala carga..
+//				if(!($puntajeA== "PUNTO A" && $puntajeB == "PUNTO B"))
+//					{
+					//echo $puntajeA." / ".$puntajeB;
+//	
+	   } // NO ES EL PUNTO INICIAL	
+	 } // solo set ACTIVO EN EL CIcLO DE afuera
+		// fin del SET 1 , PRUEBA..
+	 }	// FIN DEL FOR..
+
+// RECORRIDO DEL VECTOR PARA B, SET 1
+	for($i=0;$i<sizeof($resumenarray);$i++)
+	{
+	  if($resumenarray[$i]['setnumero']==$setnumero)
+	  {
+	   if($i == 0){	}
+	   else
+	   {
+		if(($resumenarray[$i-1]['puntob'] == $resumenarray[$i]['puntob'])
+			&&($resumenarray[$i-1]['puntoa'] != $resumenarray[$i]['puntoa']))
+			//$puntajeB = "BLANCO";
+			//$puntajeB = "<li style='border: 3px solid #555; width: 16px; height: 16px; background: #FFF'>".$resumenarray[$i]['puntob']."</li>";
+			  echo "<div id='infosinpunto' name='infosinpuntob' class='infosinpunto'>".$resumenarray[$i]['puntob']."</div>";	
+		else {
+			   if( ($resumenarray[$i]['puntoa'] == $resumenarray[$i]['puntob']) ){}
+				else //$puntajeB = "PUNTO B";	//PODRIA HABER ERROR...
+				  echo "<div id='infopunto' name='infopuntob' class='infopunto'>".$resumenarray[$i]['puntob']."</div>";
+				//$puntajeB = "<li style='border: 3px solid #555; width: 16px; height: 16px; background: #428bca'>".$resumenarray[$i]['puntoa']."</li>";
+		     }
+	    }
+	 } // solo set ACTIVO EN EL CIcLO DE afuera
+	 }	// FIN DEL FOR.2.	
+	echo "</div>";								
+	echo("</section>");
+   }		// CIERRE DEL IF PARA NO REPETIR EL NUMERO DE SET..
+}	
+	/* CIERRE DE LA REPETICION POR SET..*/	
+			echo("</section>");		    			
+
+}	// fin del GET
+?>
+
+<!-- INFO TABLERO FIN -->
+</body></html>

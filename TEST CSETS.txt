@@ -1,0 +1,7 @@
+http://localhost/volleyAPP_desa/NovedadesSet.php?id=1&setid=2&setmax=3&fecha=2019-10-15&continuar=1
+
+http://localhost/volleyAPP_desa/CSets2.php?id=1&setmax=3&fecha=2019-10-15
+
+todo esta dentro de gtrid-CSets21
+hay que sacarlo a 
+grid-CSets211

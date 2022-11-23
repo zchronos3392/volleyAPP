@@ -1,0 +1,1 @@
+ALTER TABLE `vappcomp` CHANGE `setnmax` `setnmax` INT(11) NULL;

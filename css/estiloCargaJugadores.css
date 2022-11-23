@@ -1,0 +1,1694 @@
+/*CANCHA BETA, PARA NUEVA PANTALLA CARGAR POSICIONES**/
+.gridcanchaBetaA_2{grid-area: puestoI;    border: 1px solid white;
+}
+.gridcanchaBetaB_2{grid-area: puestoII;    border: 1px solid white;
+}
+.gridcanchaBetaC_2{grid-area: puestoIII;    border: 1px solid white;
+}
+.gridcanchaBetaD_2{grid-area: puestoIV;    border: 1px solid white;
+}
+.gridcanchaBetaE_2{grid-area: puestoV;    border: 1px solid white;
+}
+.gridcanchaBetaF_2{grid-area: puestoVI;    border: 1px solid white;
+}
+.gridcanchaBetaG_2{grid-area: puestoVII;    border: 1px solid white;
+}
+
+.canchaBeta_2
+{
+    display: grid;
+	grid-template-areas: 'puestoIV puestoIII puestoII'
+						 'puestoV puestoVI puestoI';	
+    width: 100%;
+    padding: 2%;
+    height: 6rem;
+	margin-top: 0em;
+    text-align: center;
+
+    border: 1px solid white;
+    background-color: #00abe3;    
+}
+
+
+.gridcanchaBeta_2
+{
+	
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0;
+
+    text-align: center;
+
+    border: 1px solid white;
+    background-color: #00abe3;
+}
+.canchaBeta_2 .item
+{
+    display: inline-block;
+
+    width: 5em;
+    height: 2em;
+    padding: 1em;
+
+    cursor: pointer;
+
+    color: #808080;
+    border: 3px solid #fff;
+    border-radius: 10px 10px 10px 10px;
+    background: #98fb98;
+}
+/* CANCHA BETA PARA NEUVA PANTALLA CARGAR POSICIONES*/
+
+/*CONTROLES NUEVOS PARA LOS LIBEROS**/
+.fondoblanco{
+	background-color: #fff;
+
+}
+    .LIBEROS_2{
+		DISPLAY:GRID;
+    	grid-template-columns: 42% 45% 30%;
+		margin-top: 0rem;
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+	
+	}
+	.LIBEROS_2 .itemL{
+		background-color: #e29d1d;
+		color: #091551;
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+	}
+/*CONTROLES NUEVOS PARA LOS LIBEROS**/
+
+/* ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES..*/
+.control1_2{ grid-area: ct211; height:2em; padding:1em;}
+.control1_2 SELECT{ font-size:15px; height: 3em;width: 4.5em;padding: 0;margin: 0;}
+
+.control2_2{ grid-area: ct212; }
+.control3_2{ grid-area: ct213; }
+.control4_2{ grid-area: ct214; }
+
+.control5_2{ grid-area: ct215; margin-top:1em;}
+.control6_2{ grid-area: ct216; margin-top:1em;}
+.control7_2{ grid-area: ct217; margin-top:1em;}
+.control8_2{ grid-area: ct218; margin-top:1em;}
+
+.ControlesPosicion21_2{
+	width: 100%;
+    display: grid;
+	text-align: center;
+    background-color: #fff;
+    grid-template-areas:    'ct211 ct212 ct213 ct214 '
+    						'ct215 ct216 ct217 ct218 ';
+
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+	margin-left: 0em;
+	
+}
+    
+.ControlesPosicion21_2 INPUT{
+/*borde redondeado*/
+		border: 0px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+}    
+/*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/
+
+/*ESTILOS DE LA NUEVA PANTALLA DE VER POSICIONES***/
+
+    .CuadroJugadores_2VerRotacion
+    {
+        font-size: 16px;
+        display: grid;
+        width: 100%;
+        min-height: 26em;
+		margin-top: 2em;
+
+        padding: 0;
+
+        border: 5px dashed transparent;
+        background: #87cefa;
+
+        grid-gap: 1.5rem;
+        grid-template-columns: 100%;
+        color:White;
+
+    }
+	
+    .CuadroJugadores_2Ver
+    {
+        font-size: 16px;
+        display: grid;
+        width: 100%;
+        min-height: 26em;
+		margin-top: 20em;
+
+        padding: 0;
+
+        border: 5px dashed transparent;
+        background: #87cefa;
+
+        grid-gap: 0rem;
+        grid-template-columns: 100%;
+
+    }
+
+	.itemi1_2VER{
+		grid-area: iti1V;
+	}
+	
+	.itemi2_2VER{
+		grid-area: iti2V;		
+	}
+
+	.itemi3_2VER{
+		grid-area: iti3V;
+	}
+
+    .CuadroJugadores_2VER .itemVER
+    {
+    	
+        font-size: 16px;
+
+        display: grid;
+        grid-template-areas: 'iti1V' 'iti2V' 'iti3V';
+
+        width: 7rem;
+        height: 7em;
+        padding: .5em;
+
+        cursor: pointer;
+
+        color: #808080;
+        border: 3px solid #fff;
+        border-radius: 10px 10px 10px 10px;
+        background: #98fb98;
+    }
+    
+    .CuadroJugadores_2VER .itemVER SPAN
+    {
+        font-size: 30px;
+
+        text-align: center;
+
+        color: white;
+        background:#d629b4;
+    }
+
+    .CuadroJugadores_2VER .itemVER SPAN.nombreJugador
+    {
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .CuadroJugadores_2VER .itemVER.libero
+    {
+        font-size: 20px;
+        text-align: center;
+        color: white;
+        background:#4199be;
+    }
+    
+    .CuadroJugadores_2VER option
+    {
+        background-color: #00abe3;
+    }
+    .regridjug2_2VER
+    {
+        display: grid;
+
+        width: 100%;
+
+        border: 0 solid black;
+
+        grid-template-columns: 2rem 10% 90%;
+    }
+
+
+/*ESTILOS DE LA NUEVA PANTALLA DE VER POSICIONES***/
+
+/*CANCHA BETA, PARA NUEVA PANTALLA CARGAR POSICIONES**/
+.gridcanchaBetaA_2VER{grid-area: puestoIg;    border: 1px solid white;
+}
+.gridcanchaBetaB_2VER{grid-area: puestoIIg;    border: 1px solid white;
+}
+.gridcanchaBetaC_2VER{grid-area: puestoIIIg;    border: 1px solid white;
+}
+.gridcanchaBetaD_2VER{grid-area: puestoIVg;    border: 1px solid white;
+}
+.gridcanchaBetaE_2VER{grid-area: puestoVg;    border: 1px solid white;
+}
+.gridcanchaBetaF_2VER{grid-area: puestoVIg;    border: 1px solid white;
+}
+.gridcanchaBetaG_2VER{grid-area: puestoVIIg;    border: 1px solid white;
+}
+
+.g2VERTexto
+{
+	grid-area: g2VERTexto;
+    border: 1px solid white;
+    padding: 0.5rem;
+}
+
+.canchaBeta_2VER
+{
+    display: grid;
+	grid-template-areas: 'puestoIVg puestoIIIg puestoIIg'
+						 'puestoVg puestoVIg puestoIg'
+						 'g2VERTexto g2VERTexto g2VERTexto';	
+    width: 100%;
+    padding: 2%;
+       /*height: 7rem;*/ 
+	margin-top: 0em;
+    text-align: center;
+
+    border: 1px solid white;
+    background-color: #00abe3;    
+}
+
+.libero{
+		background-color: #e29d1d;
+	
+}
+
+.gridcanchaBeta_2VER
+{
+	
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0;
+
+    text-align: center;
+
+    border: 1px solid white;
+    background-color: #00abe3;
+}
+.canchaBeta_2VER .item
+{
+    display: inline-block;
+
+    width: 5em;
+    height: 2em;
+    padding: 1em;
+
+    cursor: pointer;
+
+    color: #808080;
+    border: 3px solid #fff;
+    border-radius: 10px 10px 10px 10px;
+    background: #98fb98;
+}
+/* CANCHA BETA PARA NEUVA PANTALLA CARGAR POSICIONES*/
+
+/*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/
+
+    .CuadroJugadores_2
+    {
+        font-size: 16px;
+        display: grid;
+        width: 100%;
+        min-height: 26em;
+		margin-top: 20em;
+
+        padding: 0;
+
+        border: 5px dashed transparent;
+        background: #87cefa;
+
+        grid-gap: 1.5rem;
+        grid-template-columns: 100%;
+
+    }
+
+	.itemi1_2{
+		grid-area: iti1;
+	}
+	
+	.itemi2_2{
+		grid-area: iti2;		
+	}
+
+	.itemi3_2{
+		grid-area: iti3;
+	}
+
+    .CuadroJugadores_2 .item
+    {
+    	
+        font-size: 16px;
+
+        display: grid;
+        grid-template-areas: 'iti1' 'iti2' 'iti3';
+
+        width: 7rem;
+        height: 7em;
+        padding: .5em;
+
+        cursor: pointer;
+
+        color: #808080;
+        border: 3px solid #fff;
+        border-radius: 10px 10px 10px 10px;
+        background: #98fb98;
+    }
+    
+    .CuadroJugadores_2 .item SPAN
+    {
+        font-size: 30px;
+
+        text-align: center;
+
+        color: white;
+        background:#d629b4;
+    }
+
+    .CuadroJugadores_2 .item SPAN.nombreJugador
+    {
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .CuadroJugadores_2 .item.libero
+    {
+        font-size: 20px;
+        text-align: center;
+        color: white;
+        background:#4199be;
+    }
+    
+    .CuadroJugadores_2 option
+    {
+        background-color: #00abe3;
+    }
+    .regridjug2_2
+    {
+        display: grid;
+
+        width: 100%;
+
+        border: 0 solid black;
+
+        grid-template-columns: 2rem 10% 90%;
+    }
+
+
+/*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/
+
+.headerIngreso_2{
+ position: static;
+ top:0em;	
+z-index: 3;
+}
+
+.fijaLogo{
+ position: fixed;
+ top:0em;	
+}
+
+.fijaControlPos{
+ position: fixed;
+ top:3em;	
+}
+
+.fijaLiberos{
+ position: fixed;
+ top:10em;	
+}
+
+.fijaCancha{
+ position: fixed;
+ top:13em;	
+}
+
+.gridConfigJug{
+	display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 60% 50%;
+
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 3px;    
+		background-color: #fff;
+/*borde redondeado*/
+	padding:1em;    
+	
+}
+
+
+.itemcjug1{
+	grid-area: itemcjug1;
+}
+
+
+.itemcjug1.NumeroJugador{
+	font-size: 30px;
+
+}   
+ 
+ 
+.itemcjug2{
+	grid-area: itemcjug2;
+}
+.itemcjug2.nombreJugador{
+
+	font-size: 30px;
+    text-align: center;
+}
+.itemcjug3{
+	grid-area: itemcjug3;
+
+}
+
+
+.itemcjug4{
+	grid-area: itemcjug4;
+}
+.itemcjug5{
+	grid-area: itemcjug5;
+}
+.itemcnfju1{
+	display:grid;
+	grid-template-areas: 'itemcjug4 itemcjug1 itemcjug2 itemcjug2 '
+						 'itemcjug3 itemcjug3 itemcjug5 itemcjug5';
+	margin-bottom: 1em;
+
+
+}
+
+/***** grilla de visualizar jugadores **********************************************/
+.gridConfigJugVER{
+	display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 60% 50%;
+
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 3px;    
+		background-color: #fff;
+/*borde redondeado*/
+	
+}
+
+
+.itemcjug1VER{
+	grid-area: itemcjug1VER;
+}
+
+
+.itemcjug1VER.NumeroJugador{
+	font-size: 30px;
+
+}   
+ 
+ 
+.itemcjug2VER{
+	grid-area: itemcjug2VER;
+}
+.itemcjug2VER.nombreJugador{
+
+	font-size: 30px;
+    text-align: center;
+}
+.itemcjug3VER{
+	grid-area: itemcjug3VER;
+
+}
+
+
+.itemcjug4VER{
+	grid-area: itemcjug4VER;
+}
+.itemcjug5VER{
+	grid-area: itemcjug5VER;
+}
+.itemcnfju1VER{
+	display:grid;
+	grid-template-areas: 'itemcjug3VER itemcjug1VER itemcjug2VER itemcjug2VER itemcjug4VER ';
+
+}
+
+/***************************** grilla de visualizar jugadores ***************/
+
+.redondo{
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+ background-color: #3a8dc5;
+ 
+  align-items: center;
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.itemcjug2_1{
+	grid-area: itemcjug1_2;
+	
+}
+.itemcjug2_2{
+	grid-area: itemcjug2_2;
+}
+.itemcjug2_3{
+	grid-area: itemcjug3_2;
+}
+.itemcjug2_4{
+	grid-area: itemcjug4_2;
+}
+.itemcjug2_5{
+	grid-area: itemcjug5_2;
+}
+.itemcjug2_6{
+	grid-area: itemcjug6_2;
+}
+.itemcjug2_7{
+	grid-area: itemcjug7_2;
+}
+
+
+.itemcnfju2{
+	display: grid;
+	grid-template-areas: 'itemcjug1_2 itemcjug2_2 itemcjug3_2 itemcjug4_2 itemcjug5_2 itemcjug6_2 itemcjug7_2';
+	margin-left: -13px;
+}
+/**********************************************/
+
+
+button.central {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+
+	border-radius: 100%;
+	background: #ff9999;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}
+
+button.armador {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+	border-radius: 100%;
+	background:#26d9c7;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}
+
+
+button.opuesto {
+	width: 2em;
+	height: 2em;
+	z-index: 0;
+	border-radius: 100%;
+	background:#31dc23;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}	
+	
+	
+button.libero {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+
+	border-radius: 100%;
+	background:#e29d1d;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}	
+
+
+button.punta {
+	width: 2em;
+	height: 2em;
+	z-index: 0;
+
+	border-radius: 100%;
+	background:#fd893c;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}			
+
+.Grisado{
+	background-color: #c6cbcf;
+}
+#stikcy{
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+	color:white;
+}
+ 
+#content21 {
+    overflow: auto;
+}
+
+
+@media (min-width:451px) and (max-width: 768px){
+
+/*CANCHA BETA, PARA NUEVA PANTALLA CARGAR POSICIONES**/
+.gridcanchaBetaA_2{grid-area: puestoI;    border: 1px solid white;
+}
+.gridcanchaBetaB_2{grid-area: puestoII;    border: 1px solid white;
+}
+.gridcanchaBetaC_2{grid-area: puestoIII;    border: 1px solid white;
+}
+.gridcanchaBetaD_2{grid-area: puestoIV;    border: 1px solid white;
+}
+.gridcanchaBetaE_2{grid-area: puestoV;    border: 1px solid white;
+}
+.gridcanchaBetaF_2{grid-area: puestoVI;    border: 1px solid white;
+}
+.gridcanchaBetaG_2{grid-area: puestoVII;    border: 1px solid white;
+}
+
+.canchaBeta_2
+{
+    display: grid;
+	grid-template-areas: 'puestoIV puestoIII puestoII'
+						 'puestoV puestoVI puestoI';	
+    width: 100%;
+    padding: 2%;
+    height: 6rem;    
+	margin-top: 0em;
+    text-align: center;
+
+    border: 1px solid white;
+    background-color: #00abe3;    
+}
+
+
+.gridcanchaBeta_2
+{
+	
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0;
+
+    text-align: center;
+
+    border: 1px solid white;
+    background-color: #00abe3;
+}
+.canchaBeta_2 .item
+{
+    display: inline-block;
+
+    width: 5em;
+    height: 2em;
+    padding: 1em;
+
+    cursor: pointer;
+
+    color: #808080;
+    border: 3px solid #fff;
+    border-radius: 10px 10px 10px 10px;
+    background: #98fb98;
+}
+/* CANCHA BETA PARA NEUVA PANTALLA CARGAR POSICIONES*/
+
+/*CONTROLES NUEVOS PARA LOS LIBEROS**/
+.fondoblanco{
+	background-color: #fff;
+
+}
+    .LIBEROS_2{
+		DISPLAY:GRID;
+    	grid-template-columns: 42% 45% 30%;
+		margin-top: 0rem;
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+	
+	}
+	.LIBEROS_2 .itemL{
+		background-color: #e29d1d;
+		color: #091551;
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+	}
+/*CONTROLES NUEVOS PARA LOS LIBEROS**/
+
+/* ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES..*/
+.control1_2{ grid-area: ct211; height:2em; padding:1em;}
+.control1_2 SELECT{ font-size:15px; height: 3em;width: 4.5em;padding: 0;margin: 0;}
+
+.control2_2{ grid-area: ct212; }
+.control3_2{ grid-area: ct213; }
+.control4_2{ grid-area: ct214; }
+
+.control5_2{ grid-area: ct215; margin-top:1em;}
+.control6_2{ grid-area: ct216; margin-top:1em;}
+.control7_2{ grid-area: ct217; margin-top:1em;}
+.control8_2{ grid-area: ct218; margin-top:1em;}
+
+.ControlesPosicion21_2{
+	width: 100%;
+    display: grid;
+	text-align: center;
+    background-color: #fff;
+    grid-template-areas:    'ct211 ct212 ct213 ct214 '
+    						'ct215 ct216 ct217 ct218 ';
+
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+	margin-left: 0em;
+	
+}
+    
+.ControlesPosicion21_2 INPUT{
+/*borde redondeado*/
+		border: 0px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+}    
+/*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/
+
+/*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/
+
+    .CuadroJugadores_2
+    {
+        font-size: 16px;
+        display: grid;
+        width: 100%;
+        min-height: 26em;
+		margin-top: 20em;
+
+        padding: 0;
+
+        border: 5px dashed transparent;
+        background: #87cefa;
+
+        grid-gap: 1.5rem;
+        grid-template-columns: 100%;
+
+    }
+
+	.itemi1_2{
+		grid-area: iti1;
+	}
+	
+	.itemi2_2{
+		grid-area: iti2;		
+	}
+
+	.itemi3_2{
+		grid-area: iti3;
+	}
+
+    .CuadroJugadores_2 .item
+    {
+    	
+        font-size: 16px;
+
+        display: grid;
+        grid-template-areas: 'iti1' 'iti2' 'iti3';
+
+        width: 7rem;
+        height: 7em;
+        padding: .5em;
+
+        cursor: pointer;
+
+        color: #808080;
+        border: 3px solid #fff;
+        border-radius: 10px 10px 10px 10px;
+        background: #98fb98;
+    }
+    
+    .CuadroJugadores_2 .item SPAN
+    {
+        font-size: 30px;
+
+        text-align: center;
+
+        color: white;
+        background:#d629b4;
+    }
+
+    .CuadroJugadores_2 .item SPAN.nombreJugador
+    {
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .CuadroJugadores_2 .item.libero
+    {
+        font-size: 20px;
+        text-align: center;
+        color: white;
+        background:#4199be;
+    }
+    
+    .CuadroJugadores_2 option
+    {
+        background-color: #00abe3;
+    }
+    .regridjug2_2
+    {
+        display: grid;
+
+        width: 100%;
+
+        border: 0 solid black;
+
+        grid-template-columns: 2rem 10% 90%;
+    }
+
+
+
+/*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/
+
+.headerIngreso_2{
+ position: static;
+ top:0em;	
+z-index: 3;
+ height: 5em;
+}
+
+.fijaLogo{
+ position: fixed;
+ top:0em;	
+
+}
+
+.fijaControlPos{
+ position: fixed;
+ top:3em;	
+}
+
+.fijaLiberos{
+ position: fixed;
+ top:10em;	
+}
+
+.fijaCancha{
+ position: fixed;
+ top:13em;	
+}
+
+.gridConfigJug{
+	display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 60% 50%;
+
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 3px;    
+		background-color: #fff;
+/*borde redondeado*/
+	padding:1em;    
+	
+}
+
+.itemcjug1{
+	grid-area: itemcjug1;
+}
+
+
+.itemcjug1.NumeroJugador{
+	font-size: 30px;
+
+}   
+ 
+ 
+.itemcjug2{
+	grid-area: itemcjug2;
+}
+.itemcjug2.nombreJugador{
+
+	font-size: 30px;
+    text-align: center;
+}
+.itemcjug3{
+	grid-area: itemcjug3;
+
+}
+
+
+.itemcjug4{
+	grid-area: itemcjug4;
+}
+.itemcjug5{
+	grid-area: itemcjug5;
+}
+.itemcnfju1{
+	display:grid;
+	grid-template-areas: 'itemcjug4 itemcjug1 itemcjug2 itemcjug2 '
+						 'itemcjug3 itemcjug3 itemcjug5 itemcjug5';
+	margin-bottom: 1em;
+
+
+}
+
+
+.redondo{
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+ background-color: #3a8dc5;
+ 
+  align-items: center;
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.itemcjug2_1{
+	grid-area: itemcjug1_2;
+	
+}
+.itemcjug2_2{
+	grid-area: itemcjug2_2;
+}
+.itemcjug2_3{
+	grid-area: itemcjug3_2;
+}
+.itemcjug2_4{
+	grid-area: itemcjug4_2;
+}
+.itemcjug2_5{
+	grid-area: itemcjug5_2;
+}
+.itemcjug2_6{
+	grid-area: itemcjug6_2;
+}
+.itemcjug2_7{
+	grid-area: itemcjug7_2;
+}
+
+
+.itemcnfju2{
+	display: grid;
+	grid-template-areas: 'itemcjug1_2 itemcjug2_2 itemcjug3_2 itemcjug4_2 itemcjug5_2 itemcjug6_2 itemcjug7_2';
+	margin-left: -13px;
+}
+/**********************************************/
+
+
+button.central {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+
+	border-radius: 100%;
+	background: #ff9999;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}
+
+button.armador {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+	border-radius: 100%;
+	background:#26d9c7;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}
+
+
+button.opuesto {
+	width: 2em;
+	height: 2em;
+	z-index: 0;
+	border-radius: 100%;
+	background:#31dc23;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}	
+	
+	
+button.libero {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+
+	border-radius: 100%;
+	background:#e29d1d;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}	
+
+
+button.punta {
+	width: 2em;
+	height: 2em;
+	z-index: 0;
+
+	border-radius: 100%;
+	background:#fd893c;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}			
+
+.Grisado{
+	background-color: #c6cbcf;
+}
+#stikcy{
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+	color:white;    
+
+}
+ 
+#content21 {
+    overflow: auto;
+}
+	
+}
+
+@media (max-width: 450px){
+	
+/*CANCHA BETA, PARA NUEVA PANTALLA CARGAR POSICIONES**/
+.gridcanchaBetaA_2{grid-area: puestoI;    border: 1px solid white;
+}
+.gridcanchaBetaB_2{grid-area: puestoII;    border: 1px solid white;
+}
+.gridcanchaBetaC_2{grid-area: puestoIII;    border: 1px solid white;
+}
+.gridcanchaBetaD_2{grid-area: puestoIV;    border: 1px solid white;
+}
+.gridcanchaBetaE_2{grid-area: puestoV;    border: 1px solid white;
+}
+.gridcanchaBetaF_2{grid-area: puestoVI;    border: 1px solid white;
+}
+.gridcanchaBetaG_2{grid-area: puestoVII;    border: 1px solid white;
+}
+
+.canchaBeta_2
+{
+    display: grid;
+	grid-template-areas: 'puestoIV puestoIII puestoII'
+						 'puestoV puestoVI puestoI';	
+    width: 100%;
+    padding: 2%;
+    height: 6rem;    
+	margin-top: 0em;
+    text-align: center;
+
+    border: 1px solid white;
+    background-color: #00abe3;    
+}
+
+
+.gridcanchaBeta_2
+{
+	
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0;
+
+    text-align: center;
+
+    border: 1px solid white;
+    background-color: #00abe3;
+}
+.canchaBeta_2 .item
+{
+    display: inline-block;
+
+    width: 5em;
+    height: 2em;
+    padding: 1em;
+
+    cursor: pointer;
+
+    color: #808080;
+    border: 3px solid #fff;
+    border-radius: 10px 10px 10px 10px;
+    background: #98fb98;
+}
+/* CANCHA BETA PARA NEUVA PANTALLA CARGAR POSICIONES*/	
+	
+/*CONTROLES NUEVOS PARA LOS LIBEROS**/
+.fondoblanco{
+	background-color: #fff;
+
+}
+    .LIBEROS_2{
+		DISPLAY:GRID;
+    	grid-template-columns: 42% 45% 30%;
+		margin-top: 0rem;
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+	
+	}
+	.LIBEROS_2 .itemL{
+		background-color: #e29d1d;
+		color: #091551;
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+	}
+/*CONTROLES NUEVOS PARA LOS LIBEROS**/	
+	
+/* ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES..*/
+.control1_2{ grid-area: ct211; height:2em; padding:1em;}
+.control1_2 SELECT{ font-size:15px; height: 3em;width: 4.5em;padding: 0;margin: 0;}
+
+.control2_2{ grid-area: ct212; }
+.control3_2{ grid-area: ct213; }
+.control4_2{ grid-area: ct214; }
+
+.control5_2{ grid-area: ct215; margin-top:1em;}
+.control6_2{ grid-area: ct216; margin-top:1em;}
+.control7_2{ grid-area: ct217; margin-top:1em;}
+.control8_2{ grid-area: ct218; margin-top:1em;}
+
+.ControlesPosicion21_2{
+	width: 100%;
+    display: grid;
+	text-align: center;
+    background-color: #fff;
+    grid-template-areas:    'ct211 ct212 ct213 ct214 '
+    						'ct215 ct216 ct217 ct218 ';
+
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+	margin-left: 0em;
+	
+}
+    
+.ControlesPosicion21_2 INPUT{
+/*borde redondeado*/
+		border: 0px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+}    
+/*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/
+
+/*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/
+
+    .CuadroJugadores_2
+    {
+        font-size: 16px;
+        display: grid;
+        width: 100%;
+        min-height: 26em;
+		margin-top: 20em;
+
+        padding: 0;
+
+        border: 5px dashed transparent;
+        background: #87cefa;
+
+        grid-gap: 1.5rem;
+        grid-template-columns: 100%;
+
+    }
+
+	.itemi1_2{
+		grid-area: iti1;
+	}
+	
+	.itemi2_2{
+		grid-area: iti2;		
+	}
+
+	.itemi3_2{
+		grid-area: iti3;
+	}
+
+    .CuadroJugadores_2 .item
+    {
+    	
+        font-size: 16px;
+
+        display: grid;
+        grid-template-areas: 'iti1' 'iti2' 'iti3';
+
+        width: 7rem;
+        height: 7em;
+        padding: .5em;
+
+        cursor: pointer;
+
+        color: #808080;
+        border: 3px solid #fff;
+        border-radius: 10px 10px 10px 10px;
+        background: #98fb98;
+    }
+    
+    .CuadroJugadores_2 .item SPAN
+    {
+        font-size: 30px;
+
+        text-align: center;
+
+        color: white;
+        background:#d629b4;
+    }
+
+    .CuadroJugadores_2 .item SPAN.nombreJugador
+    {
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .CuadroJugadores_2 .item.libero
+    {
+        font-size: 20px;
+        text-align: center;
+        color: white;
+        background:#4199be;
+    }
+    
+    .CuadroJugadores_2 option
+    {
+        background-color: #00abe3;
+    }
+    .regridjug2_2
+    {
+        display: grid;
+
+        width: 100%;
+
+        border: 0 solid black;
+
+        grid-template-columns: 2rem 10% 90%;
+    }
+
+
+/*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/	
+	
+.headerIngreso_2{
+ position: static;
+ top:0em;	
+z-index: 3;
+}
+
+.fijaLogo{
+ position: fixed;
+ top:0em;	
+}
+
+.fijaControlPos{
+ position: fixed;
+ top:3em;	
+}
+
+.fijaLiberos{
+ position: fixed;
+ top:10em;	
+}
+
+.fijaCancha{
+ position: fixed;
+ top:13em;	
+}
+
+.gridConfigJug{
+	display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 60% 50%;
+
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		padding: 3px;    
+		background-color: #fff;
+/*borde redondeado*/
+	padding:1em;    
+	
+}
+
+.itemcjug1{
+	grid-area: itemcjug1;
+}
+
+
+.itemcjug1.NumeroJugador{
+	font-size: 30px;
+
+}   
+ 
+ 
+.itemcjug2{
+	grid-area: itemcjug2;
+}
+.itemcjug2.nombreJugador{
+
+	font-size: 30px;
+    text-align: center;
+}
+.itemcjug3{
+	grid-area: itemcjug3;
+
+}
+
+
+.itemcjug4{
+	grid-area: itemcjug4;
+}
+.itemcjug5{
+	grid-area: itemcjug5;
+}
+.itemcnfju1{
+	display:grid;
+	grid-template-areas: 'itemcjug4 itemcjug1 itemcjug2 itemcjug2 '
+						 'itemcjug3 itemcjug3 itemcjug5 itemcjug5';
+	margin-bottom: 1em;
+
+
+}
+
+
+.redondo{
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+ background-color: #3a8dc5;
+ 
+  align-items: center;
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.itemcjug2_1{
+	grid-area: itemcjug1_2;
+	
+}
+.itemcjug2_2{
+	grid-area: itemcjug2_2;
+}
+.itemcjug2_3{
+	grid-area: itemcjug3_2;
+}
+.itemcjug2_4{
+	grid-area: itemcjug4_2;
+}
+.itemcjug2_5{
+	grid-area: itemcjug5_2;
+}
+.itemcjug2_6{
+	grid-area: itemcjug6_2;
+}
+.itemcjug2_7{
+	grid-area: itemcjug7_2;
+}
+
+
+.itemcnfju2{
+	display: grid;
+	grid-template-areas: 'itemcjug1_2 itemcjug2_2 itemcjug3_2 itemcjug4_2 itemcjug5_2 itemcjug6_2 itemcjug7_2';
+	margin-left: -13px;
+}
+/**********************************************/
+
+
+button.central {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+
+	border-radius: 100%;
+	background: #ff9999;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}
+
+button.armador {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+	border-radius: 100%;
+	background:#26d9c7;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}
+
+
+button.opuesto {
+	width: 2em;
+	height: 2em;
+	z-index: 0;
+	border-radius: 100%;
+	background:#31dc23;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}	
+	
+	
+button.libero {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+
+	border-radius: 100%;
+	background:#e29d1d;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}	
+
+
+button.punta {
+	width: 2em;
+	height: 2em;
+	z-index: 0;
+
+	border-radius: 100%;
+	background:#fd893c;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}			
+
+.Grisado{
+	background-color: #c6cbcf;
+}
+#stikcy{
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+	color:white;
+}
+ 
+#content21 {
+    overflow: auto;
+}
+
+
+/*CANCHA BETA, PARA NUEVA PANTALLA CARGAR POSICIONES**/
+.gridcanchaBetaA_2VER{grid-area: puestoIg;    border: 1px solid white;
+}
+.gridcanchaBetaB_2VER{grid-area: puestoIIg;    border: 1px solid white;
+}
+.gridcanchaBetaC_2VER{grid-area: puestoIIIg;    border: 1px solid white;
+}
+.gridcanchaBetaD_2VER{grid-area: puestoIVg;    border: 1px solid white;
+}
+.gridcanchaBetaE_2VER{grid-area: puestoVg;    border: 1px solid white;
+}
+.gridcanchaBetaF_2VER{grid-area: puestoVIg;    border: 1px solid white;
+}
+.gridcanchaBetaG_2VER{grid-area: puestoVIIg;    border: 1px solid white;
+}
+
+.g2VERTexto
+{
+	grid-area: g2VERTexto;
+    border: 1px solid white;
+    padding: 0.5rem;
+}
+
+.canchaBeta_2VER
+{
+    display: grid;
+	grid-template-areas: 'puestoIVg puestoIIIg puestoIIg'
+						 'puestoVg puestoVIg puestoIg'
+						 'g2VERTexto g2VERTexto g2VERTexto';	
+    width: 100%;
+    padding: 2%;
+    /*height: 7rem; */ 
+	margin-top: 0em;
+    text-align: center;
+
+    border: 1px solid white;
+    background-color: #00abe3;    
+}
+
+
+.gridcanchaBeta_2VER
+{
+	
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0;
+
+    text-align: center;
+
+    border: 1px solid white;
+    background-color: #00abe3;
+}
+.canchaBeta_2VER .item
+{
+    display: inline-block;
+
+    width: 5em;
+    height: 2em;
+    padding: 1em;
+
+    cursor: pointer;
+
+    color: #808080;
+    border: 3px solid #fff;
+    border-radius: 10px 10px 10px 10px;
+    background: #98fb98;
+}
+/* CANCHA BETA PARA NEUVA PANTALLA CARGAR POSICIONES*/
+
+
+	
+}
+

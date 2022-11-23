@@ -1,0 +1,49 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+obtener_partidos
+781::READY => obtener_partidos => cargarCancha.
+ AGREGUE EL COLOR EN ESTAS TRES COLECCIONES: 
+	+ CentralesA/B::jugadorid, posicion, puesto, puestoxCat
+	+ LiberosA/B::jugadorid, posicion, puesto, puestoxCat
+	+ Posiciones en CanchaA/B:jugador, nombre ,puesto y ubicacion
+   "pa_1":{"jugx":"Joaco Pe\u00f1alva(11)","idjugador":"147","puesto":"3"},
+   NO TENGO CARGADOS LOS DATOS DE PUESTO, POR ESO NO LOS TRAE..
+   "pb_1":{"jugx":"jugador_5217 (5217)","idjugador":"10"},
++QUERY DE OBTENER_PARTIDOS:JUGADOR_PARTIDO:getJugSetLoad:agrego informacion de color..
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+cargaCancha => obtener_set_partido
+		+LiberosA/B:jugadorid, posicion, puesto, puestoxCat
+		suplentesA/B::jugadorid, posicion, puesto, puestoxCat
+		+NO TRAE LOS CentralesA/B
+		Sets : equipoA/B:jugadorid, posicion, puesto, puestoxCat
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Quien llena a lista de Suplentes?
+Donde viene el color...subquey con el puesto unido al color..
+COLOR EN SUPLENTE, CANCHA Y LIBEROS
+
+						var puestoPosta = w.puestoxcat;
+								colorFondo = 'style="backGround:'+w.ColorPuestoCat+';"';
+						if(puestoPosta != w.puesto)
+						{
+							 puestoPosta = w.puesto;
+									colorFondo = 'style="backGround:'+w.ColorPuestoCancha+';"';
+						} 
+
+Este cambio también afecta a VerPosiciones que usa obtener_partidos
++tambien lo usan:
+controlVoleyApp
+VerCSets	se modifico para que traiga el color automaticamente.
+TableroGrandev20: se modifico para que traiga el color automaticamente.
+Partidos
+NovedadesSet
+index
+CargarPosiciones
+AdministrarApp

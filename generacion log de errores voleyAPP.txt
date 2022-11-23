@@ -1,0 +1,16 @@
+AUTOMATIZAR SALIDA LIBERO Y MENSAJE
+require_once('Errores.php');
+$mensajeAlta = "'INSERTAR_JUGADORES_SETS::INSERT.SET'";
+$tipo="'AVISO'";
+//$fecha_hora,
+$scriptPrograma="'INSERTAR_JUGADORES_SETS'";
+$funcion="'partjug::insertSet'";
+$parametro[0]=$idpartido;
+$parametro[1]=$_POST['fechapartido'];
+$parametro[2]=$clublocal;
+$parametro[3]=$icate;
+$parametro[4]=$jugador;
+$parametro[5]=$setnumero;
+$parametro[6]=$puesto;
+$parametros= "'".implode(";",$parametro)."'";
+$ret = errorGrabado::insert($tipo,$scriptPrograma,$funcion,$parametros);

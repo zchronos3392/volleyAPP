@@ -1,0 +1,39 @@
+http://www.lonniebest.com/FormatCSS/
+https://watch.bigmoviesz.com/movie/464052/wonder-woman-1984.html
+
+CAMBIAR EL MAIN MENU, PARA APLICARLO A OTRO
+LUGAR..EN EL TAMAÑO PEQUEÑO..
+VOLLEYAPP : INDEX CARATULAS, VOLVERLAS A 
+GRID...
+
+
+Refs
+1 - 3496  	: 768px <= X
+3498 - 4595 	: X <= 450px
+4595 - 5103 	: 451<X<768
+
+ESTO PARA FORMATO GRANDE
+ENTRE MAXIMA 768, MINIMA: 450
+grid-ListaPart 	 1390 (768px <= X)
+ilp1 		 1433 (768px <= X)
+ilp11 		 1441 (768px <= X)
+ilp2 		 1450 (768px <= X)
+grid-LPReg 	 1503 (768px <= X)
+grid-LPReg div 	 1497 (768px <= X)
+ilp22_2 	 1541 (768px <= X)
+ilp22 		 1585 (768px <= X)(sin nada)
+.ilp2 div.imgdiv 1489 
+OTROS TAMAÑOS
+		     X <= 450px 451<X<768
+grid-ListaPart 		4322 
+ilp1 			3747      4703
+ilp11 			3768	  4724
+ilp2 			3755	  4711	
+grid-LPReg 		4512	  5061		
+grid-LPReg div 		----	  ----
+ilp22_2 		----      ----
+ilp22 			3614      ----
+.ilp2 div.imgdiv	3787      4733   
+
+
+

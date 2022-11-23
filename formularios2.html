@@ -1,0 +1,265 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-es" lang="es-es" >
+	<head>
+	<title>volleapp</title>
+	<style type="text/css">
+	
+	form {
+		display: grid; /*Esto ya modificó la forma en que se muestra*/
+		grid-template-columns: 90px 500px; /*dos columnas, de 200px la primera y del resto del espacio libre la segunda*/
+		/*modificar estos valores dde la primer columna, hace que se muevan los campos de cada FORM*/
+		grid-gap: 16px; /*separacion entre lineas*/
+		background: #f9f9f9;  /*color de fondo del formulario*/
+		border: 1px solid #c1c1c1; /**tres bordes/ 
+
+		margin: 2rem auto 0 auto; /*MARGENES DEL FORM margin: TOP RIGHT BOTTOm left*/
+		max-width: 600px; /*achico el ancho del formu.*/
+		padding: 1em;		/*separacion entre celdas*/
+		
+	}
+	label {
+		padding: 0.5em 0.5em 0.5em 0;
+		/* border:1px solid green; /*esto es solamente para saber hasta donde llega*/ */
+	}	
+	
+	input {
+		padding: 0.7em; /*separacion de todo*/
+		margin-bottom: 0.5rem; /*lo movi cerca del borde izquierdo del form*/
+	}
+	input:focus { /*al presionarlo , aparece el borde*/
+		outline: 3px solid gold;
+	}
+	
+	form input { /*controla el borde del input y su tamaño*/
+		background: #fff;
+		border: 1px solid #9c9c9c;
+	}
+	form button { /*controla el estilo del button*/
+		background: lightgrey;
+		padding: 0.7em;
+		width: 100%; /*de todo el ancho de la columna*/
+		border: 0;
+	}
+	form button:hover { /*controla el color cuando pasa el mouse : HOVER*/
+		background: #ffb366;	/*gold;*/
+	}	
+	
+	form  #botonAlta:hover { /*controla el color cuando pasa el mouse : HOVER*/
+		background: ##ffb366;
+	}	
+	
+	#formulario {
+		margin: 5% 25% 0 25%; /*TOP RIGHT BOTTOM LEFT*/
+	}
+	
+	.form1{
+		display: grid;
+		border:2px solid red; /*esto es solamente para saber hasta donde llega*/ 
+		grid-template-columns: 2fr 1fr;
+		grid-gap: 20px;
+		/*margin: 5% 25% 0 25%; /*TOP RIGHT BOTTOM LEFT*/*/
+	}
+	
+	.form1 p { /*todos los p se encuentran en la primer columna*/
+	  grid-column: 1 / 2;
+	}	
+	.form1 label {
+		padding: 0.5em 0.5em 0.5em 0;
+		 /*border:1px solid green; /*esto es solamente para saber hasta donde llega*/ */
+		 
+	}	
+	
+	
+	/*
+	The next step is to place the input file in the second column. 
+	In order to do that, we will place it between grid line 2 and grid line 3. 
+	Moving vertically, we’ll make it span rows from grid line 1 to grid line 2.
+	*/
+	.form1 .input-file-wrapper {
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+	}	
+	.form1 .btnIngreso{
+		grid-column: 2 / 3;
+		grid-row: 2 / 3;
+	}
+	/*necesito intrucciones para controlar el grid*/
+
+	* {
+		box-sizing: border-box;
+	}
+
+	body {
+			padding-top: 1rem;
+			
+	}
+
+	.wrapper {
+		max-width: 700px;
+		margin: 0 auto;
+		padding: 1em;
+		background: #f9f9f9;
+		border: 1px solid #c1c1c1;
+	}
+
+	h3 {
+		margin: 0;
+	}
+
+	
+	
+/*PARTE RESPONSIVA*/	/*ROMPE TODO EL FORMATO LINDO QUE LE DIO LO ANTERIOR*/
+	@media (min-width: 400px) {
+	  form {
+		grid-template-columns: 200px 1fr;
+		grid-gap: 16px;
+	  }
+
+	  label {
+		text-align: right;
+		grid-column: 1 / 2;
+	  }
+
+	  input
+	   {
+		grid-column: 2 / 3;
+	  }
+	  button{		
+		padding: 0.7em; /*separacion de todo*/
+		margin-bottom: 0.5rem; /*lo movi cerca del borde izquierdo del form*/
+		grid-column: 2 / 3; /*lo muevo a la columna dos de la grilla..*/
+		}
+	}/*PARTE RESPONSIVA*/		
+</style>
+	</head>
+	<body id="" class="">
+<div class="wrapper">
+      <h3>Ingreso de datos</h3>	
+		<form action="" class="form1">
+			<p>
+				<label for="nombreClub">Nombre club</label>
+				<input id="nombreClub" type="text">
+			</p>
+			<p>
+				<label for="abreviat">abreviatura</label>
+				<input id="abreviat"	type="email">
+			</p>
+			<p class="input-file-wrapper">
+				<label for="upload">escudo</label>
+				<input type="file" name="" id="upload">
+			</p>
+			<p>
+				<button class="btnIngreso">Save</button>
+			</p>
+		</form>
+</div>
+<p>
+<!--
+TABLA PARTIDO: FECHA, IDPARTIDO,CATEGORIA, CLUB 1,CLUB 2,CLUB-SEDE-CANCHA,COMPETENCIA,
+			  CIUDAD,HORA INICIO,HORA FIN,RESULTADO(CALCULO).
+			  
+TABLA CIUDADES,CLUBES,CATEGORIAS(CATEGORAID, DESCRIPCION)
+TABLA SET_PARTIDO (PARTIDO_DETALLE):IDPARTIDO, SECUENCIA,SET NUMERO,FECHA,HORA,JUGADOR, EQUIPO, 
+                TEXTO_LARGO, NUMERO(ENTERO GRANDE)
+-->
+<div class="wrapper">
+<!-- que todo se cargue con ajax contra la base...-->
+      <h3>Ingreso de datos 2 -->
+	  <label for="idpartido">ID PARTIDO : 99999</label>
+	  </h3>	
+		<form action="" class="form1">
+			<p>
+				<label for="fechap">Fecha</label>
+				<input id="fechap" type="date">
+			</p>
+			<p>
+				<label for="numeropartido">Numero partido</label>
+				<input id="numeropartido" type="number" readonly value="5">
+			</p>
+			<p>
+				<label for="categorias">Categoria</label>
+				<!-- que lo devuelva el POST al cargar la pagina-->
+					<select id="categorias">
+							<option>mini</option>
+							<option>Sub 13</option>
+							<option>Sub 15</option>
+							<option>Sub 17</option>
+							<option>Sub 19</option>
+							<option>sub 21</option>
+							<option>Liga</option>
+							
+					</select>
+			</p>
+			<p>
+				<label for="CLUBA">CLUB A</label>
+				<input id="CLUBA" type="number" readonly value="5">
+				<input id="CLUBAt" type="text">
+			</p>
+			<p>
+				<label for="CLUBB">CLUB B</label>
+				<input id="CLUBB" type="number" readonly value="5">
+				<input id="CLUBBt" type="text">
+			</p>			
+			<p>
+				<label for="canchas">Canchas</label>
+				<!-- que lo devuelva el POST al cargar la pagina-->
+					<select id="canchas">
+							<option>A</option>
+							<option>B</option>
+							<option>C</option>
+							<option>D</option>
+							<option>E</option>
+							<option>F</option>
+							<option>G</option>
+							
+					</select>
+			</p>			
+			<p>
+				<label for="COMPETENCIA">COMPETENCIA</label>
+				<input id="COMPETENCIA" type="TEXT" >
+				<!-- armar un query por ajax para consultar y devolver el resultado-->
+			</p>
+			<p>
+				<button class="btnIngreso">Save</button>
+			</p>
+		</form>
+</div>
+</p>
+<section id="formulario">	
+ 	<form>
+    <label for="sede" class="">Sede</label>
+    <input id="sede" type="text">
+    <label for="direc_sede" class="">Dirección</label>
+    <input id="direc_sede" type="text">
+	 <button>Submit</button>
+	</form>
+	
+ 	<form>
+	<label for="numerocategoria">Numero ID Cat</label>
+	<input id="numerocategoria" type="number" readonly value="5">
+    <label for="categoria" class="">Categoria</label>
+    <input id="sede" type="text">
+	 <button>Submit</button>
+	</form>	
+	
+ 	<form>
+	<label for="numerociudad">Numero ID Ciudad</label>
+	<input id="numerociudad" type="number" readonly value="5">
+    <label for="categoria" class="">Ciudad</label>
+    <input id="sede" type="text">
+	 <button>Submit</button>
+	</form>	
+	
+	<form>	
+    <label for="cancha" class="">Cancha</label>
+    <input id="cancha" type="text">
+
+    <label for="dimencancha" class="last-name">dimensiones</label>
+    <input id="dimencancha" type="text">
+     <button id="botonAlta">Submit</button>
+	</form>
+</section>	
+	<section name='Clubes'>
+	</section>
+	</body>
+</html>
+	
