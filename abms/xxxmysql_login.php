@@ -1,25 +1,18 @@
 <?php
 /**
  * Provee las constantes */
-//define("HOSTNAME", "localhost");// Nombre del host agregar 3309 para localhost
+//define("HOSTNAME", "localhost");// Nombre del host
 //define("DATABASE", "c0990415_voleyap"); // Nombre de la base de datos
 //define("USERNAME", "c0990415_voleyap"); // Nombre del usuario
 //define("PASSWORD", "kefaKA24fu"); // Nombre de la constrase�a appvolley
-/* Provee las constantes */
 
+define("HOSTNAME", "localhost");// Nombre del host agregar 3309 para localhost
+define("DATABASE", "c0990415_voleyap"); // Nombre de la base de datos
+define("USERNAME", "c0990415_voleyap"); // Nombre del usuario
+define("PASSWORD", "kefaKA24fu"); // Nombre de la constrase�a appvolley
 
 /**
-* 
-* NUEVO SERVER
-* 
-*/
-define("HOSTNAME", "sql108.260mb.net");// Nombre del host agregar 3309 para localhost
-define("DATABASE", "n260m_32970979_voleyap"); // Nombre de la base de datos
-define("USERNAME", "n260m_32970979"); // Nombre del usuario
-define("PASSWORD", "!OsitoLo"); // Nombre de la constrase�a appvolley
-
-/*
-CREATE USER 'volleyapp'@'%' IDENTIFIED WITH mysql_native_password AS '***';GRANT SELECT, INSERT, 
+* CREATE USER 'volleyapp'@'%' IDENTIFIED WITH mysql_native_password AS '***';GRANT SELECT, INSERT, 
 * UPDATE, DELETE, FILE ON *.* TO 'volleyapp'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0
 *  MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;GRANT ALL PRIVILEGES ON `volleyapp`.* 
 * TO 'volleyapp'@'%';

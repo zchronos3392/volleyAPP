@@ -5,3 +5,16 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/zchronos3392/volleyAPP.git
 git push -u origin main
+
+---------------------------------------------------------------------
+C:\laragon\www\volleyAPP_desa>git push -u origin central
+Enumerating objects: 396, done.
+Counting objects: 100% (396/396), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (392/392), done.
+Writing objects: 100% (396/396), 28.53 MiB | 953.00 KiB/s, done.
+Total 396 (delta 79), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (79/79), done.
+To https://github.com/zchronos3392/volleyAPP.git
+ * [new branch]      central -> central
+branch 'central' set up to track 'origin/central'.
