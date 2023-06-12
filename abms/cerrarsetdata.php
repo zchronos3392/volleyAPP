@@ -16,7 +16,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$fecpartido="''";// sera string 
 	if(isset($_POST["fechas"])) $fecpartido = "'".$_POST["fechas"]."'";
 
-	
+	//02 DIC.2022::ENVIO LA ESTRATEGIA CON RESPECTO A LOS LIBEROS
+		//PARA QUE SABER QUÉ HACER AUTOMATICAMENTE EN SUS CAMBIOS..
+			$estrategiaA = "''";
+			if(isset($_POST['estrategiaLA'])) $estrategiaA = "'".$_POST['estrategiaLA']."'";
+			$estrategiaB = "''";
+			if(isset($_POST['estrategiaLB'])) $estrategiaB = "'".$_POST['estrategiaLB']."'";
+
+
+		//PARA QUE SABER QUÉ HACER AUTOMATICAMENTE EN SUS CAMBIOS..
+	//02 DIC.2022::ENVIO LA ESTRATEGIA CON RESPECTO A LOS LIBEROS	
 	$secuenciaarray =  Sett::ultSecuencia($idpartido,$setnumero,$fecpartido);
 	$secuencia = 0;
 	if( !empty($secuenciaarray) ) $secuencia = (int) $secuenciaarray[0]["secuencia"];
@@ -54,6 +63,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$contadorpausasA = (int)$setData["CantPausaA"];
 			$contadorpausasB = (int)$setData["CantPausaB"];
 
+			$ordenA =1;
+				$ordenA = (int)$setData['ordenA'];
+			$ordenB =1;
+				$ordenB = (int)$setData['ordenB'];
 
 			
 			// uno de los dos se mantiene, el otro cambia...
@@ -96,7 +109,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 //	print "secuencia nueva del set: ".$secuencia;
 	
 	
-	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$mensaje,$contadorpausasA,$contadorpausasB);
+	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,
+							 $A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,
+							 $estado,$puntoa, $puntob,$saque,$estrategiaA,$estrategiaB,
+							 $ordenA,$ordenB,
+							 $mensaje,$contadorpausasA,$contadorpausasB);
     if($retorno) {
         // Codigo de �xito
         print(json_encode(array('estado' => '1','mensaje' => 'Creacion exitosa')));

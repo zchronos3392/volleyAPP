@@ -18,6 +18,8 @@ return $busqueda;
 
 function armarJugador($jugadoresLista,$idAbuscar){
  $busqueda=array();
+ $colorBase = "#00abe3";
+
  //echo("<br>lista de jugadores y su data: ");
  //print_r($jugadoresLista);
  //DENTRO DE $jugadoresLista debe de estar: 
@@ -35,12 +37,14 @@ function armarJugador($jugadoresLista,$idAbuscar){
 								//coloco los valores por Default
 									$colorPuestoPosta=$jugadoresLista[$indice]['ColorPuestoCat'];
 									$puestoPosta = $jugadoresLista[$indice]['puestoxcat'];
-		
+								// si tiene color
+								// else
 								if($puestoPosta != $jugadoresLista[$indice]['puesto'])
 								{
 								  $puestoPosta= $jugadoresLista[$indice]['puesto'];	
 								  $colorPuestoPosta=$jugadoresLista[$indice]['ColorPuestoCancha'];
 								}
+								if($colorPuestoPosta == "") $colorPuestoPosta = $colorBase;
 								$busqueda['puesto']= $puestoPosta;
 								$busqueda['puestoColor']= $colorPuestoPosta;														}	 
 return $busqueda;
@@ -155,7 +159,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			 //VACIO DIRECTAMENTE
 			 //print_r($newset);
 			 $XsetNum =0;
-			 $XsetNum = (int)$newset['setnumero'];
+			 if(isset($newset['setnumero']))
+				 $XsetNum = (int)$newset['setnumero'];
 			 // calculamos hora inicio del Set y Hora Actual o final
 				$setHoras = Sett::getHoraInicioHoraFin($partidoid,$fecpartido,$XsetNum);
 				//print_r($setHoras);					
@@ -198,12 +203,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$ianioPartido = (int)substr($partidoRow["Fecha"], 0, 4);
 			if(isset($setData) && !empty($setData) ){
 			$jugadoresA = partjug::getJugSetLoad($partidoid,$fecpartido,(int)$setData["ClubA"],$ianioPartido,$idUltimoSetdata,(int)$setData["categoria"]); 
-			$pointer1 =0;
-			$pointer3 =0;
-	    		//	echo("<br>");
-	    		//	echo("jugadoresA: partjug::getJugSetLoad <br>");
-	    		//	print_r($jugadoresA);
-	    		//	echo("<br>+++++++++++++++++++++++++<br>");
+			$pointer1 = 0;
+			$pointer3 = 0;
+			$pointer7 = 0;
+	    			// echo("<br>");
+	    			// echo("jugadoresA: partjug::getJugSetLoad <br>");
+	    			// print_r($jugadoresA);
+	    			// echo("<br>+++++++++++++++++++++++++<br>");
 
  			foreach($jugadoresA as $indice => $valor)
 			{
@@ -219,12 +225,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 					{
 							$datos["CentralesA"][$pointer3]= $valor; // tomar valido el campo PUESTO...
 							$pointer3++;
-					}						
+					}
+
+					if($valor["posicion"] == 7)	
+					{
+							$datos["SuplentesA"][$pointer7]= $valor; // tomar valido el campo PUESTO...
+							$pointer7++;
+					}	
+
 			}
 
 			$jugadoresB = partjug::getJugSetLoad($partidoid,$fecpartido,(int)$setData["ClubB"],$ianioPartido,$idUltimoSetdata,(int)$setData["categoria"]); 
 			$pointer2 =0;			
-			$pointer4 =0;			
+			$pointer4 =0;	
+			$pointer8 =0;		
  			foreach($jugadoresB as $indice => $valor)
 			{
 				$puesto=$valor["puestoxcat"];
@@ -239,7 +253,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 					{
 							$datos["CentralesB"][$pointer4]= $valor; // tomar valido el campo PUESTO...
 							$pointer4++;
-					}						
+					}	
+					if($valor["posicion"] == 7)	
+					{
+							$datos["SuplentesB"][$pointer8]= $valor; // tomar valido el campo PUESTO...
+							$pointer8++;
+					}	
+
 			}
 
 		 } //VIENE EL SET CON DATOS...
@@ -299,33 +319,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$datos["pa_6"] = jugador::getById((int)$setData["ClubA"],(int)$setData["pa_6"],(int)$setData["categoria"]);
 /** JUGADOR A*/
 /** JUGADOR B*/
-			if(buscarJugador($jugadoresA,(int)$setData["pb_1"]))	//
-				$datos["pb_1"] = armarJugador($jugadoresA,(int)$setData["pb_1"]);
+			if(buscarJugador($jugadoresB,(int)$setData["pb_1"]))	//
+				$datos["pb_1"] = armarJugador($jugadoresB,(int)$setData["pb_1"]);
 			else
 				$datos["pb_1"] = jugador::getById((int)$setData["ClubB"],(int)$setData["pb_1"],(int)$setData["categoria"]) ;
 
-			if(buscarJugador($jugadoresA,(int)$setData["pb_2"]))	//
-				$datos["pb_2"] = armarJugador($jugadoresA,(int)$setData["pb_2"]);
+			if(buscarJugador($jugadoresB,(int)$setData["pb_2"]))	//
+				$datos["pb_2"] = armarJugador($jugadoresB,(int)$setData["pb_2"]);
 			else
 				$datos["pb_2"] = jugador::getById((int)$setData["ClubB"],(int)$setData["pb_2"],(int)$setData["categoria"]);
 
-			if(buscarJugador($jugadoresA,(int)$setData["pb_3"]))	//
-				$datos["pb_3"] = armarJugador($jugadoresA,(int)$setData["pb_3"]);
+			if(buscarJugador($jugadoresB,(int)$setData["pb_3"]))	//
+				$datos["pb_3"] = armarJugador($jugadoresB,(int)$setData["pb_3"]);
 			else
 				$datos["pb_3"] = jugador::getById((int)$setData["ClubB"],(int)$setData["pb_3"],(int)$setData["categoria"]);
 
-			if(buscarJugador($jugadoresA,(int)$setData["pb_4"]))	//
-				$datos["pb_4"] = armarJugador($jugadoresA,(int)$setData["pb_4"]);
+			if(buscarJugador($jugadoresB,(int)$setData["pb_4"]))	//
+				$datos["pb_4"] = armarJugador($jugadoresB,(int)$setData["pb_4"]);
 			else
 				$datos["pb_4"] = jugador::getById((int)$setData["ClubB"],(int)$setData["pb_4"],(int)$setData["categoria"]);
 
-			if(buscarJugador($jugadoresA,(int)$setData["pb_5"]))	//
-				$datos["pb_5"] = armarJugador($jugadoresA,(int)$setData["pb_5"]);
+			if(buscarJugador($jugadoresB,(int)$setData["pb_5"]))	//
+				$datos["pb_5"] = armarJugador($jugadoresB,(int)$setData["pb_5"]);
 			else
 				$datos["pb_5"] = jugador::getById((int)$setData["ClubB"],(int)$setData["pb_5"],(int)$setData["categoria"]);
 
-			if(buscarJugador($jugadoresA,(int)$setData["pb_6"]))	//
-				$datos["pb_6"] = armarJugador($jugadoresA,(int)$setData["pb_6"]);
+			if(buscarJugador($jugadoresB,(int)$setData["pb_6"]))	//
+				$datos["pb_6"] = armarJugador($jugadoresB,(int)$setData["pb_6"]);
 			else
 				$datos["pb_6"] = jugador::getById((int)$setData["ClubB"],(int)$setData["pb_6"],(int)$setData["categoria"]);
 /** JUGADOR B*/

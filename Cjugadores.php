@@ -32,7 +32,7 @@ function cargarCategorias(){
 			var verTodos = 0;
 	        // Hacer algo si el checkbox ha sido seleccionado
 			if( $("#todxs").is(':checked') ) verTodos = 1;
-					
+			console.log('llamando a categorias');		
 		     var parametros = {"ianio":$("#ianio").val(),"todxscat":verTodos,"iclub": $('#iclubescab').val()};
 	         $.ajax({ 
 	            url:   './abms/obtener_categorias.php',
@@ -51,10 +51,20 @@ function cargarCategorias(){
 	            success:  function (r){
 	            	$(r['Categorias']).each(function(i, v)
 	                { // indice, valor
+						if(typeof v.CategoriaId == 'undefined')
+						{
+								if (! $('#icatcab').find("option[value='" + v.idcategoria + "']").length)
+								{
+									$("#icatcab").append('<option name="'+v.idcategoria+'" value="' + v.idcategoria + '">' + v.descripcion+' - ' + v.EdadInicio+' / ' + v.EdadFin + '</option>');
+								}
+						}
+						else
+						{	
 	                	if (! $('#icatcab').find("option[value='" + v.CategoriaId + "']").length)
-	                	{
-							$("#icatcab").append('<option name="'+v.ConJugadores+'" value="' + v.CategoriaId + '">' + v.descripcion+' - ' + v.EdadInicio+' / ' + v.EdadFin + '</option>');
-						}		
+	        	        	{
+								$("#icatcab").append('<option name="'+v.ConJugadores+'" value="' + v.CategoriaId + '">' + v.descripcion+' - ' + v.EdadInicio+' / ' + v.EdadFin + '</option>');
+							}
+					    }		
 	                });
 	                $("#icatcab").prop('disabled', false);
 	            },
@@ -68,9 +78,11 @@ function cargarCategorias(){
 	            }); // FIN funcion ajax categorias
 }
 function ObtenerJugadoresParm(paginaPedida,quienLLama,iclubescab,icatcab){
-	
+		//alert($("#icatcab").val());
+	if(icatcab == null || (typeof catcab == 'undefined') )  vicatcab = $("#icatcab").val();
+	else vicatcab = icatcab;
 var parametros = {"iclubescab1" : iclubescab,
-				  "icatcab1" : icatcab,
+				  "icatcab1" : vicatcab,
 				  "ianio":$("#ianio").val(),
 				  "pag":paginaPedida,
 				  "xnombre":"9999",
@@ -233,10 +245,10 @@ function ObtenerJugadores(paginaPedida,quienLLama){
 // valor del campo icatcab	
 var parametros = {"iclubescab1" : $("#iclubescab").val(),"icatcab1" : $("#icatcab").val(),"ianio":$("#ianio").val(),"pag":paginaPedida,"xnombre":$("#ijugclub").val(),"xnomAll" : $("#ijugclubAll").val() };
 
-	//console.log("pagina pedida: "+ paginaPedida +" " +$("#iclubescab").val());
-	//console.log("pagina pedida: "+ paginaPedida +" " +$("#icatcab").val());
-	//console.log("pagina pedida: "+ paginaPedida +" " +$("#ianio").val());		
-    //console.log("pagina pedida: "+ paginaPedida +" " +$("#ijugclub").val());
+	// console.log("pagina pedida: "+ paginaPedida +" " +$("#iclubescab").val());
+	// console.log("pagina pedida: "+ paginaPedida +" " +$("#icatcab").val());
+	// console.log("pagina pedida: "+ paginaPedida +" " +$("#ianio").val());		
+    // console.log("pagina pedida: "+ paginaPedida +" " +$("#ijugclub").val());
 
 $.ajax({ 
 url:   './abms/obtener_jugadores.php',
@@ -562,7 +574,10 @@ return 	selectPuesto ;
 							//alert('Alta concedida....');
 							iclubescab = parametroURL('iclubescab');
 							icatcab    = parametroURL('icatcab');
-							location.href='Cjugadores.php?icatcab='+icatcab+'&iclubescab='+iclubescab;
+							if(iclubescab != null && icatcab != null )
+								location.href='Cjugadores.php?icatcab='+icatcab+'&iclubescab='+iclubescab;
+							else
+							location.href='Cjugadores.php';
 							//recargar la grilla...de Jugadores...
 		            },
 					error: function (xhr, ajaxOptions, thrownError) {
@@ -767,7 +782,7 @@ return 	selectPuesto ;
 			
 			//$("#ianio").prop('disabled', true);
 			
-			if(icatcab > 0){
+			if(icatcab > 0 && icatcab != null ){
 				pagPedida=0;
 				ObtenerJugadoresParm(pagPedida,'ijugclub',iclubescab,icatcab);
 			}
@@ -796,7 +811,7 @@ return 	selectPuesto ;
 //buscar jugadores solo por club...y o año				
 				pagPedida=0;
 				//alert('iclubescab');
-				ObtenerJugadores(pagPedida,'iclubecab');
+				ObtenerJugadores(pagPedida,'iclubescab');
 				cargarCategorias();
 				
 //UNIFIQUE TODO EN UN SOLO CHECK: CON JUGADORES...	
@@ -859,6 +874,51 @@ return 	selectPuesto ;
 					// FIN funcion ajax CLUBES				
 			});
 			//**************************CATEGORIAS CARGADAS DEL CLUB*/
+
+//**************** FUNCION DE BUSQUEDA DE CLUBES MODERNA *********************************************/   
+$("#itextbuscar").keyup(function()
+	//	on("keyup keydown",function()
+         {   
+			var parametros = {
+	        	"llamador" : "ESTADISTICASCLUB",
+	        	"funcion" : "buscarclubStats",			
+	        	"filtro" : $("#itextbuscar").val(),
+				"ianio":$("#ianio").val(),
+				"todxs":$("#todxs").val()	        	
+				};		         
+		
+         $.ajax({ 
+            url:   './abms/obtener_varios.php',
+            type:  'GET',
+            data: parametros,
+            dataType: 'json',
+			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+            beforeSend: function (){
+				// Bloqueamos el SELECT de los cursos
+				$('#iclubescab').empty();
+    		},
+            done: function(data){
+			},
+            success:  function (r){
+ 					
+                $(r['Clubes']).each(function(i, v)
+                { // indice, valor
+              	if (! $('#iclubescab').find("option[value='" + v.idclub + "']").length)
+                	{
+						$("#iclubescab").append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
+					}		
+                });
+             },
+             error: function (xhr, ajaxOptions, thrownError) {
+			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+			 console.log(xhr);
+			 console.log(thrownError);
+			}
+            }); // FIN funcion ajax CANCIONES todas:
+       });
+
+//**************** FUNCION DE BUSQUEDA DE CLUBES MODERNA *********************************************/ 
+
 		}); // parentesis del READY
 
 		</script>
@@ -871,37 +931,37 @@ return 	selectPuesto ;
 <!-- ********************************************************************************* -->
 		<form id="altajugador" class="altajugador" name="altajugador" >
 			<!-- CABECERA DE SELECCION DE VALORES IGUALES-->
-			<div class="GridControlJugador">
+			<div class="x23GridControlJugador">
 			<!--SECCION DE CABECERA DEL FORMULARIO DE INGRESO DE JUGADORES -->
-				<div id="" class="itemcontrolju1" >
-					<div class="gcntjug1">Año Actual </div>
-					<div class="gcntjug2">
+				<div id="" class="x23itemcontrolju1" >Año Actual </div>
+				<div class="x23itemcontrolju2">
 						<select id="ianio" name="ianio" class="ianio">
 						  <option value="9999">Seleccionar año...</option>
 						</select>
-					</div>
-					<div class="gcntjug3">
-						<input type="text"  value="" id="contador" readonly="true"/>
-					</div>
 				</div>
-
-  			    <div id="" class="itemcontrolju2" > <!-- FILAS DEL FORM, CLUB Y CATEGORIA..-->
-					<input type="checkbox" id="todxs"><span>Con jugadores..</span></input>						<input type="hidden" id="anioactivo" name="anioactivo" val="0"></input>
-					<input type="hidden" id="activo" val="0"></input>
+				<div id="" class="x23itemcontrolju3" >Clubes</div>
+				<div id="" class="x23itemcontrolju4" >
+					<input type="text" id="itextbuscar" name="itext" class="inputSearch">
+				</div>
+				<div id="" class="x23itemcontrolju5" >
+					<select id="iclubescab" name="iclubescab" class="iclubescab">
+							<option value="9999">Seleccionar club</option>
+					</select>
+				</div>
+				<div id="" class="x23itemcontrolju6" >
+					<input type="checkbox" id="todxs"><span>Con jugadores..</span></input>
+						<input type="hidden" id="anioactivo" name="anioactivo" val="0"></input>
+						<input type="hidden" id="activo" val="0"></input>
 				</div>	
-				<div id="" class="itemcontrolju3" >Clubes</div>
-
-				<div id="" class="itemcontrolju4" >
-				   <select id="iclubescab" name="iclubescab" class="iclubescab">
-						<option value="9999">Seleccionar club</option>
-				   </select>
-				</div>
-				<div id="" class="itemcontrolju5" >Categorias</div>
-				<div id="" class="itemcontrolju6" >
+				<div id="" class="x23itemcontrolju7" >Categorias</div>
+				<div id="" class="x23itemcontrolju8" >
  					<select id="icatcab" name="icatcab" class="icatcab">
 						<option value="9999">Seleccionar categoria</option>
 					</select>
 				</div>		
+				<div id="" class="x23itemcontrolju9" >
+					<input type="text"  value="" id="contador" readonly="true"/>
+				</div>
 			</div>
 			<div class="GridControlJugador SINTOPE">
 			<!--SECCION DE CABECERA DEL FORMULARIO DE INGRESO DE JUGADORES -->

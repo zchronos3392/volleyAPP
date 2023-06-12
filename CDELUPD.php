@@ -20,6 +20,154 @@
 	   <script type="text/javascript">
 		// cuando PRESIONO CLICK , LO ACTUALIZO
 
+//+++++++++++++++ CREAMOS LOS VECTORES GLOBALES DESDE DONDE RE CARGAREMOS INFINITAMENTE LOS COMBOS..
+		var vCategorias = new Array();
+		var vEquipos = new Array();
+		var vCanchas = new Array();
+		var vSedes   = new Array();
+		var vCiudades = new Array();
+		var vCompetencias = new Array();
+// +++++++++++++++++ FUNCIONES EXTRA ++++++++++++++++++++++++++++++++++++++
+
+// +++++++++++++++++ FUNCIONES DE CARGA UNICA ++++++++++++++++++++++++++++++++++++++
+function cargarCategoriasStart(){
+	iCategorias = new Array();
+	$.ajax({ 
+		 url:   './abms/obtener_categorias.php',
+		 type:  'GET',
+		 dataType: 'json',
+		 async:false,
+		 // EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+		 beforeSend: function (){},
+		 done: function(data){},
+		 success:  function (r){
+			iCategorias = Object.values(r['Categorias']);
+			 //console.log(iPosiciones);
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {}
+		 }); // FIN funcion ajax	
+  return iCategorias;				
+}
+
+function cargarEqupoStart(){
+	iEquipos = new Array();
+	$.ajax({ 
+		 url:   './abms/obtener_clubes.php',
+		 type:  'GET',
+		 dataType: 'json',
+		 async:false,
+		 // EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+		 beforeSend: function (){},
+		 done: function(data){},
+		 success:  function (r){
+			iEquipos = Object.values(r['Clubes']);
+			 //console.log(iPosiciones);
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {}
+		 }); // FIN funcion ajax	
+  return iEquipos;			
+}
+
+function cargarSedesStart(){
+	iSedes = new Array();
+	$.ajax({ 
+            url:   './abms/obtener_sedes.php',
+            type:  'GET',
+            dataType: 'json',
+			async:false,
+			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+            beforeSend: function (){},
+            done: function(data){},
+            success:  function (r){
+               // $(r['Sedes']).each(function(i, v)
+			   iSedes = Object.values(r['Sedes']);
+
+			},
+             error: function (xhr, ajaxOptions, thrownError) {}
+            }); // FIN funcion ajax SEDES
+return iSedes;	
+}	
+
+function cargarCanchasStart(){
+	iCanchas = new Array();
+	$.ajax({ 
+		 url:   './abms/obtener_canchas.php',
+		 type:  'GET',
+		 dataType: 'json',
+		 async:false,
+		 // EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+		 beforeSend: function (){},
+		 done: function(data){},
+		 success:  function (r){
+			iCanchas = Object.values(r['Canchas']);
+			 //console.log(iPosiciones);
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {}
+		 }); // FIN funcion ajax	
+  return iCanchas;		
+}
+
+
+function cargarCompetenciasStart()
+{
+	iCompetencias = new Array();
+	$.ajax({ 
+		url:   './abms/obtener_comps.php',
+		 type:  'GET',
+		 dataType: 'json',
+		 async:false,
+		 // EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+		 beforeSend: function (){},
+		 done: function(data){},
+		 success:  function (r){
+			iCompetencias = Object.values(r['Competencias']);
+			 //console.log(iPosiciones);
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {}
+		 }); // FIN funcion ajax	
+ return iCompetencias;	
+}
+
+function creasCompetenciasx(nombreObj)
+{
+	var selectCompetencia = "";
+			// esto arreglo el tema del alta triplle..
+		$(vCompetencias).each(function(i, v)
+		{ // indice, valor
+				MensajeActivo="IN-DES/ACTIVADA";
+				if(v.competenciaActiva == 1)
+				MensajeActivo="ACTIVA";
+				$("#"+nombreObj).append('<option value="' + v.idcomp + '">' + v.cnombre +'('+MensajeActivo+')'+ '</option>');
+
+		});		
+		
+	return 	selectCompetencia ;
+}
+
+
+function cargarCiudadesStart(){
+
+	iCiudades = new Array();
+	$.ajax({ 
+		 url:   './abms/obtener_ciudades.php',
+		 type:  'GET',
+		 dataType: 'json',
+		 async:false,
+		 // EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+		 beforeSend: function (){},
+		 done: function(data){},
+		 success:  function (r){
+			iCiudades = Object.values(r['Ciudades']);
+			 //console.log(iPosiciones);
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {}
+		 }); // FIN funcion ajax	
+  return iCiudades;	
+}
+
+// +++++++++++++++++ FUNCIONES DE CARGA UNICA ++++++++++++++++++++++++++++++++++++++
+
+
 
 function abreventana(boton)
 {
@@ -46,6 +194,27 @@ function cargarimagenes(nombre)
 
 		$(document).ready(function()
 		{
+
+			// ocultamos todo
+			$("#CiudadForm").animate({width: "hide"},200);
+			 $("#formCiudad").animate({width: "hide"},200);	
+
+			 $("#Sedesf").animate({width: "hide"},200);
+			 $("#Sedessearchf").animate({width: "hide"},200);
+
+			 $("#Canchasearch").animate({width: "hide"},500);	
+			 $("#Canchas").animate({width: "hide"},500);	
+
+
+			vCategorias = cargarCategoriasStart();
+			vEquipos = cargarEqupoStart();
+			vCanchas = cargarCanchasStart();
+			vSedes   = cargarSedesStart();
+			vCiudades = cargarCiudadesStart();
+			vCompetencias = cargarCompetenciasStart();
+
+			// CARGA INICIAL ::: Cargo a partir del Vector que tengo en memoria el combo de las competencias.	
+			creasCompetenciasx("icomp");
 			 $("#SearchCompetencia").animate({width: "hide"},500);	
 			
 			// Hacemos la lógica que cuando nuestro SELECT cambia de valor haga algo
@@ -73,6 +242,45 @@ function cargarimagenes(nombre)
 					$("#escudo").attr("src","img/escudos/"+$("#iescudosclub").val());
 				});
 			
+	$("#itext4").keyup(function()
+	//	on("keyup keydown",function()
+         {   
+			var parametros = {
+	        	"llamador" : "CONTROLAPP",
+	        	"funcion" : "buscarcompetencia",			
+	        	"filtro" : $("#itext4").val(),
+				};		         
+		
+         $.ajax({ 
+            url:   './abms/obtener_varios.php',
+            type:  'GET',
+            data: parametros,
+            dataType: 'json',
+			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+            beforeSend: function (){
+				// Bloqueamos el SELECT de los cursos
+				$("#icomp").empty();
+    		},
+            done: function(data){
+			},
+            success:  function (r){
+ 					
+                $(r['Competencias']).each(function(i, v)
+                { // indice, valor
+                	if (! $('#icomp').find("option[value='" + v.idcomp + "']").length)
+                	{
+						$("#icomp").append('<option value="' + v.idcomp + '">' + v.cnombre + '</option>');
+					}		
+			   
+				});
+             },
+             error: function (xhr, ajaxOptions, thrownError) {
+			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+			 console.log(xhr);
+			 console.log(thrownError);
+			}
+            }); // FIN funcion ajax CANCIONES todas:
+       });
 
 				 $("#btnBuscarLogosVacios").click(function()
 				 {
@@ -287,7 +495,6 @@ function cargarimagenes(nombre)
 			 $("#formCiudad").animate({width: "show"},500);	
 			 
 			 $("#CiudadForm").css("background-color","#fff");
-			 $("#formCiudad").css("background-color","#fff");
 			 
 			 
 			 //mantengo el color dorado en este y apago los otros..
@@ -316,7 +523,7 @@ function cargarimagenes(nombre)
 			 $("#Canchasearch").animate({width: "show"},500);	
 			 $("#Canchas").animate({width: "show"},500);	
 			 
-			 $("#Canchasearch").css("background-color","#fff");
+			 $("#Canchasearch").css("background-color","#0e2464");
 			 $("#Canchas").css("background-color","#fff");
 
 			 
@@ -373,8 +580,6 @@ function cargarimagenes(nombre)
 		 	
 			 $("#Sedesf").animate({width: "show"},500);
 			 $("#Sedessearchf").animate({width: "show"},500);	
-			 $("#Sedesf").css("background-color","#fff");
-			 $("#Sedessearchf").css("background-color","#fff");
 
 			 
 			 
@@ -439,10 +644,6 @@ function cargarimagenes(nombre)
             success:  function (r){
                 $(r['Ciudades']).each(function(i, v)
                 { // indice, valor
-                    if (! $('#icity').find("option[value='" + v.idCiudad + "']").length)
-                	{		
-                    $("#icity").append('<option value="' + v.idCiudad + '">' + v.Nombre + '</option>');
-					}
                     if (! $('#iciudadclub').find("option[value='" + v.idCiudad + "']").length)
                 	{		
                     $("#iciudadclub").append('<option value="' + v.idCiudad + '">' + v.Nombre + '</option>');
@@ -493,63 +694,23 @@ function cargarimagenes(nombre)
           });//change del ICLUB		 		 
 		 		 
 //**************** COMPETENCIAS *********************************************/            
-         $.ajax({ 
-            url:   './abms/obtener_comps.php',
-            type:  'GET',
-            dataType: 'json',
-			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
-            beforeSend: function (){
-				// Bloqueamos el SELECT de los cursos
-    		},
-            done: function(data){
-			},
-            success:  function (r){
-            	// SI LA TABLA ESTA VACIA, NO ENTRA ACA.
-               	// DESBloqueamos el SELECT de los cursos
-				// Limpiamos el select
-				// FORMA CORRECTA DE LEER EL VECTOR:r["estado"] y r["Clubes"] 
-                $(r['Competencias']).each(function(i, v)
-                { // indice, valor
-                	if (! $('#icomp').find("option[value='" + v.idcomp + "']").length)
-                	{
-						$("#icomp").append('<option value="' + v.idcomp + '">' + v.cnombre + '</option>');
-					}		
-                });
-           },
-             error: function (xhr, ajaxOptions, thrownError) {
-			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
-			$("#icomp").append('<option value="' + '9999' + '">' + 'JQERY:Tabla vacia' + '</option>');
-			$("#icomp").val('9999');
-			}
-            }); // FIN funcion ajax COMPETENCIAS
             
          $("#icomp").on("change click",function()
          {
-         var parametros = {"idcomp" : $("#icomp").val()};	
-         $.ajax({ 
-            url:   './abms/obtener_comp_por_id.php',
-            type:  'GET',
-            data: parametros ,
-            datatype:   'text json',
-			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
-            beforeSend: function (){
-				
-    		},
-            done: function(data){
-            	
-			},
-            success:  function (r){
-    			var re = JSON.parse(r);
-				$("#cnombre").val(re["cnombre"]);
-	            $("#SetMaxCate").val(re["se  tnmax"]);
-	            if(competenciaActiva == 1)
-	            	$("#SetActivo").attr(' checked', true);
-				
-            },
-             error: function (xhr, ajaxOptions, thrownError) 
-             {
-			 }
-            });
+			$(vCompetencias).each(function(i, v)
+			{ // indice, valor
+					if( v.idcomp == $("#icomp").val())
+					{
+						$("#cnombre").val(v.cnombre);
+						$("#SetMaxCate").val(v.setnmax);
+						if(v.competenciaActiva == 1)
+						{
+							$("#SetActivo").attr('checked', true);
+							//POR SINO FUNCIONA EL ANTERIOR
+							$("#SetActivo").prop('checked',true);
+						}						
+					}
+			});		
           });//change del Icomp	            
             		 		 
          $("#isede2").on("change click",function()
@@ -659,36 +820,32 @@ $("#isede3").on("change click",function()
 		
     </head>
 <body>
-   	<header>
+<section>
 		<?php include('includes/newmenu.php'); ?>
-    </header>
+</section>
 
-<section id="acciones" name="acciones" class="acciones">
-	<div id="ren" name="ren" class="ren"><input type="button" id="btnBuscarRegClub"   name="btnBuscarRegClub" value="Club" class="btnBuscar2" /></div>
-	<div id="ren" name="ren" class="ren"><input type="button" id="btnBuscarRegCity"   name="btnBuscarRegCity" value="Ciudad" class="btnBuscar2"></input></div>
-	<div id="ren" name="ren" class="ren"><input type="button" id="btnBuscarRegCancha"   name="btnBuscarRegCancha" value="Cancha" class="btnBuscar2"></input></div>
-	<div id="ren" name="ren" class="ren"><input type="button" id="btnBuscarRegComp"   name="btnBuscarRegComp" value="Competencia" class="btnBuscar2"></input></div>
-	<div id="ren" name="ren" class="ren"><input type="button" id="btnBuscarRegSede"   name="btnBuscarRegSede" value="Sede" class="btnBuscar2"></input></div>
-</section>	
+<div id="acciones" name="acciones" class="acciones">
+	<input type="button" id="btnBuscarRegClub"   name="btnBuscarRegClub" value="Club" class="btnBuscar2" />
+	<input type="button" id="btnBuscarRegCity"   name="btnBuscarRegCity" value="Ciudad" class="btnBuscar2"></input>
+	<input type="button" id="btnBuscarRegCancha"   name="btnBuscarRegCancha" value="Cancha" class="btnBuscar2"></input>
+	<input type="button" id="btnBuscarRegComp"   name="btnBuscarRegComp" value="Competencia" class="btnBuscar2"></input>
+	<input type="button" id="btnBuscarRegSede"   name="btnBuscarRegSede" value="Sede" class="btnBuscar2"></input>
+</div>	
+
 <section class="gridClub2 hidden">
 <div class="icc12">
 	<!-- visualizacion de carga -->		
 	<form id="formConfig" name="formClubess" class="hidden">
-
-	<section id="busque" name="busque" class="busque2">
-		<div class="busqueitem1"><label for="itextbuscar">Buscar</label></div>	
-		<div class="busqueitem2"><input type="text" id="itextAbuscar" name="itextAbuscar" class="inputSearch"/></div>
-	 	<div class="busqueitem3"></div>
-	 	<div  class="busqueitem4"><button id="btnEliminaClub"   name="btnEliminaClub" value="..." class="btnDel">-</button></div>
-	 	<div class="busqueitem5"><button id="btnBuscarLogosVacios"   name="btnBuscarLogosVacios" value="Buscar clubes sin escudo" class="btnBuscar grande">Escudos Vacios</button></div>
-		<div class="busqueitem6"><label for="icluba">Clubes cargados</label></div>
-		<div class="busqueitem7" id="busqueitem7">    <select id="icluba" name="icluba" class="selectitem7"></select></div>
-	</section>
-	 	
+		<section id="busque" name="busque" class="busque2">
+			<div class="busqueitem1"><label for="itextbuscar">Buscar</label></div>	
+			<div class="busqueitem2"><input type="text" id="itextAbuscar" name="itextAbuscar" class="inputSearch" onkeyup="buscarClub(this.id,'#icluba');"  /></div>
+			<div class="busqueitem3"></div>
+			<div  class="busqueitem4"><button id="btnEliminaClub"   name="btnEliminaClub" value="..." class="btnDel">-</button></div>
+			<div class="busqueitem5"><button id="btnBuscarLogosVacios"   name="btnBuscarLogosVacios" value="Buscar clubes sin escudo" class="btnBuscar grande">Escudos Vacios</button></div>
+			<div class="busqueitem6"><label for="icluba">Clubes cargados</label></div>
+			<div class="busqueitem7" id="busqueitem7">    <select id="icluba" name="icluba" class="selectitem7"></select></div>
+		</section>
 	</form> 
-
-
-
 	<!-- visualizacion de carga -->		
 <div  id="ClubForm" name="ClubForm" class="hidden"><!-- clubes -->
  <div class="ffclubes">
@@ -714,12 +871,12 @@ $("#isede3").on("change click",function()
 	<div class="ffclubes5">
 		<input id="nombre" name="nombre" type="text"></input>
 	</div>
-		<div class="ffclubes51">
+	<div class="ffclubes51">
 			<label for="iciudadclub">ciudad</label>
-		</div>
-		<div class="ffclubes52">
+	</div>
+	<div class="ffclubes52">
 			<select id="iciudadclub" name="iciudadclub"  class="SelList"></select>
-		</div>				
+	</div>				
 	<div class="ffclubes6"><label for="clubabr">abreviatura</label></div>
 	<div class="ffclubes7"><input id="clubabr"	name="clubabr" type="text"></input></div>
 	<div class="ffclubes8">
@@ -732,77 +889,69 @@ $("#isede3").on("change click",function()
 <div id="grillasinescudosContent" name="grillasinescudosContent"  class="grillasinescudosContent"></div>
 
 </div>
+</section>
 
-</section>		
 
 <section class="gridClub2 hidden">
-  <div class="icc12">
-<!-- visualizacion de carga -->		
- 	<form id="formCiudad" name="formCiudad" class="formCiudad hidden">
- 	<section id="busque"  class="busque">
-	 	<div><label for="itext2">Buscar</label></div>	
-	 	<div><input type="text" id="itext2" name="itext2" class="inputSearch"/></div>
-	 	<div><button id="btnBuscarCity"   name="btnBuscarCity" value="..." class="btnBuscar">Sape...</button></div>
-	 	<div><button id="btnEliminaCity"   name="btnEliminaCity" value="..." class="btnDel">Eliminar...</button></div>
- 	</section>
-	<div>
-		<label for="icity">Ciudades cargadas</label>
-		<select id="icity" class="SelList"></select>
+	<div class="icc12">
+	<!-- visualizacion de carga -->		
+		<form id="formCiudad" name="formCiudad" class="formCiudad hidden">
+		<section id="busque"  class="busque2">
+			<div><label for="itext2">Buscar</label></div>	
+			<div><input type="text" id="itext2" name="itext2" class="inputSearch" onkeyup="buscarCiudad(this.id,'#icity');" /></div>
+			<div></div>
+			<div><button id="btnEliminaCity"   name="btnEliminaCity" value="..." class="btnDel">-</button></div>
+		</section>
+		<div>
+			<select id="icity" class="SelList"></select>
+		</div>
+		</form>
+		<div id="CiudadForm" name="CiudadForm" class="formConfig hidden">
+			<label for="ciudad"  class="">Ciudad</label>
+			<input id="ciudad"  name="ciudad" type="text">
+			<label for="provCity" class="">Provincia</label>
+			<input id="provCity" name="provCity" type="text">
+			<!--<select name="provCity" class="SelListC"><option value="000">Sel provincia</option></select>-->
+			<button id="ActualizaCiudad" name="ActualizaCiudad" class="btnIngreso">+/-</button>	
+		</div>
 	</div>
- 	</form>
- 	<div id="CiudadForm" name="CiudadForm" class="formConfig hidden">
-    <label for="ciudad"  class="">Ciudad</label>
-    	<input id="ciudad"  name="ciudad" type="text">
-	<label for="provCity" class="">Provincia</label>
-    	<input id="provCity" name="provCity" type="text">
-    	<!--<select name="provCity" class="SelListC"><option value="000">Sel provincia</option></select>-->
-<button id="ActualizaCiudad" name="ActualizaCiudad" class="btnIngreso">Actualiza Ciudad</button>	
-	</div>
-	
-</div>
 </section>
 <!-- SEDES -->
 <section class="gridClub2 hidden top">
   <div class="icc12">
-<!-- visualizacion de carga -->		
+	<!-- visualizacion de carga -->		
  	<form id="Sedessearchf" name="Sedessearchf" class="formSedes hidden">
-	<section id="busque" name="busque" class="busque">
+	<section id="busque" name="busque" class="busque2">
 	 	<div><label for="itext3">Buscar</label></div>	
-	 	<div><input type="text" id="itext3" name="itext3" class="inputSearch"></div>
-	 	<div><button id="btnBuscarSedes" name="btnBuscarSedes" value="..." class="btnBuscar">Sape...</button></div>
+	 	<div><input type="text" id="itext3" name="itext3" class="inputSearch" onkeyup="buscarClub(this.id,'#iclubb');"></div>
+	 	<div></div>
  	</section>	
-    <label for="iclubb">Club</label>
-	    <select id="iclubb" name="iclubb" class="SelList"> 
-	        <option value="9999" selected="">Seleccione un club</option>
-	    </select>
-	<button id="btnBuscarSede"   name="btnBuscarSede" value="..." class="btnBuscar">Sape...</button>
-	<button id="btnEliminaSede"   name="btnEliminaSede" value="..." class="btnBuscar">Eliminar...</button>
-	
-	<div>
-	<label for="isede2">Sedes cargadas</label>
-	    <select id="isede2" name="isede2" class="SelList"> 
-	        <option value="9999" selected="">Seleccione una Sede</option>
-	    </select>
-    </div>
-  </form>
-	 	
- 	<div id="Sedesf" name="Sedesf" class="formConfig hidden">
-		<p>
+	<select id="iclubb" name="iclubb" class="SelList"> 
+		<option value="9999" selected="">Seleccione un club</option>
+	</select>
+	<section id="busque" name="busque" class="busque2">	
+		<label for="isede2">Sedes cargadas</label>
+		<select id="isede2" name="isede2" class="SelList"> 
+			<option value="9999" selected="">Seleccione una Sede</option>
+		</select>
+		<button id="btnEliminaSede"   name="btnEliminaSede" value="..." class="btnBuscar">-</button>
+   </section>
+
+   <div id="Sedesf" name="Sedesf" class="formConfig hidden">
 		<label for="iclubc">Club</label>
 		<select id="iclubc" class="SelList"></select>
-    	</p>
-		<p><!-- el POST SOLO VE LO QUE TIENE NAME, sino no lo ve.-->
+		<!-- el POST SOLO VE LO QUE TIENE NAME, sino no lo ve.-->
 			<label for="sedenom">Nombre sede</label>
 			<input id="sedenom" name="sedenom" type="text">
-		</p>
-		<p>
 			<label for="direxsede">direccion</label>
 			<input id="direxsede" name="direxsede" "text"="">
-		</p>
-		<p>
-			<button id="ActualizaSede" name="ActualizaSede" value="actualiza sede" class="btnIngreso">Actualiza sede...</button>
-		</p>	
+			<button id="ActualizaSede" name="ActualizaSede" value="actualiza sede" class="btnIngreso">+/-</button>
 	</div>
+
+	
+</div>
+  </form>
+	 	
 		
 </div>
 </section>
@@ -812,14 +961,20 @@ $("#isede3").on("change click",function()
 <section class="gridClub2 hidden top">
 <div class="icc2">
 	<form id="Competencias" name="Competencias" class="hidden">
-		<section id="busque" class="busque">
-		<div><label for="itext4">Buscar</label></div>	
-		<div><input type="text" id="itext4" name="itext4" class="inputSearch"></div>
-		<div><button id="btnBuscarComp" name="btnBuscarComp" value="..." class="btnBuscar">Sape...</button></div>
+	<section id="busque" name="busque" class="busque2">
+		<div class="busqueitem1"><label for="itext4">Buscar</label></div>	
+		<div class="busqueitem2"><input type="text" id="itext4" name="itext4" class="inputSearch"/></div>
+	 	<div class="busqueitem3"></div>
+	 	<div  class="busqueitem4"><button id="btnEliminaComp"   name="btnEliminaComp" value="..." class="btnDel">-</button></div>
+	 	<div class="busqueitem5"></div>
+		<div class="busqueitem6"><label for="icomp">Competencias </label></div>
+		<div class="busqueitem7" id="busqueitem7">
+			<select id="icomp" class="SelList"> 
+				<option value="999" selected="">Seleccione una Competencia</option>
+			</select>
+		</div>
 	</section>
-	<select id="icomp" class="SelList"> 
-		<option value="999" selected="">Seleccione una Competencia</option>
-	</select>
+
 	</form>
 
 
@@ -864,29 +1019,35 @@ $("#isede3").on("change click",function()
 
 <!-- CANCHAS-->
   <section class="gridClub2 hidden top">	
-		<form id="Canchasearch" name="Canchasearch" class="hidden">
-		<section id="busque" name="busque" class="busque">
+	<form id="Canchasearch" name="Canchasearch" class="hidden">
+		<section id="busque" name="busque" class="busque2">
 		 	<div><label for="itext5">Buscar</label></div>	
-		 	<div><input type="text" id="itext5" name="itext5" class="inputSearch"/></div>
-		 	<div><button id="btnBuscarCancha"   name="btnBuscarCancha" value="..." class="btnBuscar">Sape...</button></div>
+		 	<div><input type="text" id="itext5" name="itext5" class="inputSearch" onkeyup="buscarClub(this.id,'#iclubd');" /></div>
+		 	<div></div>
 	 	</section>	
-		
-			<label for="iclubd" class="">Club</label>
-			<select id="iclubd" name="iclubd" class="SelList"> 
-		        	<option value="9999" selected>Seleccione un club</option>
-			</select> 
-		    <p></p><label for="isede3" class="">Sedes</label></p>
-		    <select id="isede3" name="isede3" class="SelList"> 
-		        <option value="9999" selected>Seleccione una Sede</option>
-		    </select>     
-				<p>
-					<select id="icancha" name="icancha" class="SelList">
-						<option value="9999" selected>
-							Seleccione una Cancha...
-						</option>
+		 <section id="busque" name="busque" class="busque3">
+				
+		 		<div class="busque3item1"><label for="iclubd" class="">Club</label></div>
+				 <div class="busque3item2">
+					<select id="iclubd" name="iclubd" class="SelList"> 
+						<option value="9999" selected>Seleccione un club</option>
 					</select>
-				</p>
-		</form>
+			     </div>
+				 <div class="busque3item3"><label for="isede3" class="">Sedes</label></div>
+				 <div class="busque3item4">
+					<select id="isede3" name="isede3" class="SelList"> 
+						<option value="9999" selected>Seleccione una Sede</option>
+					</select>     
+				</div>
+				<div class="busque3item5"><label for="icancha" class="">Canchas</label></div>
+				<div class="busque3item6">
+					<select id="icancha" name="icancha" class="SelList">
+					<option value="9999" selected>
+						Seleccione una Cancha...
+					</option>
+					</select>
+			   </div>
+		</section>	
 		<div id="Canchas" name="Canchas" class="formCanchas hidden">	
 			<label for="nomcancha" class="">Cancha nombre</label>
 			<input id="nomcancha" name="nomcancha"   type="text">
@@ -894,8 +1055,9 @@ $("#isede3").on("change click",function()
 			<input id="direc_can" name="direc_can" type="text">
 			<label for="dimcan" class="">Dimensiones</label>
 			<input id="dimcan" name="dimcan" type="text">
-		<button id="ActualizaCancha" name="ActualizaCancha">Act. Cancha</button>
+		<button id="ActualizaCancha" name="ActualizaCancha">+/-</button>
 		</div>
+	</form>
 		
 </section>
 

@@ -332,7 +332,7 @@ var parametros =
                 {
                 		var img = './img/PartidoOFFSQR.jpg';
 						//accion ='<a href="TableroGrande.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"><input type="button" id="verset" name="verset"';                		
-						accion ='<a href="TableroGrandev20.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"><input type="button" id="verset" name="verset"';
+						accion ='<a href="TableroGrandev25.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"><input type="button" id="verset" name="verset"';
 						accion +=' class="btnVerSet" value="(ver)" title="Re-veer set"></input></a>';
 						altajugadorea='';
 						altajugadoreb='';

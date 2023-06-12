@@ -469,7 +469,7 @@ function pedirPartidos(ianioVer){
 			                			'</div>';			                			
 			               
 			               //var Ver = '<a href="TableroGrande.php?id='+v.idPartido+'&fecha='+v.Fecha+'">';
-			               var Ver = '<a href="TableroGrandev20.php?id='+v.idPartido+'&fecha='+v.Fecha+'&vuelve=CONTROL">';
+			               var Ver = '<a href="TableroGrandev25.php?id='+v.idPartido+'&fecha='+v.Fecha+'&vuelve=CONTROL">';
 								Ver +=  '<input type="button" id="verset" name="verset" class="btnVerSet_21 '+ claseColor +'" value="(ver)" title="Re-veer set"></input>';
 								 Ver +=  '</a>';
 

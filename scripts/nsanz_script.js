@@ -4,6 +4,9 @@
 
 $(document).ready(function(){
     // Hacemos la lógica que cuando nuestro SELECT cambia de valor haga algo
+
+
+
          $("#iclub").empty();
          $("#icity").empty();
          $("#inumeros").empty();
@@ -65,6 +68,9 @@ $(document).ready(function(){
 			}
             }); // FIN funcion ajax CLUBES
             
+//----------------------------
+//OBTIENE CIUDADES
+//----------------------------
          $.ajax({ 
             url:   './abms/obtener_ciudades.php',
             type:  'GET',
@@ -104,9 +110,13 @@ $(document).ready(function(){
 				$("#icity").prop('disabled', false);
 			}
             }); // FIN funcion ajax para CIUDADES
+//----------------------------
+//OBTIENE CIUDADES
+//----------------------------
 
-            
-//************************ CIUDADES 2 , RESPONSIVO *************************************************
+//----------------------------
+//OBTIENE CIUDADES 2
+//----------------------------
          $.ajax({
 				url:   './abms/obtener_ciudades.php',
 				type:  'GET',
@@ -144,6 +154,9 @@ $(document).ready(function(){
 					$("#icity2").prop('disabled', false);
 				}
 			}); // FIN funcion ajax para CIUDADES 2 PARA RESPONSIVO
+//----------------------------
+//OBTIENE CIUDADES 2
+//----------------------------
 
 
 /**************************************numeros / usuario ********************************/
@@ -184,8 +197,9 @@ $(document).ready(function(){
 }); // FIN funcion ajax para numeros
 
 
-/**************************************numeros / usuario ********************************/			            
-//************************ CATEGORIAS *************************************************              
+/**************************************numeros / usuario ********************************/	
+
+//************************ CATEGORIAS *************************************************         
          $.ajax({ 
             url:   './abms/obtener_categorias.php',
             type:  'GET',
@@ -746,7 +760,7 @@ $("#btnBuscarClub").click(function(){
 		$("#stopwatch").text(tiempoTxt);
 
     });
-
+	//	getFiltros();
 	// stopwatchjquery
 }); // parentesis del READY
 

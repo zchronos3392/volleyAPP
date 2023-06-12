@@ -278,7 +278,7 @@
 				{
 					
 				//var Tablero ='<a href="TableroGrande.php?id='+v.idPartido+'&fecha='+v.Fecha+'">';
-				var Tablero ='<a href="TableroGrandev20.php?id='+v.idPartido+'&fecha='+v.Fecha+'">';
+				var Tablero ='<a href="TableroGrandev25.php?id='+v.idPartido+'&fecha='+v.Fecha+'">';
 					Tablero +='<input type="button" id="verset" name="verset" class="btnVerSet_21  Verder Pequenio" value="(ver)" title="Ver Tablero"></input></a>';
 						
 				var verCSets ='<a href="CSets2.php?id='+v.idPartido+'&setmax='+v.setsnmax+'&fecha='+v.Fecha;
@@ -286,16 +286,16 @@
 					
 					var alta='<input type="button" id="volver" title="Cerrar partido" name="volver"'+
 						 	 ' class="btnVerSet_21 azulMa Pequenio" '+
-							 'value="X" onclick="cerrarPartido('+v.idPartido+',\''+v.Fecha+'\');"></input>';
+							 'value="Close" onclick="cerrarPartido('+v.idPartido+',\''+v.Fecha+'\');"></input>';
 							 
 					var borrar='<input type="button" id="eliminar" title="Eliminar Partido" name="eliminar"'+
 						 	 ' class="btnVerSet_21 Manzana Pequenio" '+
-							 'value="X" onclick="BorrarPartido('+v.idPartido+',\''+v.Fecha+'\');"></input>';
+							 'value="DEL" onclick="BorrarPartido('+v.idPartido+',\''+v.Fecha+'\');"></input>';
 							 							 
 					var modifica ='<a href="ModPartido.php?id='+v.idPartido+'&fechapart='+v.Fecha+'">'+
 									'<input type="button" id="modifica" title="modifica partido" name="modifica"'+
 						 	 ' class="btnVerSet_21 turquE Pequenio" '+
-							 'value="(*)"></input></a>';
+							 'value="MOD"></input></a>';
 
 			        if(v.descripcion.includes('PROGR')) var img = './img/PartidoONOFFSQR.png';
 					if(v.descripcion.includes('SUSPENDIDO')) var img = './img/PartidoSSPND.png';
@@ -324,7 +324,7 @@
 					  				  '<div class="imgdiv ilp215 ADMIN">'+
 					  					  '<img src="'+img+'" class="imgEstadoIndex_21" title="'+v.descripcion+'" onClick="levantarPopUp(this.title,'+v.idPartido+','+"'"+v.Fecha+"'"+');"></img>'+
 					  				  '</div>'+
-					  				 '<div class="ilp216 ADMIN Pequenio">'+borrar+alta+modifica+Tablero+verCSets+'</div>'+ 
+					  				 '<div class="ilp2116 ADMIN Pequenio">'+borrar+alta+modifica+Tablero+verCSets+'</div>'+ 
 								  		'<input type="hidden" name="PARTIDO'+v.Fecha+v.idPartido+'" />'+
 										 '<input type="hidden" id="fechaxpartido" value="'+v.Fecha+'" />'+
 										 '<input type="hidden" id="idxpartido" value="'+v.idPartido+'" />'+

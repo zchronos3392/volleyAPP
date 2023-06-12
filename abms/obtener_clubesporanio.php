@@ -18,8 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Manejar petici�n GET
 	 $ianio = 0;
      if(isset($_GET['ianio']))  $ianio = (int)$_GET['ianio'];
+     
+	 $icompetencia = 0;
+     if(isset($_GET['icompetencia']))  $icompetencia = (int)$_GET['icompetencia'];
+
 	 
-    $clubes = EquipoAnio::getAll($ianio,0);
+    $clubes = EquipoAnio::getAll($ianio,0,$icompetencia);
 	    if ($clubes) {
 			//Clubes":[{"idequipoanio":"1","idclub":"83","nombre":"CLUB NAUTICO HACOAJ ","clubabr":"HACOAJ","ianio":"2021"}]
             // busco las sedes del club

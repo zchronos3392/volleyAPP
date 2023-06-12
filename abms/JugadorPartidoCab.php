@@ -145,7 +145,7 @@ public static function getJugListaInicio($partido,$fecha,$iclub,$ianioe,$icatego
                 eq.idclub=$iclub
 				and eq.anioEquipo=$ianioe  ";
 
-    // echo("$consulta<br>");
+     //echo("$consulta<br>");
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);

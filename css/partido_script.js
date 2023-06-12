@@ -294,6 +294,8 @@ $(document).ready(function(){
             }); // FIN funcion ajax COMPETENCIAS
 
 $("#altap").click(function(){ 
+
+
     //QUE SE RECARGUE CUANDO PRESIONO CLICK..
     	//alert('Submit activado');
         // Guardamos el select de cursos
@@ -333,11 +335,10 @@ $("#altap").click(function(){
             success:  function (r){
                	// DESBloqueamos el SELECT de los cursos
     			//$("#isede").prop('disabled', false);
-    			$("mensaje").append('Partido ingresado');
+    				alert('Partido ingresado');
     				//console.log(r);
     				// esta linea aca y luego en Cpartidos.php frenan el submit 
-    				$("#FormPartidoC").submit(function(e){e.preventDefault();});			
-					window.location='AdministrarAPP.php';
+								// window.location='AdministrarAPP.php';
             },
             //error: function() {
 			error: function (xhr, ajaxOptions, thrownError) {

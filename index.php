@@ -15,12 +15,104 @@
 	   <link rel="stylesheet" href="./css/nsanz_style.css">
 	   <!--SCRIPTS PRIMERO HAY QUE VINCULAR LA LIBERIA JQUERY PARA QUE RECONOZCA EL $-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script type="text/javascript" src="./scripts/nsanz_script.js"></script>
-		<script type="text/javascript" src="./jqs/ietats.js">
+		<!--<script type="text/javascript" src="./scripts/nsanz_script.js"></script>-->
+		<!-- <script type="text/javascript" src="./jqs/ietats.js"> -->
 		</script>		
 		<script type="text/javascript">
 
 
+function limpiarFiltros(fechapartido,fechapartido2)
+{
+	$("#icomp").val('9999');
+	$("#icate").val('');
+	$("#icity2").val('9999');
+	$("#iclub").val('');
+	$("#ietats").val(0);
+	$("#fecDde").val(fechapartido);
+	$("#fecHta").val(fechapartido2);						
+}
+
+
+function getFiltros(){
+
+		var parametros = {
+			  "TEXTOCLAVE" : "FILTROSINDEX",
+		};
+
+		$.ajax({
+		  url:   './abms/obtenersesion.php',
+		  type:  'GET',
+		  data: parametros ,
+		  datatype:   'text json',
+		  async: false,
+		  beforeSend: function () {},
+		  done: function(data) {},
+		  success:  function (r) {
+		  	   var re = JSON.parse(r);
+
+			  	$(re['Filtros']).each(function(i, v)
+	                {
+	                //"icomp":"9999","icate":"","iclub":"","ietats":"0",
+	                //"icity2":"9999",
+	                //"fecDde":"2022-12-01","fecHta":"2022-12-31"}}
+						//alert('icomp en LEE SESION');
+						$("#icomp").val(v.icomp);
+						$("#icate").val(v.icate);
+						$("#iclub").val(v.iclub);
+									
+						$("#ietats").val(v.ietats);
+						
+						//console.log(v.icity2);
+						
+						$("#icity2").val(v.icity2);
+
+						$("#fecDde").val(v.fecDde);
+							//alert(v.fecDde);
+						$("#fecHta").val(v.fecHta);
+							//alert(v.fecHta);
+					});	
+		   },
+		    error: function (xhr, ajaxOptions, thrownError) {console.log(thrownError);}
+	  });// falta el seleccion de la cancha, para cargar los campos..		  
+	
+}
+	
+	function guardarFiltros(){
+
+			var parametrosFiltros = new Array();
+
+			parametrosFiltros.push( {"icomp":$("#icomp").val()});
+			parametrosFiltros.push( {"icate":$("#icate").val()});
+			parametrosFiltros.push( {"iclub":$("#iclub").val()});
+			
+			parametrosFiltros.push( {"ietats":$("#ietats").val()});
+
+			parametrosFiltros.push( {"icity2":$("#icity2").val()});
+
+			parametrosFiltros.push( {"fecDde":$("#fecDde").val()});
+			parametrosFiltros.push( {"fecHta":$("#fecHta").val()});
+
+
+			  var parametros = {
+				  "TEXTOCLAVE" : "FILTROSINDEX",
+				  "datos"		: parametrosFiltros
+			  };
+
+			  $.ajax({
+				  url:   './abms/grabarsesion.php',
+				  type:  'GET',
+				  data: parametros ,
+				  datatype:   'text json',
+				  beforeSend: function () {},
+				  done: function(data) {},
+				  success:  function (r) {
+				  	// 
+				  },
+				  error: function (xhr, ajaxOptions, thrownError) {console.log(thrownError);}
+				  		  	
+		  });// falta el seleccion de la cancha, para cargar los campos..		  
+	}
+	
 	function obtenerEscudo(idClub,idobjeto){
 	//console.log(idobjeto);
 	//var iEscudo='';
@@ -56,7 +148,8 @@
 
 		
 		function filtrar(){
-			
+			//aca grabo la sesion.
+			//alert( $("#icomp").val()  );
 			fechadesdeorden=0;
 			if ($("#fecDdeAscDsc").is(":checked")) {
 				// it is checked
@@ -75,7 +168,6 @@
 	        	"icate" : $("#icate").val(),
 				"icity" : $("#icity").val(),
 				"icity2" : $("#icity2").val(),
-				"icate" : $("#icate").val(),
 				"iclub" : $("#iclub").val(),
 				"fdesde" : $("#fecDde").val(),
 				"fdesdeOrden" : fechadesdeorden,
@@ -96,7 +188,7 @@
 						
 					},
 		            success:  function (r){
-						$("#grid-ListaPart21").empty();
+					$("#grid-ListaPart21").empty();
 
 		                $(r['Partidos']).each(function(i, v)
 		                { // indice, valor				
@@ -117,11 +209,14 @@
 
 			               
 			                var divClubA='<div class="ilp211" >'+
-			                				'<div class="ilp211x" >'+
-				                				'<div class="ilp211A" >'+
+			                				'<div class="ilp211Y" >'+
+											'<div class="ylp211A" >'+
+												    v.Inicio+
+				                				'</div>'+
+				                				'<div class="ylp211B" >'+
 				                					v.ClubA+
 				                				'</div>'+
-				                				'<div class="ilp211B" id="ilp211B_'+v.Fecha+v.idPartido+'">'+
+				                				'<div class="ylp211C" id="ilp211B_'+v.Fecha+v.idPartido+'">'+
 				                				'</div>'+
 				                			'</div>'+
 			                			'</div>';
@@ -137,7 +232,7 @@
 			                			'</div>';			                			
 			               
 			               //var Ver = '<a href="TableroGrande.php?id='+v.idPartido+'&fecha='+v.Fecha+'">';
-			               var Ver = '<a href="TableroGrandev20.php?id='+v.idPartido+'&fecha='+v.Fecha+'">';
+			               var Ver = '<a href="TableroGrandev25.php?id='+v.idPartido+'&fecha='+v.Fecha+'">';
 								Ver +=  '<input type="button" id="verset" name="verset" class="btnVerSet_21" value="(ver)" title="Re-veer set"></input>';
 								 Ver +=  '</a>';
 
@@ -146,20 +241,20 @@
 				  						divClubA+
 									  '<div class="ilp212">'+v.ClubARes+'</div>'+
 									    divClubB+
-									  '<div class="ilp214">'+v.ClubBRes+'  '+v.Inicio+'</div>'+
+									  '<div class="ilp214">'+v.ClubBRes+'</div>'+
 									  '<div class="imgdiv ilp215">'+
 									  		'<img id="imgEstadoIndex_21" src="'+img+'" class="imgEstadoIndex_21" title="'+v.descripcion+'" alt="'+v.descripcion+'"></img>'+
 									 '</div>'+
 					 			  	 '<div class="ilp2116">'+
 								  		'<input type="hidden" name="PARTIDO'+v.Fecha+v.idPartido+'" />'+
-								  			alta+Ver+
+								  			alta+
 										 '<input type="hidden" id="fechaxpartido" value="'+v.Fecha+'" />'+
 										 '<input type="hidden" id="idxpartido" value="'+v.idPartido+'" />'+
 								 	 '</div>'+
 									  '<div class="ilp217">Competencia: '+v.cnombre+'</div>'+
 									  '<div class="ilp218">'+v.CatDesc+'</div>'+
 									  '<div class="ilp219">'+v.Fecha+'</div>'+
-									  '<div class="ilp2110"></div>'+
+									  '<div class="ilp2110">'+Ver+'</div>'+
 								   '</section>'+
 							   '</section>');
 							obtenerEscudo(v.idcluba,'#ilp211B_'+v.Fecha+v.idPartido);
@@ -175,23 +270,274 @@
 		}; 
 
 		$(document).ready(function(){
-			
-			
-				//filtrar();
-				$("#icomp").on("change click",function() {filtrar();});
+
+         //$("#icomp").empty();
+         $("#icate").empty();
+         $("#iclub").empty();
+         $("#ietats").empty();
+         //$("#icity2").empty();
+
+        var iclubes = $("#iclub");
+        var icity   = $("#icity2");
+        var icate   = $("#icate");
+        var icomp   = $("#icomp");
+        // esto arreglo el tema del alta triplle..
+        //	data: { id : ESTE ES EL SELECT DESDE DONDE TOMAMOS EL ID PARA EL QUERY : alumnos.val() }
+        //	el signo de pregunta apunta a la direccion url base que es donde corre equipos.php
+         //sin embargo la direccion final queda: http://localhost/volleyAPP/equipos.php?abms/obtener_clubes.php
+         // y eso esta mal !!
+
+         $.ajax({ 
+            url:   './abms/obtener_clubes.php',
+            type:  'GET',
+            dataType: 'json',
+            async:false,
+			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+            beforeSend: function (){
+				// Bloqueamos el SELECT de los cursos
+    			$("#iclub").prop('disabled', true);
+    			//$("#icity").prop('disabled', true);
+    		},
+            done: function(data){
+            	console.log('DONE: ');
+				console.log(data);	
+			},
+            success:  function (r){
+            	// SI LA TABLA ESTA VACIA, NO ENTRA ACA.
+               	// DESBloqueamos el SELECT de los cursos
+				// Limpiamos el select
+				// FORMA CORRECTA DE LEER EL VECTOR:r["estado"] y r["Clubes"] 
+                $(r['Clubes']).each(function(i, v)
+                { // indice, valor
+                		//TUVE QUE AGREGARLE, QUE NO EXISTA EL ELEMENTO, PORQUE SE ESTA
+                		// TRIPLICANDO UN EVENTO QUE NO PUDE ENCONTRAR Y CARGABA TODOS LOS DATOS TRES VECESSS
+                	if (! $('#iclub').find("option[value='" + v.idclub + "']").length)
+                	{						
+    					$("#iclub").append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
+					}		
+                });
+                $("#iclub").prop('disabled', false);
+                //$("#icity").prop('disabled', false);
+            },
+             error: function (xhr, ajaxOptions, thrownError) {
+			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+			$("#iclub").append('<option value="' + '9999' + '">' + 'JQERY:Tabla vacia' + '</option>');
+			$("#iclub").val('9999');
+				console.log(xhr.responseText);
+				console.log(thrownError);
+				$("#iclub").prop('disabled', false);
+			}
+            }); // FIN funcion ajax CLUBES
+            
+//----------------------------
+//OBTIENE CIUDADES 2
+//----------------------------
+         $.ajax({
+				url:   './abms/obtener_ciudades.php',
+				type:  'GET',
+				dataType: 'json',
+				async:false,
+				// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX
+				beforeSend: function () {
+					// Bloqueamos el SELECT de los cursos
+					$("#icity2").prop('disabled', true);
+
+				},
+				done: function(data) {
+					console.log('DONE: ');
+					console.log(data);
+				},
+				success:  function (r) {
+					// SI LA TABLA ESTA VACIA, NO ENTRA ACA.
+					// DESBloqueamos el SELECT de los cursos
+					// Limpiamos el select
+					// FORMA CORRECTA DE LEER EL VECTOR:r["estado"] y r["Clubes"]
+					$(r['Ciudades']).each(function(i, v) { // indice, valor
+
+						if (! $('#icity2').find("option[value='" + v.idCiudad + "']").length) {
+							$("#icity2").append('<option value="' + v.idCiudad + '">' + v.Nombre + '</option>');
+						}
+					});
+					$("#icity2").prop('disabled', false);
+
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+					$("#icity2").append('<option value="' + '9999' + '">' + 'JQERY:Tabla Ciudades vacia' + '</option>');
+					$("#icity2").val('9999');
+					console.log(xhr.responseText);
+					console.log(thrownError);
+					$("#icity2").prop('disabled', false);
+				}
+			}); // FIN funcion ajax para CIUDADES 2 PARA RESPONSIVO
+//----------------------------
+//OBTIENE CIUDADES 2
+//----------------------------
+
+//************************ CATEGORIAS *************************************************         
+         $.ajax({ 
+            url:   './abms/obtener_categorias.php',
+            type:  'GET',
+            dataType: 'json',
+            async:false,
+			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+            beforeSend: function (){
+				// Bloqueamos el SELECT de los cursos
+    			$("#iclub").prop('disabled', true);
+    			$("#icity2").prop('disabled', true);
+    			$("#icate").prop('disabled', true);
+    		},
+            done: function(data){
+					console.log(data);	
+			},
+            success:  function (r){
+            	$(r['Categorias']).each(function(i, v)
+                { // indice, valor
+                	if (! $('#icate').find("option[value='" + v.idcategoria + "']").length)
+                	{
+                		if(v.categoriaActiva==1)
+							$("#icate").append('<option value="' + v.idcategoria + '">(A) ' + v.descripcion+' - ' + v.EdadInicio+' / ' + v.EdadFin + '</option>');
+						else
+							$("#icate").append('<option value="' + v.idcategoria + '">' + v.descripcion+' - ' + v.EdadInicio+' / ' + v.EdadFin + '</option>');
+					}		
+                });
+                $("#iclub").prop('disabled', false);
+                $("#icate").prop('disabled', false);
+                $("#icity2").prop('disabled', false);
+            },
+             error: function (xhr, ajaxOptions, thrownError) {
+			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+			$("#icate").append('<option value="' + '9999' + '">' + 'JQERY:Tabla CATEGORIAS vacia' + '</option>');
+			$("#icate").val('9999');
+				//console.log(xhr.responseText);
+				//console.log(thrownError);
+				$("#icate").prop('disabled', false);
+			}
+            }); // FIN funcion ajax categorias
+            
+//**************** COMPETENCIAS *********************************************/            
+         $.ajax({ 
+            url:   './abms/obtener_comps.php',
+            type:  'GET',
+            dataType: 'json',
+			async:false,
+			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+            beforeSend: function (){
+				// Bloqueamos el SELECT de las COMPETENCIAS 
+				$("#icomp").prop('disabled', true);
+    		},
+            done: function(data){
+            	console.log('DONE: ');
+				console.log(data);	
+			},
+            success:  function (r){
+            	// SI LA TABLA ESTA VACIA, NO ENTRA ACA.
+               	// DESBloqueamos el SELECT de los cursos
+				// Limpiamos el select
+				// FORMA CORRECTA DE LEER EL VECTOR:r["estado"] y r["Clubes"] 
+                $(r['Competencias']).each(function(i, v)
+                { // indice, valor
+						//TUVE QUE AGREGARLE, QUE NO EXISTA EL ELEMENTO, PORQUE SE ESTA
+                		// TRIPLICANDO UN EVENTO QUE NO PUDE ENCONTRAR Y CARGABA TODOS LOS DATOS TRES VECESSS
+                	if (! $('#icomp').find("option[value='" + v.idcomp + "']").length)
+                	{
+						$("#icomp").append('<option value="' + v.idcomp + '">' + v.cnombre + '</option>');
+					}		
+                });
+                $("#icomp").prop('disabled', false);
+           },
+             error: function (xhr, ajaxOptions, thrownError) {
+			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+			$("#icomp").append('<option value="' + '9999' + '">' + 'JQERY:Tabla vacia' + '</option>');
+			$("#icomp").val('9999');
+				console.log(xhr.responseText);
+				console.log(thrownError);
+				$("#iclub").prop('disabled', false);
+			}
+            }); // FIN funcion ajax COMPETENCIAS
+
+//------------------------------
+// ESTADOS DEL PARTIDO
+//------------------------------
+        // esto arreglo el tema del alta triplle..
+         $.ajax({ 
+            url:   './abms/obtener_estados.php',
+            type:  'GET',
+            dataType: 'json',
+			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+            beforeSend: function (){
+				// Bloqueamos el SELECT de los cursos
+    			$("#ietats").prop('disabled', true);
+       		},
+            done: function(data){
+            	
+			},
+            success:  function (r){
+            	// SI LA TABLA ESTA VACIA, NO ENTRA ACA.
+               	// DESBloqueamos el SELECT de los ESTADOS
+				// Limpiamos el select
+				// FORMA CORRECTA DE LEER EL VECTOR:r["estado"] y r["Clubes"] 
+                $(r['Estados']).each(function(i, v)
+                { // indice, valor
+                		//TUVE QUE AGREGARLE, QUE NO EXISTA EL ELEMENTO, PORQUE SE ESTA
+                		// TRIPLICANDO UN EVENTO QUE NO PUDE ENCONTRAR Y CARGABA TODOS LOS DATOS TRES VECESSS
+                	if (! $('#ietats').find("option[value='" + v.idestado + "']").length)
+                	{
+						$("#ietats").append('<option value="' + v.idestado + '" label="'+v.descripcion+'">' + v.descripcion + '</option>');
+					}		
+                });
+                $("#ietats").prop('disabled', false);
+            },
+             error: function (xhr, ajaxOptions, thrownError) {
+			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+			$("#ietats").append('<option value="' + '9999' + '">' + 'JQERY:Tabla vacia' + '</option>');
+			$("#ietats").val('9999');
+			$("#ietats").prop('disabled', false);
+			}
+            }); // FIN funcion ajax ESTADOS
+//**************** CLUBES *********************************************/   
+
+//------------------------------------------------------------------------
+// CARGA DESDE EL READY DE LOS COMBOS....
+//------------------------------------------------------------------------
+
+
+//FILTROS.
+				$("#icomp").on("change click",function() {
+					guardarFiltros();
+					filtrar();
+				});
+
 				$("#ietats").append('<option value="0" label="Estados..">Estados..</option>');
 				$("#ietats").val(0);
-				$("#ietats").on("change click",function() {filtrar();});				
-				$("#fecDdeAscDsc").on("change click",function() {filtrar();});
-				$("#fecDdeAscDsc2").on("change click",function() {filtrar();});				
-				$("#icate").on("change click",function() {filtrar();});
-					$("#icate").append('<option value="' + '' + '">' + 'Categorias...' + '</option>');
-					$("#icate").val('');
-					
-				$("#iclub").on("change click",function() {filtrar();});
-					$("#iclub").append('<option value="' + '' + '">' + 'Clubes...' + '</option>');
-					$("#iclub").val('');
-				$("#fecDde").on("change",function() {filtrar();});
+				$("#ietats").on("change click",function() {
+					guardarFiltros();
+					filtrar();});
+
+				$("#fecDdeAscDsc").on("change click",function() {
+					guardarFiltros();
+					filtrar();});
+
+				$("#fecDdeAscDsc2").on("change click",function() {
+					guardarFiltros();
+					filtrar();});				
+
+				$("#icate").on("change click",function() {
+					guardarFiltros();
+					filtrar();});
+				$("#icate").append('<option value="' + '' + '">' + 'Categorias...' + '</option>');
+				$("#icate").val('');
+
+				$("#iclub").on("change click",function() {
+					guardarFiltros();
+					filtrar();});
+				$("#iclub").append('<option value="' + '' + '">' + 'Clubes...' + '</option>');
+				$("#iclub").val('');
+
+				$("#fecDde").on("change",function() {
+					guardarFiltros();
+					filtrar();});
+				
 						 var f=new Date();
 						 var dias = new Array ("01","02","03","04","05","06","07","08","09","10","11","12"
 						 				,"13","14","15","16","17","18","19","20","21","22","23","24","25","26"
@@ -199,7 +545,11 @@
 						 var meses = new Array ("01","02","03","04","05","06","07","08","09","10","11","12");
 						 var fechapartido = (f.getFullYear()) + "-" + meses[f.getMonth()] + "-" +dias[(0)] ;
 				$("#fecDde").val(fechapartido);
-				$("#fecHta").on("change",function() {filtrar();});
+
+				$("#fecHta").on("change",function() {
+					guardarFiltros();
+					filtrar();});
+
 						 var f2=new Date();
 						 var dias2 = new Array ("01","02","03","04","05","06","07","08","09","10","11","12"
 						 				,"13","14","15","16","17","18","19","20","21","22","23","24","25","26"
@@ -208,13 +558,23 @@
 						 var fechapartido2 = f.getFullYear() + "-" + meses2[11] + "-" +dias2[(30)] ;
 				$("#fecHta").val(fechapartido2);
 				
-				$("#icity").on("change click",function() {filtrar();});
-					$("#icity").append('<option value="' + '' + '">' + 'Ciudades...' + '</option>');
-					$("#icity").val('');
 
-					$("#icity2").on("change click",function() {filtrar();});
-					
-				filtrar();					
+				$("#icity2").append('<option value="' + '' + '">' + 'Ciudades...' + '</option>');
+				$("#icity2").val('');
+				
+				$("#icity2").on("change click",function() {
+					guardarFiltros();
+					filtrar();});
+				
+				$("#limpiarfiltro").on("click",function() {
+					limpiarFiltros(fechapartido,fechapartido2);
+					guardarFiltros();
+					filtrar();});
+
+				getFiltros();
+				filtrar();		
+				
+		//FILTROS.	
 		}); // end of DOCUMENT.READY 	
 		</script>
     </head>
@@ -250,7 +610,14 @@
 			<div class="itemBusc9">Estado</div> 
 			<div class="itemBusc10"><select id="ietats" class="SelList"><option value="9999" selected>Estados..</option></select></div> 
 			<div class="itemBusc11">Ciudades</div> 					
-			<div class="itemBusc12"><select id="icity2" class="icity2"><option value="9999">Ciudades...</option></select></div> 				
+			<div class="itemBusc12"><select id="icity2" class="icity2"><option value="9999">Ciudades...</option></select></div>
+			<div class="itemBusc13">Limpiar filtros</div>
+			<div class="itemBusc14"></div>		
+			<div class="itemBusc15"></div>		
+			<div class="itemBusc16">
+				<input type="button" id="limpiarfiltro" name="limpiarfiltro" class="btnBuscar2" value="Clean" title="Limpia filtros"></input>
+				
+			</div>								
 	 </div> 
 
    
@@ -282,7 +649,7 @@
  			  	 <div class="ilp216">
 			  		<input type="hidden" name="PARTIDO2019-11-0803" />
 			  		  <!--<a href="TableroGrande.php?id=3&fecha=2019-11-08">-->
-			   		  <a href="TableroGrandev20.php?id=3&fecha=2019-11-08">
+			   		  <a href="TableroGrandev25.php?id=3&fecha=2019-11-08">
 			   				<input type="button" id="verset" name="verset" class="btnVerSet_21" value="(ver)" title="Re-veer set"></input>
 			   		  </a>
 					 <input type="hidden" id="fechaxpartido" value="2019-11-08" />

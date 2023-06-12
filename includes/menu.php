@@ -1,5 +1,5 @@
 <?php ini_set('display_errors', '1'); ?>
-	<link  rel="icon"   href="favicon.ico" type="image/png" />
+	<link  rel="icon"   href="./img/favicons/favicon.ico" type="image/png" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -11,9 +11,13 @@
 			});
 		</script>
 <nav id="barra-navegacion" class="tope-fijo" name="barra-navegacion">
-<Section class="ContenedorLogo">
-	<a href="index.php"><img  class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png" /></a>
-</Section>	
+
+<a href="index.php">
+	<Section class="ContenedorLogo">
+	 <img  class="LogoApp" alt="VOLLEY.app" src="./img/vAPP23.gif" /> 
+	</Section>
+</a>
+	
 <!--*************** newmenu.php ******************* -->
 <Section id="headerbar" name="headerbar" class="headerbar">
 	<?php	

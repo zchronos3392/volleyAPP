@@ -96,8 +96,8 @@ function cargarDatosJugadores(){
 				
 				$(r['JugadoresINI']).each(function(i, v)
 				{ // indice,0 valor
-					//if(v.Libero != null)
-					//		alert('ES NULL !!!! '+ v.Libero);
+					//if(v.activoSN != null)
+					//		alert('ES NULL !!!! '+ v.activoSN);
               		puestoPosta=0;
 //	if(v.secuencia == 1)					
 				if (! $('#canchaA').find("div[value='" + v.nombre + "']").length)
@@ -618,7 +618,9 @@ function chequeacarga(){
 <div id="stikcy">
 <header class="headerIngreso_2">
 	<section class="LogoApp fijaLogo" style="z-index: 0;">
-		<a href="index.php"><img  class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png" /></a>
+		<a href="index.php">
+			<!-- <img  class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png" /> -->
+		</a>
 	</section>	
 </header>
    <div class="ControlesPosicion21_2 ">

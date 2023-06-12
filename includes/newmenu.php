@@ -1,9 +1,11 @@
 <?php ini_set('display_errors', '1'); ?>
 
 <nav id="barra-navegacion" class="tope-fijo" name="barra-navegacion">
-<Section class="ContenedorLogo">
-	<a href="index.php"><img  class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png" /></a>
-</Section>	
+<a href="index.php">
+	<Section class="ContenedorLogo">
+			<img  class="LogoApp" alt="VOLLEY.app" src="./img/vAPP23.gif" /> 
+	</Section>	
+</a>
 <!--*************** MENU.PHP ******************* -->
 <Section id="headerbar" name="headerbar" class="headerbar">
 	<?php	

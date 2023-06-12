@@ -83,7 +83,7 @@ CSETS::function crearSet()::/abms/insertar_sets.php'
 	"COPIARJUGADORES":	1 
   $jugsA = partjug::getJugSetLoad($idpartido,$fecha2,$clublocalA,$anioEq,$setnumero);
 http://localhost/volleyAPP_desa/CSets2.php?id=4&setmax=5&fecha=2021-03-20	
-	SELECT eq.numero,eq.nombre,eq.categoria,eq.idjugador,vappjugpartido.idclub,vappjugpartido.posicion,vappjugpartido.Libero,ptos.puestoxcat,
+	SELECT eq.numero,eq.nombre,eq.categoria,eq.idjugador,vappjugpartido.idclub,vappjugpartido.posicion,vappjugpartido.activoSN,ptos.puestoxcat,
 					vappjugpartido.secuencia
 				 FROM vappjugpartido
                inner join vappequipo eq

@@ -258,7 +258,7 @@ class Club
      */
     public static function insert($nombre,$clubabr,$escudo,$iciudad){
         // Sentencia INSERT
-        $comando = "INSERT INTO vappclub ( idciudad,nombre, clubabr,escudo) VALUES( ?,?,?,?)";
+        $comando = "INSERT INTO vappclub ( nombre, clubabr,escudo,idciudad) VALUES( ?,?,?,?)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);

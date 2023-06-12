@@ -2,25 +2,30 @@
 <project name="C:\laragon\www\volleyAPP_desa\voleyApp_desa.clpprj">
 	<settings>
 		<PM_URL><![CDATA[C:\wamp64\www\public_html\]]></PM_URL><PM_HOME_URL><![CDATA[C:\wamp64\www\public_html\]]></PM_HOME_URL><PM_LIBS><![CDATA[]]></PM_LIBS><PM_FTP_CONNECTION><![CDATA[SERVIDOR]]></PM_FTP_CONNECTION><PM_FTP_DIR><![CDATA[/public_html/volleyAPP_desa/]]></PM_FTP_DIR><PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE></settings><removed value=";C:\wamp64\www\volleyAPP\Ccanchas20.php;C:\wamp64\www\volleyAPP\obtener_ciudades.php;C:\wamp64\www\volleyAPP\obtener_clubes.php;C:\wamp64\www\volleyAPP_desa\JugadorPartido.php;C:\wamp64\www\volleyAPP_desa\css\Set.php;C:\wamp64\www\volleyAPP_desa\css\delupd.js;C:\wamp64\www\volleyAPP_desa\css\iclubes.js;C:\wamp64\www\volleyAPP_desa\css\index.php;C:\wamp64\www\volleyAPP_desa\includes\nsanz_style.css;C:\wamp64\www\volleyAPP_desa\jQuerys\abms;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Cancha.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Categoria.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Ciudad.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Club.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Competencia.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\ESTRCTURAS DE TABLAS PARA ARMAR ABMS.txt;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Equipo.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Estado.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Funciones.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Jugador.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\JugadorPartido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\MigrarCatjugadores.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Numeros.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Partido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Posicion.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Provincia.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Sede.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\Set.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\actualiza_cancha.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\actualiza_ciudad.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\actualiza_club.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\actualiza_competencia.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\actualiza_sede.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\actualizar_club.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\borrar_cancha.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\borrar_categ.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\borrar_ciudad.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\borrar_club.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\borrar_comp.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\borrar_jugador_partido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\borrar_sede.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\cambiar_estado_partido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\cambiar_jugador_partido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\cerrar_partido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\cerrarsetdata.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\database.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\eliminar_jugador.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\eliminar_set.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\index.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\inserta_jugador_set.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_cancha.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_categoria.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_ciudad.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_club.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_competencia.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_estado.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_jugador.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_jugador_partido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_partido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_sede.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_sets.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertar_sets_20.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\insertarsetdata.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\migrar_jugador.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\modificar_partido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\mysql_login.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_cancha.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_cancha_sede.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_canchas.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_categorias.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_ciudad_por_id.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_ciudades.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_club_por_id.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_clubes.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_comp_por_id.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_comps.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_estados.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_jugadores.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_jugpartido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_jugpartido2.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_numeros.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_partidos.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_resumen.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_sede_por_id.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_sedes.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_set_partido.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_setinicial.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\obtener_sets.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\sedesxclub.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\setcate.php;C:\wamp64\www\volleyAPP_desa\jQuerys\abms\setcomp.php;"/><added value=""/><lastopfiles>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\mysql_login.php"/>
+		<file name="C:\laragon\www\volleyAPP_desa\index.php"/>
+		<file name="C:\laragon\www\volleyAPP_desa\css\nsanz_style.css"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\obtenersesion.php"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\SesionTabla.php"/>
 	</lastopfiles>
 	<todoblock>
 		<todofile name="C:\laragon\www\volleyAPP_desa\abms\insertar_sets.php">
 			<todo name="TODO ESTO SE MOVIO A INSERTAR_PARTIDO, Y JUGADORPARTIDOCABECERA." pos="2;66"/>
-			<todo name="TODO ESTO SE MOVIO A INSERTAR_PARTIDO, Y JUGADORPARTIDOCABECERA." pos="2;246"/>
+			<todo name="TODO ESTO SE MOVIO A INSERTAR_PARTIDO, Y JUGADORPARTIDOCABECERA." pos="2;259"/>
 		</todofile>
 	</todoblock>
 	<dbgurls>
 	</dbgurls>
 	<filescache>
+		<file name="C:\laragon\www\volleyAPP_desa\scripts\vappstrats.sql" crc="1671636225"/>
 		<file name="C:\laragon\www\volleyAPP_desa\scripts\partido_script.js" crc="1669233268"/>
-		<file name="C:\laragon\www\volleyAPP_desa\scripts\nsanz_script.js" crc="1669233267"/>
+		<file name="C:\laragon\www\volleyAPP_desa\scripts\nsanz_script.js" crc="1672682842"/>
 		<file name="C:\laragon\www\volleyAPP_desa\scripts\iclubes.js" crc="1669233267"/>
 		<file name="C:\laragon\www\volleyAPP_desa\scripts\delupd.js" crc="1669233270"/>
 		<file name="C:\laragon\www\volleyAPP_desa\scripts\config_club_script.js" crc="1669233268"/>
 		<file name="C:\laragon\www\volleyAPP_desa\jQuerys\jqueryv1_11_1.js" crc="1669233267"/>
 		<file name="C:\laragon\www\volleyAPP_desa\jQuerys\jquery.min.js" crc="1669233267"/>
 		<file name="C:\laragon\www\volleyAPP_desa\jqs\moment.min.js" crc="1669233267"/>
+		<file name="C:\laragon\www\volleyAPP_desa\jqs\istrats.js" crc="1672091141"/>
 		<file name="C:\laragon\www\volleyAPP_desa\jqs\ipuestos.js" crc="1669233267"/>
 		<file name="C:\laragon\www\volleyAPP_desa\jqs\ietats.js" crc="1669233267"/>
 		<file name="C:\laragon\www\volleyAPP_desa\jqs\iclubes.js" crc="1669233267"/>
@@ -38,7 +43,7 @@
 		<file name="C:\laragon\www\volleyAPP_desa\includes\viejomenuconapp.php" crc="1669233265"/>
 		<file name="C:\laragon\www\volleyAPP_desa\includes\nsanz_style.css" crc="1669233266"/>
 		<file name="C:\laragon\www\volleyAPP_desa\includes\newmenu.php" crc="1669233266"/>
-		<file name="C:\laragon\www\volleyAPP_desa\includes\menuApps.php" crc="1669233266"/>
+		<file name="C:\laragon\www\volleyAPP_desa\includes\menuApps.php" crc="1671656836"/>
 		<file name="C:\laragon\www\volleyAPP_desa\includes\menu.php" crc="1669233266"/>
 		<file name="C:\laragon\www\volleyAPP_desa\img\vappanioequipo.sql" crc="1669233221"/>
 		<file name="C:\laragon\www\volleyAPP_desa\img\recibeimagenes.php" crc="1669233222"/>
@@ -54,11 +59,11 @@
 		<file name="C:\laragon\www\volleyAPP_desa\css\tablero_style.css" crc="1669233216"/>
 		<file name="C:\laragon\www\volleyAPP_desa\css\session_scripts.php" crc="1669233216"/>
 		<file name="C:\laragon\www\volleyAPP_desa\css\partido_script.js" crc="1669233216"/>
-		<file name="C:\laragon\www\volleyAPP_desa\css\nsanz_style.css" crc="1669240179"/>
+		<file name="C:\laragon\www\volleyAPP_desa\css\nsanz_style.css" crc="1672793730"/>
 		<file name="C:\laragon\www\volleyAPP_desa\css\nsanz_script.js" crc="1669233217"/>
 		<file name="C:\laragon\www\volleyAPP_desa\css\iclubes.js" crc="1669233216"/>
-		<file name="C:\laragon\www\volleyAPP_desa\css\estiloCargaJugadores.css" crc="1669233219"/>
-		<file name="C:\laragon\www\volleyAPP_desa\css\demo.html" crc="1669233219"/>
+		<file name="C:\laragon\www\volleyAPP_desa\css\estiloCargaJugadores.css" crc="1671196884"/>
+		<file name="C:\laragon\www\volleyAPP_desa\css\demo.html" crc="1671655577"/>
 		<file name="C:\laragon\www\volleyAPP_desa\css\delupd.js" crc="1669233219"/>
 		<file name="C:\laragon\www\volleyAPP_desa\css\config_club_script.js" crc="1669233219"/>
 		<file name="C:\laragon\www\volleyAPP_desa\css\bootstrap.css" crc="1669233219"/>
@@ -69,20 +74,22 @@
 		<file name="C:\laragon\www\volleyAPP_desa\abms\sube_foto.php" crc="1669233204"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\setcomp.php" crc="1669233204"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\setcate.php" crc="1669233204"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\Set.php" crc="1669233215"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\SesionTabla.php" crc="1669233215"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\Set.php" crc="1672177151"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\SesionTabla.php" crc="1672796386"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\sedesxclub.php" crc="1669233204"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Sede.php" crc="1669233215"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\salirsesion.php" crc="1669233204"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php" crc="1669233215"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\Rotaciones.php" crc="1671032637"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Provincia.php" crc="1669233215"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Posicion.php" crc="1669233215"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\Partido.php" crc="1669233215"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\Partido.php" crc="1672686619"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\obtenersesion.php" crc="1672796381"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_varios.php" crc="1669233205"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_strats1.php" crc="1671636755"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_stats.php" crc="1669233205"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_sets.php" crc="1669233205"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_setinicial.php" crc="1669233205"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_set_partido.php" crc="1669233205"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_set_partido.php" crc="1671042691"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_sedes.php" crc="1669233205"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_sede_por_id.php" crc="1669233206"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_resumenv20.php" crc="1669233206"/>
@@ -90,7 +97,7 @@
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_puestos.php" crc="1669233206"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_puestojug.php" crc="1669233206"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_partidosClub.php" crc="1669233206"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_partidos.php" crc="1669233206"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_partidos.php" crc="1672686588"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_partidoCab.php" crc="1669233206"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_numeros2.php" crc="1669233207"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_numeros.php" crc="1669233208"/>
@@ -113,19 +120,21 @@
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_cancha_sede.php" crc="1669233209"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\obtener_cancha.php" crc="1669233209"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Numeros.php" crc="1669233215"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\mysql_login.php" crc="1669483417"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\mysql_login.php" crc="1669610114"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\modificar_partido.php" crc="1669233210"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\modificar_jugadorabm.php" crc="1669233210"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\modifica_strat.php" crc="1671637824"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\modifica_posicion.php" crc="1669233210"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\MigrarCatjugadores.php" crc="1669233215"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\migrar_jugador.php" crc="1669233210"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\JugadorPuestos.php" crc="1669233215"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php" crc="1669233215"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php" crc="1669233215"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\JugadorPartidoCab.php" crc="1670776684"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\JugadorPartido.php" crc="1671227591"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Jugador.php" crc="1669233215"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\insertarsetdata.php" crc="1669233210"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_sets_20.php" crc="1669233210"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_sets.php" crc="1669233210"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\insertarsetdata.php" crc="1672259763"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_strat.php" crc="1671637424"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_sets_20.php" crc="1672171812"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_sets.php" crc="1672171859"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_sede.php" crc="1669233210"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_posicion.php" crc="1669233210"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_partido.php" crc="1669233211"/>
@@ -140,16 +149,18 @@
 		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_ciudad.php" crc="1669233211"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_categoria.php" crc="1669233212"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\insertar_cancha.php" crc="1669233212"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\inserta_jugador_set.php" crc="1669233212"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\inserta_jugador_set.php" crc="1672171869"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\index.php" crc="1669233212"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\grabarsesion.php" crc="1669233212"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\grabarsesion.php" crc="1672675113"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Fotos.php" crc="1669233215"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\finpartido.php" crc="1669233212"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\ESTRCTURAS DE TABLAS PARA ARMAR ABMS.txt" crc="1669233216"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\Estrategias.php" crc="1671638026"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Estado.php" crc="1669233215"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Errores.php" crc="1669233215"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\EquipoAnio.php" crc="1669233215"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Equipo.php" crc="1669233215"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\eliminar_strat1.php" crc="1671637927"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\eliminar_set.php" crc="1669233212"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\eliminar_posicion.php" crc="1669233212"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\eliminar_jugador.php" crc="1669233212"/>
@@ -161,11 +172,11 @@
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Club.php" crc="1669233216"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Ciudad.php" crc="1669233216"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\check-insertar_jugadores_sets.php" crc="1669233213"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\cerrarsetdata.php" crc="1669233213"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\cerrarsetdata.php" crc="1672171915"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\cerrar_partido.php" crc="1669233213"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Categoria.php" crc="1669233216"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\Cancha.php" crc="1669233216"/>
-		<file name="C:\laragon\www\volleyAPP_desa\abms\cambiar_jugador_partido.php" crc="1669233213"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\cambiar_jugador_partido.php" crc="1672171958"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\cambiar_estado_partido.php" crc="1669233213"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\borrar_sede.php" crc="1669233213"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\borrar_partido.php" crc="1669233213"/>
@@ -184,8 +195,9 @@
 		<file name="C:\laragon\www\volleyAPP_desa\abms\actualiza_ciudad.php" crc="1669233214"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\actualiza_cancha.php" crc="1669233214"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\activar_categoria.php" crc="1669233215"/>
+		<file name="C:\laragon\www\volleyAPP_desa\abms\activacion_jugador_partido.php" crc="1670537263"/>
 		<file name="C:\laragon\www\volleyAPP_desa\abms\abm_clubesporanio.php" crc="1669233215"/>
-		<file name="C:\laragon\www\volleyAPP_desa\VerPosiciones.php" crc="1669233192"/>
+		<file name="C:\laragon\www\volleyAPP_desa\VerPosiciones.php" crc="1670515102"/>
 		<file name="C:\laragon\www\volleyAPP_desa\VerCSetsold2.php" crc="1669233193"/>
 		<file name="C:\laragon\www\volleyAPP_desa\VerCSets_old.php" crc="1669233193"/>
 		<file name="C:\laragon\www\volleyAPP_desa\VerCSets.php" crc="1669233193"/>
@@ -201,7 +213,7 @@
 		<file name="C:\laragon\www\volleyAPP_desa\sesioner.php" crc="1669233190"/>
 		<file name="C:\laragon\www\volleyAPP_desa\robots.txt" crc="1669233190"/>
 		<file name="C:\laragon\www\volleyAPP_desa\robots.old.txt" crc="1669233190"/>
-		<file name="C:\laragon\www\volleyAPP_desa\queries_all.php" crc="1669233190"/>
+		<file name="C:\laragon\www\volleyAPP_desa\queries_all.php" crc="1670515102"/>
 		<file name="C:\laragon\www\volleyAPP_desa\procesarPunto.php" crc="1669233190"/>
 		<file name="C:\laragon\www\volleyAPP_desa\popUp_vers2.php" crc="1669233190"/>
 		<file name="C:\laragon\www\volleyAPP_desa\popUp.php" crc="1669233190"/>
@@ -212,7 +224,7 @@
 		<file name="C:\laragon\www\volleyAPP_desa\numeros.php" crc="1669233191"/>
 		<file name="C:\laragon\www\volleyAPP_desa\nsanz_style.css" crc="1669233191"/>
 		<file name="C:\laragon\www\volleyAPP_desa\NovedadesSet00.php" crc="1669233193"/>
-		<file name="C:\laragon\www\volleyAPP_desa\NovedadesSet.php" crc="1669233193"/>
+		<file name="C:\laragon\www\volleyAPP_desa\NovedadesSet.php" crc="1672172174"/>
 		<file name="C:\laragon\www\volleyAPP_desa\noteas implementacion.txt" crc="1669233191"/>
 		<file name="C:\laragon\www\volleyAPP_desa\notas sobre VOLLEYAPP.txt" crc="1669233191"/>
 		<file name="C:\laragon\www\volleyAPP_desa\mysql_login000.php" crc="1669233191"/>
@@ -224,7 +236,7 @@
 		<file name="C:\laragon\www\volleyAPP_desa\jugadores_set.php" crc="1669233191"/>
 		<file name="C:\laragon\www\volleyAPP_desa\ingreso.php" crc="1669233192"/>
 		<file name="C:\laragon\www\volleyAPP_desa\indexold.php" crc="1669233192"/>
-		<file name="C:\laragon\www\volleyAPP_desa\index.php" crc="1669233192"/>
+		<file name="C:\laragon\www\volleyAPP_desa\index.php" crc="1672794642"/>
 		<file name="C:\laragon\www\volleyAPP_desa\historial.php" crc="1669233192"/>
 		<file name="C:\laragon\www\volleyAPP_desa\generacion log de errores voleyAPP.txt" crc="1669233192"/>
 		<file name="C:\laragon\www\volleyAPP_desa\Funciones.php" crc="1669233214"/>
@@ -258,6 +270,7 @@
 		<file name="C:\laragon\www\volleyAPP_desa\COMITEO_MODIFICACION_COLORENBASE_PUESTO_18NOV2022.txt" crc="1669233198"/>
 		<file name="C:\laragon\www\volleyAPP_desa\CNumeros.php" crc="1669233198"/>
 		<file name="C:\laragon\www\volleyAPP_desa\Cjugadores.php" crc="1669233196"/>
+		<file name="C:\laragon\www\volleyAPP_desa\CEstrategias.php" crc="1671637536"/>
 		<file name="C:\laragon\www\volleyAPP_desa\CEstados.php" crc="1669233198"/>
 		<file name="C:\laragon\www\volleyAPP_desa\CDELUPD.php" crc="1669233198"/>
 		<file name="C:\laragon\www\volleyAPP_desa\Ccompetencia.php" crc="1669233196"/>
@@ -267,13 +280,13 @@
 		<file name="C:\laragon\www\volleyAPP_desa\Ccanchas20.php" crc="1669233197"/>
 		<file name="C:\laragon\www\volleyAPP_desa\Ccanchas.php" crc="1669233197"/>
 		<file name="C:\laragon\www\volleyAPP_desa\CargarPosiciones2.php" crc="1669233197"/>
-		<file name="C:\laragon\www\volleyAPP_desa\CargarPosiciones.php" crc="1669233197"/>
+		<file name="C:\laragon\www\volleyAPP_desa\CargarPosiciones.php" crc="1671227187"/>
 		<file name="C:\laragon\www\volleyAPP_desa\CargarJugadores.php" crc="1669233197"/>
 		<file name="C:\laragon\www\volleyAPP_desa\canchas.php" crc="1669233192"/>
 		<file name="C:\laragon\www\volleyAPP_desa\cambios en base de datos.txt" crc="1669233192"/>
 		<file name="C:\laragon\www\volleyAPP_desa\BACKNovedadesSet30.php" crc="1669233199"/>
 		<file name="C:\laragon\www\volleyAPP_desa\alter tables 2.txt" crc="1669233192"/>
-		<file name="C:\laragon\www\volleyAPP_desa\AdministrarAPP.php" crc="1669239582"/>
+		<file name="C:\laragon\www\volleyAPP_desa\AdministrarAPP.php" crc="1670250020"/>
 		<file name="C:\laragon\www\volleyAPP_desa\ActualizarPosicionJugPart.php" crc="1669233203"/>
 		<file name="C:\laragon\www\volleyAPP_desa\ABMjugadores.php" crc="1669233203"/>
 		<file name="C:\laragon\www\volleyAPP_desa\.htaccess" crc="1669233203"/>

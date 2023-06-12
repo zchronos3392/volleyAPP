@@ -36,35 +36,86 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 $retorno2 = 0;
 //echo "<br>Secuencia de insercion numero : $secuencia<br>";
     //if($secuencia == 0)
+    
+  //SI LLEGA UN CENTRAL PARA ESA POSICION, DESACTIVO AL CENTRAL QUE ESTABA Y SIGO EL CURSO..
+	cExisteCentralPos($secuencia,$partido,$fecha,$iclub,$icate,$jugador,$posicial,
+					  $puestoUpd,$hora,$setnumero);    
+  //SI LLEGA UN CENTRAL PARA ESA POSICION, DESACTIVO AL CENTRAL QUE ESTABA Y SIGO EL CURSO..
+
 	if($secuencia == 1)		
     { 
     	$secuencia = 1;
     	$modo='INS';
 		//echo("$modo='INS'");
-    	//ES CARGA DE POSICION INICIAL
-    	// es un update		
-    	//												popsicion INICIAL  POSICION ACTUAL
-    	// VERIFICAR PRIMERO QUE NO EXISTA EL JUGADOR CON OTRA SECUENCIA, PARA EL MISMO SET:
-		$retorno2 = partjug::setPos($partido,$fecha,$iclub,$icate,$jugador,$posicial,$posicial,$puestoUpd,$hora,$setnumero);
-		//echo($retorno2);	
+    	//	ES CARGA DE POSICION INICIAL
+    	// 	POSICION INICIAL  POSICION ACTUAL
+    	// 	VERIFICAR PRIMERO QUE NO EXISTA EL JUGADOR CON OTRA SECUENCIA, PARA EL MISMO SET:
+		//	ESTOY GUARDANDO LA POSICION INICIAL.
+		$retorno2 = partjug::setPos($partido,$fecha,$iclub,$icate,$jugador,$posicial,$posicial,
+									$puestoUpd,$hora,$setnumero);
+									
+	//ACTIVO AL JUGADOR[CENTRAL] SI TIENE UNA POSICION QUE NO SEA SUPLENTE,
+	//SINO LO DESACTIVO
+	$retorno=partjug::getJugadorPosIni($partido,$fecha,$iclub,$icate,$jugador);
+	//Array ( [0] => 
+				//Array ( [numero] => 1 [nombre] => Leandro [categoria] => 19 [idjugador] => 146
+				// 		  [posicionini] => 7 [idclub] => 83 [posicion] => 7 
+				//		  [activoSN] => [puestoxcat] => 4 [ColorPuestoCat] => #51007d 
+				//		  [puesto] => 4 [ColorPuestoCancha] => #51007d 
+				//		  [secuencia] => 1 [FechaEgreso] => ) )
+	$puestoxCat = $retorno["0"]["puestoxcat"];
+		$puestoActualizado = $retorno["0"]["puesto"];
+	$puestoPosta = $puestoxCat;
+	if($puestoPosta != $puestoActualizado )
+			$puestoPosta = $puestoActualizado;
+			
+	//CENTRALES QUE NO SON SUPLENTES
+	  //PORQUE EMPIEZAN EN CANCHA
+	if($posicial != 7 && $puestoPosta == 6)
+	{
+			$accionValor =1;
+			$retornoAxt = partjug::updateActivaSN($partido,$fecha,
+												  $iclub,$icate,$jugador,$setnumero,
+												  $accionValor);
+	} 
+
 	}
     else { 
     	$modo='UPD';
 			//echo("$modo='UPD'");
-    	// ES UN CAMBIO 
-    	// LOS CAMBIOS SE REFLEJAN CAMBIANDO AL JUGADOR DEL EQUIPO CORRECTO
-    	// EN LA POSICION EN LA QUE SE ENCONTRABA...
-    	// NO NEESITO BUSCARLO , SOLO DUPLICAR EL REGISTRO DE SET CON ESTOS NUEVOS 
-    	// DATOS Y LA DIFERENCIA ME DARA EL CAMBIO..PROBARR..
+	    	// ES UN CAMBIO 
+	    	// LOS CAMBIOS SE REFLEJAN CAMBIANDO AL JUGADOR DEL EQUIPO CORRECTO
+	    	// EN LA POSICION EN LA QUE SE ENCONTRABA...
+	    	// NO NEESITO BUSCARLO , SOLO DUPLICAR EL REGISTRO DE SET CON ESTOS NUEVOS 
+	    	// DATOS Y LA DIFERENCIA ME DARA EL CAMBIO..PROBARR..
 
-	    	$retorno=partjug::getJugadorPosIni($partido,$fecha,$iclub,$icate,$jugador);
-   			if($retorno["0"]["posicionini"])	$posicioninicial = $retorno["0"]["posicionini"];
+			$retorno=partjug::getJugadorPosIni($partido,$fecha,$iclub,$icate,$jugador);
+		   		if($retorno["0"]["posicionini"])
+		   			$posicioninicial = $retorno["0"]["posicionini"];
+			// Es un update. LA POSICION INICIAL NO SE TOCA NUNCA DSPS DEL INSERT.
+			$retorno2 = partjug::setPos($partido,$fecha,$iclub,$icate,$jugador,
+										$posicioninicial,$posicial,$puestoUpd,$hora,
+										$setnumero);
+			//ACTIVO AL JUGADOR[CENTRAL] SI TIENE UNA POSICION QUE NO SEA SUPLENTE,
+			//SINO LO DESACTIVO
+			$puestoxCat = $retorno["0"]["puestoxcat"];
+			$puestoActualizado = $retorno["0"]["puesto"];
+			$puestoPosta = $puestoxCat;
+			if($puestoPosta != $puestoActualizado )
+			$puestoPosta = $puestoActualizado;
 
-
-			// es un update
-			$retorno2 = partjug::setPos($partido,$fecha,$iclub,$icate,$jugador,$posicioninicial,$posicial,$puestoUpd,$hora,$setnumero);
-
-    };
+			//CENTRALES QUE NO SON SUPLENTES
+			//PORQUE EMPIEZAN EN CANCHA
+			if($posicial != 7 && $puestoPosta == 6)
+			{
+			$accionValor =1;
+			$retornoAxt = partjug::updateActivaSN($partido,$fecha,
+									 			  $iclub,$icate,$jugador,$setnumero,
+												  $accionValor);
+			} 
+			//ACTIVO AL JUGADOR[CENTRAL] SI TIENE UNA POSICION QUE NO SEA SUPLENTE,
+			//SINO LO DESACTIVO
+		 };
 
     if($retorno2)
     {
@@ -80,7 +131,39 @@ $retorno2 = 0;
 	        echo json_encode($datos);
     };
     
-//	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha,$horaset,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque);
 
    }
+
+function cExisteCentralPos($secuencia,$partido,$fecha,$iclub,$icate,$jugador,$posicial,
+					  	   $puestoUpd,$hora,$setnumero)
+{
+//controlo primero si habia alguien en esa Posicion
+//y si es Central y si el que llega tambien lo es.
+	$retorno=partjug::getJugadorEnPos($partido,$fecha,$iclub,$icate,$posicial);
+	// este control solo es valido si ya habia alguien..
+	if(count($retorno) > 0)
+	{
+	//Array ( [0] => 
+				//Array ( [numero] => 1 [nombre] => Leandro [categoria] => 19 [idjugador] => 146
+				// 		  [posicionini] => 7 [idclub] => 83 [posicion] => 7 
+				//		  [activoSN] => [puestoxcat] => 4 [ColorPuestoCat] => #51007d 
+				//		  [puesto] => 4 [ColorPuestoCancha] => #51007d 
+				//		  [secuencia] => 1 [FechaEgreso] => ) )
+	$CentralEncontrado = $retorno["0"]["idjugador"];
+	$puestoxCat = $retorno["0"]["puestoxcat"];
+		$puestoActualizado = $retorno["0"]["puesto"];
+	$puestoPosta = $puestoxCat;
+	if($puestoPosta != $puestoActualizado )
+			$puestoPosta = $puestoActualizado;	
+	//si habia un central en esa pos que llegó. Lo desactivo		
+	if($puestoPosta == 6 && $posicial != 7)
+		{
+		 $accionValor =0; //desactivo el que estaba ahi...
+		$retornoAxt = partjug::updateActivaSN($partido,$fecha,
+											  $iclub,$icate,$CentralEncontrado,$setnumero,
+											  $accionValor);
+		}
+
+	}
+}
 ?>

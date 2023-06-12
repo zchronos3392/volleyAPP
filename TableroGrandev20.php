@@ -577,12 +577,14 @@ function muestraTiempoTranscurrido()
 <body>
 
 <div class="cabezal">
-		<Section class="LogoApp normalizar">
-		<a href="index.php"><span id="medidas">
-			<img  class="LogoApp normalizar" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png">	
-		</a>
+		<Section class="BotoneraTablero">
+				<a href="index.php"><span id="medidas">
+					<img  class="LogoApp" alt="VOLLEY.app" src="./img/vAPP23.gif">
+				</a>
+				<div  class="BotoneraTablero">
+					<button id="volver" name="altajug" class="altajug" title="agregar registros"><<</button>
+				</div>
 		</Section>
-		<button id="volver" name="altajug" class="altajug" title="agregar registros"><<</button>
 </div> 
 
 <div class="marcoTablero" id="tableroMarco" >

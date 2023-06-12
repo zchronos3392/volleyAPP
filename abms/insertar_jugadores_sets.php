@@ -52,6 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				    $icate 	 =	$jugsA[$contador]['categoria'];
 				    $jugador =	$jugsA[$contador]["idjugador"];
 				    $puesto =	$jugsA[$contador]["puestoxcat"];
+					$orden =	0; //valor inicial.
 					//echo("<br>partido : ".$idpartido." , fecha: ".$fecha2." , club: ".$clublocal." , cate: ".$icate." , id jugador: ".$jugador." setnumero: ".$setnumero." puesto: ".$puesto);	
 					$mensajeAlta = "'INSERTAR_JUGADORES_SETS::INSERT.SET'";
 
@@ -66,10 +67,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 					$parametro[4]=$jugador;
 					$parametro[5]=$setnumero;
 					$parametro[6]=$puesto;
+					$parametro[7]=$orden;
 					$parametros= "'".implode(";",$parametro)."'";
 					$ret = errorGrabado::insert($tipo,$scriptPrograma,$funcion,$parametros);
 
-					$retorno03 = partjug::insertSet($idpartido,$fecha2,$clublocal,$icate,$jugador,$setnumero,$puesto,$mensajeAlta);
+					$retorno03 = partjug::insertSet($idpartido,$fecha2,$clublocal,$icate,$jugador,$setnumero,$puesto,$orden,$mensajeAlta);
 
 		 				//echo "$retorno03";
 		 }// for 

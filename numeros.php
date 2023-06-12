@@ -1,7 +1,7 @@
  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="es">
     <head>
-		<link href="favicon.ico" rel="icon" type="image/png">
+		<link href="./img/favicons/favicon.ico" rel="icon" type="image/png">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>VOLLEY.APP</title>
         <meta name="title" content="volley all app, partido."/>

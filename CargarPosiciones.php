@@ -11,6 +11,7 @@
 	   <link rel="stylesheet" href="./css/estiloCargaJugadores.css">	   
 	<script>
 		var stringcontenido2;
+		var vPosiciones = new Array();
 		var cont1=cont2=cont3=cont4=cont5=cont6='';
 		$.urlParam = function(name){
 			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -22,6 +23,98 @@
 			}
 		};
 
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ACTIVAR O  DESACTIVAR LIBEROS Y CENTRALES..
+function activacion(claveCompuesta)
+{
+	
+//CLUBIDCAT_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+	
+var array_accionjugador ='';
+var accion ='';
+var idjugador=idclub=idcategoria=0;
+array_accionjugador =	claveCompuesta.split("_");
+iaccion = array_accionjugador[0]; //CLUBIDCAT
+//iaccion ='ACTIVAR';
+//    if(accion.indexOf('des') != -1)
+//    	iaccion ='DESACTIVAR';
+
+	idclub      = array_accionjugador[1];
+	idjugador   = array_accionjugador[2];
+	idcategoria = array_accionjugador[3];
+
+	//idpartido=1&setmax=5&idclub=83&set=1&idcate=20&fecha=2022-12-14
+	idpartido = $.urlParam('idpartido'); // name
+    idset     = $.urlParam('set');
+    fechas    = $.urlParam('fecha');  
+
+
+		var parametros =
+			{
+		    "idpartido"   : idpartido,
+			"fechapartido": fechas,
+			"setnumero"   : idset,
+			"idjugador"   : idjugador,
+			"iclub"       : idclub,
+			"icategoria"  : idcategoria,
+			"horas"       : $("#stopwatch").text(),
+			"ianio"       :	$("#ianio").val(),
+			"accion"      : iaccion
+			};
+			
+	//alert('id partido : '+idpartido+' - accion:  '+iaccion);		
+
+	 $.ajax({ 
+				url:   './abms/activacion_jugador_partido.php',
+				type:  'POST',
+				data: parametros,
+				dataType: 'text json',
+				// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX   
+				beforeSend: function (){},
+				done: function(data){},
+				success:  function (r)
+				{},// SUCCESS	
+				error: function (xhr, ajaxOptions, thrownError) {
+					console.log(thrownError);
+					console.log(xhr.responseText);
+				}// fin ERROR:FUNCT
+				}); // FIN funcion ajax JUGASPARTIDO..	
+
+				cargarDatosJugadores();
+/*
+  if(iaccion == 'ACTIVAR')	
+	  $("#"+claveCompuesta).addClass('fondoActivo');
+  else
+  $("#"+claveCompuesta).removeClass('fondoActivo');			  		
+*/
+}
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// TRAIGO UNA VEZ VECTOR DE PUESTOS			
+ function cargarPosicionesStart(){
+ 
+iPosiciones = new Array();	
+	 $.ajax({ 
+	    url:   './abms/obtener_puestos.php',
+	    type:  'GET',
+	    dataType: 'json',
+	    async:false,
+		// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+	    beforeSend: function (){},
+	    done: function(data){},
+	    success:  function (r){
+	    	iPosiciones = Object.values(r['Posiciones']);
+	    	//console.log(iPosiciones);
+	     },
+	     error: function (xhr, ajaxOptions, thrownError) {}
+	    }); // FIN funcion ajax	
+// TRAIGO UNA VEZ VECTOR DE PUESTOS			
+//PROBANDO LA CARGA UNICA DE LAS POSICIONES
+//alert(iPosiciones);	
+ return iPosiciones;
+ }
+ 
 
 function cargarDatosJugadores(){
 			var contador=0;
@@ -60,14 +153,15 @@ function cargarDatosJugadores(){
 					$("#canchaA").empty('');		
 					//console.log('linea 165');	
 					$("#CuadroJugadoresA").html('');
+
 				},
 				success:  function (r){
 		
 			// LOCATION.RELOAD Y LOAD INICIAL, WHEN READY			
 				cont8='';
 				if(r['estado']>0){
-					$("#canchaA").html('');
-					$("#liberos").html('');
+				  $("#canchaA").html('');
+				  $("#liberos").empty('');
 					cont8='';
 				
 			   esVisualizar= $.urlParam('ver');
@@ -78,8 +172,8 @@ function cargarDatosJugadores(){
 				// EACH ENLD JUGADORES POSICIONES INICIALES DEL SET EN VISUALIZAR	 
 				$(r['JugadoresINI']).each(function(i, v)
 				{ // indice,0 valor
-					//if(v.Libero != null)
-					//		alert('ES NULL !!!! '+ v.Libero);
+					//if(v.activoSN != null)
+					//		alert('ES NULL !!!! '+ v.activoSN);
               		puestoPosta=0;
 //	if(v.secuencia == 1)					
 				if (! $('#canchaA').find("div[value='" + v.nombre + "']").length){
@@ -206,11 +300,13 @@ function cargarDatosJugadores(){
  					   	
 				    }
 				  });// EACH ENLD JUGADORES POSICIONES INICIALES DEL SET EN VISUALIZAR
-				};	 	
+				};	 //HASTA ACA ES VISUALIZAR..
+				
+				//ACA YA SE ESTA MODIFICANDO POSICIONES..	
 				$(r['Jugadores']).each(function(i, v)
 				{ // indice,0 valor
-					//if(v.Libero != null)
-					//		alert('ES NULL !!!! '+ v.Libero);
+					//if(v.activoSN != null)
+					//		alert('ES NULL !!!! '+ v.activoSN);
               		puestoPosta=0;
 //	if(v.secuencia == 1)					
 				if (! $('#canchaA').find("div[value='" + v.nombre + "']").length){
@@ -251,14 +347,27 @@ function cargarDatosJugadores(){
 						 puestoCategoria=v.puestoxcat;
 						if(v.puestoxcat != v.puesto) puestoPosta = v.puesto;
 						
+						var prefijoAccion = 'DESACTIVAR';
+						var ifondoActivoClass = ' fondoActivo';
+						if(v.activoSN == null || v.activoSN == 0 )
+						{
+							ifondoActivoClass = "";
+							prefijoAccion = 'ACTIVAR';
+						}
+
+						//aca se entra por CLUB , ASI QUE ESTA GRILLA ES UNICA.
 						if(puestoPosta==2) // LIBERO
 							if (! $('#liberos').find("div[value='" + v.nombre + "']").length){
-									cont8+='<div class="itemL"  value="'+v.nombre +'"   >'+v.nombre +'('+v.numero+')' +'</div>';
+									cont8+='<div class="itemL '+ifondoActivoClass+'"  value="'+v.nombre +'" '+
+									'id=\''+prefijoAccion+'_'+v.idclub+'_'+v.idjugador+'_'+
+									v.categoria+'\' onclick=\'activacion(this.id);\' '+
+									'  >'+v.nombre +'('+v.numero+')' +'</div>';
 							}
 						//CARGAR GRILLA DE LIBEROS
-						
-						botonPuestos = '<select class="itemcjug3" id=\'sjugadorp_'+v.idjugador+'\' name=\'sjugadorp_'+v.idjugador+'\' disabled="true" ></select>'+creaspuestos(v.idjugador,puestoCategoria,'sjugadorp');
-						botonNewPuesto = '<select class="itemcjug5" id=\'jugadorpuesto_'+v.idjugador+'\' name=\'jugadorpuesto_'+v.idjugador+'\' ></select>'+creaspuestos(v.idjugador,puestoPosta,'jugadorpuesto');
+						//primero necesito escribir el codigo
+						//luego cargarlo, al final..o recorrer todo de nuevo..			
+						botonPuestos = '<select class="itemcjug3" id=\'sjugadorp_'+v.idjugador+'\' name=\'sjugadorp_'+v.idjugador+'\' disabled="true" ></select>';
+						botonNewPuesto = '<select class="itemcjug5" id=\'jugadorpuesto_'+v.idjugador+'\' name=\'jugadorpuesto_'+v.idjugador+'\' ></select>';
 
 						//CARGAR INDICADOR DE PUESTO ACTUAL 
 						botonCentral='';
@@ -312,6 +421,10 @@ function cargarDatosJugadores(){
 				   	  	'<div class="itemcnfju2">'+
 							selecter+				   	  															   	  	'</div>'+
 				   	  '</div>');
+				   	  //recien cuando existe el elemento escrito en el DOM
+				   	  //LO PUEDO MODIFICAR O CARGAR..
+				   	  creaspuestosx(v.idjugador,puestoCategoria,'sjugadorp');
+					  creaspuestosx(v.idjugador,puestoPosta,'jugadorpuesto');
 						}
 					//alert(v.posicion);	
 					switch(v.posicion)
@@ -399,8 +512,30 @@ function creaspuestos(idjugador,puesto,nombreObj){
 return 	selectPuesto ;
 };
 
+function creaspuestosx(idjugador,puesto,nombreObj){
+//	console.log('jugador : ' + idjugador +' puesto : ' +puesto+ ' cargar: ' + nombreObj);
+	//var iPosiciones = vPosiciones;
+	//alert(iPosiciones);
+	var selectPuesto = "";
+        // esto arreglo el tema del alta triplle..
+	$(vPosiciones).each(function(i, v)
+    { // indice, valor
+                	//console.log(v.codigo);
+    	if(puesto != 0 && v.idPosicion == puesto )
+        	$("#"+nombreObj+"_"+idjugador).append('<option value="' + v.idPosicion + '" label="'+v.nombre+'" selected>' +v.nombre +'</option>');
+        else
+			$("#"+nombreObj+"_"+idjugador).append('<option value="' + v.idPosicion + '" label="'+v.nombre+'">' +v.nombre +'</option>');
+		//alert(selectPuesto);
+	});		
+	
+return 	selectPuesto ;
+};
+
+
 function enviapos(select_pos){
 // obtener las claves desde el id
+
+// ACA LO TENGO QUE "ACTIVAR"
 	var arraids = select_pos.id.split('_');
 	var idclub = arraids[1] ;
 	var idjugador = arraids[2];	  
@@ -429,7 +564,6 @@ function enviapos(select_pos){
 		"setdata" : $.urlParam('set'),
 		"horas"     : $("#stopwatch").text()
 		};
-
 	
 	 $.ajax({ 
 		url:   './abms/inserta_jugador_set.php',
@@ -502,7 +636,15 @@ function enviapos(select_pos){
 				else  $("#ianio").prepend('<option>' + (i + 1) + '</option>');
 			}
 			$("#ianio").prop('disabled', true);
-			
+			var FechaParametros = $.urlParam('fecha');
+			//CHATGPT Supongamos que el campo de texto tiene un ID de "miCampoTexto"
+				var valorCampoTexto = FechaParametros; //$('#miCampoTexto').val();
+				var fecha = new Date(valorCampoTexto);
+				var anio = fecha.getFullYear();
+				$("#ianio").val(anio);
+
+
+
 			//$("#ianio").val($.urlParam('anio'));
 			
 			esVisualizar= $.urlParam('ver');
@@ -514,6 +656,22 @@ function enviapos(select_pos){
 					$("#borraSetjugadores").prop('disabled', true); 
 					$("#borraSetjugadores").css('background', '#A9AAC5');  
 			};
+			
+		//el vector se carga vacio, porque el AJAX es ASINCRONICO
+		//OSEA QUE LA EJECUCION NO ESPERA A QUE VUELVAN LOS VALORES
+		//SIGUE SU CURSO. EN ESTE CASO:
+		//LLAMO A cargarPosicionesStart() Y SIN TENER RESULTADOS AUN, LLAMO A EACH..
+		//lo que termina en un Vector global, VACIO.ups
+		 //console.log(' llamando a cargarPosicionesStart()');
+		 vPosiciones = cargarPosicionesStart();
+		 //console.log(' salio del llamar a cargarPosicionesStart()');
+		 //console.log(' leyendo vector global..vacio..');
+        //$(vPosiciones).each(function(i, v)
+         //  { // indice, valor
+          //      	console.log('posicion '+v.nombre+' ('+ v.idPosicion+') ');
+		 //	});		
+		//PROBANDO LA CARGA UNICA DE LAS POSICIONES	
+		cargarDatosJugadores();				
 			
 			
 // camnbior por cargar jugadores..			
@@ -636,7 +794,7 @@ function enviapos(select_pos){
 		  
 			//console.log('linea 136');
 			// LOCATION.RELOAD Y LOAD INICIAL, WHEN READY
-			cargarDatosJugadores();			
+			
 
 // TRAIGO LOS DATOS DEL PARTIDO
 			var clubParm = $.urlParam('idclub');
@@ -743,7 +901,9 @@ function enviapos(select_pos){
 <div id="stikcy">
 <header class="headerIngreso_2">
 	<section class="LogoApp fijaLogo" style="z-index: 0;">
-		<a href="index.php"><img  class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png" /></a>
+		<a href="index.php">
+			<!-- <img  class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png" /> -->
+		</a>
 	</section>	
 </header>
    <div class="ControlesPosicion21_2 ">

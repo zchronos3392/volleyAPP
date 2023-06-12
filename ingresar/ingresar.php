@@ -261,7 +261,7 @@ input, button, select, optgroup, textarea {
 				<section id="region-main" class="col-12" aria-label="Contenido">
 					<div class="card-block">
 										<h2 class="card-header text-center">
-										<img src="../img/textovolleyAPP_pequeno.png" class="img-fluid" title="volleyAPP Ingreso" alt="ingresar a volley APP" style="height: 10%;width: 100%">
+										<!-- <img src="../img/textovolleyAPP_pequeno.png" class="img-fluid" title="volleyAPP Ingreso" alt="ingresar a volley APP" style="height: 10%;width: 100%"> -->
 										</h2>
 										<div class="card-body">
 											<p class="parrafoLogin">Carga de invitados::volleyAPP</p>

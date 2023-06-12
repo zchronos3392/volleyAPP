@@ -45,6 +45,27 @@ class SesionTabla
             return ($e->getMessage());
         }
     }
+   
+    public static function getsessionX($valor)
+    {
+    		
+        $consulta = "SELECT sesorigen FROM vappsesiones where sesusuario=$valor";
+		//echo "$consulta"; 
+        try {
+            // Preparar sentencia
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            // Ejecutar sentencia preparada
+            $comando->execute();
+			// no se estaba devolviendl el resultado en formato JSON
+			// con esta linea se logro...
+			// usar en vez de return echo, aunque no se si funcionara con ANDROID
+			//print_r($comando->fetch(PDO::FETCH_ASSOC));
+            return $comando->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            return ($e->getMessage());
+        }
+    }    
     
 	public static function getusuariocon($ipconeccion)
 	{
@@ -101,6 +122,15 @@ class SesionTabla
         			return $sentencia->execute(array($clave, $valor));
 		}        			
     }
+    
+	 public static function setsessionfiltros($clave, $valor)
+	 {
+        // Sentencia INSERT
+		$comando = "INSERT INTO vappsesiones ( sesusuario,sesorigen ) VALUES( $clave,$valor) ";
+		//12/07/2020 ALTER TABLE `vappsesiones` ADD `sesorigen` VARCHAR(16) NOT NULL AFTER `sesusuario`;        // Preparar la sentencia
+        		$sentencia = Database::getInstance()->getDb()->prepare($comando);
+        			return $sentencia->execute(array($clave, $valor));
+    }    
     /**
      * Eliminar el registro con el identificador especificado
      *
@@ -118,6 +148,17 @@ class SesionTabla
 		return $sentencia->execute(array($ipconeccion));
     }
     
+    public static function deletesessionfiltros($ipconeccion)
+    {
+        // Sentencia DELETE
+		$comando = "DELETE FROM vappsesiones WHERE sesusuario=$ipconeccion";
+//		echo($comando);
+        // Preparar la sentencia
+        $sentencia = Database::getInstance()->getDb()->prepare($comando);
+
+		return $sentencia->execute(array($ipconeccion));
+    }
+
     
 }
 

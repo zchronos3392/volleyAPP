@@ -353,7 +353,7 @@
 <div class="cabezal">
 		<Section class="LogoApp normalizar">
 		<a href="index.php"><span id="medidas">
-			<img  class="LogoApp normalizar" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png">	
+			<!-- <img  class="LogoApp normalizar" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png">	 -->
 		</a>
 		</Section>
 		<button id="volver" name="altajug" class="altajug" title="agregar registros"><<</button>

@@ -1,4 +1,4 @@
-	<link  rel="icon"   href="favicon.ico" type="image/png" />
+	<link  rel="icon"   href="./img/favicons/favicon.ico" type="image/png" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="./css/menunuevo/stylemenu.css" /> <!-- nuevas tipografias para el menu -->
 	<link rel="stylesheet" href="./css/nsanz_style.css" /> <!-- nuevas tipografias para el menu -->
@@ -109,6 +109,8 @@
 					<li><a href="CNumeros.php" title="numeros"><img src="./img/menuapps/escudo_base_blancogrey_usuarios.jpg" class="eConoapp" /><span>Numeros</span></a></li>
 
 					<li><a href="CPuestos.php" title="puestos"><img src="./img/menuapps/escudo_base_blancogrey_posiciones.png" class="eConoapp"/><span>Puestos</span></a></li>
+
+					<li><a href="CEstrategias.php" title="estrategias libero"><img src="./img/menuapps/escudo_base_blancogrey_strats1.png" class="eConoapp"/><span>Estrategia Lib.</span></a></li>
 
 
 					<li><a href="CDELUPD.php" title="abms delUpd"><img src="./img/menuapps/escudo_base_blancogrey_abms.jpg" class="eConoapp"><span>ABMS generales</span></a></li>

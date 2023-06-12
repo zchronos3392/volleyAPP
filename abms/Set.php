@@ -131,10 +131,15 @@ class Sett
 */	
 	public static function getSetPosInicialesGrabadas($idpartido,$set,$fecha){
 		
-		$consulta = "SELECT * FROM vappset where idpartido=$idpartido and setnumero=$set and fecha=$fecha
-and mensaje='Esperando silbato inicial...' and saque <> 0
-order by secuencia LIMIT 1";
+		$consulta = "SELECT * FROM vappset 
+					where idpartido=$idpartido
+					  and setnumero=$set 
+					  and fecha=$fecha
+					  and mensaje like '%Confirmando posiciones en planilla%' 
+					  and saque <> 0 
+					order by secuencia LIMIT 1";
 
+//ECHO "$consulta";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -299,14 +304,15 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
         // Consulta de la sede
         // 29-08-2018, ver si aun funciona...
 		$consulta = "SELECT partido.ClubA,partido.ClubB,partido.categoria, 1A as pa_1, 2A as pa_2, 3A as pa_3, 4A as pa_4, 5A as pa_5, 6A as pa_6,
-		1B as pb_1, 2B  as pb_2, 3B as pb_3, 4B as pb_4, 5B as pb_5, 6B as pb_6, vappset.estado,sts.descripcion, saque,puntoa,puntob,mensaje,CantPausaA,CantPausaB 
+		1B as pb_1, 2B  as pb_2, 3B as pb_3, 4B as pb_4, 5B as pb_5, 6B as pb_6, vappset.estado,sts.descripcion, saque,puntoa,puntob,mensaje,CantPausaA,CantPausaB,codigoStratA,codigoStratB, 
+        ordenA,ordenB
 		FROM vappset 
 		       inner JOIN vapppartido partido
 			       on partido.idPartido = vappset.idpartido
 			        AND partido.Fecha = vappset.fecha
 			   inner join vappestado sts on sts.idestado = vappset.estado  
 		WHERE vappset.idpartido= $idpartido and setnumero=$setnum and secuencia=$sec and vappset.fecha=$fecha ";
-       // echo($consulta);                
+        //echo($consulta);                
         
         try {
             // Preparar sentencia
@@ -339,7 +345,7 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
         // 29-08-2018, ver si aun funciona...
 		$consulta = "SELECT * FROM vappset 
 							WHERE vappset.idpartido= $idpartido and setnumero=$setnum and secuencia=$sec and vappset.fecha=$fecha ";
-        
+      //  echo "$consulta";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -454,7 +460,23 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
 		echo json_encode($cmd);
 
     }
+    public static function updateZonasxSecuencia($idPartido,$fecha,$setnum,$secuencia,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6)
+    { 
+        // Creando consulta UPDATE
+        $consulta = "UPDATE vappset SET 1A=$A1,2A=$A2,3A=$A3,4A=$A4,5A=$A5,6A=$A6,1B=$B1,2B=$B2,3B=$B3,4B=$B4,5B=$B5,6B=$B6 ". 
+        "WHERE idpartido=$idPartido and fecha=$fecha and setnumero=$setnum and secuencia=$secuencia";
 
+		//echo $consulta ;
+        // Preparar la sentencia
+        $cmd = Database::getInstance()->getDb()->prepare($consulta);
+
+        // Relacionar y ejecutar la sentencia
+        $cmd->execute(array($idPartido,$fecha,$setnum,$secuencia,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6));
+
+        //return $cmd;
+		echo json_encode($cmd);
+
+    }
 
     /**
      * Insertar un nuevo sede
@@ -463,17 +485,22 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
      * @param $nombre descripción del nuevo registro
      * @return PDOStatement
      */
-    public static function insert( $idpartido, $secuencia, $setnumero, $fecha,$hora,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$mensaje,$contadorpausasA,$contadorpausasB)
+    public static function insert( $idpartido, $secuencia, $setnumero, $fecha,$hora,
+    							   $A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,
+    							   $estado,$puntoa, $puntob,$saque,$estrategiaA,$estrategiaB,
+                                   $ordenLocal,$ordenVisita,
+    							   $mensaje,$contadorpausasA,$contadorpausasB)
     {
-    	$comando = "INSERT INTO vappset (idpartido, secuencia, setnumero, fecha, hora, 1A, 2A, 3A, 4A, 5A, 6A, 
-    1B, 2B, 3B, 4B, 5B, 6B, estado, puntoa, puntob,saque,mensaje,CantPausaA,CantPausaB) ".
-		" VALUES (  $idpartido, $secuencia, $setnumero, $fecha,$hora,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$mensaje,$contadorpausasA,$contadorpausasB ) " ;    	
+
+        $comando = "INSERT INTO vappset (idpartido, secuencia, setnumero, fecha, hora, 1A, 2A, 3A, 4A, 5A, 6A, 
+    1B, 2B, 3B, 4B, 5B, 6B, estado, puntoa, puntob,saque,codigoStratA,codigoStratB,ordenA,ordenB,mensaje,CantPausaA,CantPausaB) ".
+		" VALUES (  $idpartido, $secuencia, $setnumero, $fecha,$hora,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$estrategiaA,$estrategiaB,$ordenLocal,$ordenVisita,$mensaje,$contadorpausasA,$contadorpausasB ) " ;    	
 		
-	//	echo("<br>$comando <br>");
+		//echo("<br>$comando <br>");
 		
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array( $idpartido, $secuencia, $setnumero, $fecha,$hora,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$mensaje,$contadorpausasA,$contadorpausasB));
+        return $sentencia->execute(array( $idpartido, $secuencia, $setnumero, $fecha,$hora,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$estrategiaA,$estrategiaB,$ordenLocal,$ordenVisita,$mensaje,$contadorpausasA,$contadorpausasB));
     }
 
     /**

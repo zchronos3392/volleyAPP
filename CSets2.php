@@ -42,6 +42,25 @@
 	   </style>
 		<script type="text/javascript">
 
+		function parametroURL(_par) {
+		var _p = null;
+		if (location.search) location.search.substr(1).split("&").forEach(function(pllv) {
+			var s = pllv.split("="), //separamos llave/valor
+			ll = s[0],
+			v = s[1] && decodeURIComponent(s[1]); //valor hacemos encode para prevenir url encode
+			if (ll == _par) { //solo nos interesa si es el nombre del parametro a buscar
+			if(_p==null){
+			_p=v; //si es nula, quiere decir que no tiene valor, solo textual
+			}else if(Array.isArray(_p)){
+			_p.push(v); //si ya es arreglo, agregamos este valor
+			}else{
+			_p=[_p,v]; //si no es arreglo, lo convertimos y agregamos este valor
+			}
+			}
+		});
+		return _p;
+		}
+
 		function EliminarSet(idpartido,setnumero)
 		{
 			fechaS =<?php echo("'".$_GET['fecha'])."'"; ?>;	
@@ -136,7 +155,7 @@
 				//LLER DATOS DE JUGADORES BASICOS LUEGO DEL ALTA PARTIDO/SET
 	    		//cargaCancha();
 	//	    		console.log(r);
-					location.reload();
+										location.reload();
             },
             //error: function() {
 			error: function (xhr, ajaxOptions, thrownError) {
@@ -192,8 +211,19 @@
 				if(i == fechapartido) $("#ianio").prepend('<option selected>' + (i + 1) + '</option>');
 				else  $("#ianio").prepend('<option>' + (i + 1) + '</option>');
 			}
+			
+			var FechaParametros = parametroURL('fecha');
+			
+			//CHATGPT Supongamos que el campo de texto tiene un ID de "miCampoTexto"
+			var valorCampoTexto = FechaParametros; //$('#miCampoTexto').val();
+			var fecha = new Date(valorCampoTexto);
+			var anio = fecha.getFullYear();
+
+			//alert(anio); // Mostrará el año extraído del campo de texto
+
 			$("#ianio").prop('disabled', true);
-		
+			
+				$("#ianio").val(anio);
 			
 			
 		var dt = new Date();
@@ -276,6 +306,7 @@
 								// agregado para guardar el id partido y tenerlo disponible..
 								$("#clubANombre").val(v.ClubA);
 								$("#clubBNombre").val(v.ClubB);
+								$("#comptext").html('Categoria: '+ v.DescCate+'<br> Competencia <br>'+v.cnombre +'<br> Fecha '+ v.Fecha);
 								
 										idclubuno = iclubA;
 										idclubdos = iclubB;
@@ -410,7 +441,7 @@
                 {
                 		var img = './img/PartidoOFFSQR.jpg';
 						//accion ='<a href="TableroGrande.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"><input type="button" id="verset" name="verset"';                		
-						accion ='<a href="TableroGrandev20.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"><input type="button" id="verset" name="verset"';
+						accion ='<a href="TableroGrandev25.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"><input type="button" id="verset" name="verset"';
 						accion +=' class="btnVerSet" value="(ver)" title="Re-veer set"></input></a>';
 						altajugadorea='';
 						altajugadoreb='';
@@ -441,8 +472,8 @@
 
 				
 				
-             verComp++;
-             if(verComp == 1)$("#comptext").append(v.cnombre);
+            //  verComp++;
+            //  if(verComp == 1)$("#comptext").append(v.cnombre);
              var ganador ="";
 //             console.log("PUNTO EQUIPO A: "+v.puntoa+" PUNTOS EQUIPO B: "+v.puntob);
         	  var restaPuntos =  (v.puntoa - v.puntob);

@@ -16,6 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$ClubB       = $_POST['iclubb']; // numero
 				$CanchaId    = $_POST['icancha']; // numero			
 			$competencia = $_POST['icomp']; // numero
+			$sedeId      =  explode("_",$_POST['isede'])[1] ; // numero
 			$ciudad      = $_POST['icity']; // numero
 			$descripcionp = "'".$_POST['descripcionp']."'";
 			// agregados en abril 2019
@@ -51,15 +52,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Insertar partido
         		$Fecha = "'".$Fecha."'";
         		
-	$retorno = Partido::insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado,$setsmax,$tbset,$finset,$descripcionp);
+		$retorno = Partido::insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado,$setsmax,$tbset,$finset,$descripcionp);
 	// luego de haber dado de alta el partido, agregamos poor defecto los jugadores de cada Club
 	// de la categoria del partido:
 
 	$retornoIdPartido	= Partido::getPartidoId($Fecha,$categoria,$ClubA,$ClubB,$competencia);
-	$anioEq=0; // necesitamos el anio porque los equipos cambian por año.
+	$anioEq=0; // necesitamos el anio porque los equipos cambian por aï¿½o.
 	if( isset($_POST['ianio']) )  $anioEq = $_POST['ianio'];
 	//$retorno=$idpartido;
-  	//echo "el alta del partido retornó lo siguiente: <br>";
+  	//echo "el alta del partido retornï¿½ lo siguiente: <br>";
   	//print_r($retornoIdPartido);
   	$idpartido = $retornoIdPartido['0']['idFinal'];
         //echo "  ultimo id cargado del partido: $idpartido y el anio : $anioEq";
@@ -93,10 +94,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     if ($retorno) {
-        // Código de éxito
-        echo(json_encode(array('estado' => '1','mensaje' => 'Creación exitosa')));
+        // Cï¿½digo de ï¿½xito
+        echo(json_encode(array('estado' => '1','mensaje' => 'Creaciï¿½n exitosa')));
     } else {
-        // Código de falla
+        // Cï¿½digo de falla
 		echo $retorno;
     }
 
@@ -112,6 +113,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$CanchaId    = $_GET['icancha']; // numero			
 			$competencia = $_GET['icomp']; // numero
 			$ciudad      = $_GET['icity']; // numero
+			$sedeId      =  explode("_",$_GET['isede'])[1] ; // numero
 			$descripcionp = "'".$_GET['descripcionp']."'";
 			// agregados en abril 2019
 				$tbset      = 0; // numero
@@ -163,12 +165,13 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 	$parametro[13]="tbset : ".$tbset;	
 	$parametro[14]="finset: ".$finset;
 	$parametro[15]="descr partido: ".$_GET['descripcionp'];		
-
+	$parametro[16]="sedeId: ".$sedeId;
+	
 	$parametros= "'".implode(";",$parametro)."'";
 
 	echo "PARAMETROS RECIBIDOS: ".$parametros."<BR>";
         		
-	$retorno = Partido::insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado,$setsmax,$tbset,$finset,$descripcionp);
+	$retorno = Partido::insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado,$setsmax,$tbset,$finset,$descripcionp);
 
 	echo "retorno insert: : ".$retorno ."<BR>";
 		
@@ -177,10 +180,10 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 // de la categoria del partido:
 
 	$retornoIdPartido	= Partido::getPartidoId($Fecha,$categoria,$ClubA,$ClubB,$competencia);
-	$anioEq=0; // necesitamos el anio porque los equipos cambian por año.
+	$anioEq=0; // necesitamos el anio porque los equipos cambian por aï¿½o.
 	if( isset($_GET['ianio']) )  $anioEq = $_GET['ianio'];
 	//$retorno=$idpartido;
-  		echo "el alta del partido retornó lo siguiente: <br>";
+  		echo "el alta del partido retornï¿½ lo siguiente: <br>";
   		print_r($retornoIdPartido);
   	$idpartido = $retornoIdPartido['0']['idFinal'];
         //echo "  ultimo id cargado del partido: $idpartido y el anio : $anioEq";
@@ -215,10 +218,10 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 
     if ($retorno) {
-        // Código de éxito
-        echo(json_encode(array('estado' => '1','mensaje' => 'Creación exitosa')));
+        // Cï¿½digo de ï¿½xito
+        echo(json_encode(array('estado' => '1','mensaje' => 'Creaciï¿½n exitosa')));
     } else {
-        // Código de falla
+        // Cï¿½digo de falla
 		echo $retorno;
     }
 } // FIN DEL ELSE

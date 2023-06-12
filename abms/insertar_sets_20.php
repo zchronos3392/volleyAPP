@@ -25,6 +25,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$contadorpausasB = (int)$setData["CantPausaB"];
 
 
+	$ordenA =1;
+		$ordenA = (int)$setData['ordenA'];
+	$ordenB =1;
+		$ordenB = (int)$setData['ordenB'];
+
+
     if($secuencia == 0) $secuencia = 1;
     else $secuencia++;
     
@@ -140,10 +146,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// el primer estado, o de configuracion sera 0, para indicar el primer registro del SEt...
 	$puntoa =  (int) $_POST['resa'];
 	$puntob	 =  (int) $_POST['resb'];
+	//02 DIC.2022::ENVIO LA ESTRATEGIA CON RESPECTO A LOS LIBEROS
+		//PARA QUE SABER QUÉ HACER AUTOMATICAMENTE EN SUS CAMBIOS..
+			$estrategiaA = "''";
+			if(isset($_POST['estrategiaLa'])) $estrategiaA = "'".$_POST['estrategiaLA']."'";
+			$estrategiaB = "''";
+			if(isset($_POST['estrategiaLB'])) $estrategiaB = "'".$_POST['estrategiaLB']."'";
+		//PARA QUE SABER QUÉ HACER AUTOMATICAMENTE EN SUS CAMBIOS..
+	//02 DIC.2022::ENVIO LA ESTRATEGIA CON RESPECTO A LOS LIBEROS
+
     // Insertar Set
 	$retorno =0;
 	$mensaje = "'Ajuste del set en vivo...'";
-	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$mensaje,$contadorpausasA,$contadorpausasB);
+	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,
+							 $A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,
+							 $estado,$puntoa, $puntob,$saque,$estrategiaA,$estrategiaB,
+							 $ordenA,$ordenB,
+							 $mensaje,$contadorpausasA,$contadorpausasB);
     //echo($retorno);
     if($retorno) {
         // Codigo de �xito
@@ -179,6 +198,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	$contadorpausasA = (int)$setData["CantPausaA"];
 	$contadorpausasB = (int)$setData["CantPausaB"];
+
+
+	$ordenA =1;
+		$ordenA = (int)$setData['ordenA'];
+	$ordenB =1;
+		$ordenB = (int)$setData['ordenB'];
 
 
     if($secuencia == 0) $secuencia = 1;
@@ -303,10 +328,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// el primer estado, o de configuracion sera 0, para indicar el primer registro del SEt...
 	$puntoa =  (int) $_GET['resa'];
 	$puntob	 =  (int) $_GET['resb'];
+	//02 DIC.2022::ENVIO LA ESTRATEGIA CON RESPECTO A LOS LIBEROS
+		//PARA QUE SABER QUÉ HACER AUTOMATICAMENTE EN SUS CAMBIOS..
+			$estrategiaA = "''";
+			if(isset($_GET['estrategiaLA'])) $estrategiaA = "'".$_GET['estrategiaLA']."'";
+			$estrategiaB = "''";
+			if(isset($_GET['estrategiaLB'])) $estrategiaB = "'".$_GET['estrategiaLB']."'";			
+		//PARA QUE SABER QUÉ HACER AUTOMATICAMENTE EN SUS CAMBIOS..
+	//02 DIC.2022::ENVIO LA ESTRATEGIA CON RESPECTO A LOS LIBEROS
+	
     // Insertar Set
 	$retorno =0;
 	$mensaje = "'Ajuste del set en vivo...'";
-	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$mensaje,$contadorpausasA,$contadorpausasB);
+	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,
+							 $A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,
+							 $estado,$puntoa, $puntob,$saque,$estrategiaA,$estrategiaB,
+							 $ordenA,$ordenB,
+							 $mensaje,$contadorpausasA,$contadorpausasB);
     //echo($retorno);
     if($retorno) {
         // Codigo de �xito

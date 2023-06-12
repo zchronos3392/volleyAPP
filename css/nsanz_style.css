@@ -74,9 +74,15 @@ SELECT:hover
 
 
 .cabezal{
+    position: relative;
     width: 100%;
     height: 3rem;
-    background-color: #ff62c8;
+    /* background-color: #ff62c8; */
+	height: 3.5em;
+    z-index: 10;
+    background-image: url('../img/HeadervoleyAPP.png');
+    background-repeat: no-repeat;
+    background-size: 100% 124px;
 }
 
 hr
@@ -105,6 +111,7 @@ hr
 .item22_9{grid-area: item22_9;}
 .item22_10{grid-area: item22_10;}
 .item22_11{grid-area: item22_11;}
+.item22_12{grid-area: item22_12;}
 
 
 .hamburguesita
@@ -123,8 +130,11 @@ hr
     right: 0;
     left: 0;
     width: 100%;
-	height: 4em;
-    background-image: url('../img/fondologo.png');
+	height: 4.8em;
+    background-image: url('../img/HeadervoleyAPP.png');
+    background-repeat: no-repeat;
+    background-size: 1368px 134px;
+
 }
 
 /*
@@ -344,28 +354,25 @@ nav.principal a:hover
 		width: 20%;
 		
 	}    
-/*    .LogoApp
-    {
-        height: 5.5em;
-	    float: left;
-	    margin-top: 0em;
-	    margin-bottom: 1em;
-	}  */	
 /* VER SI APLICA ESTE QUE ESTA COMENTADO...*/
     .LogoApp
     {
-        height: 4em;
+        height: 8em;
 	    margin-top: 0em;
 	    margin-bottom: 0em;
-
+        margin-left: 1em;        
+        position: absolute;
+        z-index: 10;
     }
 
     .LogoApp2
     {
-        height: 3em;
+        height: 10em;
 	    float: left;
 	    margin-top: 0em;
 	    margin-bottom: 1em;
+        position: absolute;
+        z-index: 10;
 	}	
 	.normalizar{
         height: 3em;
@@ -563,6 +570,34 @@ nav.principal a:hover
 	margin-top:7em;	
 }
 
+.x23itemcontrolju1{grid-area:x23itemcontrolju1 ;}
+.x23itemcontrolju2{grid-area:x23itemcontrolju2 ;}
+.x23itemcontrolju3{grid-area:x23itemcontrolju3 ;}
+.x23itemcontrolju4{grid-area:x23itemcontrolju4 ;}
+.x23itemcontrolju5{grid-area:x23itemcontrolju5 ;}
+.x23itemcontrolju6{grid-area:x23itemcontrolju6 ;}
+.x23itemcontrolju7{grid-area:x23itemcontrolju7 ;}
+.x23itemcontrolju8{grid-area:x23itemcontrolju8 ;}
+.x23itemcontrolju9{grid-area:x23itemcontrolju9 ;}
+
+.x23GridControlJugador
+{
+    display: grid;
+    padding-bottom: 0em;
+    grid-template-areas: 'x23itemcontrolju1 x23itemcontrolju2 x23itemcontrolju3 x23itemcontrolju4 x23itemcontrolju5'
+                         'x23itemcontrolju6 x23itemcontrolju6 x23itemcontrolju7 x23itemcontrolju8 x23itemcontrolju8'
+                         'x23itemcontrolju9 x23itemcontrolju9 x23itemcontrolju9 x23itemcontrolju9 x23itemcontrolju9'  ;
+    /*BORDES REDONDEADOS*/
+        border: 1px solid #000000;
+        -moz-border-radius: 7px;
+        -webkit-border-radius: 7px;
+        background-color: #fff;
+    /*BORDES REDONDEADOS*/        
+    margin-left:2em;
+    margin-right:2em;	
+    padding: .5rem;
+    margin-top: 7em;
+}
 /**************** ESTADISTICAS DE CADA CLUB... *************/
 .estClubes{
 	margin-top: 0em;
@@ -1741,6 +1776,9 @@ width: auto;
 .busqueitem6{grid-area: busque2item6;}
 .busqueitem7{grid-area: busque2item7;}
 	select#icluba.selectitem7 {width: 100%;}
+.busque2item8{grid-area: busque2item8;}
+.busque2item9{grid-area: busque2item9;}
+
 .busque2
 {
     display: grid;
@@ -1761,6 +1799,40 @@ width: auto;
     margin: auto;
     margin-top: .5em;
 }
+
+
+.busque3item1{grid-area: busque3item1;}
+.busque3item2{grid-area: busque3item2;}
+.busque3item3{grid-area: busque3item3;}
+.busque3item4{grid-area: busque3item4;}
+.busque3item5{grid-area: busque3item5;}
+.busque3item6{grid-area: busque3item6;}
+
+.busque3
+{
+    display: grid;
+	grid-template-areas: 'busque3item1 busque3item1 busque3item1'
+                         'busque3item2 busque3item2 busque3item2'
+                         'busque3item3 busque3item3 busque3item3'
+                         'busque3item4 busque3item4 busque3item4'
+                         'busque3item5 busque3item5 busque3item5'
+                         'busque3item6 busque3item6 busque3item6';
+
+    border: 2px solid #000;
+    background-color: #e6e6e6;
+
+    grid-gap: 1em;
+	padding: 1em;
+    /**grid-template-columns: 15% 40% 15% 17% 20%;*/
+}
+.busque2 div
+{
+    width: 100%;
+    margin: auto;
+    margin-top: .5em;
+}
+
+
 .inputSearch2
 {
     height: 2em;
@@ -1936,7 +2008,7 @@ width: auto;
 }    
 
 
-#ElegirJugadores select{ font-size:1em; width: 20%;height: 40%;}
+#ElegirJugadores select{ font-size:1em; width: 20%;height: 50%;}
 
 
 #ElegirJugadores button
@@ -1970,6 +2042,7 @@ button#volver.altajug
     outline: none;
     background: #f99;
     box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+    left: 100%;
 }
 
 .control1{ grid-area: ct211; height:2em; padding:1em;}
@@ -2657,19 +2730,37 @@ button.btnPop2:hover
 	.itemBusc12{
 		grid-area: itemb12;
 	}
-				
+	
+	.itemBusc13{
+		grid-area: itemb13;
+	}
+	.itemBusc14{
+		grid-area: itemb14;
+	}
+	.itemBusc15{
+		grid-area: itemb15;
+	}				
+	.itemBusc16{
+		grid-area: itemb16;
+	}					
+
+	.itemBusc16 INPUT{
+		width: 100%;
+	}		
+							
     .formbuscar
     {
         display: grid;
         width: 100%;
-		margin-top: 8em;
+		margin-top: 6em;
         background-color: #ccdfdf;
         background-color: #d7f1f4;
         grid-gap: 6px;
         grid-template-areas: 'itemb1 itemb2 itemb3 itemb4 '
         					'itemb5 itemb6 itemb8 itemb8'
         					'itemb7 itemb7 itemb7 itemb7'
-        					'itemb9 itemb10 itemb11 itemb12';
+        					'itemb9 itemb10 itemb11 itemb12'
+        					'itemb13 itemb14 itemb15 itemb16';
 		
 	/*borde redondeado*/
 			border: 1px solid #000000;
@@ -2914,7 +3005,17 @@ button.btnPop2:hover
 					grid-template-areas:'area1escudoa area1escudob' ;
 
 			   }
-			   
+/* solo para la grilla de index, asi la de CONTROLVOLEYAPP NO SE VE AFECTADA */
+.ylp211A{ grid-area: yarea1escudoa; }
+.ylp211B{ grid-area: yarea1escudob; }
+.ylp211C{ grid-area: yarea1escudoc; }
+        .ilp211Y{ 
+                    display:grid;
+                    grid-template-areas:'yarea1escudoa yarea1escudob yarea1escudoc' ;
+
+                }               
+/* solo para la grilla de index, asi la de CONTROLVOLEYAPP NO SE VE AFECTADA */
+               
 .ilp211{ grid-area: area1;}
 .ilp212{ grid-area: area2; }
 
@@ -2930,36 +3031,33 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
 
 .ilp213{ grid-area: area3;}
 .ilp214{ grid-area: area4; color: #340cff; }
-.ilp215{ grid-area: area5;width:2em; }
-.ilp216{ grid-area: area6; }
-
+.ilp215{ grid-area: area5;margin:auto;padding:0; }
+.ilp2116{ grid-area: area6;margin:0.2rem;padding:0.2; }
 .ilp217{ grid-area: area7; }
 .ilp218{ grid-area: area8; }
 .ilp219{ grid-area: area9; }
-.ilp2110{ grid-area: area10; }
+.ilp2110{ grid-area: area10;margin:0.2rem;padding:0.2; }
 
 
 .agrid-LPReg21
 {
     display: grid;
-    padding: 0;    
-	background-color: #be3b2a;
+/*	background-color: #be3b2a;*/
+	background-image: radial-gradient(circle at 101.03% 4.07%, #fff5af 0, #ffd45f 25%, #d49d31 50%, #c28110 75%, #9b5a01 100%);
     margin: 0;
-    padding: 0;
-    grid-template-areas:    'area1 area2 area3 area4 area5 area6 area6 '
-    						'area7 area7 area7 area8 area9 area10 area10 ';
+    grid-template-areas:    'area1 area2 area3 area4 area5 area6 area10 '
+    						'area7 area7 area7 area8 area8 area9 area9 ';
 /*borde redondeado*/
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
 		padding: 5px;    
 /*borde redondeado*/
-	
 }
 
 .agrid-LPReg21 > div {
   text-align: left;
-    color: #b6ccfa;
+    color: #fff;
     font-family: 'Oswald', sans-serif;
 
 }
@@ -2978,9 +3076,6 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
     						'area8 area8 area8 area8 area9 area9 area9 area10 area10 '
 						    'area1 area1 area1 area2 area2 area3 area3 area3 area4 '
 						    'area6 area6 area6 area6 area6 area6 area6 area5 area5 ';
-/*    grid-template-areas:    'area1 area2 area3 area4 area6 area6 area6 area6 area6 area5 '
-    						'area7 area7 area7 area7 area7 area7 area7 area7 area7 area7 '
-    						'area8 area8 area8 area8 area9 area9 area9 area10 area10 area10 ';*/
 /*borde redondeado*/
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
@@ -3232,7 +3327,7 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
 {
     display: grid;
 	background-color: #fff;
-	margin-top: 7em;
+	margin-top: 10em;
 
     grid-template-areas:    'gcsarea1 gcsarea1 gcsarea2 gcsarea2 gcsarea3 gcsarea3 '
 							'gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea5 gcsarea6 '
@@ -4144,14 +4239,22 @@ div .clubesWide
 }
 .gridPartido
 {
-    display: grid;
+    display: flex;
+    flex-direction:column;
+	flex-wrap: nowrap;
+	flex-flow: row wrap;
+    padding: 1rem;
+    background-color: #fff;
+	justify-content: space-between;
+	align-items:flex-start;
 
-    width: 50%;
+    display: flex;
+    /* width: 50%;
     margin: 0 auto;
 
     grid-gap: 5px;
     grid-template-columns: 100%;
-    background-color: #fff;
+    background-color: #fff; */
 }
     #FormPartidoC
     {
@@ -4416,8 +4519,14 @@ padding: 1rem;
 }
 #Sedesf
 {
+    display: flex;
+    flex-direction:column;
+	flex-wrap: nowrap;
+	flex-flow: row wrap;
     padding: 1rem;
-    padding-bottom: 1em;
+    background-color: #fff;
+	justify-content: space-between;
+	align-items:flex-start;
 
     border: 1px solid #000;
 }
@@ -4470,7 +4579,7 @@ padding: 1rem;
 #Competencias
 {
     margin-top: -4em;
-    padding: 1rem;
+    padding: 0.5rem;
 
     border: 1px solid #000;
 }
@@ -4478,11 +4587,11 @@ padding: 1rem;
 {
     top: 7rem;
 }
-#Competencias select
+/* #Competencias select
 {
     width: 70%;
-}
-#Competencias button
+} */
+/* #Competencias button
 {
     font-size: 15px;
     font-weight: 150;
@@ -4499,26 +4608,24 @@ padding: 1rem;
 #Competencias button:hover
 {
     background: gold;
-}
+} */
 #Sedesf button:hover
 {
     background: gold;
 }
 #Sedessearchf
 {
-    margin-top: -2em;
+    display: flex;
+    background-color: #0e2464;
+    flex-direction:column;
+	justify-content: space-between;
+	align-items:inherit;
     padding: 1rem;
+}
 
-    border: 1px solid #000;
-    background: #fff;
-}
-#Sedessearchf select
-{
-    width: 70%;
-}
 #Sedessearchf button
 {
-    font-size: 15px;
+    font-size: 35px;
     font-weight: 150;
 
     padding: 3px;
@@ -4541,7 +4648,6 @@ padding: 1rem;
 
 .formCiudad
 {
-	color: #fff;
     background: #0e2464;
 }
 
@@ -4570,32 +4676,51 @@ select#icity.SelList{
 
     border: 1px solid #000;
 }
+
+#CiudadForm
+{
+    display: flex;
+    flex-direction:column;
+	flex-wrap: nowrap;
+	flex-flow: row wrap;
+    background-color: #fff5af;
+	justify-content: space-between;
+	align-items:flex-start;
+
+} 
+
+
+
 #CiudadForm button
 {
-    font-size: 15px;
-    font-weight: 150;
-
-    padding: 3px;
-
-    text-decoration: none;
-
-    color: #000;
-    border: 1px solid #000;
-    border-radius: 6px;
-    background-color: #99c2ff;
+        font-size: 35px;
+        font-weight: 150;
+        padding: 3px;
+        text-decoration: none;
+        color: #000;
+        border: 2px solid #000;
+        border-radius: 6px;
+        background-color: #99c2ff;
 }
+
+
 #CiudadForm button:hover
 {
     background: gold;
 }
-#Canchasearch
+ #Canchasearch
 {
-    height: 14rem;
-    margin-top: -6em;
+    position: relative;
+    top:-6em;
+    display: flex;
+    background-color: #0e2464;
+    flex-direction:column;
     padding: 1rem;
+    gap: 1em;
+    height: max-content;
+} 
 
-    border: 1px solid #000;
-}
+
 #Canchasearch button
 {
     font-size: 15px;
@@ -4619,7 +4744,8 @@ select#icity.SelList{
     width: 100%;
     margin-top: .5rem;
 }
-#Canchas
+
+/* #Canchas
 {
     height: 10rem;
     margin-top: 11em;
@@ -4640,7 +4766,34 @@ select#icity.SelList{
     border: 1px solid #000;
     border-radius: 6px;
     background-color: #99c2ff;
+} */
+
+#Canchas
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #fff5af;
+    justify-content: start;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+
+} 
+
+#Canchas button
+{
+        font-size: 35px;
+        font-weight: 150;
+        padding: 3px;
+        text-decoration: none;
+        color: #000;
+        border: 2px solid #000;
+        border-radius: 6px;
+        background-color: #99c2ff;
 }
+
+
 #Canchas button:hover
 {
     background: gold;
@@ -4756,6 +4909,54 @@ grid-gap: 0.5em;
     border-radius: 6px;
     background-color: #1883ba;
 }
+
+/**************************************************************/
+/************* STRATEGIAS DE CAMBIO DE LIBEROS *****************/
+.formStrats1
+{
+    background:#d35aee;
+}
+
+.controlStra1{
+	grid-area: controStra1;
+}
+
+.controlStra2{
+	grid-area: controStra2;	
+}
+.controlStra2 SELECT{
+	font-size: 15pt;
+	width: 100%;
+}
+
+.controlStra3{
+	grid-area: controStra3;
+}
+.controlStra4{
+	grid-area: controStra4;
+	width: 100%;
+    border: 1px solid #000;
+}
+
+.controlStra{
+	display: grid;
+	grid-template-areas: 'controStra1' 'controStra2'
+						 'controStra3' 'controStra4';
+}
+
+
+.controlStra button {
+    font-size: 20px;
+    font-weight: 150;
+    display: block;
+    padding: 3px;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #0016b0;
+    border-radius: 6px;
+    background-color: #1883ba;
+}
+/*******************************************************************/
 
 
 .formClubes
@@ -5402,7 +5603,7 @@ div.item3.fondoNegro
 }
     .medioset
     {
-    	margin-top: 6em;
+    	margin-top: 7em;
         padding-left: 0rem;
     }
 
@@ -5911,25 +6112,17 @@ div.item3.fondoNegro
 
 .acciones
 {
-    display: grid;
-    width: 80%;
-    margin: 0 auto;
-	margin-top: 3em;
-    margin-left: 1em;
-    padding: 4em 2em 0 0;
-
-    text-align: center;
-
+    display: flex;
+	flex-flow: column; 
+	column-gap: 3em;
+	margin-top: 9em;
     color: white;
     border: 1px solid white;
+	padding: 1rem;
+	justify-content: space-around;
 
-    grid-gap: 1px;
-    grid-template-columns: 20% 22% 24% 38% 20%;
-    grid-template-rows: 100%;
+
 }
-
-
-
 
 
 .ren
@@ -6272,7 +6465,7 @@ div.item3.fondoNegro
 .headerMenu {
 		width: 100%;
 		margin:0;
-		margin-top: -4em;
+		margin-top: 0em;
 		position: fixed;
 		z-index: 1000;
 }
@@ -6440,9 +6633,13 @@ div.item3.fondoNegro
 
 }
 
+.bordeNegro{
+	border: 1px solid #000000;
+}
+
 .ControlLiberos{
 		DISPLAY:GRID;
-    	grid-template-columns: 33% 33% 33%;
+    	grid-template-columns: 35% 35% 35%;
 		text-align: center;
     	vertical-align: middle;
 /*    	
@@ -6781,6 +6978,439 @@ button.punta.updposiciones{
 
 /*********************** NUEVO ABM JUGADOR, DNI JUGADOR **************/
 
+.LiberoData{
+	display: grid;
+	grid-template-columns: 80% 15%;
+}
+
+.LiberoData input[type="checkbox"]
+{
+    appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+/*** estilo alocado dell SELECT *****/
+    display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	padding: 10px 8px;
+  	height: auto;
+  	outline: 0; 
+  	border: 0;
+	border-radius: 0;
+	background: #f0f0f0;
+	color: #7b7b7b;
+	font-size: 1em;
+	color: #999;
+	font-family: 
+	'Quicksand', sans-serif;
+	border:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+/*    position: relative; */
+    transition: all 0.25s ease;
+	
+}
+
+
+.grillaActivos_1{
+	grid-area: grillaActivos_1;
+}
+.grillaActivos_2{
+	grid-area: grillaActivos_2;	
+	width:130px;	
+}
+.grillaActivos_3{
+	grid-area: grillaActivos_3;
+}
+.grillaActivos_4{
+	grid-area: grillaActivos_4;
+}
+
+/* RENGLON DE ORDEN */
+.grillaActivos_5{
+	grid-area: grillaActivos_5;
+}
+
+.grillaActivos_6{
+	grid-area: grillaActivos_6;
+}
+.grillaActivos_7{
+	grid-area: grillaActivos_7;
+}
+.grillaActivos_8{
+	grid-area: grillaActivos_8;
+}
+/* RENGLON DE ORDEN */
+.grillaActivos_9{
+	grid-area: grillaActivos_9;
+}
+
+.grillaActivos_9 INPUT{
+	width: 100%;
+}
+
+
+.GrillaActivos{
+	display:grid;
+	grid-template-areas: 'grillaActivos_1 grillaActivos_2 grillaActivos_3 grillaActivos_4'
+                         'grillaActivos_5 grillaActivos_6 grillaActivos_7 grillaActivos_8'
+                         'grillaActivos_9 grillaActivos_9 grillaActivos_9 grillaActivos_9';
+    margin: auto;
+    overflow: auto;
+}
+
+.fondoActivo{
+	background-color: #1fc9c5;
+}
+
+.GrillaActivos BUTTON{
+    width: 100%;
+	/** BORDES REDONDEADOS **/
+	    border: 1px solid #000000;
+	    -moz-border-radius: 7px;
+	    -webkit-border-radius: 7px;
+	/** BORDES REDONDEADOS **/
+    background: #f99;
+    color: #fff;
+    text-decoration: none;
+    font-size: 10px;
+    font: icon;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    top: 0px;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+}
+
+.GrillaActivos BUTTON.botonMas{
+	background-color: #ee7626;
+}
+
+.GrillaActivos BUTTON.botonMenos{
+	background-color: ##f5b487;
+}
+
+.CabGrillaActivo{
+	display: grid;
+	grid-template-columns: 70% 30%;
+
+}
+.CabGrillaActivo BUTTON{
+
+    width: 100%;
+    height: 2em;
+	/** BORDES REDONDEADOS **/
+	    border: 1px solid #000000;
+	    -moz-border-radius: 7px;
+	    -webkit-border-radius: 7px;
+	/** BORDES REDONDEADOS **/
+    background: #f99;
+    color: #fff;
+    text-decoration: none;
+    font-size: 10px;
+    font: icon;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    top: 0px;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+	
+}
+
+
+/*  SUPLENTES GRILLARDA */
+ .grillaAll_1{
+	grid-area: grillaAll_1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+
+}
+
+.itemalljug2_1{
+	grid-area: itemalljug1_2;
+	
+}
+.itemalljug2_2{
+	grid-area: itemalljug2_2;
+}
+.itemalljug2_3{
+	grid-area: itemalljug3_2;
+}
+.itemalljug2_4{
+	grid-area: itemalljug4_2;
+}
+.itemalljug2_5{
+	grid-area: itemalljug5_2;
+}
+.itemalljug2_6{
+	grid-area: itemalljug6_2;
+}
+.itemalljug2_7{
+	grid-area: itemalljug7_2;
+}
+
+.grillaAll_2{
+	grid-area: grillaAll_2;	
+
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+
+	/* grid-template-areas: 'itemalljug1_2 itemalljug2_2 itemalljug3_2 itemalljug4_2 itemalljug5_2 itemalljug6_2 itemalljug7_2'; */
+ 
+}
+/* copiado desde estilo_cargajugadores.css */
+.redondo{
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+ background-color: #3a8dc5;
+ 
+  align-items: center;
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.Grisado{
+	background-color: #c6cbcf;
+}
+/* copiado desde estilo_cargajugadores.css */
+
+button.central {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+
+	border-radius: 100%;
+	background: #ff9999;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}
+
+button.armador {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+	border-radius: 100%;
+	background:#26d9c7;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}
+
+
+button.opuesto {
+	width: 2em;
+	height: 2em;
+	z-index: 0;
+	border-radius: 100%;
+	background:#31dc23;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}	
+	
+	
+button.libero {
+	width: 2em;
+	height: 2em;
+
+	z-index: 0;
+
+	border-radius: 100%;
+	background:#e29d1d;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}	
+
+
+button.punta {
+	width: 2em;
+	height: 2em;
+	z-index: 0;
+
+	border-radius: 100%;
+	background:#fd893c;
+		
+	border: 1px solid #d2d2d2;
+	outline: none;
+	color: #FFF;
+	font-size: 19px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	transition: .3s;
+}		
+
+/*
+.grillaActivos_3{
+	grid-area: grillaActivos_3;
+}
+.grillaActivos_4{
+	grid-area: grillaActivos_4;
+} */
+
+.grillaAllJug
+{
+    display:flex;
+    flex-direction: column;
+    background-color: #fff;
+
+	/** BORDES REDONDEADOS **/
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+/** BORDES REDONDEADOS **/
+    row-gap: 0.5rem;
+    padding: 1rem;
+
+}
+
+.GrillaSuplentes{
+	display:grid;
+	grid-template-areas: 'grillaAll_1 grillaAll_2' ;
+    margin: auto;
+    overflow: auto;
+}
+
+.fondoGrillaSuplentes{
+	background-color: #1fc9c5;
+}
+
+.GrillaSuplentes BUTTON{
+    width: 100%;
+	/** BORDES REDONDEADOS **/
+	    border: 1px solid #000000;
+	    -moz-border-radius: 7px;
+	    -webkit-border-radius: 7px;
+	/** BORDES REDONDEADOS **/
+    background: #f99;
+    color: #fff;
+    text-decoration: none;
+    font-size: 10px;
+    font: icon;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    top: 0px;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+}
+
+
+.CabGrillaSuplentes{
+	display: grid;
+	grid-template-columns: 70% 30%;
+
+}
+.CabGrillaSuplentes BUTTON{
+
+    width: 100%;
+    height: 2em;
+	/** BORDES REDONDEADOS **/
+	    border: 1px solid #000000;
+	    -moz-border-radius: 7px;
+	    -webkit-border-radius: 7px;
+	/** BORDES REDONDEADOS **/
+    background: #f99;
+    color: #fff;
+    text-decoration: none;
+    font-size: 10px;
+    font: icon;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    top: 0px;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+	
+}
+
+/* SUPLENTE GRILLARDA  */
+
+#MensajesError{
+    color: #000;
+}
+
+/* ESTRUCTURA DE LOS TABS DENTRO DEL CONTROLADOR DEL PARTIDO */
+/* TODOS LOS TAMAÑOS */
+.TabsGeneral{
+	background-color: lightgray;
+	 padding: 0em;
+}
+.TabsGeneral .ul{
+	/* //background-color: lightblue; */
+	display: flex;
+	flex-flow: row nowrap; 
+	justify-content: flex-start;
+	align-items: strecht;
+	list-style-type: none;
+	padding-inline-start: 0px;
+
+}
+
+.TabsGeneral .li{
+	background-color: #1abde6;
+	padding: 1em;
+	margin: 0 1em 0 0;
+	/*bordes redondeados*/
+	border: 1px solid #000000;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+    border-radius: 7px;
+/*bordes redondeados*/		   
+	color:#cafbcf;
+
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	 box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	
+}
+.TabsGeneral .li.activo{
+	background-color: #01479c;
+}
+.TabsGeneral .SubTab{
+	 min-height: 4VH; /*10vh; */
+
+}
+.TabsGeneral .BloqueSubTab{
+	background-color: #002234;
+	top: 0;
+	color:#fff;	
+}
+/* ESTRUCTURA DE LOS TABS DENTRO DEL CONTROLADOR DEL PARTIDO */
+
+
+
 @media (min-width:451px) and (max-width: 768px)
 {
 html,
@@ -6817,7 +7447,7 @@ font-size: 1em;
         height: 3rem;
 
         background-color: #ff62c8;
-        background-image: url('../img/fondologo.png');
+        background-image: url('../img/HeadervoleyAPP.png');
     }
     
  #jugadorABM {
@@ -7275,7 +7905,21 @@ font-size: 15px;
 	.itemBusc12{
 		grid-area: itemb12;
 	}
-				
+	
+	.itemBusc13{
+		grid-area: itemb13;
+	}
+	.itemBusc14{
+		grid-area: itemb14;
+	}	
+					
+	.itemBusc15{
+		grid-area: itemb15;
+	}				
+	.itemBusc16{
+		grid-area: itemb16;
+	}					
+					
     .formbuscar
     {
         display: grid;
@@ -7286,7 +7930,8 @@ font-size: 15px;
         grid-template-areas: 'itemb1 itemb2 itemb3 itemb4'
         					'itemb5 itemb6 itemb8 itemb8'
         					'itemb7 itemb7 itemb7 itemb7'
-        					'itemb9 itemb10 itemb11 itemb12';
+        					'itemb9 itemb10 itemb11 itemb12'
+        					'itemb13 itemb14 itemb15 itemb16';
 				border: 1px solid #000000;
 			-moz-border-radius: 7px;
 			-webkit-border-radius: 7px;
@@ -7538,14 +8183,22 @@ font-size: 15px;
     }
     .gridPartido
     {
-        display: grid;
-
-        width: 100%;
+        display: flex;
+        flex-direction:column;
+        flex-wrap: nowrap;
+        flex-flow: row wrap;
+        padding: 1rem;
+        background-color: #fff;
+        justify-content: space-between;
+        align-items:flex-start;
+    
+        display: flex;
+        /* width: 50%;
         margin: 0 auto;
-        padding-left: 3rem;
-
+    
         grid-gap: 5px;
         grid-template-columns: 100%;
+        background-color: #fff; */
     }
     .gridPartido .ipp1
     {
@@ -7671,8 +8324,11 @@ font-size: 15px;
     right: 0;
     left: 0;
     width: 100%;
-	height: 5em;
-    background-image: url('../img/fondologo.png');
+	height: 4.8em;
+    background-image: url('../img/HeadervoleyAPP.png');
+    background-repeat: no-repeat;
+    background-size: 775px 134px;
+
 }    
     
 	.ContenedorLogo{
@@ -7681,13 +8337,22 @@ font-size: 15px;
 	}    
     .LogoApp
     {
-        height: 5em;
+        /* height: 5em;
         float: inherit;
-        margin-top: 0px;
+        margin-top: 0px; */
+        height: 8em;
+	    margin-top: 0em;
+	    margin-bottom: 0em;
+        margin-left: 1em;
+        position: absolute;
+        z-index: 10;
+    
+    
+    
     }
 	.normalizar{
         height: 3em;
-	    float: left;
+	    float: right;
 	    margin: 0;
 
 	}
@@ -8237,6 +8902,54 @@ font-size: 15px;
     background-color: #1883ba;
 }
 
+/**************************************************************/
+/************* STRATEGIAS DE CAMBIO DE LIBEROS *****************/
+.formStrats1
+{
+    background:#d35aee;
+}
+
+.controlStra1{
+	grid-area: controStra1;
+}
+
+.controlStra2{
+	grid-area: controStra2;	
+}
+.controlStra2 SELECT{
+	font-size: 15pt;
+	width: 100%;
+}
+
+.controlStra3{
+	grid-area: controStra3;
+}
+.controlStra4{
+	grid-area: controStra4;
+	width: 100%;
+    border: 1px solid #000;
+}
+
+.controlStra{
+	display: grid;
+	grid-template-areas: 'controStra1' 'controStra2'
+						 'controStra3' 'controStra4';
+}
+
+
+.controlStra button {
+    font-size: 20px;
+    font-weight: 150;
+    display: block;
+    padding: 3px;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #0016b0;
+    border-radius: 6px;
+    background-color: #1883ba;
+}
+/*******************************************************************/
+
 /**nuevo formato de GRID-CSETS**/
 /*.gcset1{ grid-area: gcsarea1;padding:1em;font-size:3em;margin-left:2em; }*/
 .gcset1 .ianio{ font-size:1em;margin-left: 1em; width: 50%;}
@@ -8297,14 +9010,15 @@ font-size: 15px;
 {
     display: grid;
 	background-color: #fff;
-
-    grid-template-areas:    'gcsarea1 gcsarea1 gcsarea2 gcsarea2 gcsarea3 gcsarea3 '
-							'gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea5 gcsarea6 '
+    grid-template-areas:    'gcsarea1 gcsarea1 gcsarea1 gcsarea1 gcsarea5 gcsarea6 '
+    						'gcsarea2 gcsarea2 gcsarea2 gcsarea3 gcsarea3 gcsarea3 '
+							'gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea4 '
 							'gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 ';							
-		/*borde redondeado*/
+        /*borde redondeado*/
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 				background-color: #fff;
 		/*borde redondeado*/
 
@@ -8428,6 +9142,7 @@ font-size: 10pt;
 	font-family: 'Oswald', sans-serif;
 	padding-top:0.5rem;
 }
+
 input.#verset.btnPop2 {
 	width: auto;
     height: 3em;
@@ -9455,9 +10170,12 @@ button.punta.updposiciones{
 .itemcambioanio2{grid-area: cambioanio2;}
 .itemcambioanio3{grid-area: cambioanio3;}
 
+.itemcambioanio31{grid-area: cambioanio31;}
+.itemcambioanio4{grid-area: cambioanio4;}
+
 .grillaCambioAnio{
 	display:grid;
-	grid-template-areas: 'cambioanio1' 'cambioanio2' 'cambioanio3';	
+	grid-template-areas: 'cambioanio1' 'cambioanio2' 'cambioanio3' 'cambioanio31' 'cambioanio4';	
      box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
      border-radius: 5px;
 	background-color:white;
@@ -9575,7 +10293,7 @@ button.punta.updposiciones{
         padding: auto;
 
         background-color: #ff62c8;
-        background-image: url('../img/fondologo.png');
+        background-image: url('../img/HeadervoleyAPP.png');
     }
 	.busqueda
 	{
@@ -9629,7 +10347,20 @@ button.punta.updposiciones{
 	.itemBusc12{
 		grid-area: itemb12;
 	}
-				
+	
+	.itemBusc13{
+		grid-area: itemb13;
+	}
+	.itemBusc14{
+		grid-area: itemb14;
+	}				
+	.itemBusc15{
+		grid-area: itemb15;
+	}				
+	.itemBusc16{
+		grid-area: itemb16;
+	}					
+	
     .formbuscar
     {
         display: grid;
@@ -9644,8 +10375,8 @@ button.punta.updposiciones{
         grid-template-areas: 'itemb1 itemb2 itemb3 itemb4'
         					'itemb5 itemb6 itemb8 itemb8'
         					'itemb7 itemb7 itemb7 itemb7'
-        					'itemb9 itemb10 itemb11 itemb12';
-		
+        					'itemb9 itemb10 itemb11 itemb12'
+							'itemb13 itemb14 itemb15 itemb16';	
     }
     .frmbuscarotros
     {
@@ -10114,7 +10845,6 @@ div.item3.fondoNegro
 {
     border-right-width: 1em;
 }
-
       
     #canchaB
     {
@@ -10134,7 +10864,7 @@ div.item3.fondoNegro
     }
     .medioset
     {
-    	margin-top: 4em;
+    	margin-top: 7em;
         padding-left: 0rem;
     }
     #popupAltaPosI
@@ -10156,14 +10886,21 @@ div.item3.fondoNegro
     }
     .gridPartido
     {
-        display: grid;
-
-        width: 100%;
+        display: flex;
+        flex-direction:column;
+        flex-wrap: nowrap;
+        flex-flow: row wrap;
+        padding: 1rem;
+        background-color: #fff;
+        justify-content: space-between;
+        align-items:flex-start;
+        /* width: 50%;
         margin: 0 auto;
-        padding-left: 3rem;
-
+    
         grid-gap: 5px;
         grid-template-columns: 100%;
+        background-color: #fff; */
+
     }
     .gridPartido .ipp1
     {
@@ -10361,7 +11098,7 @@ div.item3.fondoNegro
     }
     .btnBuscar2
     {
-        font-size: 15px;
+        font-size: 25px;
         font-weight: 150;
 
         padding: 3px;
@@ -10383,7 +11120,7 @@ div.item3.fondoNegro
 
         width: 100%;
         padding-left: 0rem;
-
+        height: max-content;
         grid-gap: 5px;
         grid-template-columns: 100%;
         grid-template-rows: 100% 100% 100% 100% 100% 100% 100%;
@@ -10400,29 +11137,8 @@ div.item3.fondoNegro
     {
         width: 100%;
     }
-    #Canchas
-    {
-        height: 10rem;
-        margin-top: -2em;
 
-        border: 1px solid #000;
-        background: #fff;
-    }
-    #Canchas button
-    {
-        font-size: 15px;
-        font-weight: 150;
-
-        padding: 3px;
-
-        text-decoration: none;
-
-        color: #000;
-        border: 1px solid #000;
-        border-radius: 6px;
-        background-color: #99c2ff;
-    }
-    #Canchas button:hover
+#Canchas button:hover
     {
         background: gold;
     }
@@ -10591,7 +11307,7 @@ div.item3.fondoNegro
     #ElegirJugadores
     {
         font-size: 1em;
-		margin-top: 3em;
+		margin-top: 8em;
         display: grid;
 
         height: auto;
@@ -10975,7 +11691,8 @@ div.item3.fondoNegro
 .ilp217{ grid-area: area7; }
 .ilp218{ grid-area: area8; }
 .ilp219{ grid-area: area9; }
-.ilp2110{ grid-area: area10; }
+/*.ilp2110{ grid-area: area10; }*/
+.ilp2110{ grid-area: area10;margin:0.2rem;padding:0; }
 
 
 .agrid-LPReg21
@@ -10987,8 +11704,8 @@ div.item3.fondoNegro
     margin: 0;
     padding: 0;
     grid-template-areas:    'area1 area2 area3 area4 area5 area6 area6 '
-    						'area7 area7 area7 area7 area7 area7 area7'
-    						'area8 area8 area9 area9 area10 area10 area10';
+    						'area7 area7 area7 area7 area7 area10 area10'
+    						'area8 area8 area8 area9 area9 area9 area9';
 /*borde redondeado*/
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
@@ -11131,10 +11848,12 @@ div.item3.fondoNegro
     
     .LogoApp
     {
-        height: 3em;
+        height: 8em;
 	    margin-top: 0em;
 	    margin-bottom: 0em;
-
+        margin-left: 1em;        
+        position: absolute;
+        z-index: 10;
     }
     
 
@@ -11146,8 +11865,11 @@ div.item3.fondoNegro
     right: 0;
     left: 0;
     width: 100%;
-	height: 3em;
-    background-image: url('../img/fondologo.png');
+	height: 4.8em;
+    background-image: url('../img/HeadervoleyAPP.png');
+    background-repeat: no-repeat;
+    background-size: 460px 124px;
+
 }
 
 	.itemBusc1{
@@ -11168,6 +11890,9 @@ div.item3.fondoNegro
 	.itemBusc6{
 		grid-area: itemb6;
 	}
+	.itemBusc6 SELECT {
+		width: 300%;
+	}	
 	.itemBusc7{
 		grid-area: itemb7;
 	}
@@ -11187,19 +11912,32 @@ div.item3.fondoNegro
 		grid-area: itemb12;
 	}
 				
+	.itemBusc13{
+		grid-area: itemb13;
+	}
+	.itemBusc14{
+		grid-area: itemb14;
+	}				
+	.itemBusc15{
+		grid-area: itemb15;
+	}				
+	.itemBusc16{
+		grid-area: itemb16;
+	}					
+	
     .formbuscar
     {
         display: grid;
         width: 100%;
-		margin-top: 3em;
+		margin-top: 7em;
         background-color: #ccdfdf;
         background-color: #d7f1f4;
         grid-gap: 6px;
         grid-template-areas: 'itemb1 itemb2' 'itemb3 itemb4 '
         					'itemb5 itemb6' 'itemb8 itemb8'
         					'itemb7 itemb7' 'itemb7 itemb7'
-        					'itemb9 itemb10' 'itemb11 itemb12';
-		
+        					'itemb9 itemb10' 'itemb11 itemb12'
+							'itemb13 itemb14 itemb15 itemb16';		
 	/*borde redondeado*/
 			border: 1px solid #000000;
 			-moz-border-radius: 7px;
@@ -11231,10 +11969,6 @@ div.item3.fondoNegro
 		grid-area: itemdateb5;
 	}
 	
-    .formbuscar SELECT
-    {
- 		width: 100%;
-    }
     .formbuscar #frmbuscardate
     {
         display: grid;
@@ -11430,6 +12164,43 @@ div.item3.fondoNegro
 	padding: .5rem;
 	margin-top: 3em;	
 }
+
+.x23itemcontrolju1{grid-area:x23itemcontrolju1 ;}
+.x23itemcontrolju2{grid-area:x23itemcontrolju2 ;}
+.x23itemcontrolju3{grid-area:x23itemcontrolju3 ;}
+.x23itemcontrolju4{grid-area:x23itemcontrolju4 ;}
+.x23itemcontrolju5{grid-area:x23itemcontrolju5 ;}
+.x23itemcontrolju6{grid-area:x23itemcontrolju6 ;}
+.x23itemcontrolju7{grid-area:x23itemcontrolju7 ;}
+.x23itemcontrolju8{grid-area:x23itemcontrolju8 ;}
+.x23itemcontrolju9{grid-area:x23itemcontrolju9 ;}
+
+.x23GridControlJugador
+{
+    display: grid;
+    padding-bottom: 0em;
+    grid-template-areas: 'x23itemcontrolju1 x23itemcontrolju2 x23itemcontrolju2'
+                         'x23itemcontrolju3 x23itemcontrolju4 x23itemcontrolju4' 
+                         'x23itemcontrolju5 x23itemcontrolju5 x23itemcontrolju5'
+                         'x23itemcontrolju6 x23itemcontrolju6 x23itemcontrolju6'
+                         'x23itemcontrolju7 x23itemcontrolju7 x23itemcontrolju7'
+                         'x23itemcontrolju8 x23itemcontrolju8 x23itemcontrolju8'
+                         'x23itemcontrolju9 x23itemcontrolju9 x23itemcontrolju9'  ;
+    /*BORDES REDONDEADOS*/
+        border: 1px solid #000000;
+        -moz-border-radius: 7px;
+        -webkit-border-radius: 7px;
+        background-color: #fff;
+    /*BORDES REDONDEADOS*/        
+    margin-left:0em;
+    margin-right:0em;	
+    padding: .5rem;
+    margin-top: 7em;
+    width: 100%;
+    grid-gap:1rem;
+}
+
+
 .GridControlJugador SELECT[name="ianio"] {
     width: 100%;
 }
@@ -11750,15 +12521,16 @@ font-size: 15PT;
 {
     display: grid;
 	background-color: #fff;
-	margin-top: 4em;
+	margin-top: 8em;
     grid-template-areas:    'gcsarea1 gcsarea1 gcsarea1 gcsarea1 gcsarea5 gcsarea6 '
     						'gcsarea2 gcsarea2 gcsarea2 gcsarea3 gcsarea3 gcsarea3 '
 							'gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea4 '
 							'gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 ';							
-		/*borde redondeado*/
+            /*borde redondeado*/
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 				background-color: #fff;
 		/*borde redondeado*/
 
@@ -12549,6 +13321,29 @@ width: auto;
     margin-left: 1.5em;    
 }
 
+/* GENERALES EN TABS, NOVEDADES */
+#tiempoA1G
+{
+    background: #98d02f;
+    margin-left: 1.5em;
+}
+#tiempoA2G
+{
+    background: #98d02f;
+    margin-left: 1.5em;    
+}
+#tiempoB1G
+{
+    background: #98d02f;
+    margin-left: 1.5em;    
+}
+#tiempoB2G
+{
+    background: #98d02f;
+    margin-left: 1.5em;    
+}
+/* GENERALES EN TABS, NOVEDADES */
+
 #negro
 {
     /*height: 0;*/
@@ -12878,7 +13673,7 @@ width: auto;
 .headerMenu {
 		width: 100%;
 		margin:0;
-		margin-top: -3em;
+		margin-top: 1em;
 		position: fixed;
 		z-index: 1000;
 }
@@ -13082,7 +13877,7 @@ width: auto;
 
 .ControlLiberos{
 		DISPLAY:GRID;
-    	grid-template-columns: 33% 33% 33%;
+    	grid-template-columns: 35% 35% 35%;
 		height:3em;
 /*		position: relative;*/
 		top: 1em;
@@ -13109,7 +13904,6 @@ width: auto;
 .ControlSuplentes{
 		DISPLAY:GRID;
     	grid-template-columns: 33% 33% 33%;
-		height:4em;
 		top: 1em;
 		text-align: center;
     	vertical-align: middle;
@@ -13244,7 +14038,8 @@ button.punta.updposiciones{
 						 'item22_5 item22_5 item22_6'
 						 'item22_7 item22_7a item22_7c'
 						 'item22_7b item22_10 item22_9'
-						 'item22_11 item22_8 item22_8';
+						 'item22_11 item22_8 item22_8'
+						 'item22_12 item22_8 item22_8';
 	/** BORDES REDONDEADOS **/
 	    border: 1px solid #000000;
 /*	    -moz-border-radius: 7px;

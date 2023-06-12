@@ -194,8 +194,19 @@
 				if(i == fechapartido) $("#ianio").prepend('<option selected>' + (i + 1) + '</option>');
 				else  $("#ianio").prepend('<option>' + (i + 1) + '</option>');
 			}
+
 			$("#ianio").prop('disabled', true);
-			
+
+			var FechaParametros = $.urlParam('fecha');
+			//CHATGPT Supongamos que el campo de texto tiene un ID de "miCampoTexto"
+				var valorCampoTexto = FechaParametros; //$('#miCampoTexto').val();
+				var fecha = new Date(valorCampoTexto);
+				var anio = fecha.getFullYear();
+				$("#ianio").val(anio);
+
+
+
+
 			
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 			var partido = $.urlParam('idpartido'); // name

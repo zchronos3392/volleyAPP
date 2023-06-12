@@ -125,7 +125,9 @@ label{
 
    <link rel="stylesheet" href="./css/font-awesome.min.css">
 <section class="LogoApp">
-<a href="index.php"><img class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png"></a>
+<a href="index.php">
+  <!-- <img class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png"> -->
+</a>
 </section>	
 <section id="headerbar" name="headerbar" class="headerbar">
 <label for="mostrar-modal"> Ver modal </label>

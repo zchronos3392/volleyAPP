@@ -63,6 +63,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// CHEQUEADO, TRAE BIEN AL EQUIPO QUE FUE CARGADO ORIGINALMENTE PARA JUGAR
 	// el que tiene la misma categoria, los de otra categoria se cargan a MANO..
 	// esta lista de jugadores, llegan sin SET asignado..
+	$ordenA =1;
+	$ordenB =1;
 
 /*	TODO ESTO SE MOVIO A INSERTAR_PARTIDO, Y JUGADORPARTIDOCABECERA.
 
@@ -162,31 +164,63 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// el primer estado, o de configuracion sera 5, para indicar el primer registro del SEt...
 	$puntoa =  (int) $_POST['resa'];
 	$puntob	 =  (int) $_POST['resb'];
+
+	//02 DIC.2022::ENVIO LA ESTRATEGIA CON RESPECTO A LOS LIBEROS
+		//PARA QUE SABER QUÉ HACER AUTOMATICAMENTE EN SUS CAMBIOS..
+		// ESTA API TAMBIEN SE LLAMA DESDE CREAR SET, Y COMO NO ENVIO LA ESTRATEGIA
+		// SE ESTABA QUEDANDO VACIA LA VARIABLES DE ESTRATEGIA, Y SIN COMILLAS DE VACIO
+		// ENTONCES TIRABA ERROR AL CREAR EL SET.
+			$estrategiaA = "''";
+			if(isset($_POST['estrategiaLA'])) $estrategiaA = "'".$_POST['estrategiaLA']."'";
+			$estrategiaB = "''";
+			if(isset($_POST['estrategiaLB'])) $estrategiaB = "'".$_POST['estrategiaLB']."'";
+		//PARA QUE SABER QUÉ HACER AUTOMATICAMENTE EN SUS CAMBIOS..
+	//02 DIC.2022::ENVIO LA ESTRATEGIA CON RESPECTO A LOS LIBEROS
+	
     // Insertar Set
 	$retorno =0;
 	if($mensajePre == 'Novedades30::grabaPos')
 	  if($puntoa != 0 | $puntob !=0)
 		$mensaje = "'Arreglo de posiciones...'"; // POST	  
 	  else
+	   {
 		$mensaje = "'Confirmando posiciones en planilla...'"; // POST
+		// ESTABLECEMOS COMO ESTRATEGIA INICIAL SIEMPRE QUE HAY UN LIBERO
+		$estrategiaA=$estrategiaB="'UNLIBERO'";
+		$ordenA =1;
+		$ordenB =1;
+	   }	
 	else
 		if($mensajePre == 'Novedades30::Partido::Reanudado')
 			$mensaje = "' Se reanuda juego'";
 		else
 		$mensaje = "'Esperando silbato inicial...'";
 	
-	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$mensaje,$contadorpausasA,$contadorpausasB);
+	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,
+							 $A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,
+							 $estado,$puntoa, $puntob,$saque,$estrategiaA,$estrategiaB,
+							 $ordenA,$ordenB,
+							 $mensaje,$contadorpausasA,$contadorpausasB);
 	$retornoRotaciones = 0;
 	$mensaje = "'por carga inicial del partido...'";		
 	$retornoRotaciones = Rotaciones::insert($idpartido,$fecha2,$setnumero,$secuencia,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$mensaje,0);
 	
-	echo("mensaje de rotaciones: ".$retornoRotaciones);
+	//echo("mensaje de rotaciones: ".$retornoRotaciones);
 	
 	
 	
     if($retorno) {
-        // Codigo de �xito
-        print(json_encode(array('estado' => '1','mensaje' => 'Creacion exitosa','ingresoRotacion' => $retornoRotaciones)));
+        // Codigo de exito
+		$getRegistroSet = Sett::getByIdUltimoRegistro($idpartido,$setnumero,$secuencia,$fecha2 );
+		$HoraInicioSeteada="";
+		if( !empty($getRegistroSet) ) $HoraInicioSeteada=$getRegistroSet['hora'];
+        print(json_encode(
+			array('estado' => '1',
+				  'mensaje' => 'Creacion exitosa',
+				  'ingresoRotacion' => $retornoRotaciones,
+				  'HoraInicial'  => $HoraInicioSeteada
+				
+				)));
     } else 
     {
         // Codigo de falla
@@ -351,14 +385,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$mensaje = "'Esperando silbato inicial...'";
 
 		$comando ="";
-    	$comando = "INSERT INTO vappset (idpartido, secuencia, setnumero, fecha, hora, 1A, 2A, 3A, 4A, 5A, 6A, ".
+    	$comando = "DEPRECATED:INSERT INTO vappset (idpartido, secuencia, setnumero, fecha, hora, 1A, 2A, 3A, 4A, 5A, 6A, ".
     				"1B, 2B, 3B, 4B, 5B, 6B, estado, puntoa, puntob,saque,mensaje,CantPausaA,CantPausaB) ".
 					" VALUES (  $idpartido, $secuencia, $setnumero, $fecha2,$horaset,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$mensaje,$contadorpausasA,$contadorpausasB ) " ;    	
 		
 		echo("<br>$comando <br>");
 	
 	
-//	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$mensaje,$contadorpausasA,$contadorpausasB);
 	$retornoRotaciones = 0;
 	$mensaje = "'por carga inicial del partido...'";		
 //	echo("mensaje de rotaciones: ".$retornoRotaciones);

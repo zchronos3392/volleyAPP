@@ -1,6 +1,85 @@
 // JavaScript Document PARA EL banner que crece automaticamente...
 		// cuando PRESIONO CLICK , LO ACTUALIZO
 
+function  buscarClub(origen,destinoId)
+		//	on("keyup keydown",function()
+{   
+		var parametros = {
+			"llamador" : "CONTROLAPP",
+			"funcion" : "buscarclub",			
+			"filtro" : $("#"+origen).val(),
+			};		         
+	
+	$.ajax({ 
+	url:   './abms/obtener_varios.php',
+	type:  'GET',
+	data: parametros,
+	dataType: 'json',
+	// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+	beforeSend: function (){
+		// Bloqueamos el SELECT de los cursos
+		$(destinoId).empty();
+	},
+	done: function(data){
+	},
+	success:  function (r){
+				
+		$(r['Clubes']).each(function(i, v)
+		{ // indice, valor
+			if (! $(destinoId).find("option[value='" + v.idclub + "']").length)
+			{
+				$(destinoId).append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
+			}		
+		});
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+	// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+		console.log(xhr);
+		console.log(thrownError);
+	}
+	}); // FIN funcion ajax CANCIONES todas:
+  };
+	//**************** FUNCION DE BUSQUEDA DE CLUBES MODERNA *********************************************/ 
+
+	function  buscarCiudad(origen,destinoId)
+	//	on("keyup keydown",function()
+{   
+	var parametros = {
+		"llamador" : "CONTROLAPP",
+		"funcion" : "buscarciudad",			
+		"filtro" : $("#"+origen).val(),
+		};		         
+
+$.ajax({ 
+url:   './abms/obtener_varios.php',
+type:  'GET',
+data: parametros,
+dataType: 'json',
+// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+beforeSend: function (){
+	// Bloqueamos el SELECT de los cursos
+	$(destinoId).empty();
+},
+done: function(data){
+},
+success:  function (r){
+			
+	$(r['Ciudades']).each(function(i, v)
+	{ // indice, valor
+	if (! $(destinoId).find("option[value='" + v.idCiudad + "']").length)
+		{
+			$(destinoId).append('<option value="' + v.idCiudad + '">' + v.Nombre + '</option>');
+		}		
+	});
+	},
+	error: function (xhr, ajaxOptions, thrownError) {
+// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+	console.log(xhr);
+	console.log(thrownError);
+}
+}); // FIN funcion ajax CANCIONES todas:
+};
+
 $(document).ready(function(){
          $.ajax({ 
             url:   './abms/obtener_clubes.php',
@@ -46,52 +125,11 @@ $(document).ready(function(){
 			}
             }); // FIN funcion ajax CLUBES
 
-            
-$("#itextAbuscar").keyup(function()
-	//	on("keyup keydown",function()
-         {   
-			var parametros = {
-	        	"llamador" : "CONTROLAPP",
-	        	"funcion" : "buscarclub",			
-	        	"filtro" : $("#itextAbuscar").val(),
-				};		         
-		
-         $.ajax({ 
-            url:   './abms/obtener_varios.php',
-            type:  'GET',
-            data: parametros,
-            dataType: 'json',
-			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
-            beforeSend: function (){
-				// Bloqueamos el SELECT de los cursos
-				$("#icluba").empty();
-    		},
-            done: function(data){
-			},
-            success:  function (r){
- 					
-                $(r['Clubes']).each(function(i, v)
-                { // indice, valor
-              	if (! $('#icluba').find("option[value='" + v.idclub + "']").length)
-                	{
-						$("#icluba").append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
-					}		
-                });
-             },
-             error: function (xhr, ajaxOptions, thrownError) {
-			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
-			 console.log(xhr);
-			 console.log(thrownError);
-			}
-            }); // FIN funcion ajax CANCIONES todas:
-       });
-
-//**************** FUNCION DE BUSQUEDA DE CLUBES MODERNA *********************************************/ 
          
 //*****************************************************************************************
 //*****************************************************************************************            
           // AJAX DE CARGA POR ID DE SEDES...xº CLUB  
-         $("#iclubb").change(function()
+         $("#iclubb").click(function()
          {
          var parametros = {"idclub" : $("#iclubb").val()};	
          $.ajax({ 
@@ -141,7 +179,7 @@ $("#itextAbuscar").keyup(function()
 //*****************************************************************************************
 //*****************************************************************************************            
           // AJAX DE CARGA POR ID DE CANCHAS X SEDES x CLUB  
-         $("#iclubd").change(function()
+         $("#iclubd").click(function()
          {
          var parametros = {"idclub" : $("#iclubd").val()};	
          $.ajax({ 

@@ -75,15 +75,78 @@ class partjug
             return ($e->getMessage());
         }
     }	
+    public static function getJugadorEnPos($partido,$fecha,$iclub,$icate,$posicionX)
+    {
+	$consulta = "SELECT ptos.remeraNum as numero,eq.nombre,eq.categoria,eq.idjugador,
+					    vappjugpartido.posicionini,vappjugpartido.idclub,
+       					vappjugpartido.posicion,vappjugpartido.activoSN,
+       					ptos.puestoxcat,posCatColor.color as ColorPuestoCat,
+       					vappjugpartido.puesto,posicionCanchaColor.color as ColorPuestoCancha,
+       					vappjugpartido.secuencia,eq.FechaEgreso
+				 FROM vappjugpartido
+	               inner join vappequipo eq
+	               on eq.idclub = vappjugpartido.idclub
+	                  and eq.idjugador = vappjugpartido.jugador    
+	                left JOIN vapppuestojugador ptos
+	                   on ptos.idjugador = eq.idjugador
+	                   and ptos.pjcategoria = vappjugpartido.idcategoria
+	                    and ptos.idclub = eq.idclub
+	                    and ptos.anioEquipo = eq.anioEquipo                   
+					LEFT JOIN vappposicion posCatColor
+					      on posCatColor.idPosicion = ptos.puestoxcat
+					LEFT JOIN vappposicion posicionCanchaColor
+					      on posicionCanchaColor.idPosicion = vappjugpartido.puesto
+				where vappjugpartido.idpartido = $partido 
+				  and vappjugpartido.Fecha=$fecha 
+				  and vappjugpartido.idclub=$iclub
+				  and vappjugpartido.idcategoria=$icate
+				  and vappjugpartido.posicion=$posicionX" ;
 	
+	//echo "$consulta";			
+        try {
+            // Preparar sentencia
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            // Ejecutar sentencia preparada
+            $comando->execute(array($partido,$fecha,$iclub,$icate,$posicionX));
+			// no se estaba devolviendl el resultado en formato JSON
+			// con esta linea se logro...
+			// usar en vez de return echo, aunque no se si funcionara con ANDROID
+            return $row = $comando->fetchAll(PDO::FETCH_ASSOC);
+			//echo json_encode($row);
+
+        } catch (PDOException $e) {
+            return ($e->getMessage());
+        }
+    }
+    
     public static function getJugadorPosIni($partido,$fecha,$iclub,$icate,$jugador)
     {
-	$consulta = "SELECT posicionini FROM vappjugpartido where 
-					idpartido = $partido 
-				and Fecha=$fecha 
-				and idclub=$iclub
-				and idcategoria=$icate
-				and jugador=$jugador" ;
+	$consulta = "SELECT ptos.remeraNum as numero,eq.nombre,eq.categoria,eq.idjugador,
+					    vappjugpartido.posicionini,vappjugpartido.idclub,
+       					vappjugpartido.posicion,vappjugpartido.activoSN,
+       					ptos.puestoxcat,posCatColor.color as ColorPuestoCat,
+       					vappjugpartido.puesto,posicionCanchaColor.color as ColorPuestoCancha,
+       					vappjugpartido.secuencia,eq.FechaEgreso
+				 FROM vappjugpartido
+	               inner join vappequipo eq
+	               on eq.idclub = vappjugpartido.idclub
+	                  and eq.idjugador = vappjugpartido.jugador    
+	                left JOIN vapppuestojugador ptos
+	                   on ptos.idjugador = eq.idjugador
+	                   and ptos.pjcategoria = vappjugpartido.idcategoria
+	                    and ptos.idclub = eq.idclub
+	                    and ptos.anioEquipo = eq.anioEquipo                   
+					LEFT JOIN vappposicion posCatColor
+					      on posCatColor.idPosicion = ptos.puestoxcat
+					LEFT JOIN vappposicion posicionCanchaColor
+					      on posicionCanchaColor.idPosicion = vappjugpartido.puesto
+				where vappjugpartido.idpartido = $partido 
+				  and vappjugpartido.Fecha=$fecha 
+				  and vappjugpartido.idclub=$iclub
+				  and vappjugpartido.idcategoria=$icate
+				  and vappjugpartido.jugador=$jugador" ;
+	
+	//echo "$consulta";			
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -151,6 +214,48 @@ public static function getJugadoresLoad($partido,$fecha,$iclub)
         }
     }	
 	
+	
+public static function getListaActivos($partido,$fecha,$iclub,$ianioe,$set)
+    {
+    //hay qye sacar la secuencia como autonumerico, anda mal !!!    				
+	$consulta = "SELECT ptos.remeraNum as numero,eq.nombre,eq.categoria,eq.idjugador,vappjugpartido.posicionini,vappjugpartido.idclub,vappjugpartido.posicion,vappjugpartido.activoSN,
+					ptos.puestoxcat,posCatColor.color as ColorPuestoCat,
+					vappjugpartido.puesto,posicionCanchaColor.color as ColorPuestoCancha,
+					vappjugpartido.secuencia,eq.FechaEgreso,vappjugpartido.Orden
+				 FROM vappjugpartido
+               inner join vappequipo eq
+               on eq.idclub = vappjugpartido.idclub
+                  and eq.idjugador = vappjugpartido.jugador    
+                left JOIN vapppuestojugador ptos
+                   on ptos.idjugador = eq.idjugador
+                   and ptos.pjcategoria = vappjugpartido.idcategoria
+                    and ptos.idclub = eq.idclub
+                    and ptos.anioEquipo = eq.anioEquipo                   
+				LEFT JOIN vappposicion posCatColor
+				      on posCatColor.idPosicion = ptos.puestoxcat
+				LEFT JOIN vappposicion posicionCanchaColor
+				      on posicionCanchaColor.idPosicion = vappjugpartido.puesto
+                WHERE vappjugpartido.idpartido=$partido	and eq.anioEquipo=$ianioe and vappjugpartido.Fecha=$fecha and vappjugpartido.idclub=$iclub and (vappjugpartido.setnumero=$set)
+					and entraSale <> 99
+					and FechaEgreso IS NULL
+					and activoSN = 1 ";
+        //echo "<br> getListaActivos: <br>$consulta<br>";
+        try {
+            // Preparar sentencia
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            // Ejecutar sentencia preparada
+            $comando->execute(array($partido,$fecha,$iclub,$ianioe,$set));
+			// no se estaba devolviendl el resultado en formato JSON
+			// con esta linea se logro...
+			// usar en vez de return echo, aunque no se si funcionara con ANDROID
+            return $row = $comando->fetchAll(PDO::FETCH_ASSOC);
+			//echo json_encode($row);
+
+        } catch (PDOException $e) {
+            return ($e->getMessage());
+        }
+    }	
+	
 //$jugsA = partjug::getJugadoresListaInicial($idpartido,$fecha2,$clublocalA);//	
 public static function getJugadoresListaInicial($partido,$fecha,$iclub,$setnumero)
     {
@@ -189,10 +294,10 @@ public static function getJugadoresListaInicial($partido,$fecha,$iclub,$setnumer
 public static function getJugSetLoad($partido,$fecha,$iclub,$ianioe,$set,$categoriaPartido)
     {
     //hay qye sacar la secuencia como autonumerico, anda mal !!!    				
-	$consulta = "SELECT ptos.remeraNum as numero,eq.nombre,eq.categoria,eq.idjugador,vappjugpartido.posicionini,vappjugpartido.idclub,vappjugpartido.posicion,vappjugpartido.Libero,
+	$consulta = "SELECT ptos.remeraNum as numero,eq.nombre,eq.categoria,eq.idjugador,vappjugpartido.posicionini,vappjugpartido.idclub,vappjugpartido.posicion,vappjugpartido.activoSN,
 					ptos.puestoxcat,posCatColor.color as ColorPuestoCat,
 					vappjugpartido.puesto,posicionCanchaColor.color as ColorPuestoCancha,
-					vappjugpartido.secuencia,eq.FechaEgreso
+					vappjugpartido.secuencia,eq.FechaEgreso,vappjugpartido.Orden
 				 FROM vappjugpartido
                inner join vappequipo eq
                on eq.idclub = vappjugpartido.idclub
@@ -208,8 +313,9 @@ public static function getJugSetLoad($partido,$fecha,$iclub,$ianioe,$set,$catego
 				      on posicionCanchaColor.idPosicion = vappjugpartido.puesto
                 WHERE vappjugpartido.idpartido=$partido	and eq.anioEquipo=$ianioe and vappjugpartido.Fecha=$fecha and vappjugpartido.idclub=$iclub and (vappjugpartido.setnumero=$set)
 					and entraSale <> 99
-					and FechaEgreso IS NULL";
-      //  echo "<br> getJugSetLoad: <br>$consulta<br>";
+					and FechaEgreso IS NULL
+                    ORDER BY eq.nombre ASC";
+        //echo "<br> getJugSetLoad: <br>$consulta<br>";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -278,7 +384,7 @@ public static function getJugSetVer($partido,$fecha,$iclub,$ianioe,$set,$jugador
 //agregue esto el 21 10 21, porque en VISUALIZAR JUGADORES, NO ESTABA TRAYENDO 
 // LA INFO UNICAMENTE DEL SET..
 //and vappjugpartido.secuencia=1 no necesariamente es 1        				
-	$consulta = "SELECT eq.numero,eq.nombre,eq.categoria,eq.idjugador,vappjugpartido.idclub,vappjugpartido.puesto,vappjugpartido.posicion,vappjugpartido.Libero ,ptos.puestoxcat,ptos.remeraNum,
+	$consulta = "SELECT eq.numero,eq.nombre,eq.categoria,eq.idjugador,vappjugpartido.idclub,vappjugpartido.puesto,vappjugpartido.posicion,vappjugpartido.activoSN ,ptos.puestoxcat,ptos.remeraNum,
 				 posCat.color as ColorPuestoCat,posCancha.color as ColorPuestoCancha
 					FROM vappjugpartido 
 			   inner join vappequipo eq 
@@ -405,7 +511,7 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
      * Insertar un nuevo gede
      *
      * @param $idsede      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
 
@@ -433,24 +539,24 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
         return $sentencia->execute(array($partido,$fecha,$iclub,$icate,$jugador) );
     }
 */	
-    public static function insertSet($partido,$fecha,$iclub,$icate,$jugador,$setnumero,$puesto,$mensajeAlta)
+    public static function insertSet($partido,$fecha,$iclub,$icate,$jugador,$setnumero,$puesto,$orden,$mensajeAlta)
     {
     	//idjugador es autonumerico..
-    	$comando = "INSERT INTO vappjugpartido (idpartido,Fecha,idclub,idcategoria,jugador,setnumero,entraSale,puesto,mensajeAlta ) ".
-		" VALUES ( $partido,$fecha,$iclub,$icate,$jugador,$setnumero,0,$puesto,$mensajeAlta ) " ;    	
+    	$comando = "INSERT INTO vappjugpartido (idpartido,Fecha,idclub,idcategoria,jugador,setnumero,entraSale,puesto,Orden,mensajeAlta ) ".
+		" VALUES ( $partido,$fecha,$iclub,$icate,$jugador,$setnumero,0,$puesto,$orden,$mensajeAlta ) " ;    	
 
 		//echo "<br>$comando<br>";
 		//echo "<br>$comando<br>";
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($partido,$fecha,$iclub,$icate,$jugador,$setnumero,$puesto,$mensajeAlta) );
+        return $sentencia->execute(array($partido,$fecha,$iclub,$icate,$jugador,$setnumero,$puesto,$orden,$mensajeAlta) );
     }	
 		
 
     public static function setPos($partido,$fecha,$iclub,$icate,$jugador,$posicioninicial,$posicionact,$puestoAct,$hora,$setnumero)
     {
     	//idjugador es autonumerico..
-    	$comando = "UPDATE vappjugpartido 
+   	$comando = "UPDATE vappjugpartido 
 	    			set posicionini=$posicioninicial,posicion=$posicionact,puesto=$puestoAct,hora=$hora
 	    			
  					WHERE   jugador=$jugador 
@@ -472,7 +578,7 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
      * Eliminar el registro con el identificador especificado
      *
      * @param $idsede identificador de la sede
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($partido,$fecha,$iclub,$icate,$jugador)
     {
@@ -533,9 +639,47 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
 
         return $sentencia->execute(array($partido,$fecha));
     }
+    
+	public static function 	updateOrden($idpartido,$fecha,$iclub,$icate,$jugador,$set,$orden)
+    {
+        $consulta = "update vappjugpartido set Orden=$orden  
+                        where idpartido = $idpartido and Fecha=$fecha 
+                        and idclub=$iclub and idcategoria=$icate and jugador=$jugador
+                        and setnumero=$set" ;
+        try {
+        // Preparar sentencia
+        $comando = Database::getInstance()->getDb()->prepare($consulta);
+        // Ejecutar sentencia preparada
+        $comando->execute(array($idpartido,$fecha,$iclub,$icate,$jugador,$set,$orden));
+        return $row = $comando->fetchAll(PDO::FETCH_ASSOC);
 
+        } catch (PDOException $e)
+         {
+            return ($e->getMessage());
+            }
+    }
+
+	public static function 	updateActivaSN($idpartido,$fecha,$iclub,$icate,$jugador,$set,
+										   $accionValor)
+    {
+	$consulta = "update vappjugpartido set activoSN=$accionValor  
+				where idpartido = $idpartido and Fecha=$fecha 
+					and idclub=$iclub and idcategoria=$icate and jugador=$jugador
+					and setnumero=$set" ;
+        try {
+            // Preparar sentencia
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            // Ejecutar sentencia preparada
+            $comando->execute(array($idpartido,$fecha,$iclub,$icate,$jugador,$set,
+									$accionValor));
+            return $row = $comando->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            return ($e->getMessage());
+        }
+    }
+    
     public static function updateSale($idpartido,$fecha,$iclub,$icate,$jugadorSale,$set)
-   
     {
 	$consulta = "update vappjugpartido set posicion=7  
 				where idpartido = $idpartido and Fecha=$fecha 
@@ -563,7 +707,7 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
 					and idclub=$iclub and idcategoria=$icate and jugador=$jugadorEntra
 					and setnumero=$set
 				" ;
-		//echo "entra: ".$consulta;			
+	//	echo "entra: ".$consulta;			
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);

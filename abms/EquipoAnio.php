@@ -19,20 +19,70 @@ class EquipoAnio
      * @return array Datos del registro
      */
     /* GET ALL CON FILTRO */
-    public static function getAll($ianio,$idclub)
+    public static function getAll($ianio,$idclub,$icompetencia)
     {
-        $filtroQuery = '';
-        if($ianio != 0) $filtroQuery = " where ianio = $ianio ";
-            if($ianio != 0 && $idclub != 0) $filtroQuery += " and  idclub = $idclub ";
-                if($ianio == 0 && $idclub != 0) $filtroQuery = "  where  idclub = $idclub ";
+        $filtroQuery   = '';
+        $filtroFecha   = '';
+        $conteoFiltros = 0;
+        if($ianio != 0){ 
+                $filtroQuery = " where vappanioequipo.ianio= $ianio ";
+                $filtroFecha   = "  where fecha >= '$ianio-01-01'    ";
+                $conteoFiltros++;
+        }
 
+        // if($idclub != 0)
+        // {
+        //     if($conteoFiltros == 0)
+        //      $filtroQuery = "  where  idclub = $idclub ";
+        //     else 
+        //      $filtroQuery .= " and  idclub = $idclub ";
+        //      $conteoFiltros++;
+        // }
+        if($icompetencia != 9999)
+        {
+            if($conteoFiltros == 0)
+                $filtroFecha = "  where  competencia = $icompetencia ";
+            else
+                $filtroFecha .= "  and  competencia = $icompetencia ";
+            $conteoFiltros++;
 
-        $consulta = "SELECT idequipoanio, vappanioequipo.idclub,vappclub.nombre,vappclub.clubabr, vappanioequipo.ianio, vappclub.escudo FROM vappanioequipo
-                        inner join vappclub
-                            on vappclub.idclub = vappanioequipo.idclub
-                    $filtroQuery ";
-        //echo $consulta;
-        try {
+        }
+
+        switch($icompetencia)
+        {
+            case 9999: //no viene competencia
+                    $consulta = "SELECT idequipoanio, vappanioequipo.idclub,vappclub.nombre,vappclub.clubabr, vappanioequipo.ianio, vappclub.escudo FROM vappanioequipo
+                                    inner join vappclub
+                                        on vappclub.idclub = vappanioequipo.idclub
+                                        $filtroQuery;";
+                    break;
+            default : //vino cargada una competencia
+                    $consulta = "SELECT  vappanioequipo.idequipoanio, iclub as 'idclub', clubLocal.nombre,clubLocal.clubabr,vappanioequipo.ianio,clubLocal.escudo
+                    FROM (
+                        SELECT DISTINCT  cluba as 'iclub'
+                        FROM `vapppartido` epartido
+                            $filtroFecha
+                        ) AS subconsulta1
+                    JOIN vappclub clubLocal ON clubLocal.idclub = iclub
+                    JOIN  vappanioequipo ON clubLocal.idclub =  vappanioequipo.idclub 
+                        $filtroQuery
+                    UNION
+                    SELECT vappanioequipo.idequipoanio, iclub as 'idclub',clubVisita.nombre,clubVisita.clubabr,vappanioequipo.ianio,clubVisita.escudo
+                    FROM (
+                        SELECT DISTINCT  ClubB as 'iclub'
+                        FROM `vapppartido` epartido
+                            $filtroFecha    
+                    ) AS subconsulta2
+                    JOIN vappclub clubVisita ON clubVisita.idclub = iclub
+                    JOIN  vappanioequipo ON clubVisita.idclub =  vappanioequipo.idclub 
+                        $filtroQuery
+                    ORDER BY iDclub;";        
+
+                     break;  
+               
+         }           
+    //    echo "<br> $consulta <br>";
+       try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada

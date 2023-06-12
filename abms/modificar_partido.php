@@ -14,8 +14,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$CanchaId    = $_POST['icancha']; // numero			
 			$competencia = $_POST['icomp']; // numero
 			$ciudad      = $_POST['icity']; // numero
-			
-			$descripcionp = "'".$_POST['descripcionp']."'";
+			if(isset($_POST['isede']) && $_POST['isede'] != "" )
+				$sedeId      =  explode("_",$_POST['isede'])[1] ; // numero
+			else
+				$sedeId      =  0;
+
+				$descripcionp = "'".$_POST['descripcionp']."'";
 			// agregados en abril 2019
 				$tbset      = 0; // numero
 				if(isset($_POST['valtbset'])){  $tbset = $_POST['valtbset'];} else { $tbset = 0; };				
@@ -46,13 +50,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Insertar partido
         		$Fecha = "'".$Fecha."'";
  
-	$retorno = Partido::actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado,$setsmax,$tbset,$finset,$descripcionp);
+	$retorno = Partido::actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$setsmax,$tbset,$finset,$descripcionp);
 	
     if ($retorno) {
-        // Código de éxito
-        echo(json_encode(array('estado' => '1','mensaje' => 'Creación exitosa')));
+        // Cï¿½digo de ï¿½xito
+        echo(json_encode(array('estado' => '1','mensaje' => 'Creaciï¿½n exitosa')));
     } else {
-        // Código de falla
+        // Cï¿½digo de falla
 		echo $retorno;
     }
 
@@ -68,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 				$CanchaId    = $_GET['icancha']; // numero			
 			$competencia = $_GET['icomp']; // numero
 			$ciudad      = $_GET['icity']; // numero
-			
+			$sedeId      =  explode("_",$_GET['isede'])[1] ; // numero
 			$descripcionp = "'".$_GET['descripcionp']."'";
 			
 				$tbset      = 0; // numero
@@ -99,17 +103,16 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
         	if(  ($smaxcomp > 0) && ($smaxCate == 0) ){  $setsmax = $smaxcomp;};
 		
     // Insertar partido
-    		$Fecha = "'".$Fecha."'";
+    $Fecha = "'".$Fecha."'";
     		
-	$retorno = Partido::actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado,$setsmax,$tbset,$finset,$descripcionp);
-	
+	$retorno = Partido::actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$setsmax,$tbset,$finset,$descripcionp);
 
     if ($retorno) 
     {
-        echo(json_encode(array('estado' => '1','mensaje' => 'Creación exitosa')));
+        echo(json_encode(array('estado' => '1','mensaje' => 'Creaciï¿½n exitosa')));
     } else 
     	{
-        // Código de falla
+        // Cï¿½digo de falla
         echo("Algo no salio bien !!!");
     	}
 	}//fin del IF

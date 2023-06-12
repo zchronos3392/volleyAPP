@@ -209,9 +209,14 @@ SELECT:hover
 .itemcambioanio2{grid-area: cambioanio2;}
 .itemcambioanio3{grid-area: cambioanio3;}
 
+.itemcambioanio31{grid-area: cambioanio31;}
+.itemcambioanio4{grid-area: cambioanio4;}
+
+
 .grillaCambioAnio{
 	display:grid;
-	grid-template-areas: 'cambioanio1 cambioanio2 cambioanio3';	
+	grid-template-areas: 'cambioanio1 cambioanio2 cambioanio3' 
+                         'cambioanio31 cambioanio4 cambioanio4';	
      box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
      border-radius: 5px;
 	background-color:white;
@@ -291,6 +296,280 @@ SELECT:hover
 
 }
 
+/* aca deberia arreglarse la pantalla grande */
+/* INICIO DEL ESTILO DEL FORMULARIO PARA LA CARGA MULTIPLE DE PARTIDOS */
+
+.FormCargaPartidos
+{
+        /* configuracion general de la clase */
+            box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+            border-radius: 5px;
+            background-color: white;
+            color: #040c31;
+            margin-top: 10em;            
+            margin-left: 0px;
+            margin-right: 0px;
+        /* configuracion general de la clase */
+}
+
+.ForMultiplesPartidos
+    {
+        /* configuracion general de la clase */
+            box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+            border-radius: 5px;
+            background-color: white;
+            color: #040c31;
+            margin-left: 2rem;
+            margin-right: 2rem;
+        /* configuracion general de la clase */
+
+    }
+
+    .Botonera
+    {
+        /* configuracion FLEX */
+        display: flex;
+        flex-direction:row;
+        gap: 2rem;
+        justify-content:flex-end;
+        align-items: center;
+        flex-wrap: nowrap;
+        /* configuracion FLEX */
+        /* configuracion general de la clase */
+            box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+            border-radius: 5px;
+            background-color: white;
+            color: #040c31;
+            margin: 1rem;
+        /* configuracion general de la clase */
+
+    }
+
+    .DatosPartido
+    {
+        /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        margin: 1rem;
+    /* configuracion general de la clase */
+
+    }
+
+    .Cabecera
+    {
+        /* configuracion FLEX */    
+            justify-content:center;
+            align-items: center;
+            display: flex;
+            flex-direction:row;
+            gap: 2rem;
+            flex-wrap: nowrap;
+        /* configuracion FLEX */
+        /* configuracion general de la clase */
+            box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+            border-radius: 5px;
+            background-color: white;
+            color: #040c31;
+            margin: 1rem;
+        /* configuracion general de la clase */
+    }
+    .SetMaximosGrid
+    {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    .Botonera .btnCabecera
+    {
+        font-size: 30px;
+        font-weight: 150;
+        padding: 3px;
+        text-decoration: none;
+        color: #fff;
+        border: 2px solid #0016b0;
+        border-radius: 6px;
+        background: #ed12a4;
+        box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);    
+    }
+
+    .Botonera .btnCabecera:hover
+    {
+    background-color: goldenrod;
+    }
+
+    .Botonera .btnNoCabecera
+    {
+        font-size: 18px;
+        font-weight: 150;
+        padding: 3px;
+        text-decoration: none;
+        color: #fff;
+        border: 2px solid #0016b0;
+        border-radius: 6px;
+        background: #22c1e4;;
+        box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);    
+    }
+
+    .Botonera .btnNoCabecera:hover
+    {
+        background-color: goldenrod;
+    }
+
+    .DatosPartidoDetalle
+    {
+        /* configuracion FLEX */    
+        justify-content:center;
+        align-items: center;
+
+        flex-direction:row;
+        flex-wrap: nowrap;
+    /* configuracion FLEX */
+    /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        /* configuracion general de la clase */
+    }
+
+    .DatosPartidoDetalle SELECT{height: 3em;}
+
+    .itemDatosPartidoDetalle
+    {
+        
+        /* configuracion FLEX */    
+        justify-content:center;
+        align-items: center;
+        display: flex;
+        flex-direction:column;
+        gap: 2rem;
+        flex-wrap: nowrap;
+    /* configuracion FLEX */
+    /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: rgb(78, 135, 189);
+        color: #040c31;
+        margin-bottom: 1em;
+        /* configuracion general de la clase */
+
+    }
+
+    .fechapartido
+    {
+        width: 95%;
+        display: grid; 
+        grid-template-columns: 35% 65%;
+        /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: rgb(233 62 200);
+        color: #040c31;
+        padding: 1rem;
+        /* margin TOP LEFT BOTTOM RIGHT */
+        /* configuracion general de la clase */
+    }
+
+    .renHC1{grid-area: renHC1;}
+    .renHC2{grid-area: renHC2;}
+    .renHC3{grid-area: renHC3;}
+    .renHC4{grid-area: renHC4;}
+    .renHC5{grid-area: renHC5;}
+    .renHC6{grid-area: renHC6;}
+    .renHC7{grid-area: renHC7;}
+    .renHC8{grid-area: renHC8;}
+    .renHC9{grid-area: renHC9;}
+        .renHC91{grid-area: renHC91;}
+    .renHC10{grid-area: renHC10;}
+        .renHC101{grid-area: renHC101;}
+
+        .renHC11{grid-area: renHC11;}
+        .renHC12{grid-area: renHC12;}
+        .renHC13{grid-area: renHC13;}
+        .renHC14{grid-area: renHC14;}
+    
+        .renglonHoraCat
+    {
+        width: 95%;
+    display: grid; 
+        grid-template-areas: 'renHC1 renHC2 renHC3 renHC4'
+                            'renHC5 renHC6 renHC7 renHC8'
+                            'renHC9 renHC91 renHC10 renHC101'
+                            'renHC11 renHC11 renHC12 renHC12'
+                            'renHC13 renHC13 renHC14 renHC14';
+    /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        padding: 1rem;
+        /* margin TOP LEFT BOTTOM RIGHT */
+    /* configuracion general de la clase */
+    }
+
+    .renEQ1{grid-area: renEQ1;}
+    .renEQ2{grid-area: renEQ2;}
+    .renEQ3{grid-area: renEQ3;}
+    .renEQ4{grid-area: renEQ4;}
+    .renEQ5{grid-area: renEQ5;}
+    .renEQ6{grid-area: renEQ6;}
+    .renEQ7{grid-area: renEQ7;}
+    .renEQ8{grid-area: renEQ8;}
+    .renglonEquipos
+    {
+        width: 95%;
+    display: grid; 
+        grid-template-areas: 'renEQ1 renEQ2 renEQ3 renEQ4 renEQ5 renEQ6';
+    /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        padding: 1rem;
+        /* margin TOP LEFT BOTTOM RIGHT */
+    /* configuracion general de la clase */
+    }
+
+    .renUB1{grid-area: renUB1;}
+    .renUB2{grid-area: renUB2;}
+    .renUB3{grid-area: renUB3;}
+    .renUB4{grid-area: renUB4;}
+    .renUB5{grid-area: renUB5;}
+    .renUB6{grid-area: renUB6;}
+    .renglonUbicacion
+    {
+        display: grid; 
+        width: 95%;
+        grid-template-areas: 'renUB1 renUB2 renUB3 renUB4 renUB5 renUB6';
+        /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        padding: 1rem;
+        /* margin TOP LEFT BOTTOM RIGHT */
+        /* configuracion general de la clase */
+    }
+
+    .inputSets{width: 3em;height: 2em;}
+    .Division
+    {
+        /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        margin: 0.4rem;
+        width: 100%;
+    /* configuracion general de la clase */
+    }
+
+    .Division LABEL{ display: inline; width: 2rem;}
+    .Division SELECT{width: 50%;}
+    /* aca deberia arreglarse la pantalla grande */
+/* FIN DEL ESTILO DEL FORMULARIO PARA LA CARGA MULTIPLE DE PARTIDOS */
 
 @media (min-width:451px) and (max-width: 768px)
 {
@@ -318,9 +597,14 @@ SELECT:hover
 .itemcambioanio2{grid-area: cambioanio2;}
 .itemcambioanio3{grid-area: cambioanio3;}
 
+.itemcambioanio31{grid-area: cambioanio31;}
+.itemcambioanio4{grid-area: cambioanio4;}
+
+
 .grillaCambioAnio{
 	display:grid;
-	grid-template-areas: 'cambioanio1' 'cambioanio2' 'cambioanio3';	
+	grid-template-areas: 'cambioanio1' 'cambioanio2' 'cambioanio3'
+                          'cambioanio31' 'cambioanio4' 'cambioanio4';	
      box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
      border-radius: 5px;
 	background-color:white;
@@ -330,6 +614,8 @@ SELECT:hover
 
 }
 /*INDEX PRIMER GRILLA, CAMBIO DE ANIO**/
+
+
 
 
 }
@@ -346,9 +632,12 @@ SELECT:hover
 .itemcambioanio2{grid-area: cambioanio2;}
 .itemcambioanio3{grid-area: cambioanio3;}
 
+.itemcambioanio31{grid-area: cambioanio31;}
+.itemcambioanio4{grid-area: cambioanio4;}
+
 .grillaCambioAnio{
 	display:grid;
-	grid-template-areas: 'cambioanio1 cambioanio2';	
+	grid-template-areas: 'cambioanio1 cambioanio2' 'cambioanio31 cambioanio4';	
      box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
      border-radius: 5px;
 	background-color:white;
@@ -458,5 +747,297 @@ SELECT:hover
 	text-overflow: ellipsis;    
 
 }
+
+/* aca deberia arreglarse la pantalla grande */
+/* INICIO DEL ESTILO DEL FORMULARIO PARA LA CARGA MULTIPLE DE PARTIDOS */
+.ForMultiplesPartidos
+{
+    /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    /* configuracion general de la clase */
+
+}
+
+.Botonera
+{
+    /* configuracion FLEX */
+    display: flex;
+    flex-direction:row;
+    gap: 1rem;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* configuracion FLEX */
+    /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        margin: 1rem;
+    /* configuracion general de la clase */
+
+}
+
+#conteopartidos
+{
+    width: 2em;
+    font-size: large;
+    font-style:italic;
+}
+
+.DatosPartido
+{
+    /* configuracion general de la clase */
+    box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+    border-radius: 5px;
+    background-color: white;
+    color: #040c31;
+    margin: 1rem;
+/* configuracion general de la clase */
+
+}
+
+.Cabecera
+{
+    /* configuracion FLEX */    
+        justify-content:center;
+        align-items: center;
+        display: flex;
+        flex-direction:column;
+        gap: 2rem;
+        flex-wrap: nowrap;
+    /* configuracion FLEX */
+    /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        margin: 1rem;
+    /* configuracion general de la clase */
+}
+
+.SetMaximosGrid
+{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+
+.Botonera .btnCabecera
+{
+    font-size: 30px;
+    font-weight: 150;
+    padding: 3px;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid #0016b0;
+    border-radius: 6px;
+    background: #ed12a4;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);    
+}
+
+.Botonera .btnCabecera:hover
+{
+background-color: goldenrod;
+}
+
+.Botonera .btnNoCabecera
+{
+    font-size: 18px;
+    font-weight: 150;
+    padding: 3px;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid #0016b0;
+    border-radius: 6px;
+    background: #22c1e4;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);    
+}
+
+.Botonera .btnNoCabecera:hover
+{
+    background-color: goldenrod;
+}
+
+
+
+.DatosPartidoDetalle
+{
+    /* configuracion FLEX */    
+    justify-content:center;
+    align-items: center;
+
+    flex-direction:row;
+    flex-wrap: nowrap;
+/* configuracion FLEX */
+/* configuracion general de la clase */
+    box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+    border-radius: 5px;
+    background-color: white;
+    color: #040c31;
+    /* configuracion general de la clase */
+}
+
+.DatosPartidoDetalle SELECT{height: 3em;}
+
+.itemDatosPartidoDetalle
+{
+    
+    /* configuracion FLEX */    
+    justify-content:center;
+    align-items: center;
+    display: flex;
+    flex-direction:column;
+    gap: 2rem;
+    flex-wrap: nowrap;
+/* configuracion FLEX */
+/* configuracion general de la clase */
+    box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+    border-radius: 5px;
+    background-color: rgb(78, 135, 189);
+    color: #040c31;
+    margin-bottom: 1em;
+    /* configuracion general de la clase */
+
+}
+
+.fechapartido
+{
+    width: 95%;
+    display: grid; 
+    grid-template-columns: 35% 65%;
+    /* configuracion general de la clase */
+    box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+    border-radius: 5px;
+    background-color: rgb(233 62 200);
+    color: #040c31;
+    padding: 1rem;
+    /* margin TOP LEFT BOTTOM RIGHT */
+    /* configuracion general de la clase */
+}
+
+.renHC1{grid-area: renHC1;}
+.renHC2{grid-area: renHC2;}
+.renHC3{grid-area: renHC3;}
+.renHC4{grid-area: renHC4;}
+.renHC5{grid-area: renHC5;}
+.renHC6{grid-area: renHC6;}
+.renHC7{grid-area: renHC7;}
+.renHC8{grid-area: renHC8;}
+.renHC9{grid-area: renHC9;}
+.renHC91{grid-area: renHC91;}
+.renHC10{grid-area: renHC10;}
+.renHC101{grid-area: renHC101;}
+
+.renHC11{grid-area: renHC11;}
+.renHC12{grid-area: renHC12;}
+.renHC13{grid-area: renHC13;}
+.renHC14{grid-area: renHC14;}
+
+
+.renglonHoraCat
+{
+    width: 95%;
+display: grid; 
+    grid-template-areas: 'renHC1 renHC1 renHC1 renHC1'
+                         'renHC2 renHC2 renHC2 renHC2'
+                         'renHC3 renHC4 renHC7 renHC8'
+                         'renHC5 renHC5 renHC5 renHC5'
+                         'renHC6 renHC6 renHC6 renHC6'
+                         'renHC9 renHC9 renHC91 renHC91'
+                         'renHC10 renHC10 renHC101 renHC101'
+                         'renHC11 renHC11 renHC12 renHC12'
+                         'renHC13 renHC13 renHC14 renHC14';
+
+/* configuracion general de la clase */
+    box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+    border-radius: 5px;
+    background-color: white;
+    color: #040c31;
+    padding: 0.5rem;
+    /* margin TOP LEFT BOTTOM RIGHT */
+/* configuracion general de la clase */
+}
+
+.renEQ1{grid-area: renEQ1;}
+.renEQ2{grid-area: renEQ2;}
+.renEQ3{grid-area: renEQ3;}
+.renEQ4{grid-area: renEQ4;}
+.renEQ5{grid-area: renEQ5;}
+.renEQ6{grid-area: renEQ6;}
+.renEQ7{grid-area: renEQ7;}
+.renEQ8{grid-area: renEQ8;}
+.renglonEquipos
+{
+    width: 95%;
+display: grid; 
+    grid-template-areas: 'renEQ1' 'renEQ2' 'renEQ3' 'renEQ4' 'renEQ5' 'renEQ6';
+/* configuracion general de la clase */
+    box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+    border-radius: 5px;
+    background-color: white;
+    color: #040c31;
+    padding: 0.5rem;
+    /* margin TOP LEFT BOTTOM RIGHT */
+/* configuracion general de la clase */
+}
+
+
+.renglonEquipos INPUT[TYPE="TEXT"]
+{
+    width: 100%;
+}
+
+/* se agrega la SEDE */
+    .renUB10{grid-area: renUB10;}
+    .renUB11{grid-area: renUB11;}
+
+.renUB1{grid-area: renUB1;}
+.renUB2{grid-area: renUB2;}
+.renUB3{grid-area: renUB3;}
+.renUB4{grid-area: renUB4;}
+.renUB5{grid-area: renUB5;}
+.renUB6{grid-area: renUB6;}
+
+.renglonUbicacion
+{
+    display: grid; 
+    width: 95%;
+    grid-template-areas: 'renUB10' 'renUB11' 'renUB1' 'renUB2' 'renUB3' 'renUB4' 'renUB5' 'renUB6';
+    /* configuracion general de la clase */
+    box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+    border-radius: 5px;
+    background-color: white;
+    color: #040c31;
+    padding: 0.5rem;
+    margin-bottom: 1em;
+    /* margin TOP LEFT BOTTOM RIGHT */
+    /* configuracion general de la clase */
+}
+
+.inputSets{width: 3em;height: 2em;}
+.Division
+{
+    /* configuracion general de la clase */
+    box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+    border-radius: 5px;
+    background-color: white;
+    color: #040c31;
+    margin: 0.4rem;
+    width: 100%;
+/* configuracion general de la clase */
+}
+
+.Division LABEL{ display: inline; width: 2rem;}
+.Division SELECT{width: 50%;}
+/* aca deberia arreglarse la pantalla grande */
+/* FIN DEL ESTILO DEL FORMULARIO PARA LA CARGA MULTIPLE DE PARTIDOS */
+
+
 
 }

@@ -9,11 +9,39 @@
 require_once('SesionTabla.php');
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-		$clave = "'".$_GET['TEXTOCLAVE']."'";
-		$valor =	"'".$_GET['origenrequest']."'";
+		$clave ="";
+		if(isset($_GET['TEXTOCLAVE']))	
+			$clave = "'".$_GET['TEXTOCLAVE']."'";
+		$valor = "";
+		if(isset($_GET['origenrequest']))
+			$valor =	"'".$_GET['origenrequest']."'";
 //		$valor = "'".$_GET['CLAVEVALOR']."'";
-		
-		SesionTabla::setsession($clave,$valor);
+		if(isset($_GET['datos']))
+		{
+			$filtroX =	$_GET['datos'];
+			$icomp=$filtroX['0']['icomp'];
+			$icate=$filtroX['1']['icate'];
+			$iclub=$filtroX['2']['iclub'];
+			$ietats=$filtroX['3']['ietats'];
+			$icity2=$filtroX['4']['icity2'];
+			$fecDde=$filtroX['5']['fecDde'];
+			$fecHta=$filtroX['6']['fecHta'];
+			//si viene definida DATOS, ES PORQUE GUARDE FILTROS, NO USUARIO.
+			$parametrosGuardados=["icomp" => $icomp,
+								  "icate" => $icate,
+								  "iclub" => $iclub,
+								  "ietats" => $ietats,
+								  "icity2" => $icity2,
+								  "fecDde" => $fecDde,
+								  "fecHta" => $fecHta];
+			SesionTabla::deletesessionfiltros($clave);	
+			SesionTabla::setsessionfiltros($clave,"'".implode(" ",$parametrosGuardados)."'");
+
+		}
+			if(isset($_GET['origenrequest'])){
+				SesionTabla::setsession($clave,$valor);
+			}
+			
 	}
 
 ?>

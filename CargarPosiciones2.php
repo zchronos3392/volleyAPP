@@ -282,7 +282,7 @@
    	<header>
    			<Section class="LogoApp">
 			<a href="javascript: history.go(-1)"><span id="medidas">
-			<img  class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png" />	
+			<!-- <img  class="LogoApp" alt="VOLLEY.app" src="./img/textovolleyAPP_pequeno.png" />	 -->
 			</a>
 		</Section>
 		    

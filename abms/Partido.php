@@ -74,7 +74,7 @@ public static function getAllcparms($icomp, $icate, $iclub, $icity, $fecDde, $fe
 	If ($icomp <> 9999) {   $parms2 = "(competencia = $icomp)";};
 	If ($icate <> 0)    { 	$parms3 = "(categoria = $icate)"; };
 	If ($iclub <> 0)    { 	$parms4 = "(ClubA = $iclub)"; };
-	If ($icity <> 0)    { 	$parms5 = "(ciudad = $icity)"; };
+	If ($icity <> 0 && $icity <> 9999 )    { 	$parms5 = "(ciudad = $icity)"; };
 	If ($fecDde <> "''"){ 	$parms6 = "(Fecha >= $fecDde)"; };
 	If ($fecHta <> "''"){ 	$parms7 = "(Fecha <= $fecHta)"; };
 	If ($fecOrden <> 0) {	$parms8 = " ORDER BY Horafin desc, idpartido"; };
@@ -439,7 +439,7 @@ public static function getAllcparms($icomp, $icate, $iclub, $icity, $fecDde, $fe
 				cates.idcategoria as idcat ,cates.setMax CatSetMax, clubAtbl.clubabr as ClubA ,
 				 clubBtbl.clubabr as ClubB,CONCAT(clubsede.clubabr,' - ',sedecancha.extras,' - ',cancha.nombre) as cancha,comp.cnombre,comp.Logo as logocompetencia,city.nombre , 
        TIME_FORMAT(HoraIni, '%H:%i') Inicio , Horafin, ClubARes, ClubBRes, sts.descripcion as estado ,                clubAtbl.idclub as idcluba, clubBtbl.idclub as idclubb,
-        setsnmax,ciudad,CanchaId,valTBSet,valFinSet,competencia 
+        setsnmax,ciudad,CanchaId,valTBSet,valFinSet,competencia ,vapppartido.idsede
 				FROM vapppartido
 				inner join vappclub clubAtbl on clubAtbl.idclub = ClubA
 				inner join vappclub clubBtbl on clubBtbl.idclub = ClubB
@@ -464,7 +464,7 @@ public static function getAllcparms($icomp, $icate, $iclub, $icity, $fecDde, $fe
            // echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return -1;
         }
@@ -560,18 +560,18 @@ public static function getAllcparms($icomp, $icate, $iclub, $icity, $fecDde, $fe
      * Modificar parametros del partido 
      * @return PDOStatement
      */
-    public static function actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado ,$setmax,$tbset,$finset,$descripcionp)
+    public static function actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes ,$setmax,$tbset,$finset,$descripcionp)
     {
     try {
 		$comando = "update vapppartido	".
-		" set categoria=$categoria, ClubA=$ClubA, ClubB=$ClubB, CanchaId=$CanchaId, competencia=$competencia, ciudad=$ciudad, ClubARes=$ClubARes, ClubBRes=$ClubBRes, setsnmax=$setmax,valTBSet=$tbset,valFinSet=$finset ,descripcionp=$descripcionp ".
+		" set categoria=$categoria, ClubA=$ClubA, ClubB=$ClubB, CanchaId=$CanchaId, competencia=$competencia, ciudad=$ciudad, idsede=$sedeId, ClubARes=$ClubARes, ClubBRes=$ClubBRes, setsnmax=$setmax,valTBSet=$tbset,valFinSet=$finset ,descripcionp=$descripcionp ".
 				" WHERE idpartido=$idPartido and fecha=$Fecha ";
 
 	
 		//return $comando;
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado ,$setmax,$tbset,$finset,$descripcionp ));
+        return $sentencia->execute(array($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes ,$setmax,$tbset,$finset,$descripcionp ));
         } catch (PDOException $e)
          {
             return ($e->getMessage());
@@ -583,21 +583,21 @@ public static function getAllcparms($icomp, $icate, $iclub, $icity, $fecDde, $fe
      * Insertar un nuevo sede
      *
      * @param $idsede      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
-    public static function insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado ,$setmax,$tbset,$finset,$descripcionp)
+    public static function insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado ,$setmax,$tbset,$finset,$descripcionp)
     {
     try {
-    	$comando = "INSERT INTO vapppartido(Fecha, categoria, ClubA, ClubB, CanchaId, competencia, ciudad, HoraIni, Horafin, ClubARes, ClubBRes, estado, setsnmax,valTBSet,valFinSet,descripcionp) ".
-		" VALUES (  $Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado ,$setmax,$tbset,$finset,$descripcionp ) " ;    	
+    	$comando = "INSERT INTO vapppartido(Fecha, categoria, ClubA, ClubB, CanchaId, competencia,idsede, ciudad, HoraIni, Horafin, ClubARes, ClubBRes, estado, setsnmax,valTBSet,valFinSet,descripcionp) ".
+		" VALUES (  $Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado ,$setmax,$tbset,$finset,$descripcionp ) " ;    	
 	
 		//return $comando;
         // Preparar la sentencia
 //        echo "$comando";
         
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado ,$setmax,$tbset,$finset,$descripcionp) );
+        return $sentencia->execute(array($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado ,$setmax,$tbset,$finset,$descripcionp) );
         
         } catch (PDOException $e)
          {
@@ -609,7 +609,7 @@ public static function getAllcparms($icomp, $icate, $iclub, $icity, $fecDde, $fe
      * Eliminar el registro con el identificador especificado
      *
      * @param $idsede identificador de la sede
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($idpartido,$Fecha)
     {

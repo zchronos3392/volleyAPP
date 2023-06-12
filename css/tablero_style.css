@@ -1,6 +1,18 @@
 
 
 /*********************** NUEVO ABM JUGADOR, DNI JUGADOR **************/
+.BotoneraTablero
+{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	flex-flow: row wrap;
+/* Equivalente a */
+	column-gap: 80%;
+	justify-content: space-between;
+	align-items:flex-start;
+}
+
 
 .LetrasBlancas{
 	color: white;
@@ -111,6 +123,7 @@
 	padding: .5em;
 	background-blend-mode: screen;
 	border: #000 solid 2px;
+
 }
 
 .itemTablero1A{
@@ -132,6 +145,8 @@
 .itemTablero3{grid-area: itTem3;background-color: #01181e;text-align: center;font-weight: bold;color: #fff;}
 
 .TableroFondo{
+	position: relative;
+	z-index: 1;
 	background-color: #fff;
 	display: grid;
 	grid-template-areas: 'itTem1' 'itTem2' 'itTem3';
@@ -166,6 +181,15 @@
 						 'it2club5 it2club5 it2club6 it2club6 ';
 }
 
+.EspacioclubTabs{
+	display: grid;
+	grid-template-areas: 'it2club1 it2club2 it2club3 it2club4 '
+						 'it2club4a it2club4a it2club4a it2club4a '
+						 'it2club5 it2club5 it2club6 it2club6 ';
+						 margin-left: 3rem;
+						 margin-right: 3rem;
+						 padding: 0;
+	}
 .it3club1{  grid-area:it3club1; }
 .it3club2{  grid-area:it3club2; }
 .Espacioclub3{
@@ -176,15 +200,341 @@
 
 
 .tiempo{ width:50%;    border: 1px solid #000000; margin: auto;}
+/* PANTALLA GRANDE */
+/* NUEVO TABLERO CANCHA, SUPLENTES Y LIBEROS LIST */
+.itemtbljug1VER{
+	grid-area: itemtbljug1VER;
+}
+.itemtbljug1VER.NumeroJugador{
+	font-size: 30px;
+
+}   
+.itemtbljug2VER{
+	grid-area: itemtbljug2VER;
+}
+.itemtbljug2VER.nombreJugador{
+
+	font-size: 30px;
+    text-align: center;
+}
+.itemtbljug3VER{
+	grid-area: itemtbljug3VER;
+
+}
+.itemtbljug4VER{
+	grid-area: itemtbljug4VER;
+}
+.itemtbljug5VER{
+	grid-area: itemtbljug5VER;
+}
+
+.itemtbljuVER{
+	display:grid;
+	grid-template-areas: 'itemtbljug1VER' 'itemtbljug1VER ' 'itemtbljug1VER '
+						 'itemtbljug2VER' 'itemtbljug2VER' 'itemtbljug3VER';
+
+ /*borde redondeado*/
+ border: 1px solid #000000;
+ -moz-border-radius: 7px;
+ -webkit-border-radius: 7px;
+ border-radius: 7px;
+ padding: 3px;    
+/*borde redondeado*/
+font-size: small;
+background-color: #fff;
+}
+
+
+.itmtbljugTIT1{ grid-area:itmtbljugTIT1 ;}
+.itmtbljugTIT2{ grid-area:itmtbljugTIT2 ;}
+.itmtbljugTIT3{ grid-area:itmtbljugTIT3 ;}
+.itmtbljugTIT4{ grid-area:itmtbljugTIT4 ;}
+.itmtbljugTIT5{ grid-area:itmtbljugTIT5 ;}
+
+.itmtbljugTIT
+{
+	display:grid;
+	grid-template-areas: 'itmtbljugTIT1 itmtbljugTIT2 itmtbljugTIT3 itmtbljugTIT4 itmtbljugTIT5 ';
+
+}
+
+.verSuplentes
+{
+ display: flex;
+ flex-direction: row;
+ background-color: rgb(123, 179, 201);
+width: 100%;
+ /*borde redondeado*/
+ border: 1px solid #000000;
+ -moz-border-radius: 7px;
+ -webkit-border-radius: 7px;
+ border-radius: 7px;
+ padding: 3px;    
+/*borde redondeado*/
+
+
+	flex-wrap: wrap;
+	/* Equivalente a */
+	align-items:flex-start;
+}
+/* lista de suplentes en tablero, version pequeña */
+
+/* SECTOR DE LOS LOCALES */
+.canchaversion3item1{grid-area: cv3it1;}
+.canchaversion3item2{grid-area: cv3it2;}
+.canchaversion3item3{grid-area: cv3it3;}
+.canchaversion3item4{grid-area: cv3it4;}
+.canchaversion3item5{grid-area: cv3it5;}
+.canchaversion3item6{grid-area: cv3it6;}
+
+/* SECTOR DE LOS VISITANTES */
+.canchaversion3item7{grid-area: cv3it7;}
+.canchaversion3item8{grid-area: cv3it8;}
+.canchaversion3item9{grid-area: cv3it9;}
+.canchaversion3item10{grid-area: cv3it10;}
+.canchaversion3item11{grid-area: cv3it11;}
+.canchaversion3item12{grid-area: cv3it12;}
+
+
+.canchaversion3
+{
+
+	display: grid;
+	grid-template-areas:  'cv3it1 cv3it2 cv3it3 cv3it4'
+						  'cv3it5 cv3it6 cv3it7 cv3it8'
+						  'cv3it9 cv3it10 cv3it11 cv3it12';
+	padding: 0.5rem;
+	background-color: #fff;
+	justify-content: space-between;
+	align-items:flex-start;
+	background-color: dimgray;
+}
+
+.canchaversion3 DIV {
+    height: 100%;
+    font-size: calc(1.2vw + 1.2vh); /* Tamaño de fuente relativo */
+    /* display: flex;
+	flex-direction: column;
+    justify-content: center;
+    word-wrap: break-word;
+    text-align: center; */
+	/* width: 210px; */
+	width: 100%;
+}
+
+.canchajugitem1
+{
+	grid-area: canchajugitem1;
+
+}
+.canchajugitem2
+{
+	grid-area: canchajugitem2;
+}
+
+.canchajugadoritem
+{
+	display: grid;
+	grid-template-areas: 'canchajugitem1' 'canchajugitem2';
+	text-align:center;
+	border: white 4px solid;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+    font-size: 9pt;	
+}
+/* NUEVO TABLERO CANCHA, SUPLENTES Y LIBEROS LIST */
+/* PANTALLA GRANDE */
+
 
 @media (min-width:451px) and (max-width: 768px)
 {
+
+.BotoneraTablero
+{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	flex-flow: row wrap;
+/* Equivalente a */
+		column-gap: 80%;
+		justify-content: space-between;
+		align-items:flex-start;
+}
+
+	/* .iLogoTablero1
+{
+	margin-left: -1em;
+
+}	
+.LogoTablero{
+
+	display: flex;
+	flex-direction: row;
+
+} */
+
+/* PANTALLA MEDIANA */
+/* NUEVO TABLERO CANCHA, SUPLENTES Y LIBEROS LIST */
+.itemtbljug1VER{
+	grid-area: itemtbljug1VER;
+}
+.itemtbljug1VER.NumeroJugador{
+	font-size: 30px;
+
+}   
+.itemtbljug2VER{
+	grid-area: itemtbljug2VER;
+}
+.itemtbljug2VER.nombreJugador{
+
+	font-size: 30px;
+    text-align: center;
+}
+.itemtbljug3VER{
+	grid-area: itemtbljug3VER;
+
+}
+.itemtbljug4VER{
+	grid-area: itemtbljug4VER;
+}
+.itemtbljug5VER{
+	grid-area: itemtbljug5VER;
+}
+
+.itemtbljuVER{
+	display:grid;
+	grid-template-areas: 'itemtbljug1VER' 'itemtbljug1VER ' 'itemtbljug1VER '
+						 'itemtbljug2VER' 'itemtbljug2VER' 'itemtbljug3VER';
+
+ /*borde redondeado*/
+ border: 1px solid #000000;
+ -moz-border-radius: 7px;
+ -webkit-border-radius: 7px;
+ border-radius: 7px;
+ padding: 3px;    
+/*borde redondeado*/
+font-size: small;
+	background-color: #fff;
+}
+
+
+.itmtbljugTIT1{ grid-area:itmtbljugTIT1 ;}
+.itmtbljugTIT2{ grid-area:itmtbljugTIT2 ;}
+.itmtbljugTIT3{ grid-area:itmtbljugTIT3 ;}
+.itmtbljugTIT4{ grid-area:itmtbljugTIT4 ;}
+.itmtbljugTIT5{ grid-area:itmtbljugTIT5 ;}
+
+.itmtbljugTIT
+{
+	display:grid;
+	grid-template-areas: 'itmtbljugTIT1 itmtbljugTIT2 itmtbljugTIT3 itmtbljugTIT4 itmtbljugTIT5 ';
+
+}
+
+.verSuplentes
+{
+ display: flex;
+ flex-direction: row;
+ background-color: rgb(123, 179, 201);
+width: 100%;
+ /*borde redondeado*/
+ border: 1px solid #000000;
+ -moz-border-radius: 7px;
+ -webkit-border-radius: 7px;
+ border-radius: 7px;
+ padding: 3px;    
+/*borde redondeado*/
+
+
+	flex-wrap: wrap;
+	/* Equivalente a */
+	align-items:flex-start;
+}
+/* lista de suplentes en tablero, version pequeña */
+
+/* SECTOR DE LOS LOCALES */
+.canchaversion3item1{grid-area: cv3it1;}
+.canchaversion3item2{grid-area: cv3it2;}
+.canchaversion3item3{grid-area: cv3it3;}
+.canchaversion3item4{grid-area: cv3it4;}
+.canchaversion3item5{grid-area: cv3it5;}
+.canchaversion3item6{grid-area: cv3it6;}
+
+/* SECTOR DE LOS VISITANTES */
+.canchaversion3item7{grid-area: cv3it7;}
+.canchaversion3item8{grid-area: cv3it8;}
+.canchaversion3item9{grid-area: cv3it9;}
+.canchaversion3item10{grid-area: cv3it10;}
+.canchaversion3item11{grid-area: cv3it11;}
+.canchaversion3item12{grid-area: cv3it12;}
+
+
+.canchaversion3
+{
+
+	display: grid;
+	grid-template-areas:  'cv3it1 cv3it2 cv3it3 cv3it4'
+						  'cv3it5 cv3it6 cv3it7 cv3it8'
+						  'cv3it9 cv3it10 cv3it11 cv3it12';
+	padding: 0.5rem;
+	background-color: #fff;
+	justify-content: space-between;
+	align-items:flex-start;
+	background-color: dimgray;
+}
+
+.canchaversion3 DIV {
+    height: 100%;
+    font-size: calc(1.2vw + 1.2vh); /* Tamaño de fuente relativo */
+    /* display: flex;
+	flex-direction: column;
+    justify-content: center;
+    word-wrap: break-word;
+    text-align: center; */
+	width: 100%;
+	/* width: 120%; */
+}
+
+.canchajugitem1
+{
+	grid-area: canchajugitem1;
+
+}
+.canchajugitem2
+{
+	grid-area: canchajugitem2;
+}
+
+.canchajugadoritem
+{
+	display: grid;
+	grid-template-areas: 'canchajugitem1' 'canchajugitem2';
+	text-align:center;
+	border: white 4px solid;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+    font-size: 9pt;	
+}
+/* NUEVO TABLERO CANCHA, SUPLENTES Y LIBEROS LIST */
+/* PANTALLA MEDIANA */
 
 
 }
 
 @media (max-width: 450px)
 {
+
+.BotoneraTablero
+{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	flex-flow: row wrap;
+/* Equivalente a */
+	column-gap: 80%;
+	justify-content: space-between;
+	align-items:flex-start;
+}
 
 
 .itemTablero1A{
@@ -254,6 +604,18 @@
 }  
 
 
+.EspacioclubTabs{
+	display: grid;
+	grid-template-areas: 'it2club1 it2club2 it2club3 it2club4 '
+						 'it2club4a it2club4a it2club4a it2club4a '
+						 'it2club5 it2club5 it2club6 it2club6 ';
+
+						 margin-left: 3rem;
+						 margin-right: 3rem;
+
+						padding: 0;
+}
+
 
 .itmidclub1a{grid-area: itemidClubAa; text-align: center;}
 .itmidclub2a{grid-area: itemidClubBa; text-align: center;}
@@ -271,6 +633,153 @@
 	margin: 0;
 }
 
+/* NUEVO TABLERO CANCHA, SUPLENTES Y LIBEROS LIST */
+.itemtbljug1VER{
+	grid-area: itemtbljug1VER;
+}
+.itemtbljug1VER.NumeroJugador{
+	font-size: 30px;
 
-    
+}   
+.itemtbljug2VER{
+	grid-area: itemtbljug2VER;
+}
+.itemtbljug2VER.nombreJugador{
+
+	font-size: 30px;
+    text-align: center;
+}
+.itemtbljug3VER{
+	grid-area: itemtbljug3VER;
+
+}
+.itemtbljug4VER{
+	grid-area: itemtbljug4VER;
+}
+.itemtbljug5VER{
+	grid-area: itemtbljug5VER;
+}
+
+.itemtbljuVER{
+	display:grid;
+	grid-template-areas: 'itemtbljug1VER' 'itemtbljug1VER ' 'itemtbljug1VER '
+						 'itemtbljug2VER' 'itemtbljug2VER' 'itemtbljug3VER';
+
+ /*borde redondeado*/
+ border: 1px solid #000000;
+ -moz-border-radius: 7px;
+ -webkit-border-radius: 7px;
+ border-radius: 7px;
+ padding: 3px;    
+/*borde redondeado*/
+font-size: small;
+	background-color: #fff;
+
+	overflow: hidden; /* Ocultar contenido que supere las dimensiones */
+	text-overflow: ellipsis; /* Agregar puntos suspensivos (...) para el contenido excedente */
+	white-space: nowrap; /* Evitar saltos de línea */
+flex-grow: 1;
+}
+
+
+.itmtbljugTIT1{ grid-area:itmtbljugTIT1 ;}
+.itmtbljugTIT2{ grid-area:itmtbljugTIT2 ;}
+.itmtbljugTIT3{ grid-area:itmtbljugTIT3 ;}
+.itmtbljugTIT4{ grid-area:itmtbljugTIT4 ;}
+.itmtbljugTIT5{ grid-area:itmtbljugTIT5 ;}
+
+.itmtbljugTIT
+{
+	display:grid;
+	grid-template-areas: 'itmtbljugTIT1 itmtbljugTIT2 itmtbljugTIT3 itmtbljugTIT4 itmtbljugTIT5 ';
+
+}
+
+.verSuplentes
+{
+ display: flex;
+ flex-direction: row;
+ background-color: rgb(123, 179, 201);
+width: 100%;
+ /*borde redondeado*/
+ border: 1px solid #000000;
+ -moz-border-radius: 7px;
+ -webkit-border-radius: 7px;
+ border-radius: 7px;
+ padding: 3px;    
+/*borde redondeado*/
+
+
+	flex-wrap: wrap;
+	/* Equivalente a */
+	align-items:flex-start;
+}
+/* lista de suplentes en tablero, version pequeña */
+
+/* SECTOR DE LOS LOCALES */
+.canchaversion3item1{grid-area: cv3it1;}
+.canchaversion3item2{grid-area: cv3it2;}
+.canchaversion3item3{grid-area: cv3it3;}
+.canchaversion3item4{grid-area: cv3it4;}
+.canchaversion3item5{grid-area: cv3it5;}
+.canchaversion3item6{grid-area: cv3it6;}
+
+/* SECTOR DE LOS VISITANTES */
+.canchaversion3item7{grid-area: cv3it7;}
+.canchaversion3item8{grid-area: cv3it8;}
+.canchaversion3item9{grid-area: cv3it9;}
+.canchaversion3item10{grid-area: cv3it10;}
+.canchaversion3item11{grid-area: cv3it11;}
+.canchaversion3item12{grid-area: cv3it12;}
+
+
+.canchaversion3
+{
+
+	display: grid;
+	grid-template-areas:  'cv3it1 cv3it2 cv3it3 cv3it4'
+						  'cv3it5 cv3it6 cv3it7 cv3it8'
+						  'cv3it9 cv3it10 cv3it11 cv3it12';
+	padding: 0.5rem;
+	background-color: #fff;
+	justify-content: space-between;
+	align-items:flex-start;
+	background-color: dimgray;
+}
+
+
+.canchaversion3 DIV {
+    height: 100%;
+    font-size: calc(1.2vw + 1.2vh); /* Tamaño de fuente relativo */
+    /* display: flex;
+	flex-direction: column;
+    justify-content: center;
+    word-wrap: break-word;
+    text-align: center; */
+	width: 100%; /* 70px */
+}
+
+
+
+
+.canchajugitem1
+{
+	grid-area: canchajugitem1;
+
+}
+.canchajugitem2
+{
+	grid-area: canchajugitem2;
+}
+
+.canchajugadoritem
+{
+	display: grid;
+	grid-template-areas: 'canchajugitem1' 'canchajugitem2';
+	text-align:center;
+	border: white 4px solid;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
+/* NUEVO TABLERO CANCHA, SUPLENTES Y LIBEROS LIST */
 }

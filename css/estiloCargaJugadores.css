@@ -87,6 +87,9 @@
 		padding: 5px;    
 /*borde redondeado*/
 	}
+	.LIBEROS_2 .itemL.fondoActivo{
+    	border: 4px solid #57dd17;
+    }	
 /*CONTROLES NUEVOS PARA LOS LIBEROS**/
 
 /* ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES..*/

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 25-03-2022 a las 13:36:12
+-- Tiempo de generación: 21-12-2022 a las 15:23:17
 -- Versión del servidor: 5.7.33
 -- Versión de PHP: 7.4.19
 
@@ -18,40 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `c0990415_voleyap`
+-- Base de datos: `nicolass__voleyap`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `vappanioequipo`
+-- Estructura de tabla para la tabla `vappstrats`
 --
 
-CREATE TABLE `vappanioequipo` (
-  `idequipoanio` int(11) NOT NULL,
-  `idclub` int(11) NOT NULL,
-  `ianio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `vappstrats` (
+  `codigo` varchar(64) COLLATE latin1_spanish_ci NOT NULL,
+  `nombre` varchar(128) COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `vappanioequipo`
+-- Indices de la tabla `vappstrats`
 --
-ALTER TABLE `vappanioequipo`
-  ADD PRIMARY KEY (`idequipoanio`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `vappanioequipo`
---
-ALTER TABLE `vappanioequipo`
-  MODIFY `idequipoanio` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `vappstrats`
+  ADD PRIMARY KEY (`codigo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

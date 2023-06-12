@@ -386,7 +386,7 @@
 //			  			accion +='&setmax='+<?php echo($_GET['setmax']);?>+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'">';
 //			  			accion +='<input type="button" id="verset" name="verset" class="btnVerSet" value="(ver)" title="Re-veer set"></input></a>';
 //						accion ='<a href="TableroGrande.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'"><input type="button" id="verset" name="verset"';
-						accion ='<a href="TableroGrandev20.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'"><input type="button" id="verset" name="verset"';						
+						accion ='<a href="TableroGrandev25.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'"><input type="button" id="verset" name="verset"';						
 						accion +=' class="btnVerSet" value="(ver)" title="Re-veer set"></input></a>';
 						altajugadorea='';
 						altajugadoreb='';

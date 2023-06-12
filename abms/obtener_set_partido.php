@@ -5,6 +5,19 @@ include ('Jugador.php');
 
 require_once('JugadorPartido.php');
 
+
+// Esta seria la matriz que necesito cargar en forma programatica
+$matriz = array(
+    array("a1" => "a6", "a2" => "a1", "a3" => "a2", "a4" => "a3", "a5" => "a4", "a6" => "a1"),
+    array("a1" => "a5", "a2" => "a6", "a3" => "a1", "a4" => "a2", "a5" => "a3", "a6" => "a4"),
+    array("a1" => "a4", "a2" => "a5", "a3" => "a6", "a4" => "a1", "a5" => "a2", "a6" => "a3"),
+    array("a1" => "a3", "a2" => "a4", "a3" => "a5", "a4" => "a6", "a5" => "a1", "a6" => "a2"),
+    array("a1" => "a2", "a2" => "a2", "a3" => "a4", "a4" => "a5", "a5" => "a6", "a6" => "a1"),
+    array("a1" => "a1", "a2" => "a2", "a3" => "a3", "a4" => "a4", "a5" => "a5", "a6" => "a6")
+);
+
+
+
 //este archivos sirve para traer datos del partido con los nombres de los jugadore tambien
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	if(isset($_GET['idpartido'])){  $idpartido = $_GET['idpartido'];} else { $idpartido = 0; };
@@ -29,12 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 	    if ($setData)
 	    {
+			// $jugadoresA tiene toda la lista de presentes.
 			$jugadoresA = partjug::getJugSetLoad($idpartido,$fecha,$setData["ClubA"],$ianioPartido,$idset,$setData["categoria"]); 
 			$pointer1 =0;
-			$pointer2 =0;			
-			//echo "..:: LISTA DE JUGADORES DEL EQUIPO LOCAL ::..<br>";
-			//print_r($jugadoresA);
-			//echo "<br>..:: LISTA DE JUGADORES DEL EQUIPO LOCAL ::..<BR>";
+			$pointer2 =$pointer2LibLocal=0;			
+			//  echo "..:: INICIO LISTA DE JUGADORES DEL EQUIPO LOCAL ::..<br>";
+			// 	 print_r($jugadoresA);
+			//  echo "<br>..:: FIN LISTA DE JUGADORES DEL EQUIPO LOCAL ::..<BR>";
 			$pointerSuplentes=0;
 			foreach($jugadoresA as $indice => $valor)
 			{
@@ -43,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				//echo "<br>";
 				if($valor["posicion"] == 7 ){
 				  // echo $valor["nombre"]." es suplente<br>";
-					$datos["SuplentesA"][$pointerSuplentes]= $valor; // tomar valido el campo PUESTO.
+					// $datos["SuplentesA"][$pointerSuplentes]= $valor; // tomar valido el campo PUESTO.
 					$pointerSuplentes++;					
 				}
 			}
@@ -55,8 +69,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				   //echo "puesto : $puesto <br>";
 				   if($puesto ==2) //libero
 					{
-							$datos["LiberosA"][$pointer1]= $valor; // tomar valido el campo PUESTO...
+							// $datos["LiberosA"][$pointer1]= $valor; // tomar valido el campo PUESTO...
 							$pointer1++;
+// TAMBIEN LO AGREGO EN LA LISTA POSTA
+							$vectorJugador["idjugador"]=$valor["idjugador"];
+							$vectorJugador["posicion"]=$valor["posicion"];
+							$vectorJugador["puesto"]=$valor["puesto"];
+							$vectorJugador["puestoxcat"]=$valor["puestoxcat"];
+								$vectorJugador["ColorPuestoCancha"]=$valor["ColorPuestoCancha"];
+								$vectorJugador["ColorPuestoCat"]=$valor["ColorPuestoCat"];
+							//AGREGO DATOS DE CLAVE Y ACTIVO PARA AGREGAR EN LISTA DE 
+							//CENTRALES QUE NO SON SUPLENTES.DIC2022
+								$vectorJugador["activoSN"]=$valor["activoSN"];
+								$vectorJugador["nombre"]=$valor["nombre"];
+								$vectorJugador["numero"]=$valor["numero"];
+								$vectorJugador["categoria"]=$valor["categoria"];
+								$vectorJugador["idclub"]=$valor["idclub"];
+								// agregado  24.05
+								$vectorJugador["FechaEgreso"]=$valor["FechaEgreso"];
+								$vectorJugador["posicionini"]=$valor["posicionini"];
+								$vectorJugador["secuencia"]=$valor["secuencia"];
+									$vectorJugador["orden"]=$valor["Orden"];
+							$setJugadores["equipoA"][$pointer2]=$vectorJugador;	
+							// $setJugadores["LiberosPos"][$pointer2LibLocal]=
+							$pointer2LibLocal++;
+							$pointer2++;
+// TAMBIEN LO AGREGO EN LA LISTA POSTA							
 					}	
 					else
 					{
@@ -66,43 +104,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 							$vectorJugador["puestoxcat"]=$valor["puestoxcat"];
 								$vectorJugador["ColorPuestoCancha"]=$valor["ColorPuestoCancha"];
 								$vectorJugador["ColorPuestoCat"]=$valor["ColorPuestoCat"];
-							$setJugadores["equipoA"][$pointer2]=$vectorJugador;	
-							$pointer2++;
+							//AGREGO DATOS DE CLAVE Y ACTIVO PARA AGREGAR EN LISTA DE 
+							//CENTRALES QUE NO SON SUPLENTES.DIC2022
+								$vectorJugador["activoSN"]=$valor["activoSN"];
+								$vectorJugador["nombre"]=$valor["nombre"];
+								$vectorJugador["numero"]=$valor["numero"];
+								$vectorJugador["categoria"]=$valor["categoria"];
+								$vectorJugador["idclub"]=$valor["idclub"];
+
+								// agregado  24.05
+								$vectorJugador["FechaEgreso"]=$valor["FechaEgreso"];
+								$vectorJugador["posicionini"]=$valor["posicionini"];
+								$vectorJugador["secuencia"]=$valor["secuencia"];
+								$vectorJugador["orden"]=$valor["Orden"];
+
+								$setJugadores["equipoA"][$pointer2]=$vectorJugador;	
+								$pointer2++;
 					}
 			}
-/*
-			echo " LIBEROS ONLY <BR>";
-				
-			foreach($datos["LiberosA"] as $indice => $valor)				
-			{
-					echo "indice $indice : ";
-					print_r($valor);
-					echo " <br>";
-			}
-			echo " EQUIPO RESTANTE SIN LIBEROS...<br>";
-
-			foreach($setJugadores["equipoA"] as $indice => $valor)				
-			{
-					echo "indice $indice : ";
-					print_r($valor);
-					echo " <br>";
-			}
-*/
-/**
-* 
-* @var ***************************************************************************************
-* 
-*/
+/**/		
+			// $jugadoresB tiene la data de toda la grilla de los presentes.	
 			$jugadoresB = partjug::getJugSetLoad($idpartido,$fecha,$setData["ClubB"],$ianioPartido,$idset,$setData["categoria"]); 
 			$pointer1 =0;
-			$pointer2 =0;
+			$pointer2 =$pointer2LibVisita=0;
+			// echo "..:: INICIO LISTA DE JUGADORES DEL EQUIPO VSITANTE ::..<br>";
+			// print_r($jugadoresB);
+			// echo "<br>..:: FIN LISTA DE JUGADORES DEL EQUIPO VISITANTE ::..<BR>";
 
 			$pointerSuplentes=0;
 			foreach($jugadoresB as $indice => $valor)
 			{
 				if($valor["posicion"] == 7 ){
 				  // echo $valor["nombre"]." es suplente<br>";
-					$datos["SuplentesB"][$pointerSuplentes]= $valor; // tomar valido el campo PUESTO.
+					// $datos["SuplentesB"][$pointerSuplentes]= $valor; // tomar valido el campo PUESTO.
 					$pointerSuplentes++;					
 				}
 			}
@@ -114,8 +148,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				   //echo "puesto : $puesto <br>";
 				   if($puesto ==2) //libero
 					{
-							$datos["LiberosB"][$pointer1]= $valor; // tomar valido el campo PUESTO...
+							// $datos["LiberosB"][$pointer1]= $valor; // tomar valido el campo PUESTO...
 							$pointer1++;
+// TAMBIEN LO AGREGO EN LA LISTA POSTA
+							$vectorJugador["idjugador"]=$valor["idjugador"];
+							$vectorJugador["posicion"]=$valor["posicion"];
+							$vectorJugador["puesto"]=$valor["puesto"];
+							$vectorJugador["puestoxcat"]=$valor["puestoxcat"];
+							// Nuevo agregado el color del puesto 
+							$vectorJugador["ColorPuestoCancha"]=$valor["ColorPuestoCancha"];
+							$vectorJugador["ColorPuestoCat"]=$valor["ColorPuestoCat"];
+							//AGREGO DATOS DE CLAVE Y ACTIVO PARA AGREGAR EN LISTA DE 
+							//CENTRALES QUE NO SON SUPLENTES.DIC2022
+								$vectorJugador["activoSN"]=$valor["activoSN"];
+								$vectorJugador["nombre"]=$valor["nombre"];
+								$vectorJugador["numero"]=$valor["numero"];
+								$vectorJugador["categoria"]=$valor["categoria"];
+								$vectorJugador["idclub"]=$valor["idclub"];
+
+								// agregado  24.05
+								$vectorJugador["FechaEgreso"]=$valor["FechaEgreso"];
+								$vectorJugador["posicionini"]=$valor["posicionini"];
+								$vectorJugador["secuencia"]=$valor["secuencia"];
+								$vectorJugador["orden"]=$valor["Orden"];
+
+								$setJugadores["equipoB"][$pointer2]=$vectorJugador;	
+									$pointer2++;
+// TAMBIEN LO AGREGO EN LA LISTA POSTA
 					}	
 					else
 					{
@@ -126,9 +185,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 							// Nuevo agregado el color del puesto 
 							$vectorJugador["ColorPuestoCancha"]=$valor["ColorPuestoCancha"];
 							$vectorJugador["ColorPuestoCat"]=$valor["ColorPuestoCat"];
-							
-							$setJugadores["equipoB"][$pointer2]=$vectorJugador;	
-							$pointer2++;
+							//AGREGO DATOS DE CLAVE Y ACTIVO PARA AGREGAR EN LISTA DE 
+							//CENTRALES QUE NO SON SUPLENTES.DIC2022
+								$vectorJugador["activoSN"]=$valor["activoSN"];
+								$vectorJugador["nombre"]=$valor["nombre"];
+								$vectorJugador["numero"]=$valor["numero"];
+								$vectorJugador["categoria"]=$valor["categoria"];
+								$vectorJugador["idclub"]=$valor["idclub"];
+
+								// agregado  24.05
+								$vectorJugador["FechaEgreso"]=$valor["FechaEgreso"];
+								$vectorJugador["posicionini"]=$valor["posicionini"];
+								$vectorJugador["secuencia"]=$valor["secuencia"];
+								$vectorJugador["orden"]=$valor["Orden"];
+									$setJugadores["equipoB"][$pointer2]=$vectorJugador;	
+									$pointer2++;
 					}
 			}
 
@@ -173,6 +244,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	        
 	        $datos["PartidoData"] = $setData;//es un array
 	        $datos["Sets"] = $setJugadores;//es un array
+			//$datos["OrdenRotacion"]=$matriz; //como deberia moverse el local	
+			// $datos["GrillaJugLocal"]  = $jugadoresA;	//es un array
+			// $datos["GrillaJugVisita"] = $jugadoresB;	//es un array
+
 	        		print json_encode($datos);
 		}
 	    else
