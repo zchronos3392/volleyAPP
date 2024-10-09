@@ -14,11 +14,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$CanchaId    = $_POST['icancha']; // numero			
 			$competencia = $_POST['icomp']; // numero
 			$ciudad      = $_POST['icity']; // numero
+			// LA SEDE VIENE CON MAS DATOS, POR ESO ME QUEDO SOLO CON EL QUE SIRVE, SU ID
 			if(isset($_POST['isede']) && $_POST['isede'] != "" )
 				$sedeId      =  explode("_",$_POST['isede'])[1] ; // numero
 			else
 				$sedeId      =  0;
-
+			// LA SEDE VIENE CON MAS DATOS, POR ESO ME QUEDO SOLO CON EL QUE SIRVE, SU ID
+			
 				$descripcionp = "'".$_POST['descripcionp']."'";
 			// agregados en abril 2019
 				$tbset      = 0; // numero
@@ -40,6 +42,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			 $setsmax = 0;	
 			 if(isset($_POST['SetMaxCat'])){  $smaxCate = $_POST['SetMaxCat'];} else { $smaxCate = 0; };
 			 if(isset($_POST['SetMaxComp'])){ $smaxcomp = $_POST['SetMaxComp']; } else { $smaxcomp =0; };
+
+			//  NUEVOS DATOS AGREGADOS
+				$idclubSede = 0;
+				if(isset($_POST['IDClubSede'])){  $idclubSede = $_POST['IDClubSede'];};
+				$estadoID = 0;
+				if(isset($_POST['estadoID'])){  $estadoID = $_POST['estadoID']; };
+			//  NUEVOS DATOS AGREGADOS			 
 			// ejemplo:	SetMaxCat=3 - SetMaxComp=0
 			
 	        if(  ($smaxcomp > 0) && ($smaxCate >0)  ) { $setsmax = $smaxcomp;};
@@ -47,10 +56,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         	if(  ($smaxcomp > 0) && ($smaxCate == 0) ){  $setsmax = $smaxcomp;};
 			
 			
+			
     // Insertar partido
         		$Fecha = "'".$Fecha."'";
  
-	$retorno = Partido::actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$setsmax,$tbset,$finset,$descripcionp);
+	$retorno = Partido::actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$setsmax,$tbset,$finset,$descripcionp,$idclubSede,$estadoID);
 	
     if ($retorno) {
         // C�digo de �xito
@@ -102,10 +112,18 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     	    if(  ($smaxcomp == 0) && ($smaxCate > 0) ) { $setsmax = $smaxCate;};
         	if(  ($smaxcomp > 0) && ($smaxCate == 0) ){  $setsmax = $smaxcomp;};
 		
+			//  NUEVOS DATOS AGREGADOS
+			$idclubSede = 0;
+			if(isset($_GET['IDClubSede'])){  $idclubSede = $_GET['IDClubSede'];};
+			$estadoID = 0;
+			if(isset($_GET['estadoID'])){  $estadoID = $_GET['estadoID']; };
+		//  NUEVOS DATOS AGREGADOS			 
+
+
     // Insertar partido
     $Fecha = "'".$Fecha."'";
     		
-	$retorno = Partido::actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$setsmax,$tbset,$finset,$descripcionp);
+	$retorno = Partido::actualiza($idPartido,$Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$setsmax,$tbset,$finset,$descripcionp,$idclubSede,$estadoID);
 
     if ($retorno) 
     {

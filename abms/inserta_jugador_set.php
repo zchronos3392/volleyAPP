@@ -70,7 +70,8 @@ $retorno2 = 0;
 			$puestoPosta = $puestoActualizado;
 			
 	//CENTRALES QUE NO SON SUPLENTES
-	  //PORQUE EMPIEZAN EN CANCHA
+	  // PORQUE EMPIEZAN EN CANCHA los activo para que aparezcan como seleccionables con el 
+	  // cambio automatico de LIBERO
 	if($posicial != 7 && $puestoPosta == 6)
 	{
 			$accionValor =1;
@@ -78,8 +79,10 @@ $retorno2 = 0;
 												  $iclub,$icate,$jugador,$setnumero,
 												  $accionValor);
 	} 
+	//Deberia hacer aca lo mismo con los LIBEROS, CUANDO SOLO HAY UNO ;
 
-	}
+
+	} //secuencia == 1 carga inicial
     else { 
     	$modo='UPD';
 			//echo("$modo='UPD'");

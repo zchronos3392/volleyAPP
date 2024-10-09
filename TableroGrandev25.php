@@ -263,7 +263,7 @@ function cargaInicialPosiciones(){
 						// console.log(' indice de rotacion: ' + indiceRotacionLocal);
 						// console.log(' a: ' + unionValores + ' le toca moverse a:'+ destinoDet + ' ' + ' px');
 
-							if(value.top != undefined)
+							if( value.hasOwnProperty('top'))
 							{
 								// console.log(' moverlo por top : ' + value.top + ' px');
 							//topCargado =avance;//	 value.PosY+value.top;
@@ -330,9 +330,16 @@ function cargaInicialPosiciones(){
 	function obtenerLogoCompetencia(idlogocompetencia,imagenlogocompetencia)
 	{
 		if(imagenlogocompetencia != '')
-			$("#"+idlogocompetencia).html('<img  src="'+"img/competencias/"+imagenlogocompetencia+'" class="imglogocompetencia id="'+idlogocompetencia+'IMG" name="'+imagenlogocompetencia+'"></img>'); 
-//		else
-//		 alert('no hay logo para la competencia...');
+		{
+			imagenlogocompetencia = imagenlogocompetencia.replace(/'/g, "");	//.slice(1).slice(0,-1);
+			if(imagenlogocompetencia != "")
+				$("#"+idlogocompetencia).html('<img  src="'+"img/competencias/"+imagenlogocompetencia+'" class="imglogocompetencia" id="'+idlogocompetencia+'IMG" name="'+imagenlogocompetencia+'"></img>'); 
+
+		}
+		else
+			// alert('no hay logo para la competencia...');
+				$(".itemTablero1A").hide();
+
  	}
  		
 	function chequeoActualizacionAutomatica(){
@@ -436,7 +443,11 @@ function muestraTiempoTranscurrido()
 		var tiempoSinSegs = tiempoTxtHora +':' + tiempoTxtMin;
 		var horaDesde = $("#HoraInicial").val();
 		TiempoTranscurridoActual = calculoTiempoRestante(horaDesde,tiempoSinSegs);		
-		$("#stopwatch").text("Hora Actual: "+ tiempoTxt + " transcurridos: "+TiempoTranscurridoActual);}, 1000); //funcion setinterval..
+		$("#stopwatch").text("Hora Actual: "+ tiempoTxt);
+		$("#periodo").text(" T.Transcurrido: "+TiempoTranscurridoActual);
+		
+		}, 1000); //funcion setinterval..
+		
 //cronometro denro del tablero:			
 }	
 
@@ -550,7 +561,7 @@ function muestraTiempoTranscurrido()
             //cargaCancha();	
 	            obtenerLogoCompetencia("ilogoCompetencia",v.logocompetencia);	
 				var alta='';
-				$("#mensajes3").text(v.Fecha);
+				// $("#mensajes3").text(v.Fecha);
 
 				cantSets = Number(v.ClubARes,10)+Number(v.ClubBRes,10);
 				var escudoAMarco=escudoBMarco="NoBorde";//		"NoBorde";
@@ -577,34 +588,78 @@ function muestraTiempoTranscurrido()
                 		$("#cancha").text(v.cancha);
                			$("#ciudad").text(v.nombre);
                				
-                		$("#fecha").text('Partido Nro ('+r['Partido'].descripcionp+' - '+ v.idPartido +') - Inicio '+v.Inicio);
+                		$("#fecha").text(r['Partido'].descripcionp+' - '+ v.idPartido+' - '+v.Fecha+' / '+v.Inicio);
 						//r['saque']
 						
-						$("#categoria").text("Categoria " + v.DescCate);
+						$("#categoria").text(v.DescCate);
 
-		
-
-						if(r['estadoSet'].includes('CURSO') || r['estadoSet'].includes('CONFIGURACION INICIAL') )
+						
+						if(  r.hasOwnProperty('estadoSet') )
 						{
-							if(r['saque'] == v.idcluba)
-							{ 
-								//textoClubA = v.ClubA;
-								escudoAMarco = "bordeRojo";
-								escudoBMarco = "NoBorde"; 
-							}
-							
-							if(r['saque'] == v.idclubb)
-							{ 
-								//textoClubB  = v.ClubB;
-								escudoAMarco = "NoBorde";
-								escudoBMarco = "bordeRojo"; 
-							}
-						};
+
+							if(r['estadoSet'].includes('CURSO') || r['estadoSet'].includes('CONFIGURACION INICIAL') )
+							{
+								if(r['saque'] == v.idcluba)
+								{ 
+									//textoClubA = v.ClubA;
+									escudoAMarco = "bordeRojo";
+									escudoBMarco = "NoBorde"; 
+								}
+								
+								if(r['saque'] == v.idclubb)
+								{ 
+									//textoClubB  = v.ClubB;
+									escudoAMarco = "NoBorde";
+									escudoBMarco = "bordeRojo"; 
+								}
+							};
+						}
 			
 						//Aca se borra el escudo !!!
-						obtenerEscudo(v.idcluba,"escudoA",escudoAMarco) ;
-						obtenerEscudo(v.idclubb,"escudoB",escudoBMarco) ;
+						//FUNCION REFRESCAR TABLERO, CON SET TIME  INTERVAL
+						puntoEspecialLOCAL = '';
+						puntoEspecialVisita ='';
 						
+						$("#setmatchpointA").html('');
+						$("#setmatchpointA").removeClass('MATCHPOINT');
+						$("#setmatchpointB").html('');
+						$("#setmatchpointB").removeClass('MATCHPOINT');
+						$("#mensajes2").html('');
+						//FUNCION REFRESCAR TABLERO, CON SET TIME  INTERVAL
+
+						if(r["textoSpecialPnt"] != null )
+							$("#mensajes2").html('<span class="mensajeSetClass">'+r["textoSpecialPnt"]+'</span>');			
+
+						//setPoint":0,"matchPoint":0
+						if(r["ClubA"] == r["setPoint"])
+							if(r["setPoint"] != 0 && r["setPoint"])
+									$("#setmatchpointA").html('SET POINT');
+
+						if(r["ClubA"] == r["matchPoint"])	
+							if(r["matchPoint"] != 0 && r["matchPoint"])
+							{
+								console.log('matchpoint value: local'+ r["matchPoint"]);
+								$("#setmatchpointA").html('MATCH POINT');
+								$("#setmatchpointA").addClass('MATCHPOINT');
+							}
+
+						if(r["ClubB"] == r["setPoint"])
+							if(r["setPoint"] != 0  && r["setPoint"])
+								$("#setmatchpointB").html('SET POINT');
+							
+						if(r["ClubB"] == r["matchPoint"])
+								if(r["matchPoint"] != 0 && r["matchPoint"])
+								{
+									console.log('matchpoint value visita: '+ r["matchPoint"]);
+									$("#setmatchpointB").html('MATCH POINT');
+									$("#setmatchpointB").addClass('MATCHPOINT');
+								}
+
+													
+							obtenerEscudo(v.idcluba,"escudoA",escudoAMarco) ;
+							obtenerEscudo(v.idclubb,"escudoB",escudoBMarco) ;
+						
+
 					//console.log(hayEscudos);	
 						//alert($("#escudoAMarco").attr("class") );
 						//$("#escudoBM+arco").attr("class", "NoBorde"); 
@@ -681,10 +736,11 @@ function muestraTiempoTranscurrido()
 				if(v.nombre.indexOf(textoBuscado) == -1 && puestoPosta != 2)
 				{
 				//CARGAR INDICADOR DE PUESTO ACTUAL 
+				//saque esto para que este todo en el mismo renglon : item1Existe+' '+v.nombre+'('+v.numero+')'
 				Suplentes += '<div class="itemtbljuVER">'+
-								item1Existe+
-							'	<div class="itemtblju2VER">'+v.nombre+'</div>'+
-							'	<div class="itemtblju3VER">('+v.numero+')</div>'+
+								botonCentral+' <span class="nombreJugador">'+v.nombre+'('+v.numero+')'+'</span>'+
+							'	<div class="itemtblju2VER"></div>'+
+							'	<div class="itemtblju3VER"></div>'+
 							'	<div class="itemtblju4VER"></div>'+
 							'	<div class="itemtblju5VER"></div>'+
 							'</div>'
@@ -755,9 +811,9 @@ function muestraTiempoTranscurrido()
 				if(v.nombre.indexOf(textoBuscado) == -1 && puestoPosta != 2)
 				{
 					Suplentes += '<div class="itemtbljuVER">'+
-									item1Existe+
-								'	<div class="itemtblju2VER">'+v.nombre+'</div>'+
-								'	<div class="itemtblju3VER">('+v.numero+')</div>'+
+									botonCentral+' <div class="nombreJugador">'+v.nombre+'('+v.numero+')'+'</div>'+
+								'	<div class="itemtblju2VER"></div>'+
+								'	<div class="itemtblju3VER"></div>'+
 								'	<div class="itemtblju4VER"></div>'+
 								'	<div class="itemtblju5VER"></div>'+
 								'</div>'
@@ -765,9 +821,9 @@ function muestraTiempoTranscurrido()
 				});
 
 			   $("#verSuplentesB").html(Suplentes);
-
+			   	
 				// TAMBIEN DIVIDIR EL CONTENBIDO DEL POSICION JUGADOR EN POS Y NOMBRE REMERA
-				if( r['pa_1'].jugx == undefined) 
+				if( !r.hasOwnProperty('pa_1')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(I)</div>'+
@@ -795,7 +851,7 @@ function muestraTiempoTranscurrido()
 				$("#canchaa1").html(bloqueJugador); 
 				$('#canchaa1').attr('style', 'backGround:'+colorBase);
 
-				if( r['pa_2'].jugx == undefined) 
+				if( ! r.hasOwnProperty('pa_2')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(II)</div>'+
@@ -815,7 +871,7 @@ function muestraTiempoTranscurrido()
 				$("#canchaa2").html(bloqueJugador); 
 				$('#canchaa2').attr('style', 'backGround:'+colorBase);
 
-				if( r['pa_3'].jugx == undefined) 
+				if( ! r.hasOwnProperty('pa_3')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(III)</div>'+
@@ -834,7 +890,7 @@ function muestraTiempoTranscurrido()
 				$("#canchaa3").html(bloqueJugador); 
 				$('#canchaa3').attr('style', 'backGround:'+colorBase);
 
-				if( r['pa_4'].jugx == undefined) 
+				if( ! r.hasOwnProperty('pa_4')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(IV)</div>'+
@@ -848,12 +904,12 @@ function muestraTiempoTranscurrido()
 											'<div class="canchajugitem1">(IV)</div>'+
 											'<div class="canchajugitem2">'+r['pa_4'].jugx+'</div>'+
 										'</div>';
-					colorBase = r['pa_4'].puestoColor;															
+						colorBase = r['pa_4'].puestoColor;															
 				}
 				$("#canchaa4").html(bloqueJugador); 
 				$('#canchaa4').attr('style', 'backGround:'+colorBase);
 
-				if( r['pa_5'].jugx == undefined) 
+				if( ! r.hasOwnProperty('pa_5')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(V)</div>'+
@@ -872,7 +928,7 @@ function muestraTiempoTranscurrido()
 				$("#canchaa5").html(bloqueJugador); 
 				$('#canchaa5').attr('style', 'backGround:'+colorBase);
 
-				if( r['pa_6'].jugx == undefined) 
+				if( ! r.hasOwnProperty('pa_6')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(VI)</div>'+
@@ -894,7 +950,7 @@ function muestraTiempoTranscurrido()
 				// FIN LOCALES..	
 
 //VISITANTE
-			 	if( r['pb_1'].jugx == undefined) 
+			 	if( ! r.hasOwnProperty('pb_1')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(I)</div>'+
@@ -913,7 +969,7 @@ function muestraTiempoTranscurrido()
 				$("#canchab1").html(bloqueJugador); 
 				$('#canchab1').attr('style', 'backGround:'+colorBase);
 
-				if( r['pb_2'].jugx == undefined) 
+				if(! r.hasOwnProperty('pb_2')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(II)</div>'+
@@ -933,7 +989,7 @@ function muestraTiempoTranscurrido()
 				$("#canchab2").html(bloqueJugador); 
 				$('#canchab2').attr('style', 'backGround:'+colorBase);
 
-				if( r['pb_3'].jugx == undefined) 
+				if(! r.hasOwnProperty('pb_3')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(III)</div>'+
@@ -953,7 +1009,7 @@ function muestraTiempoTranscurrido()
 				$("#canchab3").html(bloqueJugador); 
 				$('#canchab3').attr('style', 'backGround:'+colorBase);
 
-				if( r['pb_4'].jugx == undefined) 
+				if( ! r.hasOwnProperty('pb_4')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(IV)</div>'+
@@ -973,7 +1029,7 @@ function muestraTiempoTranscurrido()
 				$("#canchab4").html(bloqueJugador); 
 				$('#canchab4').attr('style', 'backGround:'+colorBase);
 
-				if( r['pb_5'].jugx == undefined) 
+				if(! r.hasOwnProperty('pb_5')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(V)</div>'+
@@ -993,7 +1049,7 @@ function muestraTiempoTranscurrido()
 				$("#canchab5").html(bloqueJugador); 
 				$('#canchab5').attr('style', 'backGround:'+colorBase);
 
-				if( r['pb_6'].jugx == undefined) 
+				if( ! r.hasOwnProperty('pb_6')) 
 				{
 					bloqueJugador = '<div class="canchajugadoritem">'+
 											'<div class="canchajugitem1">(VI)</div>'+
@@ -1041,22 +1097,29 @@ function muestraTiempoTranscurrido()
 
         	  	$("#puntosA").text(r['puntoa']); 
         	  	
-        	  	$("#tiempoTot").text(r['transcurrido']);
+        	  	$("#tiempoTot").text("T.Total:  "+r['transcurrido']);
         	  	 
         	  	$("#HoraInicial").val(r['horainicio']);
 				$("#puntosB").text(r['puntob']);
-				$("#mensajes").text(r['mensajeSet']);
+
+				if(r['mensajeSet'] != undefined)
+						$("#mensajes").html('<span class="mensajeSetClass">'+r['mensajeSet']+'</span>');
 				
 				if(r['mensajeSet']=='Fin del set')
+				{
 						if( !( r['Partido'].estado.includes('FIN'))   )			
-						 					{$("#setActivo").text('Termino Set');}
+						 	{$("#setActivo").text('FINAL DEL SET');}
 						else 
 						{
-						 $("#setActivo").text('Fin del Partido');	
-						$("#SetActivoData").text('Se jugaron '+cantSets +' sets');
-						}
+						 	$("#setActivo").text('Fin del Partido');	
+							$("#SetActivoData").text('Se jugaron '+cantSets +' sets');
+						};
+				}		
+				//else				
+					//$("#setActivo").text(r['mensajeSet']);
 
-				else {$("#setActivo").text('SET ACTIVO');}
+				
+				
 						
 				if(r['tiempoPedidoA'] == 1)
 				{
@@ -1078,10 +1141,19 @@ function muestraTiempoTranscurrido()
 					    $("#tiempoB2").css("background","#DC0A89");
 					};				
 				
-				
-			//$("#mensajes3").text();		
-				if(r['Partido'].estado.includes('FIN')) $("#mensajes2").text('.: Partido finalizado :.');			
-					
+				if(r['Partido'].estado.includes('FIN')) 
+				{
+						var textoEstado = r['Partido'].estado ;
+						var colorEstado = '';
+						// if(textoEstado.includes('SUSPENDIDO')){var img = './img/PartidoSSPND.png'; colorEstado = 'Desactivado';}
+						// if(textoEstado.includes('PROGR')) {var img = './img/PartidoONOFFSQR.png';colorEstado = 'Programado';}
+						// if(textoEstado.includes('LLUVI')) {var img = './img/rain-icon-png.jpg';colorEstado = 'Desactivado';}
+						$("#itemTablero1").removeClass('itemTablero1');
+						$("#itemTablero1").addClass('itemTablero1Fin'); //removeClass para quitarla		
+						// if(textoEstado.includes('CURSO')) {var img = './img/PartidoONSQR.png';colorEstado ='Cursando' ;}
+
+					$("#mensajes2").html('<span class="mensajeSetClass '+colorEstado+' ">Partido finalizado</span>');			
+				}	
 			//http://localhost/volleyAPP/abms/obtener_sets.php?idpartido=1&idfecha=2018-08-25	
 			/*********LEVANTAR INFO DE LOS SETS***************************************************/
 				// la fecha esta yendo con comillas...
@@ -1114,28 +1186,58 @@ function muestraTiempoTranscurrido()
 			        	$("#setsganadosA").empty();
 						$("#setsganadosB").empty();
 
-			            $(r['Sets']).each(function(i, v){ // indice, valor				
+						//console.log(r.nombre);
+						//console.log(r); /*Usa esto siempre en fase de desarrollo*/             
+						
+						if(r['Sets'])
+						{
+							$(r['Sets']).each(function(i, v)
+							{ // indice, valor				
 
-							if(v.mensaje=='Fin del set'){
-								if(parseInt(v.puntoa,10) >= parseInt(v.puntob,10))
-									$("#setsganadosA").append('<div class="parciales"><span class="parcial">L:'+v.puntoa+'</span><span class="parcial">V:'+v.puntob+'</span></div>');
-								if(parseInt(v.puntoa,10) <= parseInt(v.puntob,10))
-									$("#setsganadosB").append('<div class="parciales"><span class="parcial">L:'+v.puntoa+' V:'+v.puntob+'</span></div>');
-							
-							}
-							else{
-							var jugando='<section class="puntoJugando21">'+
-									'<div class="" id="setsjugandosA">'+
-										'<div class="parcialesj"><span class="parcial">L:'+v.puntoa+'</span><span class="parcial">V:'+v.puntob+'</span></div></div>'+
-									 '</section>';
-							//$("#categoria").append(jugando);
-							}
-	  			      		
-	  			      		if(v.mensaje != 'Fin del set')
-	  			      			$("#periodo").text(v.setnumero+" set ");
-	  			      		else
-	  			      			$("#periodo").text('');
-	  			      	});
+								if(v.mensaje=='Fin del set')
+								{
+									if(parseInt(v.puntoa,10) >= parseInt(v.puntob,10))
+										$("#setsganadosA").append('<div class="parciales"><span class="parcial">L:'+v.puntoa+'</span><span class="parcial">V:'+v.puntob+'</span></div>');
+									if(parseInt(v.puntoa,10) <= parseInt(v.puntob,10))
+										$("#setsganadosB").append('<div class="parciales"><span class="parcial">L:'+v.puntoa+' V:'+v.puntob+'</span></div>');
+								
+								}
+								else
+								{
+								var jugando='<section class="puntoJugando21">'+
+										'<div class="" id="setsjugandosA">'+
+											'<div class="parcialesj"><span class="parcial">L:'+v.puntoa+'</span><span class="parcial">V:'+v.puntob+'</span></div></div>'+
+										'</section>';
+								//$("#categoria").append(jugando);
+								}
+								//$("#periodo").text('');
+								if(v.mensaje != 'Fin del set')
+								{
+									var nombreSet = '';
+									// console.log(' numero del set: ' + v.setnumero);
+									// EN PRODUCCION SETNUMERO VIENE COMO TEXTO, MIENTRAS QUE EN DESARROLLO COMO NUMERO !!!!
+									if(v.setnumero == 1 || v.setnumero == "1" )
+												nombreSet='PRIMER SET';
+									if(v.setnumero == 2 || v.setnumero == "2" )
+										nombreSet='SEGUNDO SET';
+									if(v.setnumero == 3 || v.setnumero == "3" )
+										nombreSet='TERCER SET';
+									if(v.setnumero == 4 || v.setnumero == "4" )
+										nombreSet='CUARTO SET';
+									if(v.setnumero == 5 || v.setnumero == "5" )
+										nombreSet='QUINTO SET';
+									$("#setActivo").text(nombreSet);
+									//$("#periodo").text(v.setnumero+" set ");
+								}
+								//else
+							});
+					    }
+						else
+						{
+							$("#setActivo").text(r.nombre);
+							console.log("aun no se cargo nada de un set...");
+						}
+
 	  			    },
 			         error: function (xhr, ajaxOptions, thrownError) {
 					// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
@@ -1164,6 +1266,8 @@ function muestraTiempoTranscurrido()
 		//   Es importante tener en cuenta que el proceso de renderizado en el navegador puede tomar algo de tiempo y puede estar influenciado por varios factores, como el tamaño y la complejidad de los elementos, el rendimiento del dispositivo, el contenido externo (como imágenes) y las hojas de estilo aplicadas.
 		//   Para abordar este problema y asegurarte de obtener las posiciones correctas de los elementos <div> en la pantalla, puedes considerar utilizar el evento load en lugar del evento ready. El evento load se dispara cuando todos los recursos (como imágenes) también se han cargado completamente, lo que indica que el contenido está listo para ser visualizado.
 			
+		var puntoEspecialLOCAL = '';
+    	var puntoEspecialVisita ='';
 
 		// DESCOMENTAR PARA ACTIVAR TABLERO !!!
 			chequeoActualizacionAutomatica();
@@ -1211,11 +1315,13 @@ function muestraTiempoTranscurrido()
         	
           $(r['Partido']).each(function(i, v)
             { // indice, valor		
-	
+
+						puntoEspecialLOCAL = '<div class="itmidclub3a" id="setmatchpointA"></div>';				
 						var ESCUDOA = '<span id="escudoAMarco" class="'+escudoAMarco+'"><img  src="img/jugadorGen.png" class="imgjugadorTablero2" ></img></span>';
-						var textoClubA ='<div class="grillaIdClubv20"><div class="itmidclub2a" id="escudoA">'+ESCUDOA+'</div><div class="itmidclub1a">'+v.ClubA+'</div></div>';
+						var textoClubA ='<div class="grillaIdClubv20">'+puntoEspecialLOCAL+'<div class="itmidclub2a" id="escudoA">'+ESCUDOA+'</div><div class="itmidclub1a">'+v.ClubA+'</div></div>';
 						var ESCUDOB = '<span id="escudoBMarco" class="'+escudoBMarco+'"><img  src="img/jugadorGen.png" class="imgjugadorTablero2" ></img></span>';
-						var textoClubB  = '<div class="grillaIdClubv20"><div class="itmidclub2a" id="escudoB" >'+ESCUDOB+'</div><div class="itmidclub1a">'+v.ClubB+'</div></div>';
+						puntoEspecialVisita = '<div class="itmidclub3a" id="setmatchpointB"></div>';				
+						var textoClubB  = '<div class="grillaIdClubv20">'+puntoEspecialVisita+'<div class="itmidclub2a" id="escudoB" >'+ESCUDOB+'</div><div class="itmidclub1a">'+v.ClubB+'</div></div>';
 						obtenerEscudo(v.idcluba,"escudoA",escudoAMarco) ;
 						obtenerEscudo(v.idclubb,"escudoB",escudoBMarco) ;
 			
@@ -1286,13 +1392,13 @@ function muestraTiempoTranscurrido()
 <div class="marcoTablero" id="tableroMarco" >
 	<div class="TableroFondo" id="tablero">
 	<!-- FILA 0-->
-	<div class="itemTablero1" id="">
+	<div class="itemTablero1" id="itemTablero1">
 		<div class="itemTablero1A">
 			<span id="ilogoCompetencia"	name="ilogoCompetencia" class="logoCompetencia">LOGO COMPETENCIA</span>
 			<input type="hidden" id="estadoLocal" name="estadoLocal" value="NADA"/>
 		</div>
 		<div class="itemTablero1B">
-			<div class="" id="competencia">COMPETENCIA:</div>
+			<div class="Competencia" id="competencia"  >COMPETENCIA:</div>
 			<div class="" id="mensajes3"></div>	
 			<div class="" id="fecha">FECHA</div>
 			<div class="" id="categoria">Categoria</div>	
@@ -1301,20 +1407,22 @@ function muestraTiempoTranscurrido()
 		</div>
 	</div>
 	<div class="itemTablero2" id="">
-		<div class="Espacioclub" id="">
+		<!-- ACA SE MUESTRAN LAS ESTADISTICAS -->
+		<div class="Espacioclub" id=""> 
 			<input id="HoraInicial" name="HoraInicial" value="" type="hidden"/>
 			<div class="itclub1" id="setActivo" >SET ACTIVO</div>
 		    <div class="itclub2" id="periodo" >##</div>
 			<div class="itclub3" id="stopwatch" >Duración final</div>
-			<div class="itclub4" id="tiempoTot">##:##</div>
-			<div class="itclub5" id="SetActivoData">##:##</div>
-			<div class="itclub6" id="otro"></div>
+			<div class="itclub4" id="otro"></div>
+			<div class="itclub5" id="SetActivoData"></div>
+			<div class="itclub6" id="tiempoTot"></div>
 		</div>		
 		<div class="Espacioclub2">
 				 <div class="itemEC2_1">
 					 <div class="" id="clublocal">
 						<div class="grillaIdClub">
-							<div class="itmidclub2"></div>
+						<div class="itmidclub3"></div>	
+						<div class="itmidclub2"></div>
 							<div class="itmidclub1"></div>
 						</div>
 					</div>
@@ -1334,6 +1442,7 @@ function muestraTiempoTranscurrido()
 				 <div class="itemEC2_4">			
 					 <div class="" id="clubvisitante">
 						<div class="grillaIdClub">
+							<div class="itmidclub3"></div>	
 							<div class="itmidclub2"></div>
 							<div class="itmidclub1"></div>
 						</div>
@@ -1359,19 +1468,8 @@ function muestraTiempoTranscurrido()
   </div> <!--class="TableroFondo" id="tablero"-->
 </div> <!--marcoTablero" id="tableroMarco"-->
 
-<!-- SECTOR DE LA NUEVA VISUALIZACION DE CANCHA -->
-<div class="itmtbljugTIT">
-<div class="itmtbljugTIT1">Suplentes Local</div>
-<div class="itmtbljugTIT2"></div>
-<div class="itmtbljugTIT3"></div>
-<div class="itmtbljugTIT4"></div>
-<div class="itmtbljugTIT5"></div>
-</div>
-<section id="verSuplentesA" class="verSuplentes"></section>
-<span>Liberos (Loc)</span>
-	<section id="liberosA" class="verSuplentes xControlLiberos"></section>	 
 
-<section id="cancha" class="canchaversion3 LetrasBlancas">
+<section id="cancha" class="canchaversion4 LetrasBlancas">
 	<div id="canchaa5" class="canchaversion3item1" >V LOC</div>
 	<div id="canchaa4" class="canchaversion3item2"  >IV LOC</div>
 	<div id="canchab2" class="canchaversion3item3"  >II VIS</div>
@@ -1385,11 +1483,32 @@ function muestraTiempoTranscurrido()
 	<div id="canchab4" class="canchaversion3item11"  >IV VIS</div>
 	<div id="canchab5" class="canchaversion3item12"  >V VIS</div>
 </section>
-<span>Liberos (Vis)</span>
-
+<!-- SECTOR DE LA NUEVA VISUALIZACION DE CANCHA -->
+ <section class="Jugadores">
+	 <section class="local">
+		<div class="jugTIT">Liberos Loc.</div>
+		<section id="liberosA" class="xControlLiberosTablero"></section>
+		<div class="jugTIT">Suplentes Loc.</div>
+		<section id="verSuplentesA" class=""></section>
+	</section>
+	<section class="visita">
+	<div class="jugTIT">Liberos Vte.</div>
+		<section id="liberosB" class="xControlLiberosTablero"></section>
+		<div class="jugTIT">Suplentes Vte.</div>
+		<section id="verSuplentesB" class=""></section>
+	</section>
+</section>	
+<!-- <div class="itmtbljugTIT">
+	<div class="itmtbljugTIT1">Suplentes Local</div>
+	<div class="itmtbljugTIT2"></div>
+	<div class="itmtbljugTIT3"></div>
+	<div class="itmtbljugTIT4"></div>
+	<div class="itmtbljugTIT5"></div>
+</div> -->
+<!-- <span>Liberos (Vis)</span> -->
 <!-- <button id="animarRotado" name="animarRotado">Animar</button> -->
 
-<section id="liberosB" class="verSuplentes xControlLiberos"></section>	 
+<!-- <section id="liberosB" class="verSuplentes xControlLiberos"></section>	 
 <div class="itmtbljugTIT">
 <div class="itmtbljugTIT1">Suplentes Visitante</div>
 <div class="itmtbljugTIT2"></div>
@@ -1397,7 +1516,7 @@ function muestraTiempoTranscurrido()
 <div class="itmtbljugTIT4"></div>
 <div class="itmtbljugTIT5"></div>
 </div>
-<section id="verSuplentesB" class="verSuplentes"></section>
+<section id="verSuplentesB" class="verSuplentes"></section> -->
 <!-- SECTOR DE LA NUEVA VISUALIZACION DE CANCHA -->
 
 

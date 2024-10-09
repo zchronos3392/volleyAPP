@@ -6,6 +6,7 @@
 			<img  class="LogoApp" alt="VOLLEY.app" src="./img/vAPP23.gif" /> 
 	</Section>	
 </a>
+<span id="medidas" style="margin-left:30%;">Tamaño </span>
 <!--*************** MENU.PHP ******************* -->
 <Section id="headerbar" name="headerbar" class="headerbar">
 	<?php	

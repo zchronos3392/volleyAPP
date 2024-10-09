@@ -49,7 +49,7 @@ class SesionTabla
     public static function getsessionX($valor)
     {
     		
-        $consulta = "SELECT sesorigen FROM vappsesiones where sesusuario=$valor";
+        $consulta = "SELECT sesorigen,seshorainicio FROM vappsesiones where sesusuario=$valor";
 		//echo "$consulta"; 
         try {
             // Preparar sentencia
@@ -108,19 +108,20 @@ class SesionTabla
      * Insertar un nuevo categoria
      *
      * @param $idcategoria      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
 	 public static function setsession($clave, $valor)
 	 {
         // Sentencia INSERT
-		$graboSesion = SesionTabla::getsession($valor);
+		$graboSesion = SesionTabla::getsessionX($clave);
 		if (! isset($graboSesion["sesid"]) ){
 				$comando = "INSERT INTO vappsesiones ( sesusuario,sesorigen ) VALUES( $clave,$valor) ";
 		//12/07/2020 ALTER TABLE `vappsesiones` ADD `sesorigen` VARCHAR(16) NOT NULL AFTER `sesusuario`;        // Preparar la sentencia
         		$sentencia = Database::getInstance()->getDb()->prepare($comando);
-        			return $sentencia->execute(array($clave, $valor));
+        			return $sentencia->execute();
 		}        			
+
     }
     
 	 public static function setsessionfiltros($clave, $valor)
@@ -129,23 +130,35 @@ class SesionTabla
 		$comando = "INSERT INTO vappsesiones ( sesusuario,sesorigen ) VALUES( $clave,$valor) ";
 		//12/07/2020 ALTER TABLE `vappsesiones` ADD `sesorigen` VARCHAR(16) NOT NULL AFTER `sesusuario`;        // Preparar la sentencia
         		$sentencia = Database::getInstance()->getDb()->prepare($comando);
-        			return $sentencia->execute(array($clave, $valor));
+        			return $sentencia->execute();
     }    
     /**
      * Eliminar el registro con el identificador especificado
      *
      * @param $idcategoria identificador de la categoria
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
-    public static function deletesession($ipconeccion)
+    public static function deletesessionOrigen($ipconeccion)
     {
         // Sentencia DELETE
-		$comando = "DELETE FROM vappsesiones WHERE sesorigen=$ipconeccion";
-//		echo($comando);
+		$comando = "DELETE FROM vappsesiones WHERE sesusuario=$ipconeccion";
+	//	echo($comando);
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-		return $sentencia->execute(array($ipconeccion));
+		return $sentencia->execute();
+    }
+
+
+     public static function deletesession($ipconeccion)
+    {
+        // Sentencia DELETE
+		$comando = "DELETE FROM vappsesiones WHERE sesusuario=$ipconeccion";
+		//echo($comando);
+        // Preparar la sentencia
+        $sentencia = Database::getInstance()->getDb()->prepare($comando);
+
+		return $sentencia->execute();
     }
     
     public static function deletesessionfiltros($ipconeccion)
@@ -156,7 +169,7 @@ class SesionTabla
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-		return $sentencia->execute(array($ipconeccion));
+		return $sentencia->execute();
     }
 
     

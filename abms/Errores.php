@@ -59,14 +59,14 @@ class errorGrabado
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($iderror));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
             //echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return -1;
         }
@@ -90,14 +90,14 @@ class errorGrabado
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($tipo));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
             //echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return -1;
         }
@@ -107,7 +107,7 @@ class errorGrabado
      * Insertar un nuevo error
      *
      * @param $idequipo      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
     public static function insert($tipo,$scriptPrograma,$funcion,$parametros){
@@ -117,7 +117,7 @@ class errorGrabado
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($tipo,$scriptPrograma,$funcion,$parametros));
+        return $sentencia->execute();
 
     }
 
@@ -125,7 +125,7 @@ class errorGrabado
      * Eliminar el registro con el identificador especificado
      *
      * @param $idequipo identificador de la equipo
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($iderror)
     {
@@ -135,7 +135,7 @@ class errorGrabado
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($iderror));
+        return $sentencia->execute();
     }
 }
 

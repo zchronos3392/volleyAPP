@@ -1,49 +1,49 @@
 // JavaScript Document PARA EL banner que crece automaticamente...
 		// cuando PRESIONO CLICK , LO ACTUALIZO
 
-$(document).ready(function(){
-    // Hacemos la lógica que cuando nuestro SELECT cambia de valor haga algo
-         $("#ietats").empty();
-        // esto arreglo el tema del alta triplle..
-         $.ajax({ 
-            url:   './abms/obtener_estados.php',
-            type:  'GET',
-            dataType: 'json',
-			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
-            beforeSend: function (){
-				// Bloqueamos el SELECT de los cursos
-    			$("#ietats").prop('disabled', true);
-       		},
-            done: function(data){
+// $(document).ready(function(){
+//     // Hacemos la lógica que cuando nuestro SELECT cambia de valor haga algo
+//          $("#ietats").empty();
+//         // esto arreglo el tema del alta triplle..
+//          $.ajax({ 
+//             url:   './abms/obtener_estados.php',
+//             type:  'GET',
+//             dataType: 'json',
+// 			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+//             beforeSend: function (){
+// 				// Bloqueamos el SELECT de los cursos
+//     			$("#ietats").prop('disabled', true);
+//        		},
+//             done: function(data){
             	
-			},
-            success:  function (r){
-            	// SI LA TABLA ESTA VACIA, NO ENTRA ACA.
-               	// DESBloqueamos el SELECT de los cursos
-				// Limpiamos el select
-				// FORMA CORRECTA DE LEER EL VECTOR:r["estado"] y r["Clubes"] 
-                $(r['Estados']).each(function(i, v)
-                { // indice, valor
-                		//TUVE QUE AGREGARLE, QUE NO EXISTA EL ELEMENTO, PORQUE SE ESTA
-                		// TRIPLICANDO UN EVENTO QUE NO PUDE ENCONTRAR Y CARGABA TODOS LOS DATOS TRES VECESSS
-                	if (! $('#ietats').find("option[value='" + v.idestado + "']").length)
-                	{
-						$("#ietats").append('<option value="' + v.idestado + '" label="'+v.descripcion+'">' + v.descripcion + '</option>');
-					}		
-                });
-                $("#ietats").prop('disabled', false);
-            },
-             error: function (xhr, ajaxOptions, thrownError) {
-			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
-			$("#ietats").append('<option value="' + '9999' + '">' + 'JQERY:Tabla vacia' + '</option>');
-			$("#ietats").val('9999');
-			$("#ietats").prop('disabled', false);
-			}
-            }); // FIN funcion ajax CLUBES
-//**************** CLUBES *********************************************/   
+// 			},
+//             success:  function (r){
+//             	// SI LA TABLA ESTA VACIA, NO ENTRA ACA.
+//                	// DESBloqueamos el SELECT de los cursos
+// 				// Limpiamos el select
+// 				// FORMA CORRECTA DE LEER EL VECTOR:r["estado"] y r["Clubes"] 
+//                 $(r['Estados']).each(function(i, v)
+//                 { // indice, valor
+//                 		//TUVE QUE AGREGARLE, QUE NO EXISTA EL ELEMENTO, PORQUE SE ESTA
+//                 		// TRIPLICANDO UN EVENTO QUE NO PUDE ENCONTRAR Y CARGABA TODOS LOS DATOS TRES VECESSS
+//                 	if (! $('#ietats').find("option[value='" + v.idestado + "']").length)
+//                 	{
+// 						$("#ietats").append('<option value="' + v.idestado + '" label="'+v.descripcion+'">' + v.descripcion + '</option>');
+// 					}		
+//                 });
+//                 $("#ietats").prop('disabled', false);
+//             },
+//              error: function (xhr, ajaxOptions, thrownError) {
+// 			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+// 			$("#ietats").append('<option value="' + '9999' + '">' + 'JQERY:Tabla vacia' + '</option>');
+// 			$("#ietats").val('9999');
+// 			$("#ietats").prop('disabled', false);
+// 			}
+//             }); // FIN funcion ajax CLUBES
+// //**************** CLUBES *********************************************/   
 
 //**************** CLUBES *********************************************/            
-$("#AltaEtats").click(function(){ 
+$("#AltaEtats").click(function(e){ 
     //QUE SE RECARGUE CUANDO PRESIONO CLICK..
     	//alert('Submit activado');
         // Guardamos el select de cursos
@@ -80,8 +80,6 @@ $("#AltaEtats").click(function(){
         }
     }); // parentesis el .CLICK BTNINGRESO
 
-         
-}); // parentesis del READY
 
 
 

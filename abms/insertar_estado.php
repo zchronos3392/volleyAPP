@@ -5,19 +5,21 @@
 //el return sirve para cuando lo llamas desde ANSROID !!!
 require ('Estado.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Decodificando formato Json
- 	//	"categoria" ,"edadi" ,"edadf"   
-	$estado = $_POST['estados'];
-    // Insertar ciudad
-    $retorno = Estado::insert($estado);
+    $IDestado          = $_GET['estadoID']; 
+	$estadoDescripcion = $_GET['estadoDescripcion'];
+    $imagen = $_GET['imagenEstado'];
+    $colorEstado = $_GET['colorEstado'];
+    
+        $retorno = Estado::insert($IDestado,$estadoDescripcion,$imagen,$colorEstado);
 
     if ($retorno) {
-        // Código de éxito
-        echo(json_encode(array('estado' => '1','mensaje' => 'Creación exitosa')));
+        // Cï¿½digo de ï¿½xito
+        echo(json_encode(array('estado' => '1','mensaje' => 'Creacion exitosa')));
     } else {
-        // Código de falla
-        echo(json_encode(array('estado' => '2','mensaje' => 'Creación NO exitosa')));
+        // Cï¿½digo de falla
+        echo(json_encode(array('estado' => '2','mensaje' => 'Creacion NO exitosa')));
     }
 }
 ?>

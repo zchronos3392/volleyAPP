@@ -67,11 +67,12 @@ var parametros =
 				 "secuenciahoraini" : sechrini,				 
 				 "secuenciahorafin" : sechrfin,
 				 "horainicio": $("#horai_"+partido+'_'+setnum+'_'+sechrini).val(),
-				 "horafin"   : $("#horaf_"+partido+'_'+setnum+'_'+sechrfin).val()
+				 "horafin"   : $("#horaf_"+partido+'_'+setnum+'_'+sechrfin).val(),
+				 "funcion"   : "CAMBIOHORAS"
 			
 				};
 				$.ajax({ 
-						url:   './abms/updatehoras_set.php',
+						url:   './abms/updateDATA_set.php',
 						type:  'GET',
 						data: parametros,
 						dataType: 'text json',
@@ -88,6 +89,41 @@ var parametros =
 						}); // FIN funcion ajax obtener_partido
 };    
 
+function updatepuntos(partido,setnum,sechrini,sechrfin){
+			
+			$("#puntoLocal_"+partido+'_'+setnum+'_'+sechrfin).prop('disabled', true);
+			$("#puntoVisitante_"+partido+'_'+setnum+'_'+sechrfin).prop('disabled', true);
+
+var parametros =
+			{
+			 "fechapart"   : <?php echo("'".$_GET['fecha']."'"); ?>,
+			 "id" : <?php echo($_GET['id']); ?>	,
+			 "setnumero" : setnum,
+			 "secuenciahoraini" : sechrini,				 
+			 "secuenciahorafin" : sechrfin,
+			 "nuevopuntolocal": $("#puntoLocal_"+partido+'_'+setnum+'_'+sechrfin).val(),
+			 "nuevopuntovisita"   : $("#puntoVisitante_"+partido+'_'+setnum+'_'+sechrfin).val(),
+			 "funcion"   : "CAMBIOPUNTOS"
+		
+			};
+			$.ajax({ 
+					url:   './abms/updateDATA_set.php',
+					type:  'GET',
+					data: parametros,
+					dataType: 'text json',
+					beforeSend: function (){},
+					done: function(data){},
+					success:  function (r){
+						location.reload();
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+							// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+							console.log(thrownError);
+							console.log(xhr.responseText);
+							}
+					}); // FIN funcion ajax obtener_partido
+};    
+
 		function activarhora(control,preid,partido,setnum,secuencia){
 			if ($(control).is(":checked")) 
 				// it is checked
@@ -95,11 +131,81 @@ var parametros =
 			else
 				$("#"+preid+partido+'_'+setnum+'_'+secuencia).prop('disabled', true);
 		};    
+
+		// FUNCION CARGA CREA NUEVO SET GENÉRICO  					
+		function crearSet(){	
+			// antes de cargar todo , verifico que el partido no haya que cerrarlo !!			
+				var setmax = <?php echo($_GET['setmax']); ?>;
+				<?php 
+					require_once('./abms/Set.php');
+					$idpartido = (int) $_GET['id'];
+					$partidofecha = "'".$_GET['fecha']."'";
+					$ultimoSet = Sett::ultSetNum($idpartido,$partidofecha);
+					$idnewset=0;
+					if($ultimoSet > 0)
+								$idnewset =(int) $ultimoSet['setnumero']; 
+
+					if(!$idnewset)$idnewset=1;
+						else $idnewset++; 
+			?>
+			var setActualSig = <?php echo($idnewset);?>;
+				console.log("proximo set seria: " +setActualSig);
+				console.log("y el máximo número de sets son: " + setmax);
+				//alert();
+			if( setActualSig <= setmax ) 
+			{
+				$("#numerosetNuevo").val(setActualSig);
+				setActualSig
+			//var setActualSig = <?php echo($idnewset);?>;
+				var parametros =
+					{
+						"idpartido" : <?php echo($_GET['id']); ?>,
+						"idset"     : $("#numerosetNuevo").val(),
+						"resa"      : 0,
+						"resb"      : 0,
+						"fechas"    : <?php echo("'".$_GET['fecha'])."'"; ?>,
+						"horas"     : $("#stopwatch").text(),
+						"saque"     : 0,
+						"anioEquipo": $("#ianio").val() ,
+						"mensajeAlta" : 'Csets2::CrearSetESTADISTICAS',
+						"estadoset"			  : 2,
+						"COPIARJUGADORES":	1 
+					};
+				//console.log(parametros);
+
+				$.ajax({ //el signo de pregunta apunta a la direccion url base que es donde corre equipos.php
+				url:   './abms/insertar_sets.php',
+				type:  'POST',
+				data: parametros,
+				beforeSend: function (){
 					
-		
+				},
+				success:  function (r){
+					//LLER DATOS DE JUGADORES BASICOS LUEGO DEL ALTA PARTIDO/SET
+						location.reload();
+						$("#comptext").append(r);	
+				},
+				//error: function() {
+				error: function (xhr, ajaxOptions, thrownError) {
+				// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA				
+						console.log(thrownError);
+				}
+				});
+
+			}
+			else { $("#comptext").append('<br>Máximo numero de sets alcanzado..');};
+			};  
+			// FIN DE LA FUNCION CARGA CREA NUEVO SET GENÉRICO  
+
+
 		idclubuno = 0;
 		idclubdos = 0;
-		function cerrarPartido(){};  
+		function cerrarPartido(){
+			// en esta pantalla de visualizacion, solo deshabilito el boton de CREAR
+			$("#nuevoset2").prop('disabled', true);
+			alert('SE DESHABILITÓ EL BOTON PARA CREAR SETS, PORQUE YA HUBO GANADOR CON LOS DATOS CARGADOS..');
+
+		};  
 		
 		$(document).ready(function(){
 			
@@ -190,7 +296,7 @@ var parametros =
 								// agregado para guardar el id partido y tenerlo disponible..
 								$("#idclubA").val(iclubA);
 								$("#idclubB").val(iclubB);
-								
+								$("#categoriaDescripcion").append(v.DescCate);
 								$("#categoriaPartido").val(categoriapartido);
 								var anioNum = 0;
 								<?php echo("var anioNum = ".substr($_GET['fecha'],0,4).";"); ?>
@@ -252,6 +358,8 @@ var parametros =
 				$partidofecha = "'".$_GET['fecha']."'";
 				//$ultimoSet = Sett::ultSetNum($idpartido);
 				$ultimoSet = Sett::ultSetNum($idpartido,$partidofecha);
+				$idnewset = 1;
+				if($ultimoSet > 0)
 					$idnewset =(int) $ultimoSet['setnumero']; 
 				 if(!$idnewset)$idnewset=1;
 					 else $idnewset++; 
@@ -286,108 +394,135 @@ var parametros =
 			},
             success:  function (r){
 				// aca agregamos la logica para pegar los botones de trabajo con SET
-				//console.log(r);
-                $(r['Sets']).each(function(i, v)
-                { // indice, valor
-				var accion='';
-				var altajugadorea='';
-				var altajugadoreb='';
-				var cargaPosicionA='';
-				var cargaPosicionB='';
-				var eliminarSet = '';
-				var llamador = $.urlParam('llama');
-				var BtnActHr = '<button  id="horainiciofin" onclick="updatehora('+v.idpartido+','+v.setnumero+','+v.primseq+','+v.ultmseq+');" >update</button>';
-				if(llamador == 'index') BtnActHr='';
+				if(r['estado'] != 1){
+					if(r['nombre'].includes('Sin set data'))
+					{ 
+						$("#comptext").append(r['nombre']+ '<br>Agregar datos genéricos set ->> ');
+						var boton = '<input type="button" id="nuevoset2" title="Agregar Set" name="nuevoset" class="btnSet btnAmarillo" onclick="crearSet();" value="(*)">';
+						$("#comptext").append(boton);
+					}
+				}	
+				else
+				{
+					$(r['Sets']).each(function(i, v)
+					{ // indice, valor
+					var accion='';
+					var altajugadorea='';
+					var altajugadoreb='';
+					var cargaPosicionA='';
+					var cargaPosicionB='';
+					var eliminarSet = '';
+					var llamador = $.urlParam('llama');
+					var BtnActHr = '<button  id="horainiciofin" onclick="updatehora('+v.idpartido+','+v.setnumero+','+v.primseq+','+v.ultmseq+');" >update</button>';
+					// CONTROLES DE PUNTOS
+					var puntoLocal = '<input type="number" id="puntoLocal_'+v.idpartido+'_'+v.setnumero+'_'+v.ultmseq +'" name="puntoLocal_'+v.idpartido+'_'+v.setnumero+'_'+v.ultmseq +'" value="'+v.puntoa+'" disabled></input>';
+					var puntoVisitante = '<input type="number" id="puntoVisitante_'+v.idpartido+'_'+v.setnumero+'_'+v.ultmseq +'" name="puntoVisitante_'+v.idpartido+'_'+v.setnumero+'_'+v.ultmseq +'" value="'+v.puntob+'" disabled></input>';
+					var accionUpdatePuntos = '<button  class="puntosAB" id="puntosAB" onclick="updatepuntos('+v.idpartido+','+v.setnumero+','+v.primseq+','+v.ultmseq+');" >update puntos</button>';
+
+					if(llamador == 'index') BtnActHr='';
+				
+					if(llamador == 'index')  $("#volverLinx").attr("href", 'index.php');	
+					
+					eliminarSet  = '<div class="grillahsset"><div class="grillahssetitem1">Inicio</div>'+
+								'<div class="grillahssetitem2"><input type=checkbox id="horainicio" onclick="activarhora(this,\''+'horai_\','+v.idpartido+','+v.setnumero+','+v.primseq+');" /></div>'+
+									'<div class="grillahssetitem3">'+
+										'<input type="time" id="horai_'+v.idpartido+'_'+v.setnumero+'_'+v.primseq+'" name="horai_'+v.idpartido+'_'+v.setnumero+'_'+v.primseq+'" value="'+v.horainicio+'"/></div>'+
+									'<div class="grillahssetitem4">Fin</div>'+
+									'<div class="grillahssetitem5"><input type=checkbox id="horafin" onclick="activarhora(this,\''+'horaf_\','+v.idpartido+','+v.setnumero+','+v.ultmseq+');"/></div>'+								
+									'<div class="grillahssetitem6">'+
+										'<input type="time" id="horaf_'+v.idpartido+'_'+v.setnumero+'_'+v.ultmseq+'" name="horaf_'+v.idpartido+'_'+v.setnumero+'_'+v.ultmseq+'" value="'+v.horafin+'"/></div>'+
+									'<div class="grillahssetitem7">'+BtnActHr+'</div>'+		
+									'<div class="grillahssetitem81"><span>Local</span><input type=checkbox id="horainicio" onclick="activarhora(this,\''+'puntoLocal_\','+v.idpartido+','+v.setnumero+','+v.ultmseq+');" /></div>'+		
+									'<div class="grillahssetitem8">'+puntoLocal+'</div>'+		
+									'<div class="grillahssetitem91"><span>Vte.</span><input type=checkbox id="horainicio" onclick="activarhora(this,\''+'puntoVisitante_\','+v.idpartido+','+v.setnumero+','+v.ultmseq+');" /></div>'+	
+									'<div class="grillahssetitem9">'+puntoVisitante+'</div>'+									
+									'<div class="grillahssetitem10">'+accionUpdatePuntos+'</div>'+	
+									'</div>';			
+
+					var nombrelocal = v.NombreClubA;
+					var nombrevisitante = v.NombreClubB;
+					altajugadorea = '<div class="gcsets4">'+'<a href="CargarJugadores.php?idpartido='+v.idpartido+'&setmax='+<?php echo($_GET['setmax']); ?>+'&idclub='+v.ClubA+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&idcate='+ v.categoria+'" >';
+					altajugadorea += '<button id="jugadoresA" name="jugadoresA" title="cargar jugadores equipo A" class="btnPop2" >Jugadores '+nombrelocal+'</button></a></div>';
+					//console.log(altajugadorea);
+					altajugadoreb = '<div class="gcsets5">'+'<a href="CargarJugadores.php?idpartido='+v.idpartido+'&setmax='+<?php echo($_GET['setmax']); ?>+'&idclub='+v.ClubB+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&idcate='+ v.categoria+'" >';
+					altajugadoreb += '<button id="jugadoresB" name="jugadoresB" title="cargar jugadores equipo B" class="btnPop2">Jugadores '+nombrevisitante+'</button></a></div>';
+					cargaPosicionA = '<div class="gcsets6">'+'<a href="VerPosiciones.php?idpartido='+v.idpartido+'&setmax='+<?php echo($_GET['setmax']); ?>+'&idclub='+v.ClubA+'&set='+v.setnumero+'&fecha='+<?php echo("'".$_GET['fecha']."'");?>+'&ver=S&anio='+<?php echo(substr($_GET['fecha'],0,4)); ?>+'&idcate='+ v.categoria+'">';
+					cargaPosicionA += '<button id="posicionesA" name="posicionesA" title="cargar posiciones equipo A" class="btnPop2">Pos.Ini. '+nombrelocal+'</button></a></div>';
+					cargaPosicionB = '<div class="gcsets7">'+'<a href="VerPosiciones.php?idpartido='+v.idpartido+'&setmax='+<?php echo($_GET['setmax']); ?>+'&idclub='+v.ClubB+'&set='+v.setnumero+'&fecha='+<?php echo("'".$_GET['fecha']."'");?>+'&ver=S&anio='+<?php echo(substr($_GET['fecha'],0,4)); ?>+'&idcate='+ v.categoria+'" >';
+					cargaPosicionB += '<button id="posicionesB" name="posicionesB" title="cargar posiciones equipo B" class="btnPop2">Pos.Ini. '+nombrevisitante+'</button></a></div>';
+					//console.log(cargaPosicionB);
+
+					if(v.DescEstado.includes('PROGR')) {var img = './img/PartidoONOFFSQR.png';}
+					if(v.DescEstado.includes('LLUVI')){ var img = './img/rain-icon-png.jpg';}
+
+					if(v.DescEstado.includes('FIN'))
+					{
+							var img = './img/PartidoOFFSQR.jpg';
+							//accion ='<a href="TableroGrande.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"><input type="button" id="verset" name="verset"';                		
+							// accion ='<a href="TableroGrandev25.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"><input type="button" id="verset" name="verset"';
+							// accion +=' class="btnVerSet" value="(ver)" title="Re-veer set"></input></a>';
+							accionTablero ='<input type="button" id="verset" name="verset"';
+							accionTablero +=' class="btnTablero" value="Tablero" title="Tablero" onclick="';
+							accionTablero +='TableroGrandev25.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"></input>';
+
+							altajugadorea='';
+							altajugadoreb='';
+							//cargaPosicionA='';
+							//cargaPosicionB='';
+					}
+					if(v.DescEstado.includes('CURSO'))
+					{
+							var img = './img/PartidoONSQR.png';
+							accion='<a href="NovedadesSet.php?id='+v.idpartido+'&setid='+v.setnumero;
+							accion +='&setmax='+<?php echo($_GET['setmax']);?>+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&continuar=1">';
+
+							accion='<a href="NovedadesSet.php?id='+v.idpartido+'&setid='+v.setnumero;
+							accion +='&setmax='+<?php echo($_GET['setmax']);?>+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&continuar=1">';						
+							accion +='<input type="button" id="verset" name="verset" class="btnPop2" value="(Continuar)" title="Continuar set(redux)"></input></a>';                		
+					}
+
+					if(v.DescEstado.includes('INICIAL'))
+					{
+							var img = './img/PartidoONOFFSQR.png';
+							accion='<a href="NovedadesSet.php?id='+v.idpartido+'&setid='+v.setnumero;
+							accion +='&setmax='+<?php echo($_GET['setmax']);?>+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&continuar=1">';
+
+							accion='<a href="NovedadesSet.php?id='+v.idpartido+'&setid='+v.setnumero;
+							accion +='&setmax='+<?php echo($_GET['setmax']);?>+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&continuar=1">';						
+							accion +='<input type="button" id="verset" name="verset" class="btnPop2" value="(Continuar)" title="Continuar set(redux)"></input></a>';                		
+					}
+					verComp++;
+					if(verComp == 1){
+						$("#comptext").append(v.cnombre);
+
+					// DEJO A LA VISTA EL BOTÓN DE CREAR PARA AGREGAR DATA DE LOS OTROS SETS
+					$("#comptext").append('<br>Agregar datos genéricos set ->> ');
+						var boton = '<input type="button" id="nuevoset2" title="Agregar Set" name="nuevoset" class="btnSet btnAmarillo" onclick="crearSet();" value="(*)">';
+						$("#comptext").append(boton);
+					// DEJO A LA VISTA EL BOTÓN DE CREAR PARA AGREGAR DATA DE LOS OTROS SETS
+
+					}	
+							
+					var ganador ="";
+		//             console.log("PUNTO EQUIPO A: "+v.puntoa+" PUNTOS EQUIPO B: "+v.puntob);
+					var restaPuntos =  (v.puntoa - v.puntob);
+		//       	  console.log("difrernca: " + restaPuntos);    
+					if(restaPuntos > 0) ganador = ' Gano este set ' + nombrelocal;
+						else 
+							if(restaPuntos < 0) ganador = ' Gano este set ' + 	nombrevisitante;
+									else ganador = ' Empatados  ' + nombrelocal + ' y ' +  nombrevisitante;
+
+							
+							
+					$("#CSet211").append('<div id="grid-CSet211"  class="grid-VerSets211"><div class="gcsets1">'+
+					'Set'+v.setnumero+' L: '+v.puntoa+' V: '+v.puntob+ganador+'</div>'+'<div class="imgdiv gcsets2"><img src="'+img+'" class="imgEstado" title="'+v.DescEstado+'"></img>'+'</div>'+
+					'<div class="gcsets8">'+eliminarSet+'</div><div class="gcsets3">'+accionTablero+'</div>'+altajugadorea+cargaPosicionA+altajugadoreb+cargaPosicionB+'<div class="gcsets9"></div></div>');		
+
+						$("#horai_"+v.idpartido+'_'+v.setnumero+'_'+v.primseq).prop('disabled', true);
+						$("#horaf_"+v.idpartido+'_'+v.setnumero+'_'+v.ultmseq).prop('disabled', true);
+				});
+			}
 			
-				if(llamador == 'index')  $("#volverLinx").attr("href", 'index.php');	
-				
-				eliminarSet  = '<div class="grillahsset"><div class="grillahssetitem1">Inicio</div>'+
-							   '<div class="grillahssetitem2"><input type=checkbox id="horainicio" onclick="activarhora(this,\''+'horai_\','+v.idpartido+','+v.setnumero+','+v.primseq+');" /></div>'+
-								'<div class="grillahssetitem3">'+
-									'<input type="time" id="horai_'+v.idpartido+'_'+v.setnumero+'_'+v.primseq+'" name="horai_'+v.idpartido+'_'+v.setnumero+'_'+v.primseq+'" value="'+v.horainicio+'"/></div>'+
-								'<div class="grillahssetitem4">Fin</div>'+
-								'<div class="grillahssetitem5"><input type=checkbox id="horafin" onclick="activarhora(this,\''+'horaf_\','+v.idpartido+','+v.setnumero+','+v.ultmseq+');"/></div>'+								
-								'<div class="grillahssetitem6">'+
-									'<input type="time" id="horaf_'+v.idpartido+'_'+v.setnumero+'_'+v.ultmseq+'" name="horaf_'+v.idpartido+'_'+v.setnumero+'_'+v.ultmseq+'" value="'+v.horafin+'"/></div>'+
-								'<div class="grillahssetitem7">'+BtnActHr+'</div>'+								
-								'</div>';			
-
-				var nombrelocal = v.NombreClubA;
-				var nombrevisitante = v.NombreClubB;
-				altajugadorea = '<div class="gcsets4">'+'<a href="CargarJugadores.php?idpartido='+v.idpartido+'&setmax='+<?php echo($_GET['setmax']); ?>+'&idclub='+v.ClubA+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&idcate='+ v.categoria+'" >';
-				altajugadorea += '<button id="jugadoresA" name="jugadoresA" title="cargar jugadores equipo A" class="btnPop2" >Jugadores '+nombrelocal+'</button></a></div>';
-				//console.log(altajugadorea);
-				altajugadoreb = '<div class="gcsets5">'+'<a href="CargarJugadores.php?idpartido='+v.idpartido+'&setmax='+<?php echo($_GET['setmax']); ?>+'&idclub='+v.ClubB+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&idcate='+ v.categoria+'" >';
-				altajugadoreb += '<button id="jugadoresB" name="jugadoresB" title="cargar jugadores equipo B" class="btnPop2">Jugadores '+nombrevisitante+'</button></a></div>';
-				cargaPosicionA = '<div class="gcsets6">'+'<a href="VerPosiciones.php?idpartido='+v.idpartido+'&setmax='+<?php echo($_GET['setmax']); ?>+'&idclub='+v.ClubA+'&set='+v.setnumero+'&fecha='+<?php echo("'".$_GET['fecha']."'");?>+'&ver=S&anio='+<?php echo(substr($_GET['fecha'],0,4)); ?>+'&idcate='+ v.categoria+'">';
-				cargaPosicionA += '<button id="posicionesA" name="posicionesA" title="cargar posiciones equipo A" class="btnPop2">Pos.Ini. '+nombrelocal+'</button></a></div>';
-				cargaPosicionB = '<div class="gcsets7">'+'<a href="VerPosiciones.php?idpartido='+v.idpartido+'&setmax='+<?php echo($_GET['setmax']); ?>+'&idclub='+v.ClubB+'&set='+v.setnumero+'&fecha='+<?php echo("'".$_GET['fecha']."'");?>+'&ver=S&anio='+<?php echo(substr($_GET['fecha'],0,4)); ?>+'&idcate='+ v.categoria+'" >';
-                cargaPosicionB += '<button id="posicionesB" name="posicionesB" title="cargar posiciones equipo B" class="btnPop2">Pos.Ini. '+nombrevisitante+'</button></a></div>';
-				//console.log(cargaPosicionB);
-
-				if(v.DescEstado.includes('PROGR')) {var img = './img/PartidoONOFFSQR.png';}
-			    if(v.DescEstado.includes('LLUVI')){ var img = './img/rain-icon-png.jpg';}
-
-	            if(v.DescEstado.includes('FIN'))
-                {
-                		var img = './img/PartidoOFFSQR.jpg';
-						//accion ='<a href="TableroGrande.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"><input type="button" id="verset" name="verset"';                		
-						accion ='<a href="TableroGrandev25.php?id='+v.idpartido+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&set='+v.setnumero+'"><input type="button" id="verset" name="verset"';
-						accion +=' class="btnVerSet" value="(ver)" title="Re-veer set"></input></a>';
-						altajugadorea='';
-						altajugadoreb='';
-						//cargaPosicionA='';
-						//cargaPosicionB='';
-				}
-                if(v.DescEstado.includes('CURSO'))
-                {
-                		var img = './img/PartidoONSQR.png';
-					    accion='<a href="NovedadesSet.php?id='+v.idpartido+'&setid='+v.setnumero;
-					    accion +='&setmax='+<?php echo($_GET['setmax']);?>+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&continuar=1">';
-
-					    accion='<a href="NovedadesSet.php?id='+v.idpartido+'&setid='+v.setnumero;
-					    accion +='&setmax='+<?php echo($_GET['setmax']);?>+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&continuar=1">';						
-					    accion +='<input type="button" id="verset" name="verset" class="btnPop2" value="(Continuar)" title="Continuar set(redux)"></input></a>';                		
-                }
-
-                if(v.DescEstado.includes('INICIAL'))
-                {
-                		var img = './img/PartidoONOFFSQR.png';
-					    accion='<a href="NovedadesSet.php?id='+v.idpartido+'&setid='+v.setnumero;
-					    accion +='&setmax='+<?php echo($_GET['setmax']);?>+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&continuar=1">';
-
-					    accion='<a href="NovedadesSet.php?id='+v.idpartido+'&setid='+v.setnumero;
-					    accion +='&setmax='+<?php echo($_GET['setmax']);?>+'&fecha='+<?php echo("'".$_GET['fecha'])."'"; ?>+'&continuar=1">';						
-					    accion +='<input type="button" id="verset" name="verset" class="btnPop2" value="(Continuar)" title="Continuar set(redux)"></input></a>';                		
-                }
-
-				
-				
-             verComp++;
-             if(verComp == 1)$("#comptext").append(v.cnombre);
-             		
-             var ganador ="";
-//             console.log("PUNTO EQUIPO A: "+v.puntoa+" PUNTOS EQUIPO B: "+v.puntob);
-        	  var restaPuntos =  (v.puntoa - v.puntob);
- //       	  console.log("difrernca: " + restaPuntos);    
-             if(restaPuntos > 0) ganador = ' Gano este set ' + nombrelocal;
-				else 
-					 if(restaPuntos < 0) ganador = ' Gano este set ' + 	nombrevisitante;
-							 else ganador = ' Empatados  ' + nombrelocal + ' y ' +  nombrevisitante;
-
-             		
-             		
-			$("#CSet211").append('<div id="grid-CSet211"  class="grid-CSets211"><div class="gcsets1">'+
-			  'Set'+v.setnumero+' L: '+v.puntoa+' V: '+v.puntob+ganador+'</div>'+'<div class="imgdiv gcsets2"><img src="'+img+'" class="imgEstado" title="'+v.DescEstado+'"></img>'+'</div>'+
-			  '<div class="gcsets8">'+eliminarSet+'</div><div class="gcsets3">'+accion+'</div>'+altajugadorea+cargaPosicionA+altajugadoreb+cargaPosicionB+'<div class="gcsets9"></div></div>');		
-
-			    $("#horai_"+v.idpartido+'_'+v.setnumero+'_'+v.primseq).prop('disabled', true);
-				$("#horaf_"+v.idpartido+'_'+v.setnumero+'_'+v.ultmseq).prop('disabled', true);
-			  
-
-			});
-			
-
             },
              error: function (xhr, ajaxOptions, thrownError) {
 			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
@@ -431,7 +566,10 @@ var parametros =
 
 //		 $newset = Sett::ultSetNum($idpartido);
 	 $newset = Sett::ultSetNum($idpartido,$partidofecha);
-		$idnewset =(int) $newset['setnumero']; 
+	 //echo "VALOR CONSULTA :$newset <BR>";
+	 	$idnewset = 1;
+		if($newset)
+			$idnewset =(int) $newset['setnumero']; 
 		if(!$idnewset)$idnewset=1;
 			else $idnewset++; 
 ?>	
@@ -457,6 +595,7 @@ var parametros =
 	  </div>
 	  <div class="gcset2">
 	  	<a  id='volverLinx' name='volverLinx' href="AdministrarAPP.php"><input type="button" id="volver" title="volver a partidos" name="volver" class="btnSet2021" value="<<"></input></a>
+		<span id="categoriaDescripcion" class="DescripcionesGrande"></span>
 	  </div>
 	  <div class="gcset3">
 			<a href="NovedadesSet.php?id=<?php echo $idpartido; ?>&setid=<?php echo $idnewset;?>&setmax=<?php echo($_GET['setmax']); ?>&fecha=<?php echo($_GET['fecha']);?>&continuar=0"><input type="button" id="nuevoset" title="Agregar Set" name="nuevoset" class="btnSet2021 btnRojoCereza" value="Set(cont)"></input></a>

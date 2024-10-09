@@ -93,6 +93,11 @@
 /*CONTROLES NUEVOS PARA LOS LIBEROS**/
 
 /* ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES..*/
+.Contador{
+   width: 2em;
+}
+
+
 .control1_2{ grid-area: ct211; height:2em; padding:1em;}
 .control1_2 SELECT{ font-size:15px; height: 3em;width: 4.5em;padding: 0;margin: 0;}
 
@@ -104,6 +109,14 @@
 .control6_2{ grid-area: ct216; margin-top:1em;}
 .control7_2{ grid-area: ct217; margin-top:1em;}
 .control8_2{ grid-area: ct218; margin-top:1em;}
+.control9  { 
+        grid-area: ct219; 
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: flex-start;
+        color: #000000;
+}
 
 .ControlesPosicion21_2{
 	width: 100%;
@@ -111,18 +124,83 @@
 	text-align: center;
     background-color: #fff;
     grid-template-areas:    'ct211 ct212 ct213 ct214 '
-    						'ct215 ct216 ct217 ct218 ';
+    						'ct215 ct216 ct217 ct218 '
+                            'ct219 ct219 ct219 ct219 ';
 
 /*borde redondeado*/
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 		padding: 5px;    
 /*borde redondeado*/
 	margin-left: 0em;
-	
 }
     
+.ControlesPosicion21_3{
+	width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+	align-items: center;
+    background-color: #fff;
+
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+        border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+}
+
+.control3_1{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    gap: 1rem;
+}
+.control3_1 SELECT{
+    width:fit-content;
+}
+
+.control3_1 .btnSet2021{
+    width: auto;
+    height: auto;
+    padding:  1rem;
+
+}
+.control3_2{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+}
+    .control3_2 INPUT{
+        /*borde redondeado*/
+                border: 0px solid #000000;
+                -moz-border-radius: 7px;
+                -webkit-border-radius: 7px;
+                border-radius: 7px;
+                max-width: fit-content;
+        /*borde redondeado*/
+        width: inherit;
+    }    
+
+.control3_3{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    color: #000000;
+    text-wrap:balance;
+}
+
+.control3_3 INPUT {
+
+    width: inherit;
+}
+
+
 .ControlesPosicion21_2 INPUT{
 /*borde redondeado*/
 		border: 0px solid #000000;
@@ -805,6 +883,14 @@ button.punta {
 .control6_2{ grid-area: ct216; margin-top:1em;}
 .control7_2{ grid-area: ct217; margin-top:1em;}
 .control8_2{ grid-area: ct218; margin-top:1em;}
+.control9  { 
+    grid-area: ct219; 
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: flex-start;
+    color: #000000;
+}
 
 .ControlesPosicion21_2{
 	width: 100%;
@@ -812,18 +898,19 @@ button.punta {
 	text-align: center;
     background-color: #fff;
     grid-template-areas:    'ct211 ct212 ct213 ct214 '
-    						'ct215 ct216 ct217 ct218 ';
+    						'ct215 ct216 ct217 ct218 '
+                            'ct219 ct219 ct219 ct219 ';
 
 /*borde redondeado*/
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 		padding: 5px;    
 /*borde redondeado*/
 	margin-left: 0em;
-	
 }
-    
+
 .ControlesPosicion21_2 INPUT{
 /*borde redondeado*/
 		border: 0px solid #000000;
@@ -832,6 +919,72 @@ button.punta {
 		padding: 5px;    
 /*borde redondeado*/
 }    
+
+
+.ControlesPosicion21_3{
+	width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+	align-items: center;
+    background-color: #fff;
+
+/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+        border-radius: 7px;
+		padding: 5px;    
+/*borde redondeado*/
+}
+
+.control3_1{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    gap: 1rem;
+}
+.control3_1 SELECT{
+    width:fit-content;
+}
+
+.control3_1 .btnSet2021{
+    width: auto;
+    height: auto;
+    padding:  1rem;
+
+}
+.control3_2{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+}
+    .control3_2 INPUT{
+        /*borde redondeado*/
+                border: 0px solid #000000;
+                -moz-border-radius: 7px;
+                -webkit-border-radius: 7px;
+                border-radius: 7px;
+                max-width: fit-content;
+        /*borde redondeado*/
+        width: inherit;
+    }    
+
+.control3_3{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    color: #000000;
+    text-wrap:balance;
+}
+
+.control3_3 INPUT {
+
+    width: inherit;
+}
+
+
 /*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/
 
 /*ESTILOS DE LA NUEVA PANTALLA DE CARGAR POSICIONES***/
@@ -933,7 +1086,7 @@ button.punta {
  position: static;
  top:0em;	
 z-index: 3;
- height: 5em;
+
 }
 
 .fijaLogo{
@@ -1269,13 +1422,24 @@ button.punta {
 .control7_2{ grid-area: ct217; margin-top:1em;}
 .control8_2{ grid-area: ct218; margin-top:1em;}
 
+.control9  { 
+    grid-area: ct219; 
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: flex-start;
+    color: #000000;
+}
+
+
 .ControlesPosicion21_2{
 	width: 100%;
     display: grid;
 	text-align: center;
     background-color: #fff;
     grid-template-areas:    'ct211 ct212 ct213 ct214 '
-    						'ct215 ct216 ct217 ct218 ';
+    						'ct215 ct216 ct217 ct218 '
+                            'ct219 ct219 ct219 ct219 ';
 
 /*borde redondeado*/
 		border: 1px solid #000000;

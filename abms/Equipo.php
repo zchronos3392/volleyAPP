@@ -71,20 +71,20 @@ class equipo
                             categoria,
                             categoriaInicio
                              FROM vappequipo
-                             WHERE idclub = ? and idjugador=?";
+                             WHERE idclub = $idclub and idjugador=$idjugador";
 
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idclub,$idjugador));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
             //echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return -1;
         }
@@ -102,13 +102,13 @@ class equipo
     {
         // Creando consulta UPDATE
         $consulta = "UPDATE vappequipo" .
-            " SET numero=?, nombre=? ,edad=?,ingresoClub=?,categoria=?, categoriaInicio=? WHERE idclub=? and idjugador=?";
+            " SET numero=$numero, nombre=$nombre ,edad=$edad,ingresoClub=$ingrClu,categoria=$cate, categoriaInicio=$cateIini WHERE idclub=$idclub and idjugador=$idjugador";
 
         // Preparar la sentencia
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($numero,$nombre,$edad,$ingrClu,$cate,$cateIini,$idclub,$idjugador));
+        $cmd->execute();
 
         //return $cmd;
 		echo json_encode($cmd);
@@ -119,17 +119,17 @@ class equipo
      * Insertar un nuevo equipo
      *
      * @param $idequipo      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
     public static function insert($numero,$nombre,$edad,$ingrClu,$cate,$cateIini,$idclub){
         // Sentencia INSERT
-        $comando = "INSERT INTO vappequipo ( numero, nombre ,edad,ingresoClub,categoria, categoriaInicio,idclub) VALUES(?,?,?,?,?,?,?)";
+        $comando = "INSERT INTO vappequipo ( numero, nombre ,edad,ingresoClub,categoria, categoriaInicio,idclub) VALUES($numero,$nombre,$edad,$ingrClu,$cate,$cateIini,$idclub)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($numero,$nombre,$edad,$ingrClu,$cate,$cateIini,$idclub));
+        return $sentencia->execute();
 
     }
 
@@ -137,17 +137,17 @@ class equipo
      * Eliminar el registro con el identificador especificado
      *
      * @param $idequipo identificador de la equipo
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($idclub,$idjugador)
     {
         // Sentencia DELETE
-        $comando = "DELETE FROM vappequipo WHERE idclub=? and idjugador=?";
+        $comando = "DELETE FROM vappequipo WHERE idclub=$idclub and idjugador=$idjugador";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idclub,$idjugador));
+        return $sentencia->execute();
     }
 }
 

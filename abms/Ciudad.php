@@ -82,7 +82,7 @@ class Ciudad
    public static function getPorNombre($nombre,$provincia)
     {
     									  
-        $consulta = "SELECT count(*) FROM vappciudad where Nombre = '?' AND provincia = '?' ";
+        $consulta = "SELECT count(*) FROM vappciudad where Nombre = '$nombre' AND provincia = '$provincia' ";
 // /*
         try {
             // Preparar sentencia
@@ -118,14 +118,14 @@ class Ciudad
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idciudad));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
             //echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return -1;
         }
@@ -148,7 +148,7 @@ class Ciudad
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($idcity,$citynom,$cityprov));
+        $cmd->execute();
 
         return json_encode($cmd);
 
@@ -158,7 +158,7 @@ class Ciudad
      * Insertar un nuevo ciudad
      *
      * @param $idciudad      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
 public static function insert($nombre,$provincia)
@@ -171,12 +171,12 @@ public static function insert($nombre,$provincia)
      {
 		
         // Sentencia INSERT
-        $comando = "INSERT INTO vappciudad ( nombre, provincia) VALUES( ?,?)";
+        $comando = "INSERT INTO vappciudad ( nombre, provincia) VALUES( '$nombre','$provincia')";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($nombre,$provincia));
+        return $sentencia->execute();
 	  }
 }
 
@@ -184,17 +184,17 @@ public static function insert($nombre,$provincia)
      * Eliminar el registro con el identificador especificado
      *
      * @param $idciudad identificador de la ciudad
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($idciudad)
     {
         // Sentencia DELETE
-        $comando = "DELETE FROM vappciudad WHERE idciudad=?";
+        $comando = "DELETE FROM vappciudad WHERE idciudad=$idciudad";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idciudad));
+        return $sentencia->execute();
     }
 }
 

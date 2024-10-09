@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Decodificando formato Json
 	$nombre = $_POST['nombre'];
 	$clubabr = $_POST['clubabr'];
-	$iciudad = $_POST['ciudad'];	
+	$iciudad = (int) $_POST['ciudad'];	
     //$body = json_decode(file_get_contents("php://input"), true);
     $escudo = "";
     if(isset($_POST['escudo'])) $escudo = $_POST['escudo'];
@@ -19,12 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $retorno = Club::insert($nombre,$clubabr,$escudo,$iciudad);
 
     if ($retorno) {
-        // Código de éxito
-        echo(json_encode(array('estado' => '1','mensaje' => 'Creación exitosa')));
-//        return json_encode(array('estado' => '1','mensaje' => 'Creación exitosa'));
+        // Cï¿½digo de ï¿½xito
+        echo(json_encode(array('estado' => '1','mensaje' => 'Creaciï¿½n exitosa')));
+//        return json_encode(array('estado' => '1','mensaje' => 'Creaciï¿½n exitosa'));
     } else {
-        // Código de falla
-        //return json_encode(array('estado' => '2','mensaje' => 'Creación fallida'));
+        // Cï¿½digo de falla
+        //return json_encode(array('estado' => '2','mensaje' => 'Creaciï¿½n fallida'));
     }
 }
 ?>

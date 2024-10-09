@@ -130,8 +130,115 @@ class fx
 		return $winner['ganador'] = $ganador;
 
     }    
+
+	public static function obtener_posiciones_iniciales($partido,$fecha,$iclub,$setnum,$anioEq,$categoriapartido){
+		
+		// $clublocal = $clubvisitante = 0;
+		//$icate 	 =	$_GET["icatcab"];
+		//echo "partido id ".$partido;
+		//echo " fecha ".$fecha;
+		//echo " id club: ".$iclub;
+		//echo " numero set a jugar: ".$setnum;
+		//$jugadores = partjug::getJugadoresLoad($partido,$fecha,$iclub,$setnum); 
+		$jugadoresListaInicial=array(); // para que no falle al cargar posiciones de verdad..
+    	$jugadoresListaInicial = partjug::getJugSetLoad($partido,$fecha,$iclub,$anioEq,$setnum,$categoriapartido); 
+	    //opcion si viene vacia la tabla de posicioness
+    	// $jugadoresListaInicial=array();
+    	// $$jugadoresListaInicial=array();
+
+		if(count($jugadoresListaInicial) == 0)
+		{
+			$partidoRow = Partido::getById($partido,$fecha);
+			// echo "<br>partido<br>";
+			// print_r($partidoRow);
+			// echo "<br>partido<br>";
+
+			$clublocal =$partidoRow['idcluba'];
+			$clubvisitante=$partidoRow['idclubb'];
+			
+			$posicionesSetGrabadasInicial = Sett::getSetPosInicialesGrabadas($partido,$setnum,$fecha);			
+			if(count($posicionesSetGrabadasInicial) <> 0) $jugadores2 = array();
+			//echo "<br> posicionesSetGrabadasInicial <br>";
+			//print_r($posicionesSetGrabadasInicial);
+			//echo "<br> <br>";
+			$conteo=-1;	
+			if( ($iclub == $clublocal) && (count($posicionesSetGrabadasInicial) > 0) )
+			{
+				//echo "<br> es el club local <br>";
+					$jugador1 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['1A'] ) ;
+						if( count($jugador1)>0 ){array_push($jugadoresListaInicial,$jugador1['0']);}
+
+					$jugador2 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['2A'] ) ;
+						if( count($jugador2)>0 ) {array_push($jugadoresListaInicial,$jugador2['0']);}
+
+					$jugador3 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['3A'] ) ;
+						if( count($jugador3)>0 ) {array_push($jugadoresListaInicial,$jugador3['0']);}
+
+					$jugador4 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['4A'] ) ;
+						if( count($jugador4)>0 ) {array_push($jugadoresListaInicial,$jugador4['0']);}
+
+					$jugador5 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['5A'] ) ;
+						if( count($jugador5)>0 ) {array_push($jugadoresListaInicial,$jugador5['0']);}			
+
+					$jugador6 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['6A'] ) ;
+						if( count($jugador6)>0 ) {array_push($jugadoresListaInicial,$jugador6['0']);}
+			}
+			if( ($iclub == $clubvisitante) && (count($posicionesSetGrabadasInicial) > 0) )
+			{ 
+					$jugador1 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['1B'] ) ;
+						if( count($jugador1)>0 ){array_push($$jugadoresListaInicial,$jugador1['0']);}
+
+					$jugador2 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['2B'] ) ;
+						if( count($jugador2)>0 ) {array_push($$jugadoresListaInicial,$jugador2['0']);}
+
+					$jugador3 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['3B'] ) ;
+						if( count($jugador3)>0 ) {array_push($$jugadoresListaInicial,$jugador3['0']);}
+
+					$jugador4 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['4B'] ) ;
+						if( count($jugador4)>0 ) {array_push($$jugadoresListaInicial,$jugador4['0']);}
+
+					$jugador5 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['5B'] ) ;
+						if( count($jugador5)>0 ) {array_push($$jugadoresListaInicial,$jugador5['0']);}			
+
+					$jugador6 = partjug::getJugSetVer($partido,$fecha,$iclub,$anioEq,$setnum,(int)$posicionesSetGrabadasInicial['0']['6B'] ) ;
+						if( count($jugador6)>0 ) {array_push($$jugadoresListaInicial,$jugador6['0']);}			
+			}
+		} // SI LA PRIMER CONSULTA EN ROTACIONES O POSICIONES INICALES NO TRAE NADA
+    // Else
+	// 	{
+		// procesamos la posicion inicial cargadas
+			// print_r($jugadores2);
+			// $partidoRow = Partido::getById($partido,$fecha);
+			// echo "<br>partido<br>";
+			// print_r($partidoRow);
+			// echo "<br>partido<br>";
+
+			// $clublocal =$partidoRow['idcluba'];
+			// $clubvisitante=$partidoRow['idclubb'];
+			// for($i=0;$i<sizeof($jugadores2);$i++)
+			// {
+			// //	echo "<div style='color:white'>indice: ".$i." Set: ".$resumenarray[$i]['setnumero']." pa: ".$resumenarray[$i]['puntoa']." pb: ".$resumenarray[$i]['puntob']."</div><br>";
+			// if($clublocal == $jugadores2[$i]['idclub']) array_push($jugadoresListaInicial,$jugadores2[$i]);
+			// if($clubvisitante == $jugadores2[$i]['idclub']) array_push($$jugadoresListaInicial,$jugadores2[$i]);
+				
+			// }
+		// }
+
+		return 	$jugadoresListaInicial;
+	// //print_r($jugadores);
+	// if ( (isset($jugadores2))  )
+	// {
+	//         $datos["estado"] = 1;
+	//         $datos["JugadoresINILocal"] = $jugadoresListaInicial;//es un array SIEMPRE EN VISUALIZAR, POS INI
+    //         $datos["JugadoresINIVisitante"] = $$jugadoresListaInicial;//es un array SIEMPRE EN VISUALIZAR, POS INI
+
+	//         				echo json_encode($datos);
+	        
+    // };
+
+	}
+	// -------------------------------------------------------------------------
+	// FIN DE LA FUNCION OBTENER POSICIONES INICIALES POR SET
+	// ----------------------------------------------------------------------------
 }
-
-
-
 ?>

@@ -44,7 +44,7 @@ class partjugCab
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idpartido,$fecha));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -74,10 +74,10 @@ esto responde la sgte informacion
             "jugador": null,
             "posicion": null,
             "puestoxcat": "4"
-LOS NULL SIGNIFICAN QUE NO SE DIÓ DE ALTA EN LA TABLA vappjugpartidocab
+LOS NULL SIGNIFICAN QUE NO SE DIï¿½ DE ALTA EN LA TABLA vappjugpartidocab
  * ya sea porque fue dado de baja
  	en este caso el query lo trae igual porque estamos consultando a todos los jugadores de la 
- 	categoria, no solo los que estan en la nómina del partido
+ 	categoria, no solo los que estan en la nï¿½mina del partido
  * o porque no pertenece a la categoria..
 		por la misma razon anterior, como no pertenecen a la categoria, se listan igual
 		pero no se trae la data porque no fueron agregados automaticamente
@@ -85,7 +85,7 @@ por eso traigo la fecha de egreso, para poder mostrarlo como de baja en la lista
 */    	
 	$consulta = "SELECT eq.numero,eq.nombre,eq.categoria,eq.idjugador,eq.FechaEgreso, 
 					vappjugpartidocab.idclub,vappjugpartidocab.jugador,vappjugpartidocab.posicion, 
-					ptos.puestoxcat 
+					ptos.puestoxcat
 				 FROM vappequipo eq
                	 left join	vappjugpartidocab
                			on vappjugpartidocab.idclub = eq.idclub 
@@ -101,14 +101,15 @@ por eso traigo la fecha de egreso, para poder mostrarlo como de baja en la lista
                 WHERE 
                 eq.idclub=$iclub
 				and eq.anioEquipo=$ianioe 
+                    AND eq.FechaEgreso IS NULL
 				and eq.categoria=$icate ";
-				 
-     //echo("$consulta<br>");
+    // echo("$consulta<br>");
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$icate,$ianioe,$categoriaPartido));
+            // $comando->execute(array($partido,$fecha,$iclub,$icate,$ianioe,$categoriaPartido));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -128,7 +129,7 @@ public static function getJugListaInicio($partido,$fecha,$iclub,$ianioe,$icatego
     	//categoria por eso no la uso como filtro.
 	$consulta = "SELECT eq.numero,eq.nombre,eq.categoria,eq.idjugador,
 					vappjugpartidocab.idclub,vappjugpartidocab.jugador,vappjugpartidocab.posicion, 
-					ptos.puestoxcat
+					ptos.puestoxcat,eq.FechaEgreso
 				 FROM vappequipo eq
                	 right join	vappjugpartidocab
                			on vappjugpartidocab.idclub = eq.idclub 
@@ -138,7 +139,7 @@ public static function getJugListaInicio($partido,$fecha,$iclub,$ianioe,$icatego
                             and vappjugpartidocab.entraSale=99
                 left JOIN vapppuestojugador ptos
                    	on ptos.idjugador = eq.idjugador
-                    and ptos.pjcategoria = $icategoriaPartido
+                    and ptos.pjcategoria = eq.categoria 
                     and ptos.idclub = eq.idclub
                     and ptos.anioEquipo = eq.anioEquipo                    
                 WHERE 
@@ -150,7 +151,7 @@ public static function getJugListaInicio($partido,$fecha,$iclub,$ianioe,$icatego
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$ianioe,$icategoriaPartido));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -218,7 +219,7 @@ public static function getJugListaInicio($partido,$fecha,$iclub,$ianioe,$icatego
      * Insertar un nuevo gede
      *
      * @param $idsede      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
 
@@ -231,7 +232,7 @@ public static function getJugListaInicio($partido,$fecha,$iclub,$ianioe,$icatego
 		//echo "<br >$comando <br>";
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($partido,$fecha,$iclub,$icate,$jugador,$puesto,$mensajeAlta) );
+        return $sentencia->execute( );
     }
 
 
@@ -239,7 +240,7 @@ public static function getJugListaInicio($partido,$fecha,$iclub,$ianioe,$icatego
      * Eliminar el registro con el identificador especificado
      *
      * @param $idsede identificador de la sede
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($partido,$fecha,$iclub,$icate,$jugador)
     {
@@ -250,11 +251,13 @@ public static function getJugListaInicio($partido,$fecha,$iclub,$ianioe,$icatego
         				and Fecha=$fecha
         				and idclub = $iclub
         				and idcategoria = $icate";
+        
+        //echo "<br>$comando<br>";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($partido,$fecha,$iclub,$icate,$jugador));
+        return $sentencia->execute();
     }
     
 public static function deleteJugadorBajaPartidos($egresoClub,$iclubescab,$icatcab,$idjugador)
@@ -270,7 +273,7 @@ public static function deleteJugadorBajaPartidos($egresoClub,$iclubescab,$icatca
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($egresoClub,$iclubescab,$icatcab,$idjugador));
+        return $sentencia->execute();
 	
 }
     
@@ -278,14 +281,14 @@ public static function deleteJugadorBajaPartidos($egresoClub,$iclubescab,$icatca
     {
         // Sentencia DELETE
         $comando = "DELETE FROM vappjugpartidocab WHERE 
-        				Fecha=$fecha
+        				Fecha='$fecha'
         				and idpartido = $partido";
 
-		echo $comando;
+		// echo $comando;
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($partido,$fecha));
+        return $sentencia->execute();
     }
 
     

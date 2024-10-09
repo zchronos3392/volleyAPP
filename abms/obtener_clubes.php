@@ -25,14 +25,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	 $catsX = 0;
      if(isset($_GET['CategoriasXargadas']))  $catsX = (int)$_GET['CategoriasXargadas'];
 
-	 
-	 
+	 $icompetencia = 0; //PORQUE SE LO LLAMA DESDE CONTROLVOLEYAPP
+     if(isset($_GET['icompetencia']))  $icompetencia = (int)$_GET['icompetencia'];
+
+	 //"todxs":1,"CategoriasXargadas":1
     $registros = Club::contar();
     // ESTA VOLVIENDO UN VECTOR DE VECTORES
     	//print_r ($registros["0"]["count(*)"]);
     if($registros["0"]["count(*)"] > "0")
      {
-		if($todxs == 1) $clubes = Club::getAllConJugadores($ianio);
+		if($todxs == 1) {
+			if($icompetencia == 0)
+				$clubes = Club::getAllConJugadores($ianio);
+			else
+				$clubes = Club::getAllConJugadoresComp($ianio,$icompetencia);
+		}	
 		else $clubes = Club::getAll();
 	    	//print_r($clubes); // viene un vector
 	    if ($clubes) {

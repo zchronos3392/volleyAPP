@@ -97,7 +97,7 @@ class jugador
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($club,$anio));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -150,7 +150,8 @@ class jugador
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($club,$categoria,$anio,$inicio,$TAMANO_PAGINA,$xnombre));
+            $comando->execute();
+            // $comando->execute(array($club,$categoria,$anio,$inicio,$TAMANO_PAGINA,$xnombre));
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -168,7 +169,8 @@ class jugador
     $filtrojugador ="";	
     if($jugador != 0) $filtrojugador = " and vappequipo.idjugador =$jugador";	
     	
-	$consulta = " SELECT vappequipo.idclub,vappequipo.categoria,numero,nombre,vappequipo.idjugador,jugp.jugador ,
+	$consulta = " 
+                     SELECT vappequipo.idclub,vappequipo.categoria,numero,nombre,vappequipo.idjugador,jugp.jugador ,
 					pj.puestoxcat puesto ,pj.remeraNum remera
 					FROM vappequipo 
 					left join vappjugpartido jugp on jugp.idclub = vappequipo.idclub 
@@ -185,14 +187,15 @@ class jugador
 					      vappequipo.anioEquipo =$anio and 
 					      vappequipo.FechaEgreso IS NULL 
 					      $filtrojugador ";
-//       echo "<br> Lista de jugadores cargados en Equipo: <br>";
-//       echo "<br> $consulta <br>";
+    //    echo "<br> Lista de jugadores cargados en Equipo: <br>";
+    //  echo "<br> $consulta <br>";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
             					   
-            $comando->execute(array($partido,$fecha,$club,$categoria,$anio,$jugador,$categoriaPartido));
+            // $comando->execute(array($partido,$fecha,$club,$categoria,$anio,$jugador,$categoriaPartido));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -229,7 +232,7 @@ class jugador
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$club,$categoria,$anio,$setnum));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -261,7 +264,7 @@ class jugador
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$club,$categoria,$anio));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -347,6 +350,31 @@ class jugador
      * @param $idsede Identificador de la sede
      * @return mixed
      */
+    public static function getByIdSimple($idclub,$idjugador,$ianio )
+    {
+        // Consulta de la sede
+        $consulta = "SELECT *
+					FROM vappequipo  eq
+						WHERE eq.idclub=$idclub and eq.idjugador = $idjugador and eq.anioEquipo=$ianio" ;    	
+
+		//echo "<br> consulta por jugador: $consulta <br>";
+        try {
+            // Preparar sentencia
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            // Ejecutar sentencia preparada
+            $comando->execute();
+            // Capturar primera fila del resultado
+            $row = $comando->fetch(PDO::FETCH_ASSOC);
+            return $row;
+            //echo json_encode($row);
+
+        } catch (PDOException $e) {
+            // Aquí puedes clasificar el error dependiendo de la excepción
+            // para presentarlo en la respuesta Json
+            return -1;
+        }
+    }
+
     public static function getById($idclub,$idjugador,$idcategoria )
     {
         // Consulta de la sede
@@ -365,7 +393,7 @@ class jugador
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idclub,$idjugador));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
@@ -382,11 +410,12 @@ class jugador
     {
     // Consulta de la sede
         $consulta = "SELECT CONCAT(nombre,'(',numero,')') as jugx,idjugador FROM vappequipo WHERE anioEquipo=$anio and idjugador = $unJugador and idclub=$club and categoria=$categoria ";
+
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($anio,$unJugador,$club,$categoria ));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
@@ -404,11 +433,14 @@ class jugador
     {
     // Consulta de la sede
         $consulta = "SELECT * FROM vappequipo WHERE anioEquipo=$anio and idjugador = $unJugador and idclub=$club and categoria=$categoria ";
+//        echo "$consulta <br>";
+
+
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($anio,$unJugador,$club,$categoria ));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
@@ -427,17 +459,34 @@ class jugador
      *
      * 
      */
-    public static function update($nombre,$categoria,$jugadorid )
+    public static function updateSimple($nombre,$ianio,$idclub,$jugadorid )
     { 
         // Creando consulta UPDATE
-        $consulta = "UPDATE vappequipo SET nombre=?,categoria=? ". 
-        "WHERE idjugador=? ";
+        $consulta = "UPDATE vappequipo SET nombre='$nombre' ". 
+                    " WHERE idclub=$idclub and idjugador = $jugadorid and anioEquipo=$ianio" ;    	
 
         // Preparar la sentencia
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($nombre,$categoria,$jugadorid ));
+        $cmd->execute();
+
+        return $cmd;
+		//echo json_encode($cmd);
+
+    }
+
+    public static function update($nombre,$categoria,$jugadorid )
+    { 
+        // Creando consulta UPDATE
+        $consulta = "UPDATE vappequipo SET nombre=$nombre,categoria=$categoria ". 
+        "WHERE idjugador=$jugadorid ";
+
+        // Preparar la sentencia
+        $cmd = Database::getInstance()->getDb()->prepare($consulta);
+
+        // Relacionar y ejecutar la sentencia
+        $cmd->execute();
 
         //return $cmd;
 		echo json_encode($cmd);
@@ -459,7 +508,7 @@ class jugador
 		//echo("<br>".$comando."<br>");
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($idclub,$anioEquipo,$idjugador,$numero,$nombre,$edad,$ingresoClub,$categoria,$categoriaInicio) );
+        return $sentencia->execute( );
     }
 
 
@@ -483,7 +532,7 @@ class jugador
 		//echo("<br>".$comando."<br>");
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($idclub,$anioEquipo,$numero,$nombre,$edad,$ingresoClub,$categoria,$categoriaInicio) );
+        return $sentencia->execute( );
     }
 
     /**
@@ -500,7 +549,7 @@ class jugador
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idclub,$idjugador,$anioe,$categoria));
+        return $sentencia->execute();
     }
 
     public static function jugadoresEnClubCat($idclub,$anioe)
@@ -517,7 +566,7 @@ class jugador
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($comando);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idclub,$anioe));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID

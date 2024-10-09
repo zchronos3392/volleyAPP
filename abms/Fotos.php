@@ -51,7 +51,7 @@ class fotos
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$idfoto));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
@@ -76,7 +76,7 @@ class fotos
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
@@ -101,7 +101,7 @@ class fotos
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idpartido,$fecha));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
@@ -130,7 +130,7 @@ class fotos
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($partido,$fecha,$idfoto,$activa ));
+        $cmd->execute();
 
         //return $cmd;
 		echo json_encode($cmd);
@@ -170,7 +170,7 @@ class fotos
 		//echo("<br>".$comando."<br>");
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($idpartido,$fecha,$nombre,$extension,$carpeta) );
+        return $sentencia->execute( );
     }
 
     /**
@@ -187,7 +187,7 @@ class fotos
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idpartido,$fecha,$idfoto));
+        return $sentencia->execute();
     }
 
 

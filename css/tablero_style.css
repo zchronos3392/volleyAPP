@@ -1,6 +1,10 @@
 
 
 /*********************** NUEVO ABM JUGADOR, DNI JUGADOR **************/
+.mensajeSetClass{
+	font-size: xx-large;	
+}
+
 .BotoneraTablero
 {
 	display: flex;
@@ -14,9 +18,54 @@
 }
 
 
+.BotoneraTablero button
+{
+    font-size: 15px;
+
+    width: 3.5em;
+    height: 3.5em;
+
+    transition: .3s;
+
+    color: #fff;
+    border: 1px solid black;
+    border-radius: 100%;
+    outline: none;
+    background: #f99;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+    left: 100%;
+
+}
+
 .LetrasBlancas{
 	color: white;
 }
+
+.xControlLiberosTablero{
+	DISPLAY:GRID;
+	grid-template-columns: 100%;
+	height:2em;
+	position: relative;
+/*borde redondeado*/
+	border: 1px solid #000000;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+	padding: 3px;    
+/*borde redondeado*/
+}
+
+	.xControlLiberosTablero .itemL{
+		background-color: #e29d1d;
+		color: #091551;
+	/*borde redondeado*/
+		border: 1px solid #000000;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		border-radius: 7px;
+	/*borde redondeado*/
+	}
+
 .xControlLiberos{
 		DISPLAY:GRID;
     	grid-template-columns: 33% 33% 33%;
@@ -26,18 +75,21 @@
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+		border-radius: 7px;
 		padding: 3px;    
 /*borde redondeado*/
 }
-.xControlLiberos .itemL{
-		background-color: #e29d1d;
-		color: #091551;
-/*borde redondeado*/
-		border: 1px solid #000000;
-		-moz-border-radius: 7px;
-		-webkit-border-radius: 7px;
-/*borde redondeado*/
-}
+
+	.xControlLiberos .itemL{
+			background-color: #e29d1d;
+			color: #091551;
+	/*borde redondeado*/
+			border: 1px solid #000000;
+			-moz-border-radius: 7px;
+			-webkit-border-radius: 7px;
+			border-radius: 7px;
+	/*borde redondeado*/
+	}
 
 
 .xcanchaTablero
@@ -102,17 +154,37 @@
 
 
 .itmidclub1a{grid-area: itemidClubAa; text-align: center;}
-.itmidclub2a{grid-area: itemidClubBa; text-align: center;}
+.itmidclub2a{
+	grid-area: itemidClubBa; text-align: center;
+
+}
 .itmidclub2a img{
 	width: 7em;
     height: 7em;
+	box-shadow: 0 8px 10px -4px rgba(0, 0, 0, .6);
+    border-radius: 5px;
 
 }
 
+.itmidclub3a{
+	grid-area: itemidClubCa; text-align: center;
+    	font-size: x-large;
+    	width: 100%;
+    	box-shadow: 0 8px 10px -4px rgba(0, 0, 0, .6);
+     	border-radius: 5px;
+        background:gold;
+    	border: 1px solid #ccc;	
+		z-index: 10;
+}
+
+.MATCHPOINT{
+        background:greenyellow;
+}
 
 .grillaIdClubv20{
 	display: grid;
-	grid-template-areas: 'itemidClubBa' 
+	grid-template-areas: 'itemidClubCa'
+						 'itemidClubBa' 
 						 'itemidClubAa';
 	padding: 0;
 	margin: 0;
@@ -132,15 +204,34 @@
 .itemTablero1B{
 	grid-area: itemTablero1b;
 }
+.itemTablero1B #fecha{
+	margin-top: 1em;
+}
 .itemTablero1
 {
-	display: grid;
-	grid-template-areas: 'itemTablero1a itemTablero1b';
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
 	grid-area: itTem1;
 	background-color: #20bde5;
 	text-align: center;
 	font-weight: bold;
 }
+
+.itemTablero1Fin{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+
+	grid-area: itTem1;
+	background-color: #af1010;
+	text-align: center;
+	font-weight: bold;
+	color:#ffffff;
+}
+
+
+
 .itemTablero2{grid-area: itTem2;}
 .itemTablero3{grid-area: itTem3;background-color: #01181e;text-align: center;font-weight: bold;color: #fff;}
 
@@ -152,7 +243,16 @@
 	grid-template-areas: 'itTem1' 'itTem2' 'itTem3';
 }
 
-.itclub1{  grid-area:itclub1; }
+.itclub1{  grid-area:itclub1;
+        font-size: x-large;
+        width: 100%;
+        box-shadow: 0 8px 10px -4px rgba(0, 0, 0, .6);
+        border-radius: 5px;
+        background: white;
+        border: 1px solid #ccc;
+		margin: 0.5rem;
+}
+
 .itclub2{  grid-area:itclub2; }
 .itclub3{  grid-area:itclub3; }
 .itclub4{  grid-area:itclub4; }
@@ -161,8 +261,10 @@
 
 .Espacioclub{
 	display: grid;
-	grid-template-areas: 'itclub1 itclub2 itclub3 itclub4 '
-						 'itclub5 itclub5 itclub6 itclub6 ';
+	grid-template-areas: 'itclub1 itclub1 itclub2 itclub2 '
+						 'itclub1 itclub1 itclub3 itclub3 '
+						 'itclub1 itclub1 itclub6 itclub6 ';
+	text-align: center;
 }
 
 .itemEC2_1{  grid-area:it2club1; }
@@ -209,6 +311,12 @@
 	font-size: 30px;
 
 }   
+.itemtbljug1VER.nombreJugador{
+
+	font-size: 30px;
+    text-align: center;
+}
+
 .itemtbljug2VER{
 	grid-area: itemtbljug2VER;
 }
@@ -230,8 +338,7 @@
 
 .itemtbljuVER{
 	display:grid;
-	grid-template-areas: 'itemtbljug1VER' 'itemtbljug1VER ' 'itemtbljug1VER '
-						 'itemtbljug2VER' 'itemtbljug2VER' 'itemtbljug3VER';
+	grid-template-areas: 'itemtbljug1VER itemtbljug1VER itemtbljug1VER ';
 
  /*borde redondeado*/
  border: 1px solid #000000;
@@ -244,6 +351,11 @@ font-size: small;
 background-color: #fff;
 }
 
+.nombreJugador{
+
+	font-size: 30px;
+    text-align: center;
+}
 
 .itmtbljugTIT1{ grid-area:itmtbljugTIT1 ;}
 .itmtbljugTIT2{ grid-area:itmtbljugTIT2 ;}
@@ -271,12 +383,47 @@ width: 100%;
  border-radius: 7px;
  padding: 3px;    
 /*borde redondeado*/
-
-
 	flex-wrap: wrap;
 	/* Equivalente a */
 	align-items:flex-start;
 }
+
+
+ .Jugadores
+{
+ display: flex;
+ flex-direction: row;
+ background-color: rgb(255, 255, 255);
+width: 100%;
+/*borde redondeado*/
+ border: 1px solid #000000;
+ -moz-border-radius: 7px;
+ -webkit-border-radius: 7px;
+ border-radius: 7px;
+ padding: 3px;    
+/*borde redondeado*/
+	flex-wrap: wrap;
+	 /* Equivalente a  */
+	align-items:flex-start;
+  justify-content: space-between;
+} 
+
+.local{
+	display: flex;
+	flex-direction: column;	
+	-ms-flex-item-align: start;
+	flex-grow: 1;
+	
+}
+
+.visita{
+	display: flex;
+	flex-direction: column;	
+	-ms-flex-item-align: end;
+	flex-grow: 1;
+}
+
+
 /* lista de suplentes en tablero, version pequeña */
 
 /* SECTOR DE LOS LOCALES */
@@ -296,6 +443,7 @@ width: 100%;
 .canchaversion3item12{grid-area: cv3it12;}
 
 
+/* DEPRECADA SEPT2024
 .canchaversion3
 {
 
@@ -312,15 +460,29 @@ width: 100%;
 
 .canchaversion3 DIV {
     height: 100%;
+    font-size: calc(1.2vw + 1.2vh); /* Tamaño de fuente relativo 
+	width: 100%;
+} */
+
+.canchaversion4
+{
+
+	display: grid;
+	grid-template-areas:  'cv3it1 cv3it2 cv3it3 cv3it4'
+						  'cv3it5 cv3it6 cv3it7 cv3it8'
+						  'cv3it9 cv3it10 cv3it11 cv3it12';
+	background-color: #fff;
+	align-items:flex-start;
+	background-color: dimgray;
+	align-items: center;
+}
+
+.canchaversion4 DIV {
+    height: 100%;
     font-size: calc(1.2vw + 1.2vh); /* Tamaño de fuente relativo */
-    /* display: flex;
-	flex-direction: column;
-    justify-content: center;
-    word-wrap: break-word;
-    text-align: center; */
-	/* width: 210px; */
 	width: 100%;
 }
+
 
 .canchajugitem1
 {
@@ -343,7 +505,19 @@ width: 100%;
     font-size: 9pt;	
 }
 /* NUEVO TABLERO CANCHA, SUPLENTES Y LIBEROS LIST */
+
+/* PARA TODOS */
+.LogoApp{
+	height: -webkit-fill-available;
+}
+
+
+.Competencia{
+	color:#000;
+}	
 /* PANTALLA GRANDE */
+
+
 
 
 @media (min-width:451px) and (max-width: 768px)
@@ -403,8 +577,7 @@ width: 100%;
 
 .itemtbljuVER{
 	display:grid;
-	grid-template-areas: 'itemtbljug1VER' 'itemtbljug1VER ' 'itemtbljug1VER '
-						 'itemtbljug2VER' 'itemtbljug2VER' 'itemtbljug3VER';
+	grid-template-areas: 'itemtbljug1VER itemtbljug1VER itemtbljug1VER ';
 
  /*borde redondeado*/
  border: 1px solid #000000;
@@ -417,6 +590,10 @@ font-size: small;
 	background-color: #fff;
 }
 
+.nombreJugador{
+	font-size:x-large;
+    text-align: center;
+}
 
 .itmtbljugTIT1{ grid-area:itmtbljugTIT1 ;}
 .itmtbljugTIT2{ grid-area:itmtbljugTIT2 ;}
@@ -444,12 +621,13 @@ width: 100%;
  border-radius: 7px;
  padding: 3px;    
 /*borde redondeado*/
-
-
 	flex-wrap: wrap;
 	/* Equivalente a */
 	align-items:flex-start;
 }
+
+
+ /* ACA VA NUEVO CLASS */
 /* lista de suplentes en tablero, version pequeña */
 
 /* SECTOR DE LOS LOCALES */
@@ -468,7 +646,7 @@ width: 100%;
 .canchaversion3item11{grid-area: cv3it11;}
 .canchaversion3item12{grid-area: cv3it12;}
 
-
+/* DEPRECADA SEPT 2024
 .canchaversion3
 {
 
@@ -485,14 +663,24 @@ width: 100%;
 
 .canchaversion3 DIV {
     height: 100%;
+    font-size: calc(1.2vw + 1.2vh); /* Tamaño de fuente relativo 
+} */
+
+.canchaversion4
+{
+
+	display: grid;
+	grid-template-areas:  'cv3it1 cv3it2 cv3it3 cv3it4'
+						  'cv3it5 cv3it6 cv3it7 cv3it8'
+						  'cv3it9 cv3it10 cv3it11 cv3it12';
+	background-color: #fff;
+	align-items: center;
+	background-color: dimgray;
+}
+.canchaversion4 DIV {
+    height: 100%;
     font-size: calc(1.2vw + 1.2vh); /* Tamaño de fuente relativo */
-    /* display: flex;
-	flex-direction: column;
-    justify-content: center;
-    word-wrap: break-word;
-    text-align: center; */
 	width: 100%;
-	/* width: 120%; */
 }
 
 .canchajugitem1
@@ -545,13 +733,29 @@ width: 100%;
 }
 .itemTablero1
 {
-	display: grid;
-	grid-template-areas: 'itemTablero1a' 'itemTablero1b';
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+
 	grid-area: itTem1;
 	background-color: #20bde5;
 	text-align: center;
 	font-weight: bold;
 }
+
+.itemTablero1Fin{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+
+	grid-area: itTem1;
+	background-color: #af1010;
+	text-align: center;
+	font-weight: bold;
+	color:#ffffff;
+
+}		
+
 
 .itemEC2_1{  grid-area:it2club1;
 		     border: solid #000000;
@@ -618,16 +822,36 @@ width: 100%;
 
 
 .itmidclub1a{grid-area: itemidClubAa; text-align: center;}
-.itmidclub2a{grid-area: itemidClubBa; text-align: center;}
+.itmidclub2a{
+	grid-area: itemidClubBa; text-align: center;
+}
+
 .itmidclub2a img{
 	width: 5em;
     height: 5em;
 
+	box-shadow: 0 8px 10px -4px rgba(0, 0, 0, .6);
+    border-radius: 5px;
+
+}
+.itmidclub3a{
+	grid-area: itemidClubCa; text-align: center;
+    	font-size: x-large;
+    	width: 100%;
+    	box-shadow: 0 8px 10px -4px rgba(0, 0, 0, .6);
+     	border-radius: 5px;
+        background:gold;
+    	border: 1px solid #ccc;	
+		z-index: 10;
 }
 
+.MATCHPOINT{
+        background:greenyellow;
+}
 .grillaIdClubv20{
 	display: grid;
-	grid-template-areas: 'itemidClubBa' 
+	grid-template-areas: 'itemidClubCa'
+						 'itemidClubBa' 
 						 'itemidClubAa';
 	padding: 0;
 	margin: 0;
@@ -662,8 +886,7 @@ width: 100%;
 
 .itemtbljuVER{
 	display:grid;
-	grid-template-areas: 'itemtbljug1VER' 'itemtbljug1VER ' 'itemtbljug1VER '
-						 'itemtbljug2VER' 'itemtbljug2VER' 'itemtbljug3VER';
+	grid-template-areas: 'itemtbljug1VER itemtbljug1VER itemtbljug1VER ';
 
  /*borde redondeado*/
  border: 1px solid #000000;
@@ -681,6 +904,10 @@ font-size: small;
 flex-grow: 1;
 }
 
+.nombreJugador{
+	font-size:large;
+    text-align: center;
+}
 
 .itmtbljugTIT1{ grid-area:itmtbljugTIT1 ;}
 .itmtbljugTIT2{ grid-area:itmtbljugTIT2 ;}
@@ -708,12 +935,12 @@ width: 100%;
  border-radius: 7px;
  padding: 3px;    
 /*borde redondeado*/
-
-
 	flex-wrap: wrap;
 	/* Equivalente a */
 	align-items:flex-start;
 }
+
+/* ACA VA NUEVO CLASS */
 /* lista de suplentes en tablero, version pequeña */
 
 /* SECTOR DE LOS LOCALES */
@@ -732,10 +959,9 @@ width: 100%;
 .canchaversion3item11{grid-area: cv3it11;}
 .canchaversion3item12{grid-area: cv3it12;}
 
-
+/* DEPRECADA SEPT 2024
 .canchaversion3
 {
-
 	display: grid;
 	grid-template-areas:  'cv3it1 cv3it2 cv3it3 cv3it4'
 						  'cv3it5 cv3it6 cv3it7 cv3it8'
@@ -746,19 +972,30 @@ width: 100%;
 	align-items:flex-start;
 	background-color: dimgray;
 }
-
-
 .canchaversion3 DIV {
     height: 100%;
-    font-size: calc(1.2vw + 1.2vh); /* Tamaño de fuente relativo */
-    /* display: flex;
-	flex-direction: column;
-    justify-content: center;
-    word-wrap: break-word;
-    text-align: center; */
-	width: 100%; /* 70px */
+    font-size: calc(1.2vw + 1.2vh); /* Tamaño de fuente relativo 
 }
+ */
 
+ .canchaversion4
+ {
+ 
+	 display: grid;
+	 grid-template-areas:  'cv3it1 cv3it2 cv3it3 cv3it4'
+						   'cv3it5 cv3it6 cv3it7 cv3it8'
+						   'cv3it9 cv3it10 cv3it11 cv3it12';
+	 background-color: #fff;
+	 background-color: dimgray;
+ }
+ 
+ 
+ .canchaversion4 DIV {
+	 height: 100%;
+	 font-size: calc(1.2vw + 1.2vh); /* Tamaño de fuente relativo */
+	 width: 100%; 
+ }
+ 
 
 
 

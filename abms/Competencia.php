@@ -77,12 +77,12 @@ class Competencia
     		
       $consulta = "SELECT setnmax
                              FROM vappcomp
-                             WHERE idcomp = ?";
+                             WHERE idcomp = $idcomp";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idcomp));
+            $comando->execute();
 
             return $comando->fetchAll(PDO::FETCH_ASSOC);
 
@@ -110,14 +110,14 @@ class Competencia
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idcomp));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
             //echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return -1;
         }
@@ -131,17 +131,28 @@ class Competencia
      * @param $nombre      nuevo titulo
      * 
      */
-    public static function ActualizaCompetencia($idcompetencia,$compnombre,$setsmaxnum,$competenciaActivar)
+    public static function ActualizaCompetencia($idcompetencia,$compnombre,$setsmaxnum,$competenciaActivar,$archivoLogo,$fechaIniciaComp,$fechaFinComp)
     {
+        
+        //ActualizaCompetencia('36', 'SFSF21 2024', '3', 1, '''')        
         // Creando consulta UPDATE
-        $consulta = "UPDATE vappcomp SET cnombre='$compnombre',setnmax=$setsmaxnum ,
-        					competenciaActiva=$competenciaActivar WHERE idcomp=$idcompetencia";
+        $ActualizarLogo = "";
+        if($archivoLogo != "''")
+            $ActualizarLogo = ",Logo=$archivoLogo ";
 
+        $consulta = "UPDATE vappcomp SET cnombre='$compnombre',setnmax=$setsmaxnum ,
+        					competenciaActiva=$competenciaActivar $ActualizarLogo ,
+                            FechaInicioComp = '$fechaIniciaComp',FechaFinComp = '$fechaFinComp'
+                            WHERE idcomp=$idcompetencia";
+
+
+
+        //echo $consulta;
         // Preparar la sentencia
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($idcompetencia,$compnombre,$setsmaxnum));
+        $cmd->execute();
 
         return json_encode($cmd);
 
@@ -151,20 +162,18 @@ class Competencia
      * Insertar un nuevo categoria
      *
      * @param $idcategoria      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
-    public static function insert($nombre,$setnmax,$competenciaActivar,$archivoLogo){
+    public static function insert($nombre,$setnmax,$competenciaActivar,$archivoLogo,$fechaIniciaComp,$fechaFinComp){
         // Sentencia INSERT
-        $comando = "INSERT INTO vappcomp ( cnombre, setnmax,competenciaActiva,Logo) 
-        				VALUES( ?, ?,?,? )";
-
+        $comando = "INSERT INTO vappcomp ( cnombre, setnmax,competenciaActiva,Logo,FechaInicioComp,FechaFinComp) 
+        				VALUES( $nombre,$setnmax,$competenciaActivar,$archivoLogo,'$fechaIniciaComp','$fechaFinComp' )";
+        //echo "$comando";                                    
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(
-            array($nombre,$setnmax,$competenciaActivar,$archivoLogo)
-        );
+        return $sentencia->execute();
 
     }
 
@@ -172,17 +181,17 @@ class Competencia
      * Eliminar el registro con el identificador especificado
      *
      * @param $idcategoria identificador de la categoria
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($idcomp)
     {
         // Sentencia DELETE
-        $comando = "DELETE FROM vappcomp WHERE idcomp=?";
+        $comando = "DELETE FROM vappcomp WHERE idcomp=$idcomp";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idcomp));
+        return $sentencia->execute();
     }
 }
 

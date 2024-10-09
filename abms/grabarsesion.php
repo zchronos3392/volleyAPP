@@ -9,6 +9,9 @@
 require_once('SesionTabla.php');
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
+	// "TEXTOCLAVE" : $("#usuario").val() ,
+	// "origenrequest" :	<?php echo("'".$_SERVER['REMOTE_ADDR']."'"); 
+
 		$clave ="";
 		if(isset($_GET['TEXTOCLAVE']))	
 			$clave = "'".$_GET['TEXTOCLAVE']."'";
@@ -16,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		if(isset($_GET['origenrequest']))
 			$valor =	"'".$_GET['origenrequest']."'";
 //		$valor = "'".$_GET['CLAVEVALOR']."'";
+
 		if(isset($_GET['datos']))
 		{
 			$filtroX =	$_GET['datos'];
@@ -38,9 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			SesionTabla::setsessionfiltros($clave,"'".implode(" ",$parametrosGuardados)."'");
 
 		}
-			if(isset($_GET['origenrequest'])){
-				SesionTabla::setsession($clave,$valor);
-			}
+		  if(isset($_GET['origenrequest']))
+		  {
+			// cuando viene de cualquier otra pantalla del sitio que no sea index
+				SesionTabla::deletesessionfiltros($clave);	//<-- sino la recuerda siempre
+					SesionTabla::setsession($clave,$valor);
+		  }
 			
 	}
 

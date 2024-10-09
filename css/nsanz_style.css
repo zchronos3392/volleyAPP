@@ -20,13 +20,33 @@ font-size: 1em;
 }
 header
 {
-    position: fixed;
+    /* position: fixed; */
     z-index: 1030;
 	display: block;
     width: 100%;
     height: 3rem;
 
     background-color: #ff62c8;
+}
+
+
+.amarillo{
+	background:#ecd113;
+}
+
+.verder{
+	background-color:#1d8211;
+}
+
+
+.twitch{
+    background-color:#6441a5;
+}
+
+
+.manzana{
+	background-color:#af1010;
+    color: #fff;
 }
 
 
@@ -102,7 +122,10 @@ hr
 .item22_3{grid-area: item22_3;}
 .item22_4{grid-area: item22_4;}
 .item22_5{grid-area: item22_5;}
-.item22_6{grid-area: item22_6;}
+.item22_6{grid-area: item22_6;
+    display: flex;
+    flex-direction: row;
+}
 .item22_7{grid-area: item22_7;}
 .item22_7a{grid-area: item22_7a;}
 .item22_7b{grid-area: item22_7b;}
@@ -611,11 +634,12 @@ nav.principal a:hover
 
 .EstadA{
 	grid-area: itemEstadA;
-	background-color:#0c3a3a;
+	/* background-color:#0c3a3a; */
+    background-color:#fff;
 }
 /*DENTRO DE ESTADa TENEMOS OTRA GRILLA:*/
 
-	.itemclubliz1{grid-area:itmclubizq1;}
+	.itemclubliz1{grid-area:itmclubizq1;margin: auto;}
 	.itemclubliz1 IMG{width: 9em;height: 9em;}
 	.itemclubliz2{grid-area:itmclubizq2;}
 	.itemclubliz3{grid-area:itmclubizq3;}
@@ -625,7 +649,8 @@ nav.principal a:hover
 		    grid-template-areas: 'itmclubizq1'
 		    		   			 'itmclubizq2'
 		    		    		 'itmclubizq3';
-			background-color:#00b9e5;
+			/* background-color:#00b9e5; */
+            background-color:#fff;
 		}
 .EstadB{
 	grid-area: itemEstadB;
@@ -747,6 +772,8 @@ nav.principal a:hover
 
 .itemepartrats1{grid-area:itmeprats1;}
 .itemepartrats2{grid-area:itmeprats2;}
+.itemepartrats22{grid-area:itmeprats22;}
+
 .itemepartrats3{grid-area:itmeprats3;}
 .itemepartrats4{grid-area:itmeprats4;}
 .itemepartrats5{grid-area:itmeprats5;}
@@ -754,7 +781,7 @@ nav.principal a:hover
 .epartrats{
 	    display: grid;
         padding-bottom: 0em;
-		grid-template-areas: 'itmeprats1 itmeprats2 itmeprats3 itmeprats4 itmeprats5';
+		grid-template-areas: 'itmeprats1 itmeprats2 itmeprats22 itmeprats3 itmeprats4 itmeprats5';
 		/*BORDES REDONDEADOS*/
 		    border: 1px solid #000000;
 		    -moz-border-radius: 7px;
@@ -764,6 +791,21 @@ nav.principal a:hover
 	margin-left:0em;
 	margin-right:0em;	
 	padding: 0rem;
+}
+
+.epartrats2_0{
+    display: flex;
+    flex-direction: row;
+    /*BORDES REDONDEADOS*/
+        border: 1px solid #000000;
+        -moz-border-radius: 7px;
+        -webkit-border-radius: 7px;
+        border-radius: 7px;
+        background-color: #fff;
+    /*BORDES REDONDEADOS*/        
+    align-items:flex-start;
+    justify-content: space-between;
+    
 }
 	.subRayado{
 			border-bottom: 1px solid #000000;
@@ -931,7 +973,7 @@ nav.principal a:hover
 	}
 
 .butSquareEqOrang {	
-	font-size: 11px;
+	font-size: auto;
     width: 100%;
     height: 3em;
     margin: 0;
@@ -943,8 +985,46 @@ nav.principal a:hover
     box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
 }    	
 
+.butSquareEqViolett {	
+	font-size: auto;
+    width: 100%;
+    height: 3em;
+    margin: 0;
+    transition: .3s;
+    color: #fff;
+    border: 1px solid black;
+    /* border-radius: 100%; */
+    background: hsl(273, 77%, 66%);
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+}    	
+
+.butSquareEqRedRackam {	
+	font-size: auto;
+    width: 100%;
+    height: 3em;
+    margin: 0;
+    transition: .3s;
+    color: #fff;
+    border: 1px solid black;
+    /* border-radius: 100%; */
+    background: #c4130d;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+}    	
+
 .butSquareEqBlu {	
-	font-size: 11px;
+	font-size: auto;
+    width: 5em;
+    height: 3em;
+    transition: .3s;
+    color: #fff;
+    border: 1px solid black;
+    /* border-radius: 100%; */
+    background: #0b57ac;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+}
+
+.butSquareEqBluFull {
+    font-size: auto;
     width: 100%;
     height: 3em;
     margin-left: 10px;
@@ -952,8 +1032,33 @@ nav.principal a:hover
     color: #fff;
     border: 1px solid black;
     /* border-radius: 100%; */
-    background: #0b57ac;
-    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+    background: #5d7fa5;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+}
+
+.butSquareEqLightBlu {
+    font-size: auto;
+    width: 100%;
+    height: 3em;
+    margin-left: 10px;
+    transition: .3s;
+    color: #fff;
+    border: 1px solid black;
+    background: #0016b0;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+}
+
+.butSquareEqGreen {
+    font-size: auto;
+    width: 100%;
+    height: 3em;
+    margin-left: 10px;
+    transition: .3s;
+    color: #fff;
+    border: 1px solid black;
+    /* border-radius: 100%; */
+    background: #42cf17;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
 }
 	
 .regjug1{
@@ -1591,6 +1696,13 @@ width: auto;
 font-size: 9pt;
 width: auto;
 }
+
+.CantidadJugadores
+{
+    font-size: 1.5em;
+
+}
+
 .numero
 {
     font-size: 4em;
@@ -1988,23 +2100,21 @@ width: auto;
 #ElegirJugadores #icate
 {
     width: 100%;
-    margin-left: -6.5em;
+    /* margin-left: -6.5em; */
     height: 3em;
 }
 #ElegirJugadores div
 {
-    text-align: left;
-    vertical-align: middle;
+    /* text-align: left;
+    vertical-align: middle; */
     border: 1px solid white;
 }
 #ElegirJugadores input[type="checkbox"]    {
-    margin-left: -4.5em;
-    margin-top: 1em;
-	width: 50%;
-	height: 50%;
+	width: 1.5em;
+	height: 1.5em;
+
 /*** estilo alocado dell SELECT *****/
-    display: inline-block;
-    border: 1px solid #fff;
+    /* display: inline-block; */
 }    
 
 
@@ -2027,6 +2137,20 @@ width: auto;
     background: #f99;
     box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
 }
+#ElegirJugadores  .btnGrilla
+{
+    width: auto;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid #0016b0;
+    border-radius: 6px;
+    background: #22c1e4;;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);    
+}
+
+
+}
+
 button#volver.altajug
 {
     font-size: 15px;
@@ -2049,6 +2173,7 @@ button#volver.altajug
 .control1 SELECT{ font-size:15px; height: 3em;width: 4.5em;padding: 0;margin: 0;}
 
 .control2{ grid-area: ct212; }
+    .control2 BUTTON { height: -webkit-fill-available; }
 .control3{ grid-area: ct213; }
 .control4{ grid-area: ct214; }
 
@@ -2127,10 +2252,8 @@ button#volver.altajug
 }
 #ElegirJugadores div
 {
-    text-align: center;
-    vertical-align: middle;
-
-    border: 1px solid grey;
+ 
+    border: 1px solid fff;
 }
 .CuadroJugadores
 {
@@ -2283,19 +2406,59 @@ button#volver.altajug
 }
 .regridjug2
 {
-    display: grid;
-
+    /* display: grid;
     width: 70%;
-
     border: 0 solid black;
-
-    grid-template-columns: 2rem 10% 100%;
+    grid-template-columns: 2rem 10% 100%; */
+    display: flex;
+    flex-direction:column;
+	flex-wrap: nowrap;
+	flex-flow: row wrap;
+    padding: 0.5rem;
+    background-color: #ddc4c4;
+	align-items:flex-start;
+    align-content: center;
+    margin: 0 auto;
+    grid-gap: 10px;
+    font-size: 2em;
 }
+
+.regridjug2 INPUT[TYPE="CHECKBOX"]
+{
+    border: 1px solid #fff;
+    width: 1.5em;
+    height: 1.5em;
+}    
 
 .regridjug2 INPUT
 {
-    width: 90%;
+    border: 1px solid #fff;
+    height: 2em;
+    width: auto;
 }    
+
+.regridjug2 .regjug input[type="text"] {
+    width: auto; /* Ancho automático para adaptarse al contenido */
+}
+
+
+.regridjug2 .btnGrilla
+{
+    font-size: 18px;
+    font-weight: 150;
+    padding: 3px;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid #0016b0;
+    border-radius: 6px;
+    background: #22c1e4;;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);    
+}
+
+.regridjug2 SPAN
+{
+    height: 2em;
+}
 
 
 .regridjug
@@ -2394,6 +2557,7 @@ button.btnPop:hover
 {
     background: gold;
 }
+
 button.btnPop2
 {
     width: auto;
@@ -2435,7 +2599,7 @@ button.btnPop28:hover{background: gold;}
 button.btnPop25
 {
     width: 100%;
-    height: 3em;
+    height: 5em;
 
 /*    border: 1px solid #e6e9ea;
     border: 1px solid black;*/
@@ -2443,6 +2607,7 @@ button.btnPop25
 	    border: 1px solid #000000;
 	    -moz-border-radius: 7px;
 	    -webkit-border-radius: 7px;
+        border-radius: 7px;
 	/** BORDES REDONDEADOS **/
     background: #f5b487;
     color: #fff;
@@ -2451,6 +2616,7 @@ button.btnPop25
     font: icon;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
     top: 0px;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
@@ -2462,7 +2628,7 @@ button.btnPop25:hover{background: gold;}
 button.btnPop26
 {
     width: 100%;
-    height: 3em;
+    height: 5em;
 
 /*    border: 1px solid #e6e9ea;
     border: 1px solid black;*/
@@ -2470,6 +2636,7 @@ button.btnPop26
 	    border: 1px solid #000000;
 	    -moz-border-radius: 7px;
 	    -webkit-border-radius: 7px;
+        border-radius: 7px;
 	/** BORDES REDONDEADOS **/
     background: #ee7626;
     color: #fff;
@@ -2478,6 +2645,7 @@ button.btnPop26
     font: icon;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
     top: 0px;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
@@ -2573,6 +2741,52 @@ button.btnPop3:hover
 {
     background: gold;
 }
+
+/* BOTON DESDE UN LI */
+li.btnPop33
+{
+    width: 100%;
+    height: 3em;
+
+/*    border: 1px solid #e6e9ea;
+    border: 1px solid black;*/
+	/** BORDES REDONDEADOS **/
+	    border: 1px solid #000000;
+	    -moz-border-radius: 7px;
+	    -webkit-border-radius: 7px;
+        border-radius: 7px;
+	/** BORDES REDONDEADOS **/
+    background: #22c1e4;
+    color: #fff;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    text-decoration: none;
+    font-size: 10px;
+    font: icon;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    top: 0px;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    
+    padding: 0.5rem;
+    word-wrap: normal;
+    text-align: center;
+    margin: 0 1em 0 0;
+}
+
+li.btnPop33.visitante
+{
+    background: rgb(240, 141, 12);
+}
+
+li.btnPop33:hover
+{
+    background: gold;
+}
+/* BOTON DESDE UN LI */
+
 button.btnPop30
 {
     width: 100%;
@@ -2756,12 +2970,19 @@ button.btnPop2:hover
         background-color: #ccdfdf;
         background-color: #d7f1f4;
         grid-gap: 6px;
-        grid-template-areas: 'itemb1 itemb2 itemb3 itemb4 '
+        /* grid-template-areas: 'itemb1 itemb2 itemb3 itemb4 '
         					'itemb5 itemb6 itemb8 itemb8'
         					'itemb7 itemb7 itemb7 itemb7'
         					'itemb9 itemb10 itemb11 itemb12'
-        					'itemb13 itemb14 itemb15 itemb16';
-		
+        					'itemb13 itemb14 itemb15 itemb16'; */
+                            grid-template-areas:
+                            'itemb7 itemb7 itemb7 itemb7'
+                            'itemb5 itemb6 itemb6 itemb6'
+                            'itemb1 itemb1 itemb2 itemb2'
+                            'itemb3 itemb3 itemb4 itemb4'
+        					'itemb9 itemb9 itemb10 itemb10 '
+                            'itemb11 itemb11 itemb12 itemb12'
+							'itemb15 itemb14 itemb13 itemb16';	
 	/*borde redondeado*/
 			border: 1px solid #000000;
 			-moz-border-radius: 7px;
@@ -2806,14 +3027,19 @@ button.btnPop2:hover
 		width: 100%;
     }    
     
+    .formbuscar INPUT[TYPE="TEXT"]
+    {
+		width: 100%;
+        height: auto;
+        font-size: 1em;
+    }        
 
-.frmbuscarotros
-{
-    display: grid;
 
-    grid-column: 3 / 5;
-    grid-template-columns: 20% 10% 25% 45%;
-}
+    .frmbuscarotros
+    {
+        display: none;
+    }
+
 
 /*busqueda minima en ADMINISTRAR APP */
 	.itemBusc1v20{
@@ -2825,7 +3051,14 @@ button.btnPop2:hover
 	.itemBusc3v20{
 		grid-area: itemb3;
 	}
-			
+
+	.itemBusc4v20{
+		grid-area: itemb4;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+	}
+    
     .formbuscarv20
     {
         display: grid;
@@ -2834,7 +3067,8 @@ button.btnPop2:hover
         background-color: #0056af;/*#d5cf22; /*d7f1f4;*/
         color: #fff;
         grid-template-areas: 'itemb1 itemb1 itemb1 itemb1 itemb1'
-        					'itemb2 itemb2 itemb3 itemb3 itemb3';
+        					'itemb2 itemb2 itemb3 itemb3 itemb3'
+                            'itemb4 itemb4 itemb4 itemb4 itemb4';
 				border: 1px solid #000000;
 			-moz-border-radius: 7px;
 			-webkit-border-radius: 7px;
@@ -2898,20 +3132,20 @@ button.btnPop2:hover
 }
 .gridAcceso
 {
-    display: grid;
-    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
     grid-gap: 1px;
-    grid-template-columns: 100%;
 /*borde redondeado*/
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 		padding: 5px;    
     color:#220655;
     font-family: 'Oswald', sans-serif;
     background-color: #fff;
-	margin-left: 0;
-	margin-right: 0;
+    justify-content: baseline;
+    align-items: center;
 /*borde redondeado*/
     
 }
@@ -2926,11 +3160,10 @@ button.btnPop2:hover
 }
 .contieneBotones
 {
-    display: grid;
-
-    padding-left: 10%;
-	padding-right: 10%;
-    grid-template-columns:  100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 .gridAcceso button
 {
@@ -3022,6 +3255,7 @@ button.btnPop2:hover
 .ilp213A{ grid-area: area3escudoa; }
 .ilp213B{ grid-area: area3escudob; }
 img.imgjugadorindex{ height: 25px;width: 25px;}
+img.imgjugadorlistaindex{ height: 50px;width: 50px;}
 
 	.ilp213x{ 
 			grid-area: area3;
@@ -3051,13 +3285,14 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 		padding: 5px;    
 /*borde redondeado*/
 }
 
 .agrid-LPReg21 > div {
   text-align: left;
-    color: #fff;
+  color:#01051a;
     font-family: 'Oswald', sans-serif;
 
 }
@@ -3069,24 +3304,31 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
 
 .agrid-LPReg21.ADMIN
 {
+    /* 'area6 area6 area6 area6 area6 area6 area6 area5 area5 '; */
     display: grid;
 	background-color: #4285d1;/*#be3b2a; ROJO LACRE*/
     margin: 0;
     grid-template-areas:    'area7 area7 area7 area7 area7 area7 area7 area7 area7 '
     						'area8 area8 area8 area8 area9 area9 area9 area10 area10 '
 						    'area1 area1 area1 area2 area2 area3 area3 area3 area4 '
-						    'area6 area6 area6 area6 area6 area6 area6 area5 area5 ';
+						    'area6 area6 area6 area6 area6 area6 area6 area6 area6 ';
 /*borde redondeado*/
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 /*borde redondeado*/
 	
 }
 
 .agrid-LPReg21.ADMIN > div {
-  text-align: left;
-        color:#08011d; /*#b6ccfa;*/
+  /* text-align: left;
+        color:#08011d; #b6ccfa; */
+    display: flex;
+     flex-direction:row; 
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items:flex-start;
     font-family: 'Oswald', sans-serif;
 
 }
@@ -3151,9 +3393,10 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
     width: 100%;
     grid-gap: 1px;
 /*borde redondeado*/
-		border: 0px solid #000000;
+		/* border: 0px solid #000000; */
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 		padding: 5px;        
 /*    grid-template-columns: 60% 20% 45%;*/
 }
@@ -3170,16 +3413,15 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
 .btnVerSet_21
 {
     font-size: 11px;
-
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 4em;
     margin: 0;
 
     transition: .3s;
 
     color: #fff;
     border: 1px solid black;
-/*    border-radius: 100%;*/
+    border-radius: 25%;
     background: #007cff;
     box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
 }
@@ -3196,56 +3438,61 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
     background-color: #026;
 }
 
-.btnVerSet_21.rojoCereza{
+
+
+.btnVerSet_21.rojoCereza,.btnVerSet_23.rojoCereza{
 	background: #d12e8f;
 }
-.btnVerSet_21.amarillo{
+.btnVerSet_21.amarillo,.btnVerSet_23.amarillo{
 	background:#ecd113;
 }
-.btnVerSet_21.celeste{
+.btnVerSet_21.celeste,.btnVerSet_23.celeste{
 	background-color: #31c1ff;
 }
-.btnVerSet_21.verdeClaro{
+.btnVerSet_21.verdeClaro,.btnVerSet_23.verdeClaro{
 	background-color: #5cb917;
 }
 
-.btnVerSet_21.verdeControl{
+.btnVerSet_21.verdeControl,.btnVerSet_23.verdeControl{
 	background-color: #27ff00;
-}
-
-.btnVerSet_21.Naranja{
-	background-color:#ed7512;
 }
 
 
 /*NUEVOS COLORES SEGUN MIUI*/
-.btnVerSet_21.azulMa{
+.btnVerSet_21.azulMa,.btnVerSet_23.azulMa{
 	background:#1a1074;
 }
-.btnVerSet_21.turquE{
+.btnVerSet_21.turquE,.btnVerSet_23.turquE{
 	background:#108bef;
 }
-.btnVerSet_21.Verder{
+.btnVerSet_21.Verder,.btnVerSet_23.Verder{
 	background-color:#1d8211;
 }
-.btnVerSet_21.Insta{
+
+.btnVerSet_21.twitch{
+    background-color:#6441a5;
+}
+.btnVerSet_21.Insta,.btnVerSet_23.Insta{
 	background-color:#b4148c;
 }
 
-.btnVerSet_21.Naranja{
+.btnVerSet_21.Naranja,.Naranja{
 	background-color:#ed7512;
 }
 
-.btnVerSet_21.Manzana{
+.btnVerSet_21.Manzana,.btnVerSet_23.Manzana{
 	background-color:#af1010;
 }
 
 
 .btnVerSet_21.Pequenio{
-	width: 15%;
+     width:5.5em; 
 	padding: 0;
-    height: 85%;
-
+    height: 100%;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
 }
 
 
@@ -3270,21 +3517,44 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
 
  .ggcset11{grid-area: ggcset11_1;margin-left: auto;margin-right: auto;	}
  .ggcset12{grid-area: ggcset11_2;	}
- .ggcset13{grid-area: ggcset11_3;	}
+ /* .ggcset13{grid-area: ggcset11_3;	} */
 
-.gcset1{ 
-		display:grid;
-		width:25em;	
-		grid-template-areas: 'ggcset11_1 ggcset11_1  ggcset11_2 ggcset11_2  ggcset11_3 ggcset11_3';	
-		grid-area: gcsarea1;padding:0.3em;   
-		grid-gap: 1em;
+ .gcset10{ 
+    display: flex;
+    gap: 1em;
+    flex-direction: row;
+    justify-items: center;
+    align-content: space-around;
 }
+    .gcset10 input[type="datetime"] {
+        width: 100%;
+    }
+    .gcset10 TIME {
+        width: 100%;
+    }
+
+    .gcset10 input[type="checkbox"] {
+    /*** estilo alocado dell SELECT *****/
+            border: 1px solid #fff;
+            width: 6em;
+            font-size: large;
+    }    
+
+ .gcset1{ 
+		display: flex;
+        flex-direction: row;
+        justify-items: center;
+        align-items: baseline;
+		grid-area: gcsarea1;
+}
+
 .gcset1 button {
     color: #fff;
     background: #00007f;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 
 .gcset1 .ianio{ font-size:1em;margin-left: 0em; width: 100%;}
@@ -3296,7 +3566,7 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
   font-size: 15px;
  }
 
-.gcset2{ grid-area: gcsarea2;padding:1em;  }
+.gcset2{ grid-area: gcsarea2;  }
 .gcset2 button {
     color: #fff;
     background:#00007f;
@@ -3304,9 +3574,10 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 		/*borde redondeado*/
 }
-.gcset3{ grid-area: gcsarea3;padding:1em;  }
+.gcset3{ grid-area: gcsarea3;  }
 .gcset3 button {
     color: #fff;
     background:#00007f;
@@ -3314,28 +3585,28 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 		/*borde redondeado*/
 }
 .gcset4{ grid-area: gcsarea4; font-size:3em;margin-left:2em; text-align: center;}
-.gcset5{ grid-area: gcsarea5;padding:1em;   }
-.gcset6{ grid-area: gcsarea6;padding:1em;   }
-.gcset6 
-.gcset7{ grid-area: gcsarea7;padding:1em;   }
+.gcset5{ grid-area: gcsarea5;   }
+.gcset6{ grid-area: gcsarea6;   }
+/* .gcset7{ grid-area: gcsarea7;   } */
 
-
+/* 'gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 '; */
 .grid-CSets21
 {
     display: grid;
 	background-color: #fff;
 	margin-top: 10em;
+    grid-template-areas:    'gcsarea10 gcsarea10 gcsarea10 gcsarea1 gcsarea2 gcsarea3 '
+							'gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea5 gcsarea6 ';
 
-    grid-template-areas:    'gcsarea1 gcsarea1 gcsarea2 gcsarea2 gcsarea3 gcsarea3 '
-							'gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea5 gcsarea6 '
-							'gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 ';
 		/*borde redondeado*/
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 				background-color: #fff;
 		/*borde redondeado*/
 
@@ -3346,12 +3617,34 @@ img.imgjugadorindex{ height: 25px;width: 25px;}
 color:#3964ff;
 font-family: 'Oswald', sans-serif;
 font-size: 10pt;
+
 }
 
 /******************************************************************/
 .CSets211{width: 100%;}
 .gcsets1{ grid-area: gcssarea1;text-align: left;color: #b6ccfa;font-family: 'Oswald', sans-serif; }
+.gcsets1 button {
+    width: -webkit-fill-available;
+    color: #fff;
+    background: #ff00ff;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+}
+
+
 .gcsets2{ grid-area: gcssarea2; }
+.gcsets2 button {
+    width: -webkit-fill-available;
+    color: #fff;
+    background: #ff00ff;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+}
+
 .gcsets2 img{
 	width: 5em;
     height: 3.5em;
@@ -3359,7 +3652,7 @@ font-size: 10pt;
 }
 .gcsets3{ grid-area: gcssarea3;  }
 .gcsets3 input {
-    width: auto;
+    width: -webkit-fill-available;
     height: 3em;
     border: 1px solid #e6e9ea;
     border: 1px solid black;
@@ -3367,14 +3660,31 @@ font-size: 10pt;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
+}
+.gcsets3 input.btnTablero {
+    width: -webkit-fill-available;
+    height: 3em;
+    border: 1px solid #e6e9ea;
+    border: 1px solid black;
+
+    background: #0b0c35;
+    color: #ffca00;
+
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 .gcsets4{ grid-area: gcssarea4; }
 .gcsets4 button {
+    width: -webkit-fill-available;
     color: #fff;
     background: #00007f;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 
 .gcsets5{ grid-area: gcssarea5;   }
@@ -3384,14 +3694,22 @@ font-size: 10pt;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 .gcsets6{ grid-area: gcssarea6; }
+
+.gcsets6 IMG {
+    width: fit-content;
+    height: 2.5em;
+}
+
 .gcsets6 button {
     color: #fff;
     background: #ff00ff;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 
 .gcsets7{ grid-area: gcssarea7; }
@@ -3401,6 +3719,7 @@ font-size: 10pt;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 /*
 .btnSet2021{
@@ -3428,15 +3747,49 @@ font-size: 10pt;
     font: icon;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
     top: 0px;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 	box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
 }
 
 .gcsets8{ grid-area: gcssarea8;width: 100%; }
 
+.btnTablero {
+    width: -webkit-fill-available;
+    height: 3em;
+    border: 1px solid #e6e9ea;
+    border: 1px solid black;
+
+    background: #0b0c35;
+    color: #ffca00;
+
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+}
+
+
+.btnTableroRedrackam{
+	background-color: #af1010;
+    color: white;
+    width: -webkit-fill-available;
+    height: 3em;
+    border: 1px solid #e6e9ea;
+    border: 1px solid black;
+        border: 1px solid #000000;
+        -moz-border-radius: 7px;
+        -webkit-border-radius: 7px;
+        border-radius: 7px;
+}
+
+}
+
+/* CONTROL DE AJUSTES MANUALES DEL SET PANTALLA GRANDE */
 .grillahssetitem1{ grid-area: grhssetitem1}
 .grillahssetitem2{ grid-area: grhssetitem2}
 .grillahssetitem3{ grid-area: grhssetitem3}
@@ -3445,18 +3798,37 @@ font-size: 10pt;
 .grillahssetitem6{ grid-area: grhssetitem6}
 .grillahssetitem7{ grid-area: grhssetitem7}
 
+.grillahssetitem8{ grid-area: grhssetitem8}
+.grillahssetitem81{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    align-items:flex-start;
+
+     grid-area: grhssetitem81;
+ }
+.grillahssetitem9{ grid-area: grhssetitem9;}
+.grillahssetitem91{
+     grid-area: grhssetitem91;
+     display: flex;
+     flex-direction:row;
+     flex-wrap: nowrap;
+     align-items:flex-start;
+ }
+.grillahssetitem10{ grid-area: grhssetitem10;}
 
 .grillahsset
 {
     display: grid;
-    grid-template-areas: 'grhssetitem1 grhssetitem2 grhssetitem3 grhssetitem4 grhssetitem5 grhssetitem6 grhssetitem7';
+    grid-template-areas: 'grhssetitem1 grhssetitem2 grhssetitem3 grhssetitem4 grhssetitem5 grhssetitem6 grhssetitem7'
+                         'grhssetitem81 grhssetitem81 grhssetitem8 grhssetitem91 grhssetitem91 grhssetitem9 grhssetitem10';
     width: 100%;
-    height: 2em;
     padding: 0.2rem;
     /*borde redondeado*/
         border: 1px solid #000000;
         -moz-border-radius: 7px;
         -webkit-border-radius: 7px;
+        border-radius: 7px;
         
         /*borde redondeado*/
 
@@ -3474,39 +3846,71 @@ font-size: 10pt;
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 		/*borde redondeado*/
     
 }
 
-.gcsets8 .RedRackam{
-	background-color: #af1010;
+.grillahsset button.puntosAB {
+	width: 100%;
+    border: 1px solid #e6e9ea;
+    border: 1px solid black;
+    color: #fff;
+    background:#3cb7ff;
+		/*borde redondeado*/
+				border: 1px solid #000000;
+				-moz-border-radius: 7px;
+				-webkit-border-radius: 7px;
+                border-radius: 7px;
+		/*borde redondeado*/
 }
+
+.grillahsset input[type="time"] {
+	width: 7.5em;
+}
+
+.grillahssetitem8 input[type="number"] {
+	width: 7em;
+}
+.grillahssetitem9 input[type="number"] {
+	width: 7em;
+}
+/* CONTROL DE AJUSTES MANUALES DEL SET PANTALLA GRANDE */
+
+.gcsets4 .RedRackam{
+	background-color: #af1010;
+
+}
+
+
 .gcsets9{ grid-area: gcssarea9; }
 
 
-.grid-CSets211
+.grid-VerSets211
 {
     display: grid;
 	background-color: #fff;
 	margin-top: 4em;
-    grid-template-areas:    'gcssarea4 gcssarea5 gcssarea6 gcssarea7 gcssarea3 gcssarea8 gcssarea2'
-							'gcssarea1 gcssarea1 gcssarea1 gcssarea9 gcssarea9 gcssarea9 gcssarea9';
+    grid-template-areas:    'gcssarea3 gcssarea5 gcssarea6 gcssarea7 gcssarea2 gcssarea8 gcssarea8'
+							'gcssarea1 gcssarea1 gcssarea1 gcssarea1 gcssarea1 gcssarea8 gcssarea8';
 							
 		/*borde redondeado*/
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 				background-color: #3482bf;
 		/*borde redondeado*/
 
 }
 
-.grid-CSets211 > div {
+.grid-VerSets211 > div {
 	text-align: left;
 	color: #b6ccfa;
 	font-family: 'Oswald', sans-serif;
 	padding-top:0.5rem;
 }
+
 input.#verset.btnPop2 {
 	width: auto;
     height: 3em;
@@ -3514,6 +3918,34 @@ input.#verset.btnPop2 {
     border: 1px solid black;
     background: #57e61a;
 }
+
+.grid-CSets311
+{
+    display: grid;
+	background-color: #fff;
+	margin-top: 4em;
+    grid-template-areas:    'gcssarea1 gcssarea2 gcssarea3 gcssarea4'
+                            'gcssarea8 gcssarea8 gcssarea6 gcssarea6'
+                            'gcssarea5 gcssarea5 gcssarea5 gcssarea5'
+							'gcssarea7 gcssarea7 gcssarea7 gcssarea7 '; 
+							
+		/*borde redondeado*/
+				border: 1px solid #000000;
+				-moz-border-radius: 7px;
+				-webkit-border-radius: 7px;
+                border-radius: 7px;
+				background-color: #3482bf;
+		/*borde redondeado*/
+
+}
+
+.grid-CSets311 > div {
+	text-align: left;
+	color: #b6ccfa;
+	font-family: 'Oswald', sans-serif;
+	padding-top:0.5rem;
+}
+
 /******************************************************************/
 /**nuevo formato de GRID-CSETS**/
 
@@ -3554,7 +3986,7 @@ input.#verset.btnPop2 {
 {
     width: 4em;
     height: 4em;
-    margin-top: 1.5em;
+    /* margin-top: 1.5em; */
 }
 .imgEstadoIndex
 {
@@ -3924,10 +4356,10 @@ label
 {
     display: none;
 }
-#icity2
+/* #icity2
 {
     display: none;
-}
+} */
 .fecDdeAscDsc2
 {
     display: none;
@@ -3974,19 +4406,42 @@ div .clubesWide
 	grid-area: gridcCompesIt4;
 }
 
+.gridcCompesIt411{
+	grid-area: gridcCompesIt411;
+}
+.gridcCompesIt412{
+	grid-area: gridcCompesIt412;
+}
+
+.gridcCompesIt421{
+	grid-area: gridcCompesIt421;
+}
+.gridcCompesIt422{
+	grid-area: gridcCompesIt422;
+}
+
 .gridcCompesIt5{
 	grid-area: gridcCompesIt5;
 }
 .GridConfigCompes{
 	display: grid;
 	grid-template-areas: 'gridcCompesIt1 gridcCompesIt2 gridcCompesIt3 gridcCompesIt4'
+                         'gridcCompesIt411 gridcCompesIt412 gridcCompesIt421 gridcCompesIt422'
 						 'gridcCompesIt5 gridcCompesIt5 gridcCompesIt5 gridcCompesIt5' ;
 	
 }
 
 /* formularios de ingreso de imagenes */
 .itemform1{grid-area: itemform1;}
-.itemform2{grid-area: itemform2; overflow: hidden; }
+.itemform2{
+    grid-area: itemform2; overflow: hidden;
+    background-color: #1F5F74;
+    color: white;
+    padding: 6px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+
+}
 .itemform3{grid-area: itemform3;}
 .itemform31{grid-area: itemform31;}
 .itemform33{grid-area: itemform33;}
@@ -4002,6 +4457,8 @@ div .clubesWide
 
 	
 }
+
+
 
 .grillaFormularioHojas DIV{
 	padding: 0.5rem;
@@ -4020,6 +4477,22 @@ div .clubesWide
     border: 1px solid #dfdfdfc9c;
     background: #fff;
 }
+
+
+#AltaCategoria
+{
+	font-size: 15px;
+    width: 55px;
+    height: 55px;
+    transition: .3s;
+    color: #fff;
+    border: 1px solid black;
+    border-radius: 100%;
+    background:#d12e8f;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+	/*margin-left: 90%;*/
+}
+
 .gridControl #formConfig button
 {
 	font-size: 15px;
@@ -4248,7 +4721,7 @@ div .clubesWide
 	justify-content: space-between;
 	align-items:flex-start;
 
-    display: flex;
+
     /* width: 50%;
     margin: 0 auto;
 
@@ -4316,11 +4789,14 @@ minigrilla2
 .gridEdad
 {
     display: grid;
-	grid-template-areas: 'itmgEd1 itmgEd2 itmgEd3 itmgEd4';
+    display: flex;
+	/* grid-template-areas: 'itmgEd1 itmgEd2 itmgEd3 itmgEd4'; */
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     margin: 0 auto;
 
-    grid-gap: 5px;
+    /* grid-gap: 5px; */
 }
 
 
@@ -4430,7 +4906,319 @@ minigrilla2
 }
 
 
+/* GRILLA DE BUSQUEDA TAMAÑO DE PANTALLA GRANDE*/
 
+.FiltrosContenedor.visible {
+    display: flex;  /* Or your desired flexbox properties */
+    flex-wrap: wrap;  /* Ensure wrapping if needed */
+    /* Other styles for the container */
+    flex: 1;
+  }
+
+  .FiltrosContenedor {
+    display: none;  /* Or your desired flexbox properties */
+  }  
+.Acciones{
+    display: flex;
+    flex-wrap: nowrap; /* Para mostrar cada DetalleGrillaTabla en una sola línea */
+    border: 1px solid #ccc;
+    margin-bottom: 10px; /* Espacio entre DetalleGrillaTabla */
+        flex: 1; /* Para que cada div dentro de DetalleGrillaTabla ocupe el mismo espacio */
+    padding: 10px;
+}	
+
+
+  .ContieneGrillaBusqueda{
+    display: flex;
+    margin-top: 4.8em; /* Ajusta este valor según la altura de tu encabezado fijo */
+
+  }
+
+    .DetalleGrillaBusqueda {
+        display: flex;
+        flex-wrap: nowrap; /* Para mostrar cada DetalleGrillaTabla en una sola línea */
+        border: 1px solid #ccc;
+        margin-bottom: 10px; /* Espacio entre DetalleGrillaTabla */
+    }
+    
+    .DetalleGrillaBusquedaPartidos{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* Para mostrar cada DetalleGrillaTabla en una sola línea */
+        border: 1px solid #ccc;
+        margin-bottom: 10px; /* Espacio entre DetalleGrillaTabla */        
+        max-width: 50%;
+        flex-grow: 1;
+        }    
+
+        .DetalleGrillaBusquedaPartidos > div {
+            /*flex: 1; /* Para que cada div dentro de DetalleGrillaTabla ocupe el mismo espacio */
+            flex-basis: 1;
+            padding: 10px;
+        }    
+    .DetalleGrillaBusqueda > div {
+        flex: 1; /* Para que cada div dentro de DetalleGrillaTabla ocupe el mismo espacio */
+        padding: 10px;
+    }
+
+    .DetalleGrillaBusquedaPartidos  SELECT {
+        flex-basis: auto; /* Para que cada div dentro de DetalleGrillaTabla ocupe el mismo espacio */
+    }            
+
+    .DetalleGrillaBusqueda > div > span {
+            color: #22788d;
+            font-size: 1.8em;
+    }
+
+    .barraFiltrosCancha{
+        background-color:#22c1e4;
+        color: #fff;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: initial; /* Para mostrar cada DetalleGrillaTabla en una sola línea */
+        align-items: center;
+        border: 1px solid #ccc;
+        
+        flex-grow: 1;
+      }    
+      .barraFiltrosCanchaDark{
+        color: #001;
+      }          
+
+      .barraFiltrosFechaCancha{
+        background-color:#22c1e4;
+        color: #001;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: initial; /* Para mostrar cada DetalleGrillaTabla en una sola línea */
+        align-items:flex-start;
+        border: 1px solid #ccc;
+        flex-grow: 1;
+        font-size: 15px;
+        gap:0.2rem;
+      }    
+
+
+      .barraFiltrosOscuro{
+        background-color: #001;
+        color: #fff;
+      } 
+
+/* GRILLA DE BUSQUEDA */
+
+.barraActiva{
+    background-color:#203a54;
+    color: #fff;
+  }
+
+
+.inputSearchPartido{
+    width: 100%;
+}        
+
+.bt-Ocultar{
+    width: 3em;
+    height: 2em;
+    background: #22c1e4;
+    color: #fff;
+    font-weight:lighter;
+    font-size: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+}
+
+.BotonAccionSuperior{
+
+    display: flex;
+    flex-direction: row-reverse; /* Para mostrar cada DetalleGrillaTabla en un renglón distinto */
+}
+
+  .ContieneGrillaTabla {
+    display: flex;
+    flex-direction: column; /* Para mostrar cada DetalleGrillaTabla en un renglón distinto */
+    /* margin-top: 4.8em; Ajusta este valor según la altura de tu encabezado fijo */
+  }
+
+  .DetalleGrillaTabla {
+    display: flex;
+    flex-wrap: wrap; /* Para mostrar cada DetalleGrillaTabla en una sola línea, pero que se corte cuando la pantalla es muy pequeña */
+    border: 1px solid #ccc;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Espacio entre DetalleGrillaTabla */
+  }
+
+   .DetalleGrillaTabla > div {
+    flex: 1; /* Para que cada div dentro de DetalleGrillaTabla ocupe el mismo espacio */
+    padding: 10px;
+  } 
+
+  .DetalleGrillaTabla > div > span {
+        color: #22788d;
+        font-size: 1.8em;
+  }
+  .DetalleGrillaTabla.barraActiva > div > span.icon-cross {
+    color: #fff;
+  }
+  .DetalleGrillaTabla.barraActiva > div > span.icon-pie-chart    {
+    color: #fff;
+ }
+
+  .DetalleGrillaTabla .icon-upload {
+    color: #fff;
+}
+
+  .barraCancha{
+    background:#e4717a;
+    color: #fff;
+  }
+
+  /* TAMAÑO DE PANTALLA MAXIMO */
+  .DetalleGrillaTablaGPartidos {
+    display: grid;
+    grid-template-areas:
+                        'Competencia Competencia     Competencia '
+                        'accionesabm FechaHora       FechaHora'
+                        'txtPartido  Hora            Categoria'
+                        'escudoLocal escudoVisitante escudoVisitante'
+                        'Cancha      Cancha          Cancha'
+                        'Sede        Sede            algo'
+                        'estado      estado          estado';
+    box-shadow: 0 8px 10px -4px rgba(0, 0, 0, .6);
+    border-radius: 5px;
+    /* background: white; */
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    gap: 0.4rem;
+} 
+
+.accionesabm {
+    grid-area: accionesabm;
+    /* grid-area: itemgp1; */
+    text-wrap: nowrap;
+  }
+  
+  .txtPartido {
+    grid-area: txtPartido;
+    font-size: xx-large;
+    text-wrap: nowrap;
+    /* grid-area: itemgp2; */
+  }
+  
+  .FechaHora {
+    grid-area: FechaHora;
+    /* grid-area: itemgp3; */
+    font-size: xx-large;
+    text-wrap: nowrap;
+  }
+  
+  .Hora {
+    grid-area: Hora;
+    /* grid-area: itemgp4; */
+    font-size: large;
+
+  }
+
+  
+  .escudoLocal {
+    grid-area: escudoLocal;
+    /* grid-area: itemgp5; */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: calc(5);
+    align-items: center;
+  }
+  
+  
+  .NomClub{
+    font-size: medium;
+  }
+
+  
+  .escudoVisitante {
+    grid-area: escudoVisitante;
+    /* grid-area: itemgp6; */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: calc(5);
+    align-items: center;
+  }
+  
+  .Competencia {
+    grid-area: Competencia;
+    /* grid-area: itemgp7; */
+    font-size: xx-large;
+
+    width: 100%;
+    box-shadow: 0 8px 10px -4px rgba(0, 0, 0, .6);
+    border-radius: 5px;
+    background: white; 
+    border: 1px solid #ccc;
+
+}
+
+.DetalleGrillaTablaGPartidos.Finalizado .Competencia {
+    color:#002234
+}
+  
+  .Categoria {
+    grid-area: Categoria;
+    /* grid-area: itemgp8; */
+    font-size: large;
+
+  }
+  
+  .Cancha {
+    grid-area: Cancha;
+    /* grid-area: itemgp9; */
+    
+  }
+  
+  .Sede {
+    grid-area: Sede;
+    /* grid-area: itemgp10; */
+    
+  }
+
+  
+  .IDGestionPartido {
+    grid-area: IDGestionPartido;
+    /* grid-area: itemgp11; */
+    text-wrap:nowrap;
+    /* display: none; */
+  }
+  
+.estado{
+    grid-area: estado;
+    /* grid-area: itemgp12; */
+}	
+
+
+.DetalleGrillaTablaGPartidos > div > span {
+    /* color: #22788d; */
+    font-size: 1.8em;
+}
+.DetalleGrillaTablaGPartidos.barraActiva > div > span.icon-cross {
+color: #fff;
+}
+.DetalleGrillaTablaGPartidos.barraActiva > div > span.icon-pie-chart    {
+color: #fff;
+}
+
+.DetalleGrillaTablaGPartidos .icon-upload {
+color: #fff;
+}
+
+
+  
 .ffclubes1{
 	grid-area: ffclub1;
 }
@@ -4501,7 +5289,7 @@ padding: 1rem;
 
 #formConfig select
 {
-    width: 60%;
+    width: 100%;
 }
 #SetMaxCate
 {
@@ -4828,21 +5616,36 @@ select#icity.SelList{
     background-color: #1883ba;
 }
 
+.itemCat21X1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .formCategoria .grillaCat21{
 	display: grid;
-	grid-template-areas: 'itemCat219 itemCat219 itemCat219 itemCat219'  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1em;
+	/* grid-template-areas: 'itemCat219 itemCat219 itemCat219 itemCat219'  
 					 	 'itemCat211 itemCat211 itemCat211 itemCat211'
 						 'itemCat212 itemCat212 itemCat213 itemCat213'
 						 'itemCat214 itemCat214 itemCat214 itemCat214'
-						 'itemCat215 itemCat216 itemCat217 itemCat218';
+						 'itemCat215 itemCat216 itemCat217 itemCat218'; */
 	/** BORDES REDONDEADOS **/
 	    border: 1px solid #000000;
 	    -moz-border-radius: 7px;
 	    -webkit-border-radius: 7px;
+        border-radius: 7px;
 	/** BORDES REDONDEADOS **/
 padding: 0.3em;
 grid-gap: 0.5em;
+width: 100%;
 }
+
+
+
 
 .itmABMCat1{ grid-area: itmabmcat1;}
 .itmABMCat2{ grid-area: itmabmcat2;}
@@ -5270,7 +6073,7 @@ div.item3.fondoNegro
 }
 #competencia
 {
-    float: left;
+    /* float: left; */
 
     width: 100%;
     padding-left: 0em;
@@ -5668,6 +6471,9 @@ div.item3.fondoNegro
 }
 
 /**********************************+ GRID CONTAINER DE TIEMPO TRANSCURRIDO ********/
+.itemA_00{grid-area: itemA_00;}
+.itemA_01{grid-area: itemA_01;}
+
 .itemA_1{grid-area: itemA_1;}
 .itemA_2{grid-area: itemA_2;}
 .itemA_3{grid-area: itemA_3;}
@@ -5676,12 +6482,24 @@ div.item3.fondoNegro
 .itemA_6{grid-area: itemA_6;}
 .itemA_7{grid-area: itemA_7;}
 .itemA_8{grid-area: itemA_8;}
+
+.itemA_9{grid-area: itemA_9;}
+.itemA_10{grid-area: itemA_10;}
+
+.itemA_11{grid-area: itemA_11;}
+.itemA_12{grid-area: itemA_12;}
+
+
+
 .grid-containerAlfa{
 	display:grid;
-	grid-template-areas: 'itemA_1 itemA_2'
-						 'itemA_3 itemA_4' 
+    grid-template-areas: 'itemA_3 itemA_4' 
+                         'itemA_1 itemA_2'
+                         'itemA_00 itemA_01'
 						 'itemA_5 itemA_6' 
-						 'itemA_7 itemA_8';
+						 'itemA_7 itemA_8'
+                         'itemA_9 itemA_10'
+                         'itemA_11 itemA_12';
 	/** BORDES REDONDEADOS **/
 	    border: 1px solid #000000;
 /*	    -moz-border-radius: 7px;
@@ -5984,17 +6802,18 @@ div.item3.fondoNegro
 {
     height: 2em;
 }
+/* TAMAÑO GRANDE */
 .regridjugPop
 {
-    display: grid;
-	
-    width: 100%;
-
-    border: 1px solid white;
+    display: flex;
+	flex-direction: row;
+     width: 100%; 
+    justify-content:flex-start;
+    align-items:center;
 
 /*    grid-template-columns: 15% 40% 100%;*/
 /*modificado el 23.11.2022 porque quedó mal acomodado*/
-    grid-template-columns: 34% 30% 100%;    
+    
 }
 
 .regjug11
@@ -6042,21 +6861,23 @@ div.item3.fondoNegro
 
 .regridjug1
 {
-    display: grid;
-	grid-template-areas: 'regjug11 regjug12 regjug13 regjug135 regjug14 regjug15 regjug16 regjug17 regjug175';
- 
- 
-    padding-bottom: 0em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* display: grid;
+	grid-template-areas: 'regjug11 regjug12 regjug122 regjug13 regjug135 regjug14 regjug15 regjug16 regjug17 regjug175'; */
+
 	/** BORDES REDONDEADOS **/
 	    border: 1px solid #000000;
 	    -moz-border-radius: 7px;
 	    -webkit-border-radius: 7px;
+        border-radius: 7px;
 	/** BORDES REDONDEADOS **/
     background-color: #fff;
     margin-left: 2em;
     margin-right: 2em;
     padding: .5rem;
-
 
 }
 .regridjug1.BAJA{
@@ -6885,6 +7706,7 @@ button.punta.updposiciones{
 
 .bordeRojo{
 	border: 13px solid #3ed330;
+ 
 }
 .NoBorde{
 	border: 0px solid #ffffff;
@@ -7055,8 +7877,100 @@ button.punta.updposiciones{
                          'grillaActivos_5 grillaActivos_6 grillaActivos_7 grillaActivos_8'
                          'grillaActivos_9 grillaActivos_9 grillaActivos_9 grillaActivos_9';
     margin: auto;
-    overflow: auto;
+
 }
+
+.grillaLIBActivos_1{
+	grid-area: grillaLIBActivos_1;
+}
+.grillaLIBActivos_2{
+	grid-area: grillaLIBActivos_2;	
+	width:130px;	
+}
+.grillaLIBActivos_3{
+	grid-area: grillaLIBActivos_3;
+}
+.grillaLIBActivos_4{
+	grid-area: grillaLIBActivos_4;
+}
+
+/* RENGLON DE ORDEN */
+.grillaLIBActivos_5{
+	grid-area: grillaLIBActivos_5;
+}
+
+.grillaLIBActivos_6{
+	grid-area: grillaLIBActivos_6;
+}
+.grillaLIBActivos_7{
+	grid-area: grillaLIBActivos_7;
+}
+.grillaLIBActivos_8{
+	grid-area: grillaLIBActivos_8;
+}
+/* RENGLON DE ORDEN */
+.grillaLIBActivos_9{
+	grid-area: grillaLIBActivos_9;
+}
+
+.grillaLIBActivos_9 INPUT{
+	width: 100%;
+    font-size: 1.5em;
+}
+
+
+.GrillaLiberosActivos{
+	display:grid;
+	grid-template-areas: 'grillaLIBActivos_1 grillaLIBActivos_2 grillaLIBActivos_3 grillaLIBActivos_4'
+                         'grillaLIBActivos_5 grillaLIBActivos_6 grillaLIBActivos_7 grillaLIBActivos_8'
+                         'grillaLIBActivos_9 grillaLIBActivos_9 grillaLIBActivos_9 grillaLIBActivos_9';
+    margin: auto;
+
+}
+
+.GrillaLiberosActivos  DIV {
+    width: 100%;
+    font-size: 1em;
+}  
+
+.GrillaLiberosActivos BUTTON{
+    width: 100%;
+	/** BORDES REDONDEADOS **/
+	    border: 1px solid #000000;
+	    -moz-border-radius: 7px;
+	    -webkit-border-radius: 7px;
+        -webkit-border-radius: 7px;
+	/** BORDES REDONDEADOS **/
+    background: #f99;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    font: icon;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    top: 0px;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
+.GrillaLiberosActivos BUTTON.botonMas{
+	background-color: #45318e;
+    font-size: 2em;
+}
+
+.GrillaLiberosActivos BUTTON.botonMenos{
+	background-color: #f5b487;
+    font-size: 2em;
+}
+
+.grillaLIBActivos_6 INPUT{
+	width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+}
+
 
 .fondoActivo{
 	background-color: #1fc9c5;
@@ -7324,6 +8238,11 @@ button.punta {
     -webkit-border-radius: 7px;
 }
 
+.dosAcciones
+{
+	display: grid;
+	grid-template-rows: 50% 50%;
+}
 
 .CabGrillaSuplentes{
 	display: grid;
@@ -7370,15 +8289,20 @@ button.punta {
 .TabsGeneral .ul{
 	/* //background-color: lightblue; */
 	display: flex;
-	flex-flow: row nowrap; 
+	/* flex-flow: column; 
 	justify-content: flex-start;
-	align-items: strecht;
-	list-style-type: none;
-	padding-inline-start: 0px;
-
+	align-items: strecht;*/
+	list-style-type: none; 
+	padding-inline-start: 10px;
+    flex-wrap: wrap; 
 }
 
+
 .TabsGeneral .li{
+    flex-grow: 0; /*se agranda en caso de no cubrir el espacio que necesita*/
+    flex-shrink: 1; /*tamaño maximo que ocupará segun el contenido, se achican en proporcion a su cotenido*/
+    flex-basis: auto;
+
 	background-color: #1abde6;
 	padding: 1em;
 	margin: 0 1em 0 0;
@@ -7393,11 +8317,18 @@ button.punta {
 	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 	 box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+     width: 45%;
 	
 }
 .TabsGeneral .li.activo{
 	background-color: #01479c;
 }
+
+.TabsGeneral .li.visitante{
+    background: rgb(240, 141, 12);
+}
+
+
 .TabsGeneral .SubTab{
 	 min-height: 4VH; /*10vh; */
 
@@ -7409,7 +8340,31 @@ button.punta {
 }
 /* ESTRUCTURA DE LOS TABS DENTRO DEL CONTROLADOR DEL PARTIDO */
 
+/* TAMAÑO DE PANTALLA MAXIMO */
+.imglogocompetenciaVer
+{
+    height: 100%;
+    width: 100%;
+}
 
+.imglogocompetencia
+{
+    height: 100%;
+    width: 100%;
+}
+
+.HoraSimuladaBlock
+{
+    display:flex;
+    flex-direction:row;
+}
+
+.Finalizado{background-color:#af1010;color:#fff;}
+.Cursando{background-color:#1d8211;color:#fff;}
+.Programado{background:#ecd113;}
+.Desactivado{background-color:dimgray ;}						
+
+/* TAMAÑO DE PANTALLA MAXIMO */
 
 @media (min-width:451px) and (max-width: 768px)
 {
@@ -7441,7 +8396,7 @@ font-size: 1em;
     
     header
     {
-        position: fixed;
+        /* position: fixed; */
 
         width: 100%;
         height: 3rem;
@@ -7454,6 +8409,18 @@ font-size: 1em;
     background: #f9f9f9;
     margin-top: 6em;
 }   
+/* PARA TAMAÑOS DE PANTALLAS NO GRANDES */
+.regridjugPop
+{
+    display: flex;
+	flex-direction: row;
+    justify-content:space-around;
+
+/*    grid-template-columns: 15% 40% 100%;*/
+/*modificado el 23.11.2022 porque quedó mal acomodado*/
+    
+}
+
 
 /********************control paginacion***************************/
 .itemcontrolpag1{
@@ -7925,16 +8892,25 @@ font-size: 15px;
         display: grid;
         width: 100%;
         margin-top: 7em;
-        background-color: #d7f1f4;
+        background-color: #fff;
 
-        grid-template-areas: 'itemb1 itemb2 itemb3 itemb4'
+        /* grid-template-areas: 'itemb1 itemb2 itemb3 itemb4'
         					'itemb5 itemb6 itemb8 itemb8'
         					'itemb7 itemb7 itemb7 itemb7'
         					'itemb9 itemb10 itemb11 itemb12'
-        					'itemb13 itemb14 itemb15 itemb16';
-				border: 1px solid #000000;
+        					'itemb13 itemb14 itemb15 itemb16'; */
+                            grid-template-areas:
+                            'itemb7 itemb7 itemb7 itemb7'
+                            'itemb5 itemb6 itemb6 itemb6'
+                            'itemb1 itemb1 itemb2 itemb2'
+                            'itemb3 itemb3 itemb4 itemb4'
+        					'itemb9 itemb9 itemb10 itemb10 '
+                            'itemb11 itemb11 itemb12 itemb12'
+							'itemb15 itemb14 itemb13 itemb16';	
+            border: 1px solid #000000;
 			-moz-border-radius: 7px;
 			-webkit-border-radius: 7px;
+            border-radius: 7px;
 			padding: 7px;
 	
     }
@@ -7951,7 +8927,7 @@ font-size: 15px;
 
     .formbuscar SELECT
     {
-     width: 50%;
+     width: 100%;
     }
     .itemBusDate1{
 		grid-area: itemdateb1;
@@ -7984,6 +8960,12 @@ font-size: 15px;
     {
 		width: 100%;
     }    
+    .formbuscar INPUT[TYPE="TEXT"]
+    {
+		width: 100%;
+        height: auto;
+        font-size: 1.5em;
+    }        
 /*busqueda minima en ADMINISTRAR APP */
 	.itemBusc1v20{
 		grid-area: itemb1;
@@ -7994,7 +8976,14 @@ font-size: 15px;
 	.itemBusc3v20{
 		grid-area: itemb3;
 	}
-			
+	
+    .itemBusc4v20{
+		grid-area: itemb4;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;        
+	}
+
     .formbuscarv20
     {
         display: grid;
@@ -8003,7 +8992,8 @@ font-size: 15px;
         background-color: #0056af;/*#d5cf22; /*d7f1f4;*/
         color: #fff;
         grid-template-areas: 'itemb1 itemb1 itemb1 itemb1 itemb1'
-        					'itemb2 itemb2 itemb3 itemb3 itemb3';
+        					'itemb2 itemb2 itemb3 itemb3 itemb3'
+                            'itemb4 itemb4 itemb4 itemb4 itemb4';
 				border: 1px solid #000000;
 			-moz-border-radius: 7px;
 			-webkit-border-radius: 7px;
@@ -8486,9 +9476,10 @@ font-size: 15px;
     width: 100%;
     grid-gap: 1px;
 /*borde redondeado*/
-		border: 1px solid #000000;
+		/* border: 1px solid #000000; */
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 		padding: 5px;        
 /*    grid-template-columns: 60% 20% 45%;*/
 }    
@@ -8952,7 +9943,7 @@ font-size: 15px;
 
 /**nuevo formato de GRID-CSETS**/
 /*.gcset1{ grid-area: gcsarea1;padding:1em;font-size:3em;margin-left:2em; }*/
-.gcset1 .ianio{ font-size:1em;margin-left: 1em; width: 50%;}
+.gcset1 .ianio{ font-size:1em;}
 
 .gcset1.hache3{ 
   text-align: left;
@@ -8962,15 +9953,26 @@ font-size: 15px;
  }
 
 
- .ggcset11{grid-area: ggcset11_1;margin-left: auto;margin-right: auto;	}
+ .ggcset11{grid-area: ggcset11_1;}
  .ggcset12{grid-area: ggcset11_2;	}
- .ggcset13{grid-area: ggcset11_3;	}
+ /* .ggcset13{grid-area: ggcset11_3;	} */
+
+ .gcset10{ 
+    display: flex;
+    gap: 1em;
+    flex-direction: row;
+    justify-items: center;
+    align-content: space-around;
+    height: max-content;
+}
 
 .gcset1{ 
-		display:grid;
-		
-		grid-template-areas: 'ggcset11_1 ';	
-		grid-area: gcsarea1;padding:0.3em;   
+		display: flex;
+        flex-direction: row;
+        justify-items: center;
+        align-items: baseline;
+		/* grid-template-areas: 'ggcset11_1 ggcset11_2 ggcset11_3';	 */
+		/* grid-area: gcsarea1;padding:0.3em;    */
 }
 
 .gcset1 button {
@@ -8979,41 +9981,47 @@ font-size: 15px;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 
 
 
-
-.gcset2{ grid-area: gcsarea2;padding:1em;  }
+.DescripcionesGrande
+{
+    align-items: center;
+    font-size: large;
+    padding-left: 3em;
+}
+.gcset2{ grid-area: gcsarea2;  }
 .gcset2 button {
     color: #fff;
     background: #00007f;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
-.gcset3{ grid-area: gcsarea3;padding:1em;  }
+.gcset3{ grid-area: gcsarea3; }
 .gcset3 button {
     color: #fff;
     background: #00007f;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 .gcset4{ grid-area: gcsarea4; font-size:3em;margin-left:2em; text-align: center; }
-.gcset5{ grid-area: gcsarea5;padding:1em;   }
-.gcset6{ grid-area: gcsarea6;padding:1em;   }
-.gcset7{ grid-area: gcsarea7;padding:1em;   }
+.gcset5{ grid-area: gcsarea5;   }
+.gcset6{ grid-area: gcsarea6;   }
 
 
 .grid-CSets21
 {
     display: grid;
 	background-color: #fff;
-    grid-template-areas:    'gcsarea1 gcsarea1 gcsarea1 gcsarea1 gcsarea5 gcsarea6 '
-    						'gcsarea2 gcsarea2 gcsarea2 gcsarea3 gcsarea3 gcsarea3 '
-							'gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea4 '
-							'gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 ';							
+                            
+    grid-template-areas:    'gcsarea10 gcsarea10 gcsarea2 gcsarea3 gcsarea6 gcsarea5'
+                            'gcsarea4  gcsarea4  gcsarea4 gcsarea4 gcsarea1 gcsarea1 ';
         /*borde redondeado*/
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
@@ -9029,6 +10037,7 @@ font-size: 15px;
 color:#3964ff;
 font-family: 'Oswald', sans-serif;
 font-size: 10pt;
+
 }
 
 /******************************************************************/
@@ -9067,14 +10076,18 @@ font-size: 10pt;
     font: icon;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
     top: 0px;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 	box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);    
 }   
 
 .gcsets8{ grid-area: gcssarea8; }
+
+/* CONTROLES DE AJUSTES MANUALES DEL SET, PANTALLA MEDIANA */
 .grillahssetitem1{ grid-area: grhssetitem1}
 .grillahssetitem2{ grid-area: grhssetitem2}
 .grillahssetitem3{ grid-area: grhssetitem3}
@@ -9083,22 +10096,43 @@ font-size: 10pt;
 .grillahssetitem6{ grid-area: grhssetitem6}
 .grillahssetitem7{ grid-area: grhssetitem7}
 
+.grillahssetitem8{ grid-area: grhssetitem8;}
+.grillahssetitem81{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    align-items:flex-start;
+
+     grid-area: grhssetitem81;
+    }
+.grillahssetitem9{ grid-area: grhssetitem9;}
+.grillahssetitem91{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    align-items:flex-start;
+
+    grid-area: grhssetitem91;
+}
+.grillahssetitem10{ grid-area: grhssetitem10;}
+
 
 .grillahsset
 {
     display: grid;
-    grid-template-areas: 'grhssetitem1 grhssetitem2 grhssetitem3 grhssetitem4 grhssetitem5 grhssetitem6 grhssetitem7';
+    grid-template-areas: 'grhssetitem7 grhssetitem7 grhssetitem7 grhssetitem10 grhssetitem10 grhssetitem10 grhssetitem10'
+                         'grhssetitem1 grhssetitem2 grhssetitem3 grhssetitem4 grhssetitem5 grhssetitem6 grhssetitem6'
+                         'grhssetitem81 grhssetitem81 grhssetitem8 grhssetitem91 grhssetitem91 grhssetitem9 grhssetitem9';
     width: 100%;
-    height: 2.5em;
+    height: 5em;
 
     padding: 0.2rem;
     /*borde redondeado*/
         border: 1px solid #000000;
         -moz-border-radius: 7px;
         -webkit-border-radius: 7px;
-        
+        border-radius: 7px;
         /*borde redondeado*/
-   
 }
 
 .grillahsset button {
@@ -9112,31 +10146,59 @@ font-size: 10pt;
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
+		/*borde redondeado*/
+}
+
+/* AGREGO LOS PUNTOS LOCAL Y VISITANTE MAS BOTON UPDATE */
+.grillahsset button.puntosAB {
+	width: 100%;
+    border: 1px solid #e6e9ea;
+    border: 1px solid black;
+    color: #fff;
+    background:#3cb7ff;
+		/*borde redondeado*/
+				border: 1px solid #000000;
+				-moz-border-radius: 7px;
+				-webkit-border-radius: 7px;
+                border-radius: 7px;
 		/*borde redondeado*/
     
 }
+.grillahsset input[type="time"] {
+	width: 100%;
+}
+.grillahssetitem8 input[type="number"]{
+	width: 100%;
+}
+.grillahssetitem9 input[type="number"]{
+	width: 100%;
+}
+/* AGREGO LOS PUNTOS LOCAL Y VISITANTE MAS BOTON UPDATE */
+/* CONTROLES DE AJUSTES MANUALES DEL SET, PANTALLA MEDIANA */
 
 .gcsets9{ grid-area: gcssarea9; }
 
-
-.grid-CSets211
+/* gcssarea4 no se esta usando aun  */
+.grid-VerSets211
 {
     display: grid;
 	background-color: #fff;
 	margin-top: 2em;
-    grid-template-areas:    'gcssarea4 gcssarea5 gcssarea6 gcssarea7 gcssarea7'
-    						'gcssarea3 gcssarea2 gcssarea8 gcssarea9 gcssarea9'
+    grid-template-areas:    'gcssarea3 gcssarea5 gcssarea6 gcssarea7 gcssarea2'
+    						'gcssarea8 gcssarea8 gcssarea8 gcssarea8 gcssarea8'
 							'gcssarea1 gcssarea1 gcssarea1 gcssarea1 gcssarea1';
 		/*borde redondeado*/
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 				background-color: #3482bf;
 		/*borde redondeado*/
 
 }
 
-.grid-CSets211 > div {
+.grid-VerSets211 > div {
 	text-align: left;
 	color: #b6ccfa;
 	font-family: 'Oswald', sans-serif;
@@ -9564,8 +10626,11 @@ width: auto;
 }
 
 
-
+.CantidadJugadores{
+    font-size: 1.5em;    
+}
 /* PUNTAJE DEL SET QUE SE ESTA JUGANDO ACTUALMENTE*/
+
 .numero
 {
     font-size: 4em;
@@ -9684,6 +10749,7 @@ width: auto;
 .control1 SELECT{ font-size:15px; height: 3em;width: 4.5em;padding: 0;margin: 0;}
 
 .control2{ grid-area: ct212; }
+    .control2 BUTTON { height: -webkit-fill-available; }
 .control3{ grid-area: ct213; }
 .control4{ grid-area: ct214; }
 
@@ -10006,23 +11072,23 @@ margin: auto;
 /************************************************/
 .gridAcceso
 {
-    display: grid;
-    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
     grid-gap: 1px;
-    grid-template-columns: 100%;
 /*borde redondeado*/
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 		padding: 5px;    
     color:#220655;
     font-family: 'Oswald', sans-serif;
     background-color: #fff;
-	margin-left: 0;
-	margin-right: 0;
+    justify-content: baseline;
+    align-items: center;
 /*borde redondeado*/
-    
 }
+
 .gridAcceso div
 {
     height: 70%;
@@ -10034,13 +11100,12 @@ margin: auto;
 }
 .contieneBotones
 {
-    display: grid;
-
-    padding-left: 10%;
-    padding-right: 10%;
-
-    grid-template-columns: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
+
 .gridAcceso button
 {
     display: none;
@@ -10237,8 +11302,9 @@ button.punta.updposiciones{
 .regridjug1
 {
     display: grid;
-	grid-template-areas: 'regjug11 regjug11 regjug12 regjug12 regjug16 regjug17 regjug175' 
-						  'regjug14 regjug15 regjug15 regjug13 regjug13 regjug135 regjug135';
+	grid-template-areas: 'regjug11 regjug11 regjug11 regjug12 regjug12 regjug12 regjug135 regjug135 regjug175'
+                         'regjug14 regjug15 regjug15 regjug15 regjug16 regjug16 regjug17 regjug17 regjug17 ' 
+                         'regjug13  regjug13 regjug13 regjug13  regjug13 regjug13 regjug122 regjug122 regjug122 ' ;
     padding-bottom: 0em;
 	/** BORDES REDONDEADOS **/
 	    border: 1px solid #000000;
@@ -10259,13 +11325,129 @@ button.punta.updposiciones{
 		background-color: #a53887;
 		color:#fff;
 	/** BORDES REDONDEADOS **/
-	
-}
-.regridjug1 DIV
-{
-	margin-bottom: 1em;
 
 }
+
+
+
+/* TAMAÑO DE PANTALLA MAXIMO */
+.imglogocompetenciaVer
+{
+    height: 12em;
+    width: 29em;
+}
+
+.imglogocompetencia
+{
+    height: 12em;
+    width: 29em;
+}
+/* TAMAÑO DE PANTALLA MAXIMO */
+
+
+/* ESTRUCTURA DE LOS TABS DENTRO DEL CONTROLADOR DEL PARTIDO */
+/* TODOS LOS TAMAÑOS */
+.TabsGeneral{
+	background-color: lightgray;
+	 padding: 0em;
+}
+/* .TabsGeneral .ul{
+	/* //background-color: lightblue; 
+	display: flex;
+	flex-flow: row nowrap; 
+	justify-content: flex-start;
+	align-items: strecht;
+	list-style-type: none;
+	padding-inline-start: 0px;
+    flex-wrap: nowrap;
+} */
+
+
+/* .TabsGeneral .li{
+	background-color: #1abde6;
+	padding: 1em;
+	margin: 0 1em 0 0;
+	/*bordes redondeados*/
+	/* border: 1px solid #000000;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+    border-radius: 7px; */
+/*bordes redondeados*/		   
+	/* color:#cafbcf;
+
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	 box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+     width: auto; */
+/*} */
+
+.TabsGeneral .li{
+    flex-grow: 0; /*se agranda en caso de no cubrir el espacio que necesita*/
+    flex-shrink: 1; /*tamaño maximo que ocupará segun el contenido, se achican en proporcion a su cotenido*/
+    flex-basis: auto;
+
+	background-color: #1abde6;
+	padding: 1em;
+	margin: 0 1em 0 0;
+	/*bordes redondeados*/
+        border: 1px solid #000000;
+        -moz-border-radius: 7px;
+        -webkit-border-radius: 7px;
+        border-radius: 7px;
+    /*bordes redondeados*/		   
+	color:#cafbcf;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	 box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+     width: 45%;
+	
+}
+
+/* .TabsGeneral .li{
+    flex-grow: 0; /*se agranda en caso de no cubrir el espacio que necesita
+    flex-shrink: 1; /*tamaño maximo que ocupará segun el contenido, se achican en proporcion a su cotenido
+    flex-basis: auto;
+
+	background-color: #1abde6;
+	padding: 1em;
+	margin: 0 1em 0 0;
+	/*bordes redondeados
+	border: 1px solid #000000;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+    border-radius: 7px;
+/*bordes redondeados		   
+	color:#cafbcf;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	 box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+     width: 100%;
+} */
+
+
+.TabsGeneral .li.activo{
+	background-color: #01479c;
+}
+
+.TabsGeneral .li.visitante{
+    background: rgb(240, 141, 12);
+
+}
+
+.TabsGeneral .SubTab{
+	 min-height: 4VH; /*10vh; */
+
+
+}
+.TabsGeneral .BloqueSubTab{
+	background-color: #002234;
+	top: 0;
+	color:#fff;	
+}
+/* ESTRUCTURA DE LOS TABS DENTRO DEL CONTROLADOR DEL PARTIDO */
+
+
+
 }
 
 @media (max-width: 450px)
@@ -10285,7 +11467,7 @@ button.punta.updposiciones{
     }
     header
     {
-        position: fixed;
+        /* position: fixed; */
         z-index: 1030;
 
         height: 3rem;
@@ -10367,25 +11549,44 @@ button.punta.updposiciones{
 
         width: 100%;
         margin: 0;
-
+		margin-top: 7em;
         background-color: #ccdfdf;
         background-color: #d7f1f4;
 
         grid-gap: 6px;
-        grid-template-areas: 'itemb1 itemb2 itemb3 itemb4'
-        					'itemb5 itemb6 itemb8 itemb8'
+        /* grid-template-areas: 'itemb1 itemb2 itemb3 itemb4'
+        					'itemb5 itemb6 itemb6 itemb6'
         					'itemb7 itemb7 itemb7 itemb7'
         					'itemb9 itemb10 itemb11 itemb12'
-							'itemb13 itemb14 itemb15 itemb16';	
+							'itemb13 itemb14 itemb15 itemb16';	 */
+        grid-template-areas:
+                            'itemb7 itemb7 itemb7 itemb7'
+                            'itemb5 itemb6 itemb6 itemb6'
+                            'itemb1 itemb1 itemb2 itemb2'
+                            'itemb3 itemb3 itemb4 itemb4'
+        					'itemb9 itemb9 itemb10 itemb10 '
+                            'itemb11 itemb11 itemb12 itemb12'
+							'itemb15 itemb14 itemb13 itemb16';	
+
+        /*borde redondeado*/
+			border: 1px solid #000000;
+			-moz-border-radius: 7px;
+			-webkit-border-radius: 7px;
+            border-radius: 7px;
+			padding: 5px;    
+	    color:#220655;
+	    font-family: 'Oswald', sans-serif;
+	    background-color: #fff;
+
+	/*borde redondeado*/
+
     }
-    .frmbuscarotros
+
+
+    /* .frmbuscarotros
     {
         display: none;
-    }
-    .fecDdeAscDsc
-    {
-        display: none;
-    }
+    } */
     .fecDdeAscDsc2
     {
         display: block;
@@ -11147,6 +12348,7 @@ div.item3.fondoNegro
 .control1 SELECT{ font-size:15px; height: 3em;width: 4.5em;padding: 0;margin: 0;}
 
 .control2{ grid-area: ct212; }
+.control2 BUTTON { height: -webkit-fill-available; }
 .control3{ grid-area: ct213; }
 .control4{ grid-area: ct214; }
 
@@ -11265,7 +12467,16 @@ div.item3.fondoNegro
     {
         background-color: #00abe3;
     }
-    .regridjug2
+
+
+.regridjug2 .regjug input[type="text"] {
+        width: 3.5em; /* Ancho del 100% para ocupar todo el espacio disponible */
+        box-sizing: border-box; /* Incluye el borde y el relleno en el ancho total */
+/*        font-size: 0.8em; /* Tamaño de fuente más pequeño para pantallas pequeñas */
+      }
+
+
+    /* .regridjug2
     {
         display: grid;
 
@@ -11275,10 +12486,11 @@ div.item3.fondoNegro
 
         grid-template-columns: 2rem 10% 90%;
     }
+*/    
     .regridjug2 INPUT
     {
-        width: 90%;
-    }    
+        width: 7em;
+    }     
     
     .LIBEROS{
 		DISPLAY:GRID;
@@ -11403,7 +12615,21 @@ div.item3.fondoNegro
         grid-template-columns: 60% 20% 65%;
     }
 	/*estilo de Grilla del set 2021*/    
-    .gcset1{ grid-area: gcsarea1;padding:1em;font-size:1em;margin-left:0.5rem; }
+    .gcset10{ grid-area: gcsarea10;
+        display: flex;
+        gap: 1em;
+        flex-direction: row;
+        justify-items: center;
+        align-content: space-around;
+}
+
+    .gcset1{ grid-area: gcsarea1;
+            display: flex;
+            flex-direction: row;
+            justify-items: center;
+            align-items: baseline;
+    }
+    
     .gcset4{ grid-area: gcsarea4;padding:1em;font-size:9pt;margin-left:1em; text-align: center; }
 	.btnSet2021{
 		font-size: 15px;
@@ -11710,6 +12936,7 @@ div.item3.fondoNegro
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 		padding: 5px;    
 /*borde redondeado*/
 	
@@ -11717,8 +12944,7 @@ div.item3.fondoNegro
 
 .agrid-LPReg21 > div {
   text-align: left;
-    color:#fff;
-/*    color: #b6ccfa;  */
+    color:#01051a;
     font-family: 'Oswald', sans-serif;
 
 }
@@ -11810,8 +13036,8 @@ div.item3.fondoNegro
 
 .imgEstadoIndex_21
 {
-    width: 40px;
-    height: 40px;
+    /* width: 40px;
+    height: 40px; */
     margin-top: 0;
 }      
 
@@ -11848,10 +13074,10 @@ div.item3.fondoNegro
     
     .LogoApp
     {
-        height: 8em;
+        height: 6em;
 	    margin-top: 0em;
 	    margin-bottom: 0em;
-        margin-left: 1em;        
+        margin-left: 0em;        
         position: absolute;
         z-index: 10;
     }
@@ -11925,7 +13151,7 @@ div.item3.fondoNegro
 		grid-area: itemb16;
 	}					
 	
-    .formbuscar
+    /* .formbuscar
     {
         display: grid;
         width: 100%;
@@ -11938,7 +13164,7 @@ div.item3.fondoNegro
         					'itemb7 itemb7' 'itemb7 itemb7'
         					'itemb9 itemb10' 'itemb11 itemb12'
 							'itemb13 itemb14 itemb15 itemb16';		
-	/*borde redondeado*/
+	/*borde redondeado
 			border: 1px solid #000000;
 			-moz-border-radius: 7px;
 			-webkit-border-radius: 7px;
@@ -11947,9 +13173,10 @@ div.item3.fondoNegro
 	    font-family: 'Oswald', sans-serif;
 	    background-color: #fff;
 
-	/*borde redondeado*/
+	/*borde redondeado
     
-    }
+    } */
+
     .itemBusDate1{
 		grid-area: itemdateb1;
 	}
@@ -11980,6 +13207,13 @@ div.item3.fondoNegro
 
     }    
 
+    .formbuscar INPUT[TYPE="TEXT"]
+    {
+		width: 100%;
+        height: auto;
+        font-size: 1.5em;
+    }        
+
 /*busqueda minima en ADMINISTRAR APP */
 	.itemBusc1v20{
 		grid-area: itemb1;
@@ -11990,7 +13224,14 @@ div.item3.fondoNegro
 	.itemBusc3v20{
 		grid-area: itemb3;
 	}
-			
+	
+    .itemBusc4v20{
+		grid-area: itemb4;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;                
+	}
+
     .formbuscarv20
     {
         display: grid;
@@ -12002,7 +13243,9 @@ div.item3.fondoNegro
         grid-template-areas: 'itemb1 itemb1 itemb1 itemb1 '
         					 'itemb1 itemb1 itemb1 itemb1 '
         					 'itemb1 itemb1 itemb1 itemb1 '
-        					 'itemb2 itemb2 itemb3 itemb3 ';
+        					 'itemb2 itemb2 itemb3 itemb3 '
+                             'itemb4 itemb4 itemb4 itemb4 ';
+
 				border: 1px solid #000000;
 			-moz-border-radius: 7px;
 			-webkit-border-radius: 7px;
@@ -12059,6 +13302,16 @@ div.item3.fondoNegro
     }   
     
     .fecDdeAscDsc2v20{width: 40%;}
+
+    .btnVerSet_21.Pequenio{
+         width:4.5em; 
+        padding: 0;
+        height: 100%;
+        -moz-border-radius: 7px;
+        -webkit-border-radius: 7px;
+        border-radius: 7px;
+        box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+    }
 
 /*  BUSQUEDA MINIMA EN ADMINISTRAR APP*/   
 /**************GRIDS DE CONTROL DE JUGADORES , TAMAÑO PEQUEÑO DE PANTALLA*************************************************/
@@ -12480,22 +13733,29 @@ font-size: 15PT;
 
 /**nuevo formato de GRID-CSETS**/
 
- .ggcset11{grid-area: ggcset11_1;margin-left: auto;margin-right: auto;	}
+ .ggcset11{grid-area: ggcset11_1;}
  .ggcset12{grid-area: ggcset11_2;	}
- .ggcset13{grid-area: ggcset11_3;	}
+ /* .ggcset13{grid-area: ggcset11_3;	} */
+
+ .gcset10{ 
+    display: flex;
+    gap: 1em;
+     flex-direction: row;
+    justify-items: center;
+    align-content: space-around;
+}
 
 .gcset1{ 
-		display:grid;
-		width: 100%;
-		grid-template-areas: 'ggcset11_1 ggcset11_1 ggcset11_1 ggcset11_1 ' 
-							  'ggcset11_2 ggcset11_2 ggcset11_2 ggcset11_2' 
-							  'ggcset11_3 ggcset11_3 ggcset11_3 ggcset11_3';	
-		grid-area: gcsarea1;padding:0.3em;   
+		display: flex;
+        flex-direction: row;
+        justify-items: center;
+        align-items: baseline;
+		grid-area: gcsarea1;
 }
 
  
 
-.gcset2{ grid-area: gcsarea2;padding:1em;   }
+.gcset2{ grid-area: gcsarea2;  }
 
 .gcset2 button {
     color: #fff;
@@ -12503,29 +13763,29 @@ font-size: 15PT;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
-.gcset3{ grid-area: gcsarea3;padding:1em;   }
+.gcset3{ grid-area: gcsarea3;   }
 .gcset3 button {
     color: #fff;
     background: #00007f;
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 .gcset4{ grid-area: gcsarea4; font-size:3em;margin-left:2em; }
-.gcset5{ grid-area: gcsarea5;padding:1em;   }
-.gcset6{ grid-area: gcsarea6;padding:1em;   }
-.gcset7{ grid-area: gcsarea7;padding:1em;   }
+.gcset5{ grid-area: gcsarea5;   }
+.gcset6{ grid-area: gcsarea6;   }
 
 .grid-CSets21
 {
     display: grid;
 	background-color: #fff;
 	margin-top: 8em;
-    grid-template-areas:    'gcsarea1 gcsarea1 gcsarea1 gcsarea1 gcsarea5 gcsarea6 '
-    						'gcsarea2 gcsarea2 gcsarea2 gcsarea3 gcsarea3 gcsarea3 '
-							'gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea4 '
-							'gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 gcsarea7 ';							
+    grid-template-areas:    'gcsarea10 gcsarea10 gcsarea10 gcsarea10 gcsarea10 gcsarea10 '
+                            'gcsarea1 gcsarea1 gcsarea2 gcsarea3 gcsarea5 gcsarea6 '
+							'gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea4 gcsarea4 ';	
             /*borde redondeado*/
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
@@ -12537,10 +13797,11 @@ font-size: 15PT;
 }
 
 .grid-CSets21 > div {
-	text-align: left;
-color:#3964ff;
-font-family: 'Oswald', sans-serif;
-font-size: 10pt;
+	text-align: center;
+    color:#3964ff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10pt;
+    padding: 0.5em;
 }
 
 /******************************************************************/
@@ -12556,8 +13817,9 @@ font-size: 10pt;
 
 
 .gcsets3{ grid-area: gcssarea3;  }
+
 .gcsets3 input {
-	width: auto;
+    width: -webkit-fill-available;
     height: 3em;
     border: 1px solid #e6e9ea;
     border: 1px solid black;
@@ -12566,17 +13828,33 @@ font-size: 10pt;
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 		/*borde redondeado*/
     
 }
+.gcsets3 input.btnTablero {
+    width: -webkit-fill-available;
+    height: 3em;
+    border: 1px solid #e6e9ea;
+    border: 1px solid black;
+    background: #0b0c35;
+    color: #ffca00;
+    border: 1px solid #000000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+}
+
 .gcsets4{ grid-area: gcssarea4; }
 .gcsets4 button {
+    width: -webkit-fill-available;
     color: #fff;
     background:#00007f;
 		/*borde redondeado*/
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 		/*borde redondeado*/
 }
 
@@ -12593,6 +13871,11 @@ font-size: 10pt;
 }
 
 .gcsets6{ grid-area: gcssarea6; }
+
+.gcsets6 IMG {
+    width: fit-content;
+    height: 2.5em;
+}
 .gcsets6 button {
     color: #fff;
     background:#ff00ff;
@@ -12600,6 +13883,7 @@ font-size: 10pt;
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 		/*borde redondeado*/
     
 }
@@ -12649,7 +13933,7 @@ font-size: 10pt;
 	
 
 .gcsets8{ grid-area: gcssarea8; }
-
+/* CONTROLES DE AJUSTES MANUALES DEL SET, PANTALLA PEQUEÑA */
 .grillahssetitem1{ grid-area: grhssetitem1}
 .grillahssetitem2{ grid-area: grhssetitem2}
 .grillahssetitem3{ grid-area: grhssetitem3}
@@ -12658,19 +13942,39 @@ font-size: 10pt;
 .grillahssetitem6{ grid-area: grhssetitem6}
 .grillahssetitem7{ grid-area: grhssetitem7}
 
+.grillahssetitem8{ grid-area: grhssetitem8}
+.grillahssetitem81{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    align-items:flex-start;
+
+     grid-area: grhssetitem81
+    }
+.grillahssetitem9{ grid-area: grhssetitem9;}
+.grillahssetitem91{ 
+    display: flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    align-items:flex-start;
+
+    grid-area: grhssetitem91;
+}
+.grillahssetitem10{ grid-area: grhssetitem10;}
 
 .grillahsset
 {
     display: grid;
     grid-template-areas: 'grhssetitem1 grhssetitem2 grhssetitem3 grhssetitem7' 
-                         'grhssetitem4 grhssetitem5 grhssetitem6 grhssetitem7';
-    width: 100%;
-    height: 3em;
+                         'grhssetitem4 grhssetitem5 grhssetitem6 grhssetitem7'
+                         'grhssetitem81 grhssetitem81 grhssetitem8 grhssetitem10'
+                         'grhssetitem91 grhssetitem91 grhssetitem9 grhssetitem10';
     padding: 0.2rem;
     /*borde redondeado*/
         border: 1px solid #000000;
         -moz-border-radius: 7px;
         -webkit-border-radius: 7px;
+        border-radius: 7px;
         
         /*borde redondeado*/
    
@@ -12687,16 +13991,46 @@ font-size: 10pt;
 				border: 1px solid #000000;
 				-moz-border-radius: 7px;
 				-webkit-border-radius: 7px;
+                border-radius: 7px;
 		/*borde redondeado*/
     
 }
 
+.grillahsset button.puntosAB {
+	width: 100%;
+    border: 1px solid #e6e9ea;
+    border: 1px solid black;
+    color: #fff;
+    background:#3cb7ff;
+		/*borde redondeado*/
+				border: 1px solid #000000;
+				-moz-border-radius: 7px;
+				-webkit-border-radius: 7px;
+                border-radius: 7px;
+		/*borde redondeado*/
+    
+}
+
+.grillahsset input[type="time"] {
+	width: 100%;
+}
+.grillahssetitem8 input[type="number"]{
+	width: 8.5em;
+}
+.grillahssetitem9 input[type="number"]{
+	width: 8.5em;
+}
+
+/* CONTROLES DE AJUSTES MANUALES DEL SET, PANTALLA PEQUEÑA */
+
 .grillahsset.CSETS {
-    display: grid;
-    grid-template-areas: 'grhssetitem1 grhssetitem3' 'grhssetitem4 grhssetitem6';
-    height: 4em;
-    margin-left: -1em;
-    width: 9em;
+    display: flex;
+    flex-direction: row;
+    /* grid-template-areas: 'grhssetitem1 grhssetitem3' 'grhssetitem4 grhssetitem6'; */
+    /* margin-left: -1em; */
+     width: auto;
+     justify-content: space-between;
+    /* width: 7rem; */
     border: 1px solid #e6e9ea;
     border: 1px solid black;
     color: #fff;
@@ -12710,14 +14044,14 @@ font-size: 10pt;
 }
 .gcsets9{ grid-area: gcssarea9; }
 
-
-.grid-CSets211
+/* gcssarea4 no se usa aun */
+.grid-VerSets211
 {
     display: grid;
 	background-color: #fff;
 	margin-top: 2em;
-    grid-template-areas:    'gcssarea4 gcssarea5 gcssarea6 gcssarea7 gcssarea7'
-    						'gcssarea3 gcssarea2 gcssarea8 gcssarea9 gcssarea9'
+    grid-template-areas:    'gcssarea3 gcssarea5 gcssarea6 gcssarea7 gcssarea2'
+    						'gcssarea8 gcssarea8 gcssarea8 gcssarea8 gcssarea8'
 							'gcssarea1 gcssarea1 gcssarea1 gcssarea1 gcssarea1';
 		/*borde redondeado*/
 				border: 1px solid #000000;
@@ -12728,7 +14062,7 @@ font-size: 10pt;
 
 }
 
-.grid-CSets211 > div {
+.grid-VerSets211 > div {
 	text-align: left;
 	color: #b6ccfa;
 	font-family: 'Oswald', sans-serif;
@@ -12752,9 +14086,11 @@ input.#verset.btnPop2 {
    grid-area: regjug12;
 }
 
+
+
 .butSquareEqBlu {
-    font-size: 11px;
-    width: 50%;
+    font-size: auto;
+    width: 6em;
     height: 3em;
     margin-left: 10px;
     transition: .3s;
@@ -12762,6 +14098,44 @@ input.#verset.btnPop2 {
     border: 1px solid black;
     /* border-radius: 100%; */
     background: #0b57ac;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+}
+
+.butSquareEqLightBlu {
+    font-size: auto;
+    width: 100%;
+    height: 3em;
+    margin-left: 10px;
+    transition: .3s;
+    color: #fff;
+    border: 1px solid black;
+    background: #0016b0;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+}
+
+.butSquareEqGreen {
+    font-size: auto;
+    width: 100%;
+    height: 3em;
+    margin-left: 10px;
+    transition: .3s;
+    color: #fff;
+    border: 1px solid black;
+    /* border-radius: 100%; */
+    background: #42cf17;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+}
+
+.butSquareEqBluFull {
+    font-size: auto;
+    width: 100%;
+    height: 3em;
+    margin-left: 10px;
+    transition: .3s;
+    color: #fff;
+    border: 1px solid black;
+    /* border-radius: 100%; */
+    background: #5d7fa5;
     box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
 }
 
@@ -12801,7 +14175,10 @@ input.#verset.btnPop2 {
 .regridjug1
 {
     display: grid;
-	grid-template-areas: 'regjug11 regjug12 regjug15 ' 'regjug14 regjug13 regjug135' 'regjug16 regjug17 regjug175 ';
+	grid-template-areas: 'regjug11 regjug12 regjug122 '
+                         'regjug15 regjug15 regjug15 '
+                         'regjug14 regjug13 regjug135'
+                         'regjug16 regjug17 regjug175 ';
     padding-bottom: 0em;
 	/** BORDES REDONDEADOS **/
 	    border: 1px solid #000000;
@@ -12822,11 +14199,6 @@ input.#verset.btnPop2 {
 	
 }
 
-.regridjug1 DIV
-{
-	margin-bottom: 1em;
-
-}
 
 /*********************** NUEVO ABM JUGADOR, DNI JUGADOR **************/
 .dnijug1{
@@ -13263,9 +14635,14 @@ font-size: 9pt;
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 /*borde redondeado*/
 font-size: 9pt;
 width: auto;
+}
+
+.CantidadJugadores{
+    font-size: 1.5em;
 }
 
 .numero
@@ -13273,13 +14650,11 @@ width: auto;
     font-size: 4em;
 
     margin: auto;
-
-    grid-row: 100%;
-
 	/** BORDES REDONDEADOS **/
 	    border: 1px solid #297415;
 	    -moz-border-radius: 7px;
 	    -webkit-border-radius: 7px;
+        border-radius: 7px;
 	/** BORDES REDONDEADOS **/
 
 
@@ -13488,11 +14863,13 @@ width: auto;
 
 .EstadA{
 	grid-area: itemEstadA;
-	background-color:#0c3a3a;
+		/* background-color:#0c3a3a; */
+        background-color:#fff;
+
 }
 /*DENTRO DE ESTADa TENEMOS OTRA GRILLA:*/
 
-	.itemclubliz1{grid-area:itmclubizq1;}
+	.itemclubliz1{grid-area:itmclubizq1;margin: auto;}
 	.itemclubliz1 IMG{width: 9em;height: 9em;}
 	.itemclubliz2{grid-area:itmclubizq2;}
 	.itemclubliz3{grid-area:itmclubizq3;}
@@ -13502,7 +14879,8 @@ width: auto;
 		    grid-template-areas: 'itmclubizq1'
 		    		   			 'itmclubizq2'
 		    		    		 'itmclubizq3';
-			background-color:#00b9e5;
+			/* background-color:#00b9e5; */
+            background-color:#fff;
 		}
 .EstadB{
 	grid-area: itemEstadB;
@@ -13529,7 +14907,7 @@ width: auto;
 		}
 			.clubdata{
 				display:grid;
-				grid-template-areas: 'dataclbu1 dataclbu2';
+				grid-template-areas: 'dataclbu1' 'dataclbu2';
 			}
 	.itemclublde2{
 			grid-area:	itmclubider2;
@@ -13549,7 +14927,7 @@ width: auto;
 			}
 				.clubdatb{
 					display:grid;
-					grid-template-areas: 'dataclbub1 dataclbub2';
+					grid-template-areas: 'dataclbub1' 'dataclbub2';
 				}
 				.clubLatDer{
 					display: grid;
@@ -13610,6 +14988,7 @@ width: auto;
 		    border: 1px solid #000000;
 		    -moz-border-radius: 7px;
 		    -webkit-border-radius: 7px;
+            border-radius: 7px;
 		    background-color: #fff;
 		/*BORDES REDONDEADOS*/     
 	margin-left:0em;
@@ -13620,19 +14999,24 @@ width: auto;
 
 /*ESTADISTICAS, DATA SOBRE RESULTADOS DE PARTIDOS POR AÑO POR CLUB*/
 
-.itemepartrats1{grid-area:itmeprats1;}
+.itemepartrats1{grid-area:itmeprats1;
+    }
 .itemepartrats2{grid-area:itmeprats2;}
+.itemepartrats22{grid-area:itmeprats22;}
+
 .itemepartrats3{grid-area:itmeprats3;}
 .itemepartrats4{grid-area:itmeprats4;}
 .itemepartrats5{grid-area:itmeprats5;}
 
 
 
-.epartrats{
+.epartrats2_0{
 	    display: grid;
         padding-bottom: 0em;
-		grid-template-areas: 'itmeprats1 itmeprats2 itmeprats3' 
-						     'itmeprats4 itmeprats5 itmeprats5 ';
+		grid-template-areas: 'itmeprats1 itmeprats2 itmeprats2'
+                             'itmeprats22 itmeprats22 itmeprats22' 
+                             'itmeprats3 itmeprats4 itmeprats4 '
+						     'itmeprats5 itmeprats5 itmeprats5 ';
 		/*BORDES REDONDEADOS*/
 		    border: 1px solid #000000;
 		    -moz-border-radius: 7px;
@@ -13657,6 +15041,7 @@ width: auto;
 		    border: 1px solid #000000;
 		    -moz-border-radius: 7px;
 		    -webkit-border-radius: 7px;
+            border-radius: 7px;
 		    background-color: #fff;
 		/*BORDES REDONDEADOS*/     
 	margin-left:0em;
@@ -13759,23 +15144,24 @@ width: auto;
 /************************************************/
 .gridAcceso
 {
-    display: grid;
-    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
     grid-gap: 1px;
-    grid-template-columns: 100%;
 /*borde redondeado*/
 		border: 1px solid #000000;
 		-moz-border-radius: 7px;
 		-webkit-border-radius: 7px;
+        border-radius: 7px;
 		padding: 5px;    
     color:#220655;
     font-family: 'Oswald', sans-serif;
     background-color: #fff;
-	margin-left: 5%;
-	margin-right: 5%;
+    justify-content: baseline;
+    align-items: center;
 /*borde redondeado*/
     
 }
+
 .gridAcceso div
 {
     height: 100%;
@@ -13787,12 +15173,12 @@ width: auto;
 }
 .contieneBotones
 {
-    display: grid;
-
-    padding-left: 30%;
-    padding-right: 10%;
-    grid-template-columns: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
+
 .gridAcceso button
 {
     display: none;
@@ -14007,6 +15393,9 @@ button.punta.updposiciones{
 
 
 /**********************************+ GRID CONTAINER DE TIEMPO TRANSCURRIDO ********/
+.itemA_00{grid-area: itemA_00;}
+.itemA_01{grid-area: itemA_01;}
+
 .itemA_1{grid-area: itemA_1;}
 .itemA_2{grid-area: itemA_2;}
 .itemA_3{grid-area: itemA_3;}
@@ -14015,12 +15404,24 @@ button.punta.updposiciones{
 .itemA_6{grid-area: itemA_6;}
 .itemA_7{grid-area: itemA_7;}
 .itemA_8{grid-area: itemA_8;}
+
+.itemA_9{grid-area: itemA_9;}
+.itemA_10{grid-area: itemA_10;}
+
+.itemA_11{grid-area: itemA_11;}
+.itemA_12{grid-area: itemA_12;}
+
 .grid-containerAlfa{
 	display:grid;
-	grid-template-areas: 'itemA_1 itemA_2'
-						 'itemA_3 itemA_4' 
-						 'itemA_5 itemA_6' 
-						 'itemA_7 itemA_8';
+	
+    grid-template-areas: 'itemA_3 itemA_4' 
+                         'itemA_1 itemA_2'
+                         'itemA_00 itemA_01'
+                   		 'itemA_5 itemA_6' 
+						 'itemA_7 itemA_8'
+                         'itemA_9 itemA_10'
+                         'itemA_11 itemA_12';
+
 	/** BORDES REDONDEADOS **/
 	    border: 1px solid #000000;
 /*	    -moz-border-radius: 7px;
@@ -14058,4 +15459,268 @@ button.punta.updposiciones{
         grid-template-columns: 25% 25% 25% 25%;	
 }
     
+/* TAMAÑO DE PANTALLA MAXIMO */
+.imglogocompetenciaVer
+{
+    height: 8em;
+    width: 20em;
+}
+
+.imglogocompetencia
+{
+    height: 6em;
+    width: 20em;
+}
+/* TAMAÑO DE PANTALLA MAXIMO */
+
+/* GRILLA DE BUSQUEDA */
+
+.FiltrosContenedor.visible {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap; /* Para mostrar cada DetalleGrillaTabla en una sola línea */
+    border: 1px solid #ccc;
+    margin-bottom: 10px; /* Espacio entre DetalleGrillaTabla */        
+  }
+
+  .FiltrosContenedor {
+    display: none;  /* Or your desired flexbox properties */
+  }  
+
+
+.Acciones{
+    display: flex;
+    flex-wrap: nowrap; /* Para mostrar cada DetalleGrillaTabla en una sola línea */
+    border: 1px solid #ccc;
+    margin-bottom: 10px; /* Espacio entre DetalleGrillaTabla */
+        flex: 1; /* Para que cada div dentro de DetalleGrillaTabla ocupe el mismo espacio */
+    padding: 10px;
+}	
+
+
+  .ContieneGrillaBusqueda{
+    display: flex;
+    flex-direction: column; /* Para mostrar cada DetalleGrillaTabla en un renglón distinto */
+    margin-top: 4.8em; /* Ajusta este valor según la altura de tu encabezado fijo */
+
+  }
+
+    .DetalleGrillaBusqueda {
+        display: flex;
+        flex-wrap: nowrap; /* Para mostrar cada DetalleGrillaTabla en una sola línea */
+        border: 1px solid #ccc;
+        margin-bottom: 10px; /* Espacio entre DetalleGrillaTabla */
+    }
+
+        .DetalleGrillaBusquedaPartidos{
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            flex-wrap: nowrap; /* Para mostrar cada DetalleGrillaTabla en una sola línea */
+            border: 1px solid #ccc;
+            margin-bottom: 10px; /* Espacio entre DetalleGrillaTabla */        
+        }    
+
+        .DetalleGrillaBusquedaPartidos > div {
+            flex-basis: auto; /* Para que cada div dentro de DetalleGrillaTabla ocupe el mismo espacio */
+            padding: 10px;
+        }    
+
+        .DetalleGrillaBusquedaPartidos  SELECT {
+            flex-basis: auto; /* Para que cada div dentro de DetalleGrillaTabla ocupe el mismo espacio */
+            
+        }            
+
+    .DetalleGrillaBusqueda > div {
+        flex: 1; /* Para que cada div dentro de DetalleGrillaTabla ocupe el mismo espacio */
+        padding: 10px;
+    }
+
+    .DetalleGrillaBusqueda > div > span {
+            color: #22788d;
+            font-size: 1.8em;
+    }
+
+    .barraFiltrosCancha{
+        background-color:#22c1e4;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        flex-wrap: nowrap; /* Para mostrar cada DetalleGrillaTabla en una sola línea */
+        align-items: start;
+        border: 1px solid #ccc;
+        
+
+      }    
+      .barraFiltrosCanchaDark{
+        color: #001;
+      }          
+      .barraFiltrosOscuro{
+        background-color: #001;
+        color: #fff;
+      } 
+
+/* GRILLA DE BUSQUEDA */
+
+.barraActiva{
+    background-color:#203a54;
+    color: #fff;
+  }
+
+
+.DetalleGrillaTabla > div {
+    
+    padding: 10px;
+}  
+
+  /* (max-width: 450px) */
+  /* .DetalleGrillaTablaGPartidos {
+    display: grid;
+    grid-template-areas: 
+                        'txtPartido  txtPartido        FechaHora        FechaHora'
+                        'accionesabm IDGestionPartido  estado           Hora'
+                        'Cancha      Cancha           Cancha           Categoria'
+                        'Competencia Competencia       Competencia     Competencia'
+                        'escudoLocal escudoLocal       escudoVisitante  escudoVisitante'
+                        'Sede        Sede              Sede             Sede';                         
+    border: 1px solid #ccc;
+    margin-bottom: 10px; /* Espacio entre DetalleGrillaTabla 
+    gap: 0.4rem; */
+    .DetalleGrillaTablaGPartidos {
+        display: grid;
+       
+        grid-template-areas: 
+                            'Competencia Competencia      Competencia '
+                            'accionesabm FechaHora        FechaHora'
+                            'txtPartido  Hora             Categoria'
+                            'escudoLocal escudoVisitante  escudoVisitante'
+                            'Cancha      Cancha           Cancha'
+                            'Sede        Sede             algo'
+                            'estado      estado            estado';
+        box-shadow: 0 8px 10px -4px rgba(0, 0, 0, .6);
+        border-radius: 5px;
+        /* background: white; */
+        margin: 0.4rem;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        gap: 0.4rem;
+    
+    
+}
+
+.accionesabm {
+    grid-area: accionesabm;
+    /* grid-area: itemgp1; */
+    text-wrap: nowrap;
+  }
+  
+  .txtPartido {
+    grid-area: txtPartido;
+    /* grid-area: itemgp2; */
+    text-wrap: nowrap;
+    font-size:medium;
+  }
+  
+  .FechaHora {
+    grid-area: FechaHora;
+    /* grid-area: itemgp3; */
+    font-size: large;
+    text-wrap: nowrap;
+  }
+  
+  .Hora {
+    grid-area: Hora;
+    /* grid-area: itemgp4; */
+    font-size: large;
+
+  }
+  
+  .NomClub{
+    font-size: medium;
+  }  
+
+  .escudoLocal {
+    grid-area: escudoLocal;
+    /* grid-area: itemgp5; */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: calc(5);
+    align-items: center;    
+    
+  }
+  
+  .escudoVisitante {
+    grid-area: escudoVisitante;
+    /* grid-area: itemgp6; */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: calc(5);
+    align-items: center;
+  }
+  
+  .Competencia {
+    grid-area: Competencia;
+    /* grid-area: itemgp7; */
+    font-size: x-large;
+    width: 100%;
+    box-shadow: 0 8px 10px -4px rgba(0, 0, 0, .6);
+    border-radius: 5px;
+    background: white; 
+    border: 1px solid #ccc;
+  }
+
+  .DetalleGrillaTablaGPartidos.Finalizado .Competencia {
+        color:#002234
+  }
+  
+  .Categoria {
+    grid-area: Categoria;
+    /* grid-area: itemgp8; */
+    text-wrap: wrap;
+    font-size: large;
+
+  }
+  
+  .Cancha {
+    grid-area: Cancha;
+    /* grid-area: itemgp9; */
+    
+  }
+  
+  .Sede {
+    grid-area: Sede;
+    /* grid-area: itemgp10; */
+    
+  }
+  
+  .IDGestionPartido {
+    grid-area: IDGestionPartido;
+    /* grid-area: itemgp11; */
+    text-wrap:nowrap;
+    /* display: none; */
+  }
+  
+.estado{
+    grid-area: estado;
+    /* grid-area: itemgp12; */
+}
+
+
+.DetalleGrillaTablaGPartidos > div > span {
+    /* color: #22788d; */
+    font-size: 1.8em;
+}
+.DetalleGrillaTablaGPartidos.barraActiva > div > span.icon-cross {
+color: #fff;
+}
+.DetalleGrillaTablaGPartidos.barraActiva > div > span.icon-pie-chart    {
+color: #fff;
+}
+
+.DetalleGrillaTablaGPartidos .icon-upload {
+color: #fff;
+}
 }

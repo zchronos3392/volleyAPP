@@ -72,13 +72,13 @@ class Posicion
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idposicion));
+            $comando->execute();
             // Capturar primera fila del resultado
             return $comando->fetchAll(PDO::FETCH_ASSOC);
             //echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return ($e->getMessage());
         }
@@ -103,7 +103,7 @@ class Posicion
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($idposicion,$posicion,$codigo,$color));
+        $cmd->execute();
         //return $cmd;
 		echo json_encode($cmd);
     }
@@ -112,7 +112,7 @@ class Posicion
      * Insertar un nuevo posicion
      *
      * @param $idposicion      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
     public static function insert($nombre,$codigo,$color){
@@ -122,8 +122,7 @@ class Posicion
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(
-            array($nombre,$codigo,$color));
+        return $sentencia->execute();
 
     }
 
@@ -131,7 +130,7 @@ class Posicion
      * Eliminar el registro con el identificador especificado
      *
      * @param $idposicion identificador de la posicion
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($idposicion)
     {
@@ -141,7 +140,7 @@ class Posicion
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idposicion));
+        return $sentencia->execute();
     }
 }
 

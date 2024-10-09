@@ -274,14 +274,27 @@ var parametros = {"fdesde":fdesde,"fhasta":fhasta,"iclub":$("#iclubescab").val()
 			{ // indice,0 valor
 			if (! $('#contenidoStats2').find("div[value='" +v.Fecha+'_'+ v.idPartido + "']").length)			
 			{ 
-			
-				$("#contenidoStats2").append("<div id='' class='epartrats' >"+
+				var ganadorTexto = '';
+				if (v.Ganador == "No hubo/ hay ganador ")
+						ganadorTexto = v.Ganador;
+				else
+						ganadorTexto = v.Ganador+'<span class="icon-shield"></span>';
+				var DescEstadoPartido = v.descripcion;
+				if(v.descripcion == 'PROGRAMADO')
+					DescEstadoPartido = '<span class="amarillo">'+DescEstadoPartido+'</span>'
+				//if(v.descripcion == 'Reprogramado')
+				
+				if(v.descripcion == 'FINALIZADO')
+					DescEstadoPartido = '<span class="manzana">'+DescEstadoPartido+'</span>'
+
+				$("#contenidoStats2").append("<div id='' class='epartrats2_0' >"+
 											"<div class='itemepartrats1 erenglon' id='idpartido' value="+v.Fecha+'_'+v.idPartido+"></div>"+	
 											"<div class='itemepartrats1 erenglon'>"+v.Fecha+"</div>"+	
-											"<div class='itemepartrats2 erenglon'>"+v.cnombre+"</div>"+	
+											"<div class='itemepartrats2 erenglon'>"+v.cnombre+"</div>"+
+											"<div class='itemepartrats22 erenglon'>"+v.CatDesc+"</div>"+	
 											"<div class='itemepartrats3 erenglon'>"+v.ClubA+' / '+v.ClubB+"</div>"+	
 							    			"<div class='itemepartrats4 erenglon'>( "+v.ClubARes+'-'+v.ClubBRes+" )</div>"+
-							    			"<div class='itemepartrats5 erenglon' >"+v.Ganador+v.descripcion+"</div></div>"
+							    			"<div class='itemepartrats5 erenglon' >"+ganadorTexto+DescEstadoPartido+"</div></div>"
 					);								
 		    }
 		   });	
@@ -336,7 +349,7 @@ function parametroURL(_par) {
 		var icatcab    = parametroURL('icatcab');
 		
 // TRAER IMAGEN DEL CLUB
-			$("#iclub").on("keypress, keydown, keyup, change, click", function(e) {
+			$("#iclubescab").on("keypress, keydown, keyup, change, click", function(e) {
   				var code = e.keyCode || e.which;
 			         	buscarImagenClub();
 			         	obtenerStats1Club();
@@ -351,8 +364,6 @@ function parametroURL(_par) {
           });//change del ICLUB		
 */
 // TRAER IMAGEN DEL CLUB
-		
-		
 		 // FUNCION ajax trae CLUBES QUE TIENEN JUGADORES ESTE AÑO..
 		 var parametros = {"ianio":$("#ianio").val(),"todxs":$("#todxs").val()};
          $.ajax({ 

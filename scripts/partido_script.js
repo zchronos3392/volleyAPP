@@ -103,6 +103,7 @@ $("#altap").click(function(){
     			//$("#isede").prop('disabled', false);
     			$("mensaje").append('Partido ingresado');
     				//console.log(r);
+						alert('Partido ingresado');
     				// esta linea aca y luego en Cpartidos.php frenan el submit 
     				$("#FormPartidoC").submit(function(e){e.preventDefault();});			
 					//window.location='AdministrarAPP.php';

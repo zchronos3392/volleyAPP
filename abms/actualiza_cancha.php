@@ -7,11 +7,29 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$idcancha = (int) $_POST['idcancha'];
 	$idclub   = (int) $_POST['idclub'];
 	$idsede   = (int) $_POST['idsede'];
-		$nombre 		= $_POST['ncancha'];
-		$direccion   	= $_POST['direccion'];
-		$dimensiones   	= $_POST['dimensiones'];
+		
+		$nombre="";
+		if(isset($_POST['nomcancha']))
+			$nombre 		= $_POST['nomcancha'];
+		$direccion="";
+		if(isset($_POST['direc_can']))
+			$direccion   	= $_POST['direc_can'];
+		
+		$dimensiones = "";
+		if(isset($_POST['dim_can']))		
+			$dimensiones   	= $_POST['dim_can'];
+		
+		$accion = "";
+		if(isset($_POST['accion']))
+			$accion   	= $_POST['accion'];
+
+	if($accion == 'UPD')	
+		$retorno = Cancha::ActualizaCancha($idcancha,$idclub,$idsede,$nombre,$direccion,$dimensiones);
+	else
+		if($accion == 'DEL')	
+			$retorno = Cancha::delete($idclub,$idsede,$idcancha);
 	
-	$retorno = Cancha::ActualizaCancha($idcancha,$idclub,$idsede,$nombre,$direccion,$dimensiones);
+
 	    if ($retorno)
 		{
 	        $datos["estado"] = 1;

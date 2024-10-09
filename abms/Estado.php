@@ -64,22 +64,22 @@ class Estado
     public static function getById($idestado)
     {
         // Consulta de la categoria
-        $consulta = "SELECT descripcion
+        $consulta = "SELECT descripcion,imagen,colorData,idestado
                              FROM vappestado
-                             WHERE idestado = ?";
+                             WHERE idestado = $idestado";
 
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idestado));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
             //echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return -1;
         }
@@ -93,17 +93,17 @@ class Estado
      * @param $nombre      nuevo titulo
      * 
      */
-    public static function update( $descripcion,$idestado)
+    public static function update($IDestado, $descripcion,$imagen,$colorData,$idestado)
     {
         // Creando consulta UPDATE
         $consulta = "UPDATE vappestado" .
-            " SET descripcion=? WHERE idestado=?";
+            " SET descripcion='$descripcion',imagen='$imagen',colorData='$colorData',idestado=$IDestado WHERE idestado=$idestado";
 
         // Preparar la sentencia
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($descripcion,$idestado));
+        $cmd->execute();
 
         //return $cmd;
 		echo json_encode($cmd);
@@ -114,19 +114,16 @@ class Estado
      * Insertar un nuevo categoria
      *
      * @param $idcategoria      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
-    public static function insert($descripcion){
+    public static function insert($IDestado,$descripcion,$imagen,$colorEstado){
         // Sentencia INSERT
-        $comando = "INSERT INTO vappestado ( descripcion) VALUES( ? )";
+        $comando = "INSERT INTO vappestado (idestado, descripcion,imagen,colorData) VALUES($IDestado, '$descripcion','$imagen','$colorEstado' )";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-
-        return $sentencia->execute(
-            array($descripcion)
-        );
+        return $sentencia->execute();
 
     }
 
@@ -134,17 +131,17 @@ class Estado
      * Eliminar el registro con el identificador especificado
      *
      * @param $idcategoria identificador de la categoria
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($idestado)
     {
         // Sentencia DELETE
-        $comando = "DELETE FROM vappestado WHERE idestado=?";
+        $comando = "DELETE FROM vappestado WHERE idestado=$idestado";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idestado));
+        return $sentencia->execute();
     }
 }
 

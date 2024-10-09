@@ -243,7 +243,7 @@ function buscarCiudadClub(clubOrigen)
 			// esto arreglo el tema del alta triplle..
 		$(vCanchas).each(function(i, v)
 		{ // indice, valor
-				$("#"+nombreObj).append('<option value="' + v.idcancha + '">' +v.clubabr+' - '+ v.extras+' - '+ v.nombre + '</option>');
+				$("#"+nombreObj).append('<option  name="' + v.idclub+'_'+v.idsede+'_'+v.idcancha + '" value="' + v.idcancha + '">' +v.clubabr+' - '+ v.extras+' - '+ v.nombre + '</option>');
 		});		
 	
 	return 	selectCanchas ;
@@ -524,13 +524,18 @@ function buscarCanchasClub(clubOrigen,destinoId){
 				  var idClub_sede = $(this).val();
 					  var idClub=idClub_sede.split('_')[0];
 					 var idSede=idClub_sede.split('_')[1];
-		//				alert('club: ' + idClub + ' sede: ' + idSede);	
+					//	alert('club: ' + idClub + ' sede: ' + idSede);	
 				 // la forma de llegar a la cancha, es atraves de la sede
 				$(vCanchas).each(function(j, w)
 				{ // indice, valor
+					//console.log('en '+j+' hay '+w);
+					//v.idclub+'_'v.idsede+'_'+v.idcancha
+					var codigoEncriptado = '';	
 					if( (w.idsede == idSede ) && (w.idclub == idClub)  )
 					{
-						$("#icancha").val(w.idcancha);
+						codigoEncriptado = idClub+'_'+idSede+'_'+w.idcancha;
+						$("#icancha option[name="+ codigoEncriptado +"]").attr("selected",true);
+						//$("#icancha").val(w.idcancha);
 						return true; //	solo lo hace una vez
 					}
 				});
@@ -551,8 +556,7 @@ function buscarCanchasClub(clubOrigen,destinoId){
 				if(v.idcategoria == categoriaELegida )
 					$("#SetMaxCat").val(v.setMax);
 			});		
-
-          });//change del ICate
+        });//change del ICate
 //********************************/change del ICate
 
 //********************************/change del icomt
@@ -581,6 +585,10 @@ $("#icomp").on("click onchange",function()
 <section class="FormCargaPartidos">
 	<form action="" method="post" name="FormPartidosMulti" id="FormPartidosMulti" enctype="multipart/form-data" class="PartidoCab">
 		<section class="Botonera">
+			<span>Año control</span>
+			<select id="ianio" name="ianio" class="ianio">
+				<option value="9999">Seleccionar año...</option>
+			</select>	
 			<span>Alta Partidos</span>
 			<button class="btnCabecera" id="altap" name="altap" value="altap">(A+)</button>
 			<a href="AdministrarAPP.php"><input type="button" id="volver" title="volver a partidos" name="volver" class="btnSet2021" value="<<"></input></a>

@@ -43,7 +43,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			 if(isset($_POST['SetMaxCat'])){  $smaxCate = $_POST['SetMaxCat'];} else { $smaxCate = 0; };
 			 if(isset($_POST['SetMaxComp'])){ $smaxcomp = $_POST['SetMaxComp']; } else { $smaxcomp =0; };
 			// ejemplo:	SetMaxCat=3 - SetMaxComp=0
+
 			
+			//  NUEVOS DATOS AGREGADOS
+			$idclubSede = 0;
+			if(isset($_POST['IDClubSede'])){  $idclubSede = $_POST['IDClubSede'];};
+			// $estadoID = 0;
+			// if(isset($_POST['estadoID'])){  $estadoID = $_POST['estadoID']; };
+		//  NUEVOS DATOS AGREGADOS			 
+
+
 	        if(  ($smaxcomp > 0) && ($smaxCate >0)  ) { $setsmax = $smaxcomp;};
     	    if(  ($smaxcomp == 0) && ($smaxCate > 0) ) { $setsmax = $smaxCate;};
         	if(  ($smaxcomp > 0) && ($smaxCate == 0) ){  $setsmax = $smaxcomp;};
@@ -52,7 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Insertar partido
         		$Fecha = "'".$Fecha."'";
         		
-		$retorno = Partido::insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado,$setsmax,$tbset,$finset,$descripcionp);
+		$retorno = Partido::insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado,$setsmax,$tbset,$finset,$descripcionp,$idclubSede);
 	// luego de haber dado de alta el partido, agregamos poor defecto los jugadores de cada Club
 	// de la categoria del partido:
 
@@ -70,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
    // PROCESAMOS LOS JUGADORES DE LA CATEGORIA POR DEFECTO DEL CLUB LOCAL,.
    // todos los que no tengan Fecha de Baja...
    	$jugadores = jugador::getJugadorPartidoInsert($idpartido,$Fecha,$ClubA,$categoria,$anioEq,$jugador,$categoria); 
-	
+	//print_r($jugadores);
 		for($contador=0; $contador < count($jugadores);$contador++ )
 		{ // recorro vector de jugadores del equipo A
 				$jugadorJuega = $jugadores[$contador]['idjugador']; 
@@ -94,11 +103,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     if ($retorno) {
-        // C�digo de �xito
-        echo(json_encode(array('estado' => '1','mensaje' => 'Creaci�n exitosa')));
+        // Codigo de �xito
+        print(json_encode(array('estado' => '1','mensaje' => 'Creacion exitosa')));
     } else {
         // C�digo de falla
-		echo $retorno;
+		print $retorno;
     }
 
 }
@@ -144,6 +153,11 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     	    if(  ($smaxcomp == 0) && ($smaxCate > 0) ) { $setsmax = $smaxCate;};
         	if(  ($smaxcomp > 0) && ($smaxCate == 0) ){  $setsmax = $smaxcomp;};
 			
+			//  NUEVOS DATOS AGREGADOS
+			$idclubSede = 0;
+			if(isset($_GET['IDClubSede'])){  $idclubSede = $_GET['IDClubSede'];};
+		//  NUEVOS DATOS AGREGADOS			 
+
 			
     // Insertar partido
         		$Fecha = "'".$Fecha."'";
@@ -166,12 +180,14 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 	$parametro[14]="finset: ".$finset;
 	$parametro[15]="descr partido: ".$_GET['descripcionp'];		
 	$parametro[16]="sedeId: ".$sedeId;
+	$parametro[17]="idclubSede: ".$idclubSede;
+	
 	
 	$parametros= "'".implode(";",$parametro)."'";
 
 	echo "PARAMETROS RECIBIDOS: ".$parametros."<BR>";
         		
-	$retorno = Partido::insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado,$setsmax,$tbset,$finset,$descripcionp);
+	$retorno = Partido::insert($Fecha,$categoria,$ClubA,$ClubB,$CanchaId,$competencia,$sedeId,$ciudad,$HoraIni,$Horafin,$ClubARes,$ClubBRes,$estado,$setsmax,$tbset,$finset,$descripcionp,$idclubSede);
 
 	echo "retorno insert: : ".$retorno ."<BR>";
 		

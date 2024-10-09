@@ -100,159 +100,159 @@ function cargarDatosJugadores(){
 					//		alert('ES NULL !!!! '+ v.activoSN);
               		puestoPosta=0;
 //	if(v.secuencia == 1)					
-				if (! $('#canchaA').find("div[value='" + v.nombre + "']").length)
-				{
-						var selecter='';
-						 
-						switch(v.posicionini) {
-						  case "1":
-						    // code block
-								selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';
-						    break;
-						  case "2":
-								selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';						  
-						    // code block
-						    break;
-						  case "3":
-								selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';						  
-						    // code block
-						    break;
-						   case "4":
-								selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';						   
-						    // code block
-						    break;
-						  case "5":
-								selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';						  
-						    // code block
-							    break;
-						 case "6":
-								selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';						 
-						    // code block
-						    break;
-						  default:
-						  			selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_7" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_7" >Sup</div>';
-						    // code block
-						   }
-						//CARGAR GRILLA DE LIBEROS
-						var colorFondo = 'style="backGround:#000;"';
-						 puestoPosta =v.puestoxcat;	
-						 puestoCategoria=v.puestoxcat;
-					     colorFondo = 'style="backGround:'+v.ColorPuestoCat+';"';
-
-						if(v.puestoxcat != v.puesto)
+						if (! $('#canchaA').find("div[value='" + v.nombre + "']").length)
 						{
-							 puestoPosta = v.puesto;
-							 colorFondo = 'style="backGround:'+v.ColorPuestoCancha+';"';
-						}
+								var selecter='';
+								
+								switch(v.posicionini) {
+								case "1":
+									// code block
+										selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';
+									break;
+								case "2":
+										selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';						  
+									// code block
+									break;
+								case "3":
+										selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';						  
+									// code block
+									break;
+								case "4":
+										selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';						   
+									// code block
+									break;
+								case "5":
+										selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';						  
+									// code block
+										break;
+								case "6":
+										selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicionini+'</div>';						 
+									// code block
+									break;
+								default:
+											selecter='<div class="itemcjug4VER redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_7" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_7" >Sup</div>';
+									// code block
+								}
+								//CARGAR GRILLA DE LIBEROS
+								var colorFondo = 'style="backGround:#000;"';
+								puestoPosta =v.puestoxcat;	
+								puestoCategoria=v.puestoxcat;
+								colorFondo = 'style="backGround:'+v.ColorPuestoCat+';"';
 
-						if(puestoPosta==2) // LIBEROS
-							if (! $('#liberos').find("div[value='" + v.nombre + "']").length)
+								if(v.puestoxcat != v.puesto)
+								{
+									puestoPosta = v.puesto;
+									colorFondo = 'style="backGround:'+v.ColorPuestoCancha+';"';
+								}
+
+								if(puestoPosta==2) // LIBEROS
+									if (! $('#liberos').find("div[value='" + v.nombre + "']").length)
+									{
+										cont8+='<div '+colorFondo+'  value="'+v.nombre +'"   >'+v.nombre +'('+v.numero+')' +'</div>';
+									}
+								//CARGAR GRILLA DE LIBEROS
+								botonPuestos = "";
+								botonNewPuesto="";
+
+								//CARGAR INDICADOR DE PUESTO ACTUAL 
+								botonCentral='';	
+								//BOTONES DE COLOR Y NOMBRE DE PUESTO AL LADO EN CARGA INICIAL
+								// ES PUNTA
+								if(puestoPosta == 4)						
+								{
+									//contador++;
+									//alert(v.nombre+ ' ES UN ARMADOR, POR '+contador+ ' VEZ' );
+									botonCentral='<button id="central_pos_'+v.idjugador+'" name="punta" class="itemcjug3VER punta"'+colorFondo+' title="marcar central al jugador" >{P}</button>';
+								}
+								
+								// ES CENTRAL
+								if(puestoPosta == 6){
+									//alert(v.nombre+ ' ES UN central ' );
+									botonCentral='<button id="central_pos_'+v.idjugador+'" name="central" class="itemcjug3VER central"'+colorFondo+' title="marcar central al jugador" >{C}</button>';
+								}						
+								
+								if(puestoPosta == 3)	//ARMADOR..					
+								{
+									//contador++;
+									//alert(v.nombre+ ' ES UN ARMADOR, POR '+contador+ ' VEZ' );
+									botonCentral='<button id="central_pos_'+v.idjugador+'" name="armador" class="itemcjug3VER armador"'+colorFondo+' title="marcar armador al jugador" >{a}</button>';							
+								}
+								if(puestoPosta == 5)	//OPUESTO..
+								{
+									//alert(v.nombre+ ' ES UN opuesto ' );							
+									botonCentral='<button id="central_pos_'+v.idjugador+'" name="opuesto" class="itemcjug3VER opuesto"'+colorFondo+' title="marcar opuesto al jugador" >{o}</button>';
+								}					
+
+								if(puestoPosta == 2){	//libero..
+									//alert(v.nombre+ ' es un libero ' );
+									botonCentral='<button id="central_pos_'+v.idjugador+'" name="libero" class="itemcjug3VER libero"'+colorFondo+' title="marcar opuesto al jugador" >{L}</button>';
+								}	
+								//CARGAR INDICADOR DE PUESTO ACTUAL 						
+								
+								
+								$("#CuadroJugadoresA").append(
+								'<div id="pos_'+v.idjugador+'" name="pos_'+v.idjugador+'" class="gridConfigJugVER">'+
+							'<div class="itemcnfju1VER">'+
+								'<span class="itemcjug1VER NumeroJugador">'+v.numero+'</span>'+
+								'<span class="itemcjug2VER nombreJugador">'+v.nombre+'</span>'+
+								botonPuestos +
+								botonCentral+
+								botonNewPuesto+selecter+'</div>'+
+							'</div>');
+							entro++;
+							//alert(v.posicion);	
+							switch(v.posicionini)
 							{
-								cont8+='<div '+colorFondo+'  value="'+v.nombre +'"   >'+v.nombre +'('+v.numero+')' +'</div>';
-							}
-						//CARGAR GRILLA DE LIBEROS
-						botonPuestos = "";
-						botonNewPuesto="";
-
-						//CARGAR INDICADOR DE PUESTO ACTUAL 
-						botonCentral='';	
-						//BOTONES DE COLOR Y NOMBRE DE PUESTO AL LADO EN CARGA INICIAL
-						// ES PUNTA
-						if(puestoPosta == 4)						
-						{
-							//contador++;
-							//alert(v.nombre+ ' ES UN ARMADOR, POR '+contador+ ' VEZ' );
-							botonCentral='<button id="central_pos_'+v.idjugador+'" name="punta" class="itemcjug3VER punta"'+colorFondo+' title="marcar central al jugador" >{P}</button>';
-						}
-						
-						// ES CENTRAL
-						if(puestoPosta == 6){
-							//alert(v.nombre+ ' ES UN central ' );
-							botonCentral='<button id="central_pos_'+v.idjugador+'" name="central" class="itemcjug3VER central"'+colorFondo+' title="marcar central al jugador" >{C}</button>';
-						}						
-						
-						if(puestoPosta == 3)	//ARMADOR..					
-						{
-							//contador++;
-							//alert(v.nombre+ ' ES UN ARMADOR, POR '+contador+ ' VEZ' );
-							botonCentral='<button id="central_pos_'+v.idjugador+'" name="armador" class="itemcjug3VER armador"'+colorFondo+' title="marcar armador al jugador" >{a}</button>';							
-						}
-						if(puestoPosta == 5)	//OPUESTO..
-						{
-							//alert(v.nombre+ ' ES UN opuesto ' );							
-							botonCentral='<button id="central_pos_'+v.idjugador+'" name="opuesto" class="itemcjug3VER opuesto"'+colorFondo+' title="marcar opuesto al jugador" >{o}</button>';
-						}					
-
-						if(puestoPosta == 2){	//libero..
-							//alert(v.nombre+ ' es un libero ' );
-							botonCentral='<button id="central_pos_'+v.idjugador+'" name="libero" class="itemcjug3VER libero"'+colorFondo+' title="marcar opuesto al jugador" >{L}</button>';
-						}	
-						//CARGAR INDICADOR DE PUESTO ACTUAL 						
-						
-						
-						$("#CuadroJugadoresA").append(
-						'<div id="pos_'+v.idjugador+'" name="pos_'+v.idjugador+'" class="gridConfigJugVER">'+
-				   	   '<div class="itemcnfju1VER">'+
-				   	  	'<span class="itemcjug1VER NumeroJugador">'+v.numero+'</span>'+
-				   	  	'<span class="itemcjug2VER nombreJugador">'+v.nombre+'</span>'+
-						botonPuestos +
-			  	    	botonCentral+
-			  	    	botonNewPuesto+selecter+'</div>'+
-				   	  '</div>');
-				   	  entro++;
-					//alert(v.posicion);	
-					switch(v.posicionini)
-					{
-						// elegir el puesto del jugador en cancha.
-						 	//puestoPosta =v.puestoxcat;	
-						 	//puestoCategoria=v.puestoxcat;
-							//if(v.puestoxcat != v.puesto) puestoPosta = v.puesto;							
-						// elegir el puesto del jugador en cancha.
-						case "1" :	
-									if(puestoPosta==6) stringcontenido += '<div id="canchaa1"  class="gridcanchaBetaA "'+colorFondo+'  value="'+v.nombre+'">POS 1 '+v.nombre +'('+v.numero+')' +'</div>';
-									else
-										if(puestoPosta==2) stringcontenido += '<div id="canchaa1"  class="gridcanchaBetaA "'+colorFondo+'  value="'+v.nombre+'">POS 1 '+v.nombre +'('+v.numero+')' +'</div>';
-											else stringcontenido += '<div id="canchaa1"  class="gridcanchaBetaA "'+colorFondo+'  value="'+v.nombre+'">POS 1 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "2" :
-									if(puestoPosta==6) stringcontenido += '<div id="canchaa2"  class="gridcanchaBetaB "'+colorFondo+'  >POS 2 '+v.nombre +'('+v.numero+')' +'</div>';
-										else
-											if(puestoPosta==2) stringcontenido += '<div id="canchaa2"  class="gridcanchaBetaB "'+colorFondo+' >POS 2 '+v.nombre +'('+v.numero+')' +'</div>';
-												else stringcontenido += '<div id="canchaa2"  class="gridcanchaBetaB "'+colorFondo+'  >POS 2 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "3" :
-									if(puestoPosta==6) stringcontenido += '<div id="canchaa3"  class="gridcanchaBetaC "'+colorFondo+'  >POS 3 '+v.nombre +'('+v.numero+')' +'</div>';
-										else
-											if(puestoPosta==2) stringcontenido += '<div id="canchaa3"  class="gridcanchaBetaC "'+colorFondo+'  >POS 3 '+v.nombre +'('+v.numero+')' +'</div>';
-												else stringcontenido += '<div id="canchaa3"  class="gridcanchaBetaC "'+colorFondo+'  >POS 3 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "4" :
-									if(puestoPosta==6) stringcontenido += '<div id="canchaa4"  class="gridcanchaBetaD "'+colorFondo+'  >POS 4 '+v.nombre +'('+v.numero+')' +'</div>';
-										else
-											if(puestoPosta==2) stringcontenido += '<div id="canchaa4"  class="gridcanchaBetaD "'+colorFondo+'  >POS 4 '+v.nombre +'('+v.numero+')' +'</div>';
-												else stringcontenido += '<div id="canchaa4"  class="gridcanchaBetaD "'+colorFondo+'  >POS 4 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "5" :
-									if(puestoPosta==6) stringcontenido += '<div id="canchaa5"  class="gridcanchaBetaE "'+colorFondo+'  >POS 5 '+v.nombre +'('+v.numero+')' +'</div>';
-										else
-											if(puestoPosta==2) stringcontenido += '<div id="canchaa5"  class="gridcanchaBetaE "'+colorFondo+'  >POS 5 '+v.nombre +'('+v.numero+')' +'</div>';
-												else stringcontenido += '<div id="canchaa5"  class="gridcanchaBetaE "'+colorFondo+'  >POS 5 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "6" :
-									if(puestoPosta==6) stringcontenido += '<div id="canchaa6"  class="gridcanchaBetaF "'+colorFondo+'  >POS 6 '+v.nombre +'('+v.numero+')' +'</div>';						
-										else
-											if(puestoPosta==2) stringcontenido += '<div id="canchaa6"  class="gridcanchaBetaF "'+colorFondo+'  >POS 6 '+v.nombre +'('+v.numero+')' +'</div>';
+								// elegir el puesto del jugador en cancha.
+									//puestoPosta =v.puestoxcat;	
+									//puestoCategoria=v.puestoxcat;
+									//if(v.puestoxcat != v.puesto) puestoPosta = v.puesto;							
+								// elegir el puesto del jugador en cancha.
+								case "1" :	
+											if(puestoPosta==6) stringcontenido += '<div id="canchaa1"  class="gridcanchaBetaA "'+colorFondo+'  value="'+v.nombre+'">POS 1 '+v.nombre +'('+v.numero+')' +'</div>';
+											else
+												if(puestoPosta==2) stringcontenido += '<div id="canchaa1"  class="gridcanchaBetaA "'+colorFondo+'  value="'+v.nombre+'">POS 1 '+v.nombre +'('+v.numero+')' +'</div>';
+													else stringcontenido += '<div id="canchaa1"  class="gridcanchaBetaA "'+colorFondo+'  value="'+v.nombre+'">POS 1 '+v.nombre +'('+v.numero+')' +'</div>';
+											break;
+								case "2" :
+											if(puestoPosta==6) stringcontenido += '<div id="canchaa2"  class="gridcanchaBetaB "'+colorFondo+'  >POS 2 '+v.nombre +'('+v.numero+')' +'</div>';
 												else
-													stringcontenido += '<div id="canchaa6"  class="gridcanchaBetaF "'+colorFondo+'  >POS 6 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "7" :
-									//$("#canchaA").append();
-									break;
- 					   };
- 					   	
-				    }
-				  });// EACH ENLD JUGADORES POSICIONES INICIALES DEL SET EN VISUALIZAR
-				};
+													if(puestoPosta==2) stringcontenido += '<div id="canchaa2"  class="gridcanchaBetaB "'+colorFondo+' >POS 2 '+v.nombre +'('+v.numero+')' +'</div>';
+														else stringcontenido += '<div id="canchaa2"  class="gridcanchaBetaB "'+colorFondo+'  >POS 2 '+v.nombre +'('+v.numero+')' +'</div>';
+											break;
+								case "3" :
+											if(puestoPosta==6) stringcontenido += '<div id="canchaa3"  class="gridcanchaBetaC "'+colorFondo+'  >POS 3 '+v.nombre +'('+v.numero+')' +'</div>';
+												else
+													if(puestoPosta==2) stringcontenido += '<div id="canchaa3"  class="gridcanchaBetaC "'+colorFondo+'  >POS 3 '+v.nombre +'('+v.numero+')' +'</div>';
+														else stringcontenido += '<div id="canchaa3"  class="gridcanchaBetaC "'+colorFondo+'  >POS 3 '+v.nombre +'('+v.numero+')' +'</div>';
+											break;
+								case "4" :
+											if(puestoPosta==6) stringcontenido += '<div id="canchaa4"  class="gridcanchaBetaD "'+colorFondo+'  >POS 4 '+v.nombre +'('+v.numero+')' +'</div>';
+												else
+													if(puestoPosta==2) stringcontenido += '<div id="canchaa4"  class="gridcanchaBetaD "'+colorFondo+'  >POS 4 '+v.nombre +'('+v.numero+')' +'</div>';
+														else stringcontenido += '<div id="canchaa4"  class="gridcanchaBetaD "'+colorFondo+'  >POS 4 '+v.nombre +'('+v.numero+')' +'</div>';
+											break;
+								case "5" :
+											if(puestoPosta==6) stringcontenido += '<div id="canchaa5"  class="gridcanchaBetaE "'+colorFondo+'  >POS 5 '+v.nombre +'('+v.numero+')' +'</div>';
+												else
+													if(puestoPosta==2) stringcontenido += '<div id="canchaa5"  class="gridcanchaBetaE "'+colorFondo+'  >POS 5 '+v.nombre +'('+v.numero+')' +'</div>';
+														else stringcontenido += '<div id="canchaa5"  class="gridcanchaBetaE "'+colorFondo+'  >POS 5 '+v.nombre +'('+v.numero+')' +'</div>';
+											break;
+								case "6" :
+											if(puestoPosta==6) stringcontenido += '<div id="canchaa6"  class="gridcanchaBetaF "'+colorFondo+'  >POS 6 '+v.nombre +'('+v.numero+')' +'</div>';						
+												else
+													if(puestoPosta==2) stringcontenido += '<div id="canchaa6"  class="gridcanchaBetaF "'+colorFondo+'  >POS 6 '+v.nombre +'('+v.numero+')' +'</div>';
+														else
+															stringcontenido += '<div id="canchaa6"  class="gridcanchaBetaF "'+colorFondo+'  >POS 6 '+v.nombre +'('+v.numero+')' +'</div>';
+											break;
+								case "7" :
+											//$("#canchaA").append();
+											break;
+							};
+								
+							}
+						});// EACH ENLD JUGADORES POSICIONES INICIALES DEL SET EN VISUALIZAR
+						};
 				$("#canchaA").html(stringcontenido);
 	 			$("#liberos").html(cont8);
 	 			stringcontenido="";
@@ -628,7 +628,7 @@ function chequeacarga(){
 			<option value="9999">Seleccionar año...</option>
 		  </select>
 	 </div>
-	 <div class="control2"><button id="volver" name="altajug" class="altajug" title="agregar registros"><<</button></div>
+	 <div class="control2"><input type="button" id="volver" name="altajug" class="btnSet2021" title="volver" placeholder="<<" value="<<"></input></div>
 	 <div class="control3"><button id="cargaSetjugadores" name="altajug" class="altajugsetpartido" title="Trae lista jugadores">(+)</button></div>
 	 <div class="control4"><button id="borraSetjugadores" name="bajajugs" class="bajajugsetpartido" title="Borrar">(Del)</button></div>	 		
 

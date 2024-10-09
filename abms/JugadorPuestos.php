@@ -55,7 +55,7 @@ class puestojugador
 * @param int $ianioe
 * @param int $icategoriaPartido
 * 
-* @return Lista de Los puestos asignados al jugador de un club y una categoria dados del año analizado
+* @return Lista de Los puestos asignados al jugador de un club y una categoria dados del aï¿½o analizado
 */	
 public static function getControlJugPuestos($iclub,$ianioe,$icategoriaPartido)
     {
@@ -77,7 +77,7 @@ public static function getControlJugPuestos($iclub,$ianioe,$icategoriaPartido)
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($iclub,$ianioe,$icategoriaPartido));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -173,14 +173,14 @@ public static function existePuesto($idjugador,$ianio,$iclubescab,$indice)
 		//echo "----> $comando <br>";
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($idjugador,$indice,$fecha,$remeraNum,$icate,$puestoCate,$ianio,$iclubescab) );
+        return $sentencia->execute( );
     }
 
     /**
      * Eliminar el registro con el identificador especificado
      *
      * @param $idsede identificador de la sede
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($idjugador,$idpuestoJug)
     {
@@ -190,7 +190,7 @@ public static function existePuesto($idjugador,$ianio,$iclubescab,$indice)
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($idjugador,$idpuestoJug));
+        return $sentencia->execute();
     }
     
     public static function deletePuestoCat($idjugador,$idpuestoJug,$idclub,$ianio)
@@ -202,7 +202,7 @@ public static function existePuesto($idjugador,$ianio,$iclubescab,$indice)
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($idjugador,$idpuestoJug,$idclub,$ianio));
+        return $sentencia->execute();
     }    
 
     public static function update($idjugador,$idpuestoJug,$remeraNum,$icate,$puestoCate,$ianio,$iclubescab,$actualizaClub)
@@ -216,7 +216,7 @@ public static function existePuesto($idjugador,$ianio,$iclubescab,$indice)
         //echo("<br> $comando");
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($idjugador,$idpuestoJug,$remeraNum,$icate,$puestoCate,$ianio,$iclubescab,$actualizaClub));
+        return $sentencia->execute();
     }
 
 

@@ -34,10 +34,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 //AGREGAR LAS CATEGORIAS CARGAS DEL CLUB CON LOS 
                 //JUGADORES QUE TIENE CADA UNA PARA ESE AÑO
 				$categoriasClub=array();
+                $ExCcategoriasClub=array();
 					//echo " id ".$valor['idclub']." nombre ".$valor['clubabr']."<br>";	
 				$categorias = Categoria::getAllConJugadores($ianio,$idclub);
+                    $xLastAnioCargado = Categoria::getLastCategoriasConJugadores($ianio,$idclub);
+                //$xLastAnioCargado['anio'],$xLastAnioCargado['idclub'],$xLastAnioCargado['RowNum']
 					//print_r($categorias);
-				$y=0;	
+                  //  print_r($xLastAnioCargado);
+                        //  Array ( [anio] => 2023 [idclub] => 83 [RowNum] => 1 ) 
+                        //  Array ( [anio] => 2022 [idclub] => 81 [RowNum] => 1 ) 
+                if( !empty($xLastAnioCargado))        
+                    $ExCategorias = Categoria::getAllConJugadores($xLastAnioCargado['anio'],$idclub);
+                //PROCESAMOS LA ULTIMA CATEGORIA CARGADA PARA EL CLUB SELECCIONADO
+                if(!empty($ExCategorias) && !empty($xLastAnioCargado)){
+                    for($z=0;$z < count($ExCategorias); $z++)
+                    {
+                        $ExCcategoriasClub[$z]['idclub'] = $idclub;
+                        $ExCcategoriasClub[$z]['descripcion'] = $ExCategorias[$z]['descripcion'];
+                        $ExCcategoriasClub[$z]['ConJugadores'] = $ExCategorias[$z]['ConJugadores'].' jugadores en '.$xLastAnioCargado['anio'];
+                    }        
+                }
+                //PROCESAMOS LA ULTIMA CATEGORIA CARGADA PARA EL CLUB SELECCIONADA                        
+
+				// PROCESAMOS LAS CATEGORIAS CARGADAS, CANTIDAD DE JUGADORES Y ERRORES
+                $y=0;	
                 for($z=0;$z < count($categorias); $z++)
                 {
                 //echo " ".$valor['idclub']." ".$valorCat['descripcion']." ".$valorCat['ConJugadores']." <br>";
@@ -47,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     $categoriasClub[$y]['ConJugadores'] = $categorias[$z]['ConJugadores'];
                     $icategoriaControl = $categorias[$z]['CategoriaId'];
 
+                    // OBTENGTO CONTEO DE PUESTOS CON ERROR
                     $puestosCategoria = puestojugador::getControlJugPuestos($idclub,$ianio,$icategoriaControl);
                     //print_r($puestosCategoria);
 					$contadorErrores =0;		
@@ -63,12 +84,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 							     }
 							}
 					$categoriasClub[$y]['PuestosError'] = $contadorErrores;
+                    // OBTENGTO CONTEO DE PUESTOS CON ERROR
                     $y++;
                 }	 
                 //AGREGAR LAS CATEGORIAS CARGAS DEL CLUB CON LOS 
                 //JUGADORES QUE TIENE CADA UNA PARA ESE AÑO
                 $clubes[$i]['Categorias']=$categoriasClub;   
-                
+                // PROCESAMOS LAS CATEGORIAS CARGADAS, CANTIDAD DE JUGADORES Y ERRORES
+                $clubes[$i]['ExCategorias'] = $ExCcategoriasClub;
+
                 //AGREGAR SEDES DEL CLUB Y SUS CANCHAS..
                 $sedes = sede::getSedexClub($idclub);
                 //$sedes = Array ( "idclub" => "1", "direccion" => "LLEGA POR POST");

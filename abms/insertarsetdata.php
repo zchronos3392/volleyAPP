@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$puntob	 =  (int) $_POST['resb'];
 	//llegan popr parametro los resultados actuales visibles en pantalla.
 
-	$mensaje = "''";	//las funciones mandan mensajea a esta api para que tome decisiones.
+	$mensaje = "";	//las funciones mandan mensajea a esta api para que tome decisiones.
 	$saque = 0;
 	// neccesito tener el dato de quien viene teniendo el Saque
 	//  antes de decidir, sino no puedo cambiarlo.
@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 //	"rotacion" : rotar, viene N cuando es 
 	if(isset($_POST['rotacion'])) $rotar	 =  $_POST['rotacion'];
 	$mensajeAlta = "";
-//  CUANDO SE REANUDA EL PARTIDO: "mensajeAlta" : 'Novedades30::REANUDAR'
+//  CUANDO SE REANUDA EL PARTIDO: "mensajeAlta" : 'Novedades::REANUDAR'
 	if(isset($_POST['mensajeAlta'])) $mensajeAlta = $_POST['mensajeAlta'];
 	//02 DIC.2022::ENVIO LA ESTRATEGIA CON RESPECTO A LOS LIBEROS
 		//PARA QUE SABER QUÉ HACER AUTOMATICAMENTE EN SUS CAMBIOS..
@@ -187,7 +187,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 							$A6 = (int) $posrotadas["VI"];
 							$partidodata = Partido::getById($idpartido,$fecha);
 							//$mensaje = "'rotación en  " + $partidodata["ClubB"] + "'"; 
-							$mensaje = "'ajuste de rotacion en  ".$partidodata['ClubA']."'";
+							$mensaje = "ajuste de rotacion en  ".$partidodata['ClubA'];
 						}
 				}
 				else 
@@ -213,7 +213,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 							$B6 = (int) $posrotadas["VI"];
 							$partidodata = Partido::getById($idpartido,$fecha);
 							//$mensaje = "'rotación en  " + $partidodata["ClubB"] + "'"; 
-							$mensaje = "'Rotacion en  ".$partidodata['ClubB']."'";
+							$mensaje = "Rotacion en  ".$partidodata['ClubB'];
 							$clubRota = $saque;
 
 							//cambiamos el libero del que tenga la estrategia de cambio
@@ -223,9 +223,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 							if($strategiaLocalAnalisis != 'UNLIBERO')
 							{
-								echo "<br> datosIngresaLocal <br>";
-								print_r($datosIngresaLocal);
-								echo "<br>  <br>";
+								//echo "<br> datosIngresaLocal <br>";
+								//print_r($datosIngresaLocal);
+								//echo "<br>  <br>";
 
 								$A1 = (int) $datosIngresaLocal[0][1];
 								$A2 = (int) $datosIngresaLocal[1][1];
@@ -243,9 +243,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 							if($strategiaVisitaAnalisis != 'UNLIBERO')
 							{
 
-							echo "<br> datosIngresaVisita <br>";
-							print_r($datosIngresaVisita);
-							echo "<br>  <br>";
+							//echo "<br> datosIngresaVisita <br>";
+							//print_r($datosIngresaVisita);
+							//echo "<br>  <br>";
 
 							$B1 = (int) $datosIngresaVisita[0][1];
 							$B2 = (int) $datosIngresaVisita[1][1];
@@ -284,6 +284,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 							// Estos tres parametros hacen a la funcion generica.
 							// traigo el orden desde el SET !!!
 							//$ordenA=$setData["ordenA"];
+							$A1Auxiliar = $A1;
 							$A1 = analizarCambioAutomatico($idpartido,$fecha2,$setnumero,
 									 $secuencia,$A1auxiliar,$equipoA,
 									 $posicionAnalisis,$puestoAnalisis,$puestoCambia);
@@ -317,7 +318,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 							$B6 = (int) $posrotadas["VI"];
 							$partidodata = Partido::getById($idpartido,$fecha);
 							//$mensaje = "'rotación en  " + $partidodata["ClubB"] + "'"; 
-							$mensaje = "'ajuste de rotacion en  ".$partidodata['ClubB']."'";
+							$mensaje = "ajuste de rotacion en  ".$partidodata['ClubB'];
 						}
 				}
 				else
@@ -342,7 +343,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 							$A6 = (int) $posrotadas["VI"];
 							$partidodata = Partido::getById($idpartido,$fecha);
 							//							$mensaje = "'rotación en  " + $partidodata["ClubA"] + "'";
-							$mensaje = "'Rotacion en  ".$partidodata['ClubA']."'";
+							$mensaje = "Rotacion en  ".$partidodata['ClubA'];
 							$clubRota = $saque;
 							// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 							//	DICIEMBRE 2022.CAMBIO AUTOMATICO DEL LIBERO X CENTRALES
@@ -358,9 +359,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 							if($strategiaLocalAnalisis != 'UNLIBERO')
 							{
 
-							echo "<br> datosIngresaLocal <br>";
-							print_r($datosIngresaLocal);
-							echo "<br>  <br>";
+							//echo "<br> datosIngresaLocal <br>";
+							//print_r($datosIngresaLocal);
+							//echo "<br>  <br>";
 							
 								$A1 = (int) $datosIngresaLocal[0][1];
 								$A2 = (int) $datosIngresaLocal[1][1];
@@ -375,9 +376,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 							if($strategiaVisitaAnalisis != 'UNLIBERO')
 							{
-								echo "<br> datosIngresaVisita <br>";
-								print_r($datosIngresaVisita);
-								echo "<br>  <br>";
+								//echo "<br> datosIngresaVisita <br>";
+								//print_r($datosIngresaVisita);
+								//echo "<br>  <br>";
 
 									$B1 = (int) $datosIngresaVisita[0][1];
 									$B2 = (int) $datosIngresaVisita[1][1];
@@ -458,7 +459,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	};
 	//:: FIN DE TRABAJAR CON LA DATA DEL SET	
 
-//  CUANDO SE REANUDA EL PARTIDO: "mensajeAlta" : 'Novedades30::REANUDAR'
+//  CUANDO SE REANUDA EL PARTIDO: "mensajeAlta" : 'Novedades::REANUDAR'
 //	if(isset($_POST['mensajeAlta'])) $mensajeAlta = $_POST['mensajeAlta'];
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -472,12 +473,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// $saque = 0; ver quine saca, en caso de haber cambiado..
     // Insertar Set
 	$retorno =0;
-	if($mensajeAlta == 'Novedades30::REANUDAR')
-			$mensaje = '"Se reanuda el partido"';
-	if($mensajeAlta == 'Novedades30::ESTRATEGIA')
+	if($mensajeAlta == 'Novedades::REANUDAR')
+			$mensaje = "Se reanuda el partido";
+	if($mensajeAlta == 'Novedades::ESTRATEGIA')
 	{
 			if($estrategiaA != $strategiaLocalAnalisis) {
-				$mensaje = '"Cambios en la estrategia del líbero Local."';			
+				$mensaje = "Cambios en la estrategia del líbero Local.";			
 				$strategiaLocalAnalisis = $estrategiaA;
 			}
 			else
@@ -485,7 +486,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			
 			if($estrategiaB != $strategiaVisitaAnalisis)
 			{
-				$mensaje = '"Cambios en la estrategia del líbero Visitante."';			
+				$mensaje = "Cambios en la estrategia del líbero Visitante.";			
 				$strategiaVisitaAnalisis = $estrategiaB; 
 			}
 			else
@@ -494,20 +495,61 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 
 	if($mensajeAlta == 'Novedades::INISAQUE')
-			$mensaje = '"Ingresa el Libero por Central.Posiciones Iniciales."';
+			$mensaje = "Ingresa el Libero por Central.Posiciones Iniciales.";
 
 	if($strategiaLocalAnalisis[0] != "'")
 		$strategiaLocalAnalisis = "'".$strategiaLocalAnalisis."'";
 	if($strategiaVisitaAnalisis[0] != "'")
 		$strategiaVisitaAnalisis = "'".$strategiaVisitaAnalisis."'";
+
+		
+	//SE AGREGA LA LOGICA CONSULTADA A CHATGPT PARA DETECTAR CALCULAR SI EL SET ENTRÓ EN SET/MATCH POINT Y QUIEN
+	$partidoStats = Partido::getById($idpartido,$fecha2);
+	// [ClubA] => GLORIAS , [ClubB] => HACOAJ 
+	// [ClubARes] => 0, [ClubBRes] => 0 
+	// [idcluba] => 81 , [idclubb] => 83 
+	// [setsnmax] => 5 , [valTBSet] => 15 [valFinSet] => 25 
 	
+	$clublocalA =$partidoStats["idcluba"];
+	$clublocalB =$partidoStats["idclubb"];
+	$setsGanadosA =0;
+	$setsGanadosB =0;
+	$setsGanadosA =$partidoStats["ClubARes"];
+	$setsGanadosB =$partidoStats["ClubBRes"];
+	$nombreLocal		= '';
+	$nombreVisitante	= '';
+	$nombreLocal		= $partidoStats["ClubA"];	
+	$nombreVisitante	= $partidoStats["ClubB"];   
+	$setsnmax           =  $partidoStats["setsnmax"];
+	$valTBSet			=  $partidoStats["valTBSet"];  //=> 15 
+	$valFinSet			=  $partidoStats["valFinSet"]; // => 25 
+	$valorCierreSet = $valFinSet;
+	if($setsnmax == $setnumero)
+			$valorCierreSet = $valTBSet;
+	$valorCierreSet--;
+	//estamos en TB, utilizo los valores del registro anterior para chequear la primera vez que alguno llega al 8
+	// $puntoDB_a	= (int)$setData["puntoa"];
+	// $puntoDB_b	= (int)$setData["puntob"];
+	if(($puntoa == 8 || $puntob == 8) && ($setsnmax == $setnumero) && ($puntoDB_a < 8 & $puntoDB_b < 8) )
+			$mensaje .= "<br>Pausa por mitad TieBreak";
+	//siguió avanzando el partido y alguno avanzó habiendo llegado a 8 alguno de los dos en el registro anterior
+	if(($puntoa != $puntoDB_a || $puntob == $puntoDB_b) && ($setsnmax == $setnumero) && ($puntoDB_a == 8 || $puntoDB_b == 8))
+			$mensaje .= "<br>Cotinua el Tie Break";
+	
+
+
+	$mensaje = "'".$mensaje."'";	//recien acá le pongo las comillas para poder agregar sin problemas cualquier texto
 		//INGRESO REGISTRO DEL SET con sus actualizaciones.		
 	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,
 							 $A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,
 							 $estado,$puntoa, $puntob,$saque,$strategiaLocalAnalisis,$strategiaVisitaAnalisis,
 							 $ordenLiberoLocal,$ordenLiberoVisita,
 							 $mensaje,$contadorpausasA,$contadorpausasB);
-	
+	//lo grabo luego de actualizar la secuencia
+	//echo "detectarSetMatchPoint($idpartido,$fecha2,$setnumero,$secuencia,$setsnmax,$valorCierreSet,$clublocalA,$clublocalB,$setsGanadosA,$setsGanadosB,$puntoa,$puntob,$nombreLocal,$nombreVisitante);";
+
+	 detectarSetMatchPoint($idpartido,$fecha2,$setnumero,$secuencia,$setsnmax,$valorCierreSet,$clublocalA,$clublocalB,$setsGanadosA,$setsGanadosB,$puntoa,$puntob,$nombreLocal,$nombreVisitante);
+
 	$retornoRotaciones = 0;
 	if($secuencia == 1) $mensaje = "'por pitada inicial del partido...'";
 	else if($HayRotacion=='S')	$mensaje = "'por rotacion durante el partido...'";
@@ -611,11 +653,16 @@ if($jugPosAnalisis != 0){
 
 		// lo saco de suplente (asumo que estaba suplente) al que
 		// quiero que ingrese.
-		$retorno = partjug::updateEntra($idpartido,$fecha,$equipo,
+		// SINO TENGO LIBEROS, ME ESTA SACANDO A LOS CENTRALES LUEGO DE PERDER EL SAQUE !!!
+		// COMO MEDIDA DE PREVENCION, EVITO EL CAMBIO SI HAY ALGUN PARAMETRO EN 0
+		if($IDIngresa != 0) 
+			$retorno = partjug::updateEntra($idpartido,$fecha,$equipo,
 									$CatIngresa,$setnumero,$IDIngresa,$posicionAnalisis);
+
 		//y reemplazo su id con el del ($posicionAnalisis) al que pongo en 
 		//modo suplente..
-		$jugPosAnalizada = 	$IDIngresa;
+		if($IDIngresa != 0)
+			$jugPosAnalizada = 	$IDIngresa;
 	} 	
 }	
 return $jugPosAnalizada;
@@ -632,7 +679,7 @@ function elegirLibero($vectorJugadorX,$EnCanchados,$estrategia,$ordenActivo,
 						$idpartido,$fecha,$equipo,$setnumero)
 {
 
-	echo("<br> ESTRATEGIA $estrategia");
+	//echo("<br> ESTRATEGIA $estrategia");
 
 	$idSeVa = $idIngresa = 0;
 	$ordenSeva = $ordenIngresa = 0;
@@ -641,18 +688,18 @@ function elegirLibero($vectorJugadorX,$EnCanchados,$estrategia,$ordenActivo,
 	$posicionSale = $posicionIngresa = $posicionActualSale = 0;
 	//	$EnCanchados  = array(["A1"=> $A1,"A2"=> $A2,"A3"=> $A3,"A4"=> $A4,"A5"=> $A5,"A6"=> $A6]);
 
-	//    echo("<BR>Activos: ");
-	//    print_r($vectorJugadorX);			   
-	//    echo("<br>");
+	   // echo("<BR>Activos: ");
+	   // print_r($vectorJugadorX);			   
+	   // echo("<br>");
 
 // echo("<br> Con la Strat: $estrategia, Libero a usar, deberia tener el orden  : $ordenActivo <br>");
 
 if($estrategia == "ALTLIBACT")
 {
 
-	echo("<BR>EnCanchados (antes de cambiar/reconocer): ");
-	print_r($EnCanchados);
-	echo("<br>");
+	//echo("<BR>EnCanchados (antes de cambiar/reconocer): ");
+	//print_r($EnCanchados);
+	//echo("<br>");
 
 	// OBTENGO AL QUE SE VA
 	for($contador=0; $contador < count($vectorJugadorX);$contador++ )
@@ -673,7 +720,7 @@ if($estrategia == "ALTLIBACT")
 				$nombreSeVa = $vectorJugadorX[$contador]['nombre'];
 				$CategoriaSale = $vectorJugadorX[$contador]['categoria'];
 				$posicionSale = $posicionActual;
-				ECHO"<br> LIBERO que sale:  $nombreSeVa (id $idSeVa) EN LA POSICION...$posicionActual y su orden es $ordenSeva <br>";
+				//ECHO"<br> LIBERO que sale:  $nombreSeVa (id $idSeVa) EN LA POSICION...$posicionActual y su orden es $ordenSeva <br>";
 			}	
 			if($XPUESTO == 2 && $posicionActual == 7 ) // LIBERO QUE ES SUPLENTE.
 			{
@@ -682,7 +729,7 @@ if($estrategia == "ALTLIBACT")
 				$nombreIngresa = $vectorJugadorX[$contador]['nombre'];
 				$CategoriaIngresa = $vectorJugadorX[$contador]['categoria'];
 				$posicionIngresa = $posicionActual;
-				ECHO"<br> LIBERO que ingresa: $nombreIngresa (id $idIngresa) esta EN LA POSICION...$posicionActual y su orden es $ordenIngresa <br>";
+				//ECHO"<br> LIBERO que ingresa: $nombreIngresa (id $idIngresa) esta EN LA POSICION...$posicionActual y su orden es $ordenIngresa <br>";
 			}	
 
 		
@@ -723,9 +770,9 @@ switch ($estrategia)
 							// LO SACO DEL ESTADO "Suplente" (asumo que estaba suplente) al LIBERO que quiero que ingrese.
 							$retorno = partjug::updateEntra($idpartido,$fecha,$equipo,$CategoriaIngresa,$setnumero,$idIngresa,$posicionActualSale);
 
-							echo("<BR>EnCanchados (post de cambiar/reconocer): ");
+							//echo("<BR>EnCanchados (post de cambiar/reconocer): ");
 							print_r($EnCanchados);
-							echo("<br>");
+							//echo("<br>");
 						  
 				}
 			}	
@@ -737,7 +784,84 @@ return $EnCanchados;
 
 }
 
+function detectarSetMatchPoint($idPartido,$Fecha,$setnumero,$secuencia,$setsnmax,$valorCierreSet,
+								$equipoA,$equipoB,$setsGanadosA,$setsGanadosB,$puntosEquipoA,$puntosEquipoB,$nombreLocal,$nombreVisitante)
+{
+
+//	CAMPOS DE LA TABLA PARTIDOCABECERA:Fecha, idPartido, categoria, ClubA, ClubB, 
+//									   clubSedePartido, idsede, CanchaId, competencia, ciudad, HoraIni, Horafin,
+//									   ClubARes, ClubBRes, estado, setsnmax, valFinSet, valTBSet,
+// 										descripcionp FROM vapppartido
+//	CAMPOS DE LA TABLA SETT: idpartido, secuencia, setnumero, fecha, hora, 
+//						1A, 2A, 3A, 4A, 5A, 6A, 1B, 2B, 3B, 4B, 5B, 6B, 
+//						estado, puntoa, puntob, CantPausaA, CantPausaB, saque,
+//						mensaje,
+//						codigoStratA, codigoStratB, ordenA, ordenB,
+//						 matchPoint(N11), setPoint(N11) ,textoSpecialPnt(V128)
+// El mensaje y valor del MATCH POINT PISA AL SET POINT, QUE PODRIAN COINCIDIR EN EL ULTIMO VALOR DEL SET
+	// -- Variables de ejemplo para los puntos actuales del set.
+	// DECLARE @puntosEquipoA INT = [puntosa];
+	// DECLARE @puntosEquipoB INT = [puntosb];
+	// DECLARE @setActual INT = [setnumero];
+	// DECLARE @setsGanadosA INT = [cantidadSetsGanadosA]; -- Definir lógica para contabilizar los sets ganados.
+	// DECLARE @setsGanadosB INT = [cantidadSetsGanadosB]; -- Definir lógica para contabilizar los sets ganados.
+
+	$setPoint		 = 0;
+	$matchPoint		 = 0;
+	$textoSpecialPnt = "";
+// -- Determina si es set point para cada equipo.
+	 If(($puntosEquipoA >= $valorCierreSet) && (($puntosEquipoA - $puntosEquipoB) >= 1)){
+		 $setPoint = $equipoA; //-- Set point para el equipo A.
+		 $textoSpecialPnt = "Set point para $nombreLocal en set $setnumero";
+	 }
+	 elseif($puntosEquipoB >= $valorCierreSet && ($puntosEquipoB - $puntosEquipoA) >= 1){
+		 $setPoint = $equipoB; //-- Set point para el equipo B.
+		 $textoSpecialPnt = "Set point para $nombreVisitante en set $setnumero";		 
+	 }
+
+//echo "<br>$textoSpecialPnt<br>"	;
+if($setsnmax == 3){
+	//	PARTIDOS DE 3 SETS
+	//	-- Determina si es match point para cada equipo.
+	//( ($setsGanadosA >= 2 && $setnumero >= 3) && ($puntosEquipoA >= 24 && ($puntosEquipoA - $puntosEquipoB) >= 1) )
+	if( ($setsGanadosA >= 1) && ($puntosEquipoA >= $valorCierreSet && ($puntosEquipoA - $puntosEquipoB) >= 1) )
+	{
+		$matchPoint = $equipoA; // Match point para el equipo A en partidos al mejor de 3.
+		$textoSpecialPnt = "Match point para $nombreLocal en set $setnumero";
+	}
+	elseif( ($setsGanadosB >= 1 ) && ($puntosEquipoB >= $valorCierreSet) && (($puntosEquipoB - $puntosEquipoA) >= 1) )
+	{
+		//( ($setsGanadosB >= 2 && $setnumero >= 3) && ($puntosEquipoB >= 24) && (($puntosEquipoB - $puntosEquipoA) >= 1) )
+		$matchPoint = $equipoB; // Match point para el equipo B en partidos al mejor de 3.
+		$textoSpecialPnt = "Match point para $nombreVisitante en set $setnumero";
+	}	
+}
+if($setsnmax == 5)
+{
+//	PARTIDOS DE 5 SETS
+//	-- Lógica similar para partidos al mejor de 5 sets. en 5 sets 14 es igual a valfinset
+	//if( ($setsGanadosA >= 3 && $setnumero >= 5) && ($puntosEquipoA >= 14 && ($puntosEquipoA - $puntosEquipoB) >= 1) )
+	if( ($setsGanadosA >= 2 ) && ($puntosEquipoA >= $valorCierreSet && ($puntosEquipoA - $puntosEquipoB) >= 1) )	
+	{
+		$matchPoint = $equipoA; // Match point para el equipo A en partidos al mejor de 5.
+		$textoSpecialPnt = "Match point para $nombreLocal en set $setnumero";
+	}	
+	elseif( ($setsGanadosB >= 2) && ($puntosEquipoB >= $valorCierreSet && ($puntosEquipoB - $puntosEquipoA) >= 1) )
+	//( ($setsGanadosB >= 3 && $setnumero >= 5) && ($puntosEquipoB >= 14 && ($puntosEquipoB - $puntosEquipoA) >= 1) )
+			{
+				$matchPoint = $equipoB; // Match point para el equipo B en partidos al mejor de 5.
+				$textoSpecialPnt = "Match point para $nombreVisitante en set $setnumero";
+			}
+}
+ //grabar en la secuencia grabada recien el mensaje !	
+ $retornoSett = Sett::updatePuntosEspeciales( $idPartido,$Fecha,$setnumero,$secuencia,$setPoint,$matchPoint,$textoSpecialPnt );
 
 
+// Consideraciones Adicionales
+// Actualizar los Sets Ganados: Asegúrate de tener un proceso o función que cuente y actualice correctamente los sets ganados por cada equipo.
+// Secuencia de Eventos: La lógica usa la secuencia para encontrar la última acción del partido para actualizar correctamente los campos setPoint y matchPoint.
+// Sincronización: Verifica que los campos setPoint y matchPoint se actualicen en el momento correcto y no antes de cumplir las condiciones.
+
+}	
 
 ?>

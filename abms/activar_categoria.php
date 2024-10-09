@@ -6,26 +6,22 @@
 require ('Categoria.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Decodificando formato Json
- 	//	"categoria" ,"edadi" ,"edadf"   
-	$idcate = $_POST['icate'];
-	$categoriaData = Categoria::getById($idcate);
-	//print_r($categoriaData);
-	//	$activar  = $_POST['activas']; 
-	$categoriaDesc=	"'".$categoriaData["descripcion"]."'";
-	$edadi	 =  $categoriaData["EdadInicio"];
-	$edadf	 =  $categoriaData["EdadFin"];
-	$setM	 =  $categoriaData["setMax"];
-	$activar =  $categoriaData["categoriaActiva"];
-	if($activar==0 )$activar=1;
-		else $activar=0;
+	$idcate = $_POST['categoriaID'];
+	$categoriaDesc = "'".$_POST['categoria']."'";
+
+	$edadi	  = $_POST['edadi'];
+	$edadf	  = $_POST['edadf'];
+	$setM	  = $_POST['setM'];
+	$activar  = $_POST['activas'];
+	// if( $activar== 0 ) $activar=1;
+	// 	else $activar=0;
 	
     // update categoria
     	$retorno = Categoria::update($idcate,$categoriaDesc,$edadi,$edadf,$setM,$activar);
 
     if ($retorno) {
-        // Código de éxito
-        echo(json_encode(array('estado' => '1','mensaje' => 'Creación exitosa')));
+        // Cï¿½digo de ï¿½xito
+        echo(json_encode(array('estado' => '1','mensaje' => 'Creaciï¿½n exitosa')));
     } else {
         echo($retorno);
     }
@@ -33,30 +29,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 else
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-   // Decodificando formato Json
- 	//	"categoria" ,"edadi" ,"edadf"   
-	$idcate = $_GET['icate'];
-	$categoriaData = Categoria::getById($idcate);
-	print_r($categoriaData);
-	//	$activar  = $_POST['activas']; 
-	$categoriaDesc=	"'".$categoriaData["descripcion"]."'";
-	$edadi	 =  $categoriaData["EdadInicio"];
-	$edadf	 =  $categoriaData["EdadFin"];
-	$setM	 =  $categoriaData["setMax"];
-	$activar =  $categoriaData["categoriaActiva"];
+		$idcate = $_GET['categoriaID'];
+		$categoriaDesc = "'".$_GET['categoria']."'";
+		$edadi	  = $_GET['edadi'];
+		$edadf	  = $_GET['edadf'];
+		$setM	  = $_GET['setM'];
+		$activar  = $_GET['activas'];
+		// if($activar==0 )$activar=1;
+		// 	else $activar=0;
+	
+		// update categoria
+		$retorno = Categoria::update($idcate,$categoriaDesc,$edadi,$edadf,$setM,$activar);
 
-	if($activar==0 )$activar=1;
-		else $activar=0;
-
-    // update categoria
-    $retorno = Categoria::update($idcate,$categoriaDesc,$edadi,$edadf,$setM,$activar);
-
-    if ($retorno) {
-        // Código de éxito
-        echo(json_encode(array('estado' => '1','mensaje' => 'Creación exitosa')));
-    } else {
-        echo($retorno);
-    }
+		if ($retorno) {
+			// Cï¿½digo de ï¿½xito
+			echo(json_encode(array('estado' => '1','mensaje' => 'Creaciï¿½n exitosa')));
+		} else {
+			echo($retorno);
+		}
     
 	}
 	

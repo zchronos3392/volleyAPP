@@ -30,7 +30,7 @@ class Numeros
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($tabla));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             //return $row;
@@ -54,7 +54,8 @@ class Numeros
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($tabla));
+            $comando->execute();
+			// $comando->execute(array($tabla));
             // Capturar primera fila del resultado
             return $row = $comando->fetch(PDO::FETCH_ASSOC);
 
@@ -95,7 +96,7 @@ public static function setnumeros($tabla,$numero)
 		// Preparar sentencia
 		$comando = Database::getInstance()->getDb()->prepare($consulta);
 		// Ejecutar sentencia preparada
-		$comando->execute(array($tabla,$numero));
+		$comando->execute();
 		// Capturar primera fila del resultado
 		$row = $comando->fetch(PDO::FETCH_ASSOC);
 		//return $row;
@@ -118,7 +119,7 @@ public static function updnumeros($tabla,$numero)
 		// Preparar sentencia
 		$comando = Database::getInstance()->getDb()->prepare($consulta);
 		// Ejecutar sentencia preparada
-		$comando->execute(array($tabla,$numero));
+		$comando->execute();
 		// Capturar primera fila del resultado
 		$row = $comando->fetch(PDO::FETCH_ASSOC);
 		//return $row;

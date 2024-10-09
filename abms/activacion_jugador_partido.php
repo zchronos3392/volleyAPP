@@ -29,14 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		$accion    = $_POST["accion"];
 //parametros de llamada
 	
-	$accionValor =0;
+	$accionValor =0; // solo queda en 1 cuando llega un ACTIVAR, sino se desactiva
 	if($accion == 'ACTIVAR')
 	   $accionValor =1;
 	$retorno = partjug::updateActivaSN($partido,$fecha,$iclub,$icate,$jugador,$set,$accionValor);
 
 	if($retorno)
 	{
-			//Array ( [0] => Array ( [idclub] => 4 [nombre] => BOCAb [clubabr] => BJR ) )
 	        $datos["estado"] = 1;
 	        $datos["mensaje"] = "JUGADOR $accion";
 	        print json_encode($datos);

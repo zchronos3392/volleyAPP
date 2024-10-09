@@ -9,12 +9,13 @@ require('Cancha.php');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Decodificando formato Json
-	$idclub = $_POST['iclub'];
-	$idsede = $_POST['isede2'];
+	$idclub = (int) $_POST['iclub'];
+	$idsede = (int) $_POST['isede2'];
 	$nombre = $_POST['nomcancha'];
 	$ubicacion  = $_POST['direc_can'];
 	$dimensiones  = $_POST['dimcan'];
-		$foto         = $_POST['foto'];
+        $foto = '""';
+		if(isset($_POST['foto']))   $foto = "'".$_POST['foto']."'";
 	
     // Insertar ciuda
 	$ultimacancha =  Cancha::ultID();
@@ -44,6 +45,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 	$nombre = $_GET['nomcancha'];
 	$ubicacion  = $_GET['direc_can'];
 	$dimensiones  = $_GET['dimcan'];
+    $foto = '';
 	$foto         = $_GET['foto'];
     // Insertar ciuda
     $retorno = Cancha::insert($idclub,$idsede,$nombre,$ubicacion,$dimensiones);

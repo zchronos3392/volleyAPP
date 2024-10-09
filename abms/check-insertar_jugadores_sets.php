@@ -30,8 +30,20 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 						//echo "Clave $clave ";
 						//print_r($valor);
 						//echo "<br> ";	
+					// primero busco la Fecha de Egreso que tiene que ser nula	
+					$FechaEgr = '';
+					foreach ($valor as $clave2 => $nuevoValor){
+							if( $clave2 == "FechaEgreso")
+							{
+								 $FechaEgr =  $nuevoValor;
+							} 
+						
+					}
+					// primero busco la Fecha de Egreso que tiene que ser nula						
+					// luego, sabiendo que ese jugador esta activo, lo proceso como siempre
+					if($FechaEgr == '')
 							foreach ($valor as $clave2 => $nuevoValor){
-			    					if( is_null($nuevoValor) )
+			    					if( is_null($nuevoValor) && $clave2 != "FechaEgreso")
 			    					{
 			    							$contadorErrores++;
 			    							//$error +=  

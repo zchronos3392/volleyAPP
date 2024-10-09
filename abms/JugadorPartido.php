@@ -44,7 +44,7 @@ class partjug
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idpartido,$fecha));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -64,7 +64,7 @@ class partjug
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idpartido,$fecha,$iclub));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -107,7 +107,7 @@ class partjug
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$icate,$posicionX));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -151,7 +151,7 @@ class partjug
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$icate,$jugador));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -176,7 +176,7 @@ class partjug
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$icate,$jugador,$setnumero));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -202,7 +202,7 @@ public static function getJugadoresLoad($partido,$fecha,$iclub)
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -244,7 +244,7 @@ public static function getListaActivos($partido,$fecha,$iclub,$ianioe,$set)
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$ianioe,$set));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -277,7 +277,7 @@ public static function getJugadoresListaInicial($partido,$fecha,$iclub,$setnumer
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$setnumero));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -320,7 +320,8 @@ public static function getJugSetLoad($partido,$fecha,$iclub,$ianioe,$set,$catego
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$ianioe,$set,$categoriaPartido));
+            // $comando->execute(array($partido,$fecha,$iclub,$ianioe,$set,$categoriaPartido));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -332,13 +333,56 @@ public static function getJugSetLoad($partido,$fecha,$iclub,$ianioe,$set,$catego
         }
     }	
 	
+    // jugadores del set, vs los de la cabecera
+    public static function getJugSetVsCab($partido,$fecha,$iclub,$ianioe,$set)
+    {
+    //hay qye sacar la secuencia como autonumerico, anda mal !!!    				
+	$consulta = "SELECT ptos.remeraNum as numero,eq.nombre,eq.categoria,eq.idjugador,vappjugpartido.posicionini,vappjugpartido.idclub,vappjugpartido.posicion,vappjugpartido.activoSN,
+					ptos.puestoxcat,posCatColor.color as ColorPuestoCat,
+					vappjugpartido.puesto,posicionCanchaColor.color as ColorPuestoCancha,
+					vappjugpartido.secuencia,eq.FechaEgreso,vappjugpartido.Orden
+				 FROM vappjugpartido
+               inner join vappequipo eq
+               on eq.idclub = vappjugpartido.idclub
+                  and eq.idjugador = vappjugpartido.jugador    
+                left JOIN vapppuestojugador ptos
+                   on ptos.idjugador = eq.idjugador
+                   and ptos.pjcategoria = eq.categoria
+                    and ptos.idclub = eq.idclub
+                    and ptos.anioEquipo = eq.anioEquipo                   
+				LEFT JOIN vappposicion posCatColor
+				      on posCatColor.idPosicion = ptos.puestoxcat
+				LEFT JOIN vappposicion posicionCanchaColor
+				      on posicionCanchaColor.idPosicion = vappjugpartido.puesto
+                WHERE vappjugpartido.idpartido=$partido	and eq.anioEquipo=$ianioe and vappjugpartido.Fecha=$fecha and vappjugpartido.idclub=$iclub and (vappjugpartido.setnumero=$set)
+					and entraSale <> 99
+					and FechaEgreso IS NULL
+                    ORDER BY eq.nombre ASC";
+//        echo "<br> getJugSetVsCab: <br>$consulta<br><br>";
+        try {
+            // Preparar sentencia
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            // Ejecutar sentencia preparada
+            $comando->execute();
+			// no se estaba devolviendl el resultado en formato JSON
+			// con esta linea se logro...
+			// usar en vez de return echo, aunque no se si funcionara con ANDROID
+            return $row = $comando->fetchAll(PDO::FETCH_ASSOC);
+			//echo json_encode($row);
+
+        } catch (PDOException $e) {
+            return ($e->getMessage());
+        }
+    }	    
 
 
 public static function getJugXSetVer($partido,$fecha,$iclub,$ianioe,$set)
     {
     	//esto trae bien las rotaciones
+    // var_dump($partido,$fecha);
     $partidoRow = Partido::getById($partido,$fecha);
-	//print_r($partidoRow);
+	//echo "hola";
+    //print_r($partidoRow);
     	
     $filtroLocales ="";
     if($partidoRow['idcluba'] == $iclub)	
@@ -367,7 +411,8 @@ public static function getJugXSetVer($partido,$fecha,$iclub,$ianioe,$set)
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$ianioe,$set));
+            // $comando->execute(array($partido,$fecha,$iclub,$ianioe,$set));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -405,7 +450,8 @@ public static function getJugSetVer($partido,$fecha,$iclub,$ianioe,$set,$jugador
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$ianioe,$set,$jugadorX));
+            // $comando->execute(array($partido,$fecha,$iclub,$ianioe,$set,$jugadorX));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -422,6 +468,9 @@ public static function getJugSetVer($partido,$fecha,$iclub,$ianioe,$set,$jugador
 	
 public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
     {
+       // echo "<br>getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)<br>";
+    // ESTA CONSULTA COMPARA LOS JUGADORES ASIGNADOS AL PARTIDO VS LOS PRESENTES AL MISMO EN CADA setPos
+    // SI HAY DIFERENCIA, HAY ERROR 
 	$consulta = "select (a.total - b.total) as 'setjugok'
 						from
 				(SELECT count(eq.idjugador) as 'total'
@@ -430,20 +479,20 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
                on eq.idclub = vappjugpartido.idclub
                   and eq.idjugador = vappjugpartido.jugador    
                 WHERE vappjugpartido.idpartido=$partido	and eq.anioEquipo=$ianioe and vappjugpartido.Fecha=$fecha and vappjugpartido.idclub=$iclub and (vappjugpartido.setnumero=$set)
-					and entraSale <> 99 )a ,
+					and entraSale <> 99 AND eq.FechaEgreso IS NULL )a ,
 			   (SELECT count(eq.idjugador) as 'total'
 				 FROM vappjugpartidocab
                inner join vappequipo eq
                on eq.idclub = vappjugpartidocab.idclub
                   and eq.idjugador = vappjugpartidocab.jugador    
-                WHERE vappjugpartidocab.idpartido=$partido	and eq.anioEquipo=$ianioe and vappjugpartidocab.Fecha=$fecha and vappjugpartidocab.idclub=$iclub and entraSale = 99) b";
+                WHERE vappjugpartidocab.idpartido=$partido	and eq.anioEquipo=$ianioe and vappjugpartidocab.Fecha=$fecha and vappjugpartidocab.idclub=$iclub and entraSale = 99 AND eq.FechaEgreso IS NULL) b";
                 //   
 			//echo "<br>$consulta<br>";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$ianioe,$set));
+            $comando->execute();
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -524,7 +573,7 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
 		//echo "<br >$comando <br>";
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($partido,$fecha,$iclub,$icate,$jugador,$puesto,$setnumero,$mensajeAlta) );
+        return $sentencia->execute( );
     }
 
 /*
@@ -539,20 +588,6 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
         return $sentencia->execute(array($partido,$fecha,$iclub,$icate,$jugador) );
     }
 */	
-    public static function insertSet($partido,$fecha,$iclub,$icate,$jugador,$setnumero,$puesto,$orden,$mensajeAlta)
-    {
-    	//idjugador es autonumerico..
-    	$comando = "INSERT INTO vappjugpartido (idpartido,Fecha,idclub,idcategoria,jugador,setnumero,entraSale,puesto,Orden,mensajeAlta ) ".
-		" VALUES ( $partido,$fecha,$iclub,$icate,$jugador,$setnumero,0,$puesto,$orden,$mensajeAlta ) " ;    	
-
-		//echo "<br>$comando<br>";
-		//echo "<br>$comando<br>";
-        // Preparar la sentencia
-        $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($partido,$fecha,$iclub,$icate,$jugador,$setnumero,$puesto,$orden,$mensajeAlta) );
-    }	
-		
-
     public static function setPos($partido,$fecha,$iclub,$icate,$jugador,$posicioninicial,$posicionact,$puestoAct,$hora,$setnumero)
     {
     	//idjugador es autonumerico..
@@ -570,7 +605,7 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array($partido,$fecha,$iclub,$icate,$jugador,$posicioninicial,$posicionact,$hora,$setnumero) );
+        return $sentencia->execute( );
     }
   
   
@@ -593,9 +628,43 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($partido,$fecha,$iclub,$icate,$jugador));
+        return $sentencia->execute();
+    }
+
+
+    public static function insertSet($partido,$fecha,$iclub,$icate,$jugador,$setnumero,$puesto,$orden,$mensajeAlta)
+    {
+    	//idjugador es autonumerico..
+    	$comando = "INSERT INTO vappjugpartido (idpartido,Fecha,idclub,idcategoria,jugador,setnumero,entraSale,puesto,Orden,mensajeAlta ) ".
+		" VALUES ( $partido,$fecha,$iclub,$icate,$jugador,$setnumero,0,$puesto,$orden,$mensajeAlta ) " ;    	
+
+//		echo "<br>$comando<br>";
+        // Preparar la sentencia
+        $sentencia = Database::getInstance()->getDb()->prepare($comando);
+        return $sentencia->execute( );
+    }	
+
+    
+    public static function deleteSet($partido,$fecha,$iclub,$icate,$jugador,$setNumero)
+    {
+        // Sentencia DELETE
+        $comando = "DELETE FROM vappjugpartido WHERE 
+        				jugador=$jugador 
+        				and idpartido = $partido
+        				and Fecha=$fecha
+        				and idclub = $iclub
+        				and idcategoria = $icate
+                        and setnumero = $setNumero";
+
+        // Preparar la sentencia
+      //  echo "<br>$comando<br>";
+
+        $sentencia = Database::getInstance()->getDb()->prepare($comando);
+
+        return $sentencia->execute();
     }
     
+
     public static function deletePosiciones($partido,$fecha,$iclub,$setnumero)
     {
         // Sentencia DELETE
@@ -609,7 +678,7 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($partido,$fecha,$iclub,$setnumero));
+        return $sentencia->execute();
     }
         
     public static function delete2($partido,$setnumero,$fecha)
@@ -624,7 +693,7 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($partido,$setnumero,$fecha));
+        return $sentencia->execute();
     }
     public static function deleteAll($partido,$fecha)
     {
@@ -637,7 +706,7 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($partido,$fecha));
+        return $sentencia->execute();
     }
     
 	public static function 	updateOrden($idpartido,$fecha,$iclub,$icate,$jugador,$set,$orden)
@@ -650,7 +719,7 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
         // Preparar sentencia
         $comando = Database::getInstance()->getDb()->prepare($consulta);
         // Ejecutar sentencia preparada
-        $comando->execute(array($idpartido,$fecha,$iclub,$icate,$jugador,$set,$orden));
+        $comando->execute();
         return $row = $comando->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e)
@@ -670,8 +739,7 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idpartido,$fecha,$iclub,$icate,$jugador,$set,
-									$accionValor));
+            $comando->execute();
             return $row = $comando->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
@@ -686,12 +754,12 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
 					and idclub=$iclub and idcategoria=$icate and jugador=$jugadorSale
 					and setnumero=$set
 				" ;
-	//echo "sale:".$consulta;			
+	//echo "update sale:".$consulta;			
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idpartido,$fecha,$iclub,$icate,$jugadorSale,$set));
+            $comando->execute();
             return $row = $comando->fetchAll(PDO::FETCH_ASSOC);
 			//echo json_encode($row);
 
@@ -707,12 +775,12 @@ public static function getCantJugSetLoad($partido,$fecha,$iclub,$ianioe,$set)
 					and idclub=$iclub and idcategoria=$icate and jugador=$jugadorEntra
 					and setnumero=$set
 				" ;
-	//	echo "entra: ".$consulta;			
+		//echo "update entra: ".$consulta;			
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($partido,$fecha,$iclub,$icate,$set,$jugadorEntra,$posicionEnSet));
+            $comando->execute();
 
             return $row = $comando->fetchAll(PDO::FETCH_ASSOC);
 

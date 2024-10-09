@@ -1,0 +1,146 @@
+instalar HoraSistema
+ponerla en pantalla:
+				<div>Hora Forzada</div>
+				<input type="datetime" id="HoraSistema" name="HoraSistema" disabled />
+AL LADO DEL CRONOMETRO
+<div ><span id="stopwatch" style="display: none;"></span></div> 
+
+recuperarla en READY
+		// RECUPERO LA HORA DEL SISTEMA, SI ES QUE SE GUARDÓ	
+		<?php
+			require_once('./abms/SesionTabla.php');
+			$HoraSistemaSaved =  SesionTabla::getsessionX("'HORASISTEMA'"); //texto clave
+			if(isset($HoraSistemaSaved["sesorigen"]))
+				echo "$('#HoraSistema').val('".$HoraSistemaSaved["sesorigen"]."');";
+		?>		
+AVANZAR EL CRONOMETRO Y LA HORA SESION SI EXISTE
+		var dt = new Date();
+	    var tiempo = {
+	        hora: dt.getHours(),
+	        minuto: dt.getMinutes(),
+	        segundo: dt.getSeconds()
+	    };
+
+		var vHoraSistema = $("#HoraSistema").val();
+		if (vHoraSistema != '')	
+				var a1 = vHoraSistema.split(':'); // [18, 30, 01] -hora fingida sistema
+
+		// FINGIENDO QUE LA HORA DE SISTEMA SIMULADA ESTA AVANZANDO MILI A MILIPILIsegundos
+		if (vHoraSistema != '')	{
+		var tiemposistema = {
+	        hora: a1['0'],
+	        minuto: a1['1'],
+	        segundo: a1['2'] 
+		}
+		}
+
+
+    	var tiempo_corriendo = null;
+
+		tiempo_corriendo = setInterval(function(){
+        // Segundos
+        tiempo.segundo++;
+
+		// MOVIENDO EL TIEMPO SIMULADO EN UN SOLO CRONOMETRO:SEGUNDOS
+		if (vHoraSistema != '')
+			tiemposistema.segundo++;
+
+        if(tiempo.segundo >= 60)
+        {
+        	tiempo.segundo = 0;
+            tiempo.minuto++;
+        }      
+
+		// MUEVO EL TIEMPO SIMULADOR TAMBIEN:SEGUNDOS+MINUTO
+		if (vHoraSistema != ''){
+			if(tiemposistema.segundo >= 60)
+			{
+				tiemposistema.segundo = 0;
+				tiemposistema.minuto++;
+			}      		
+		}	
+
+        // Minutos
+        if(tiempo.minuto >= 60)
+        {
+        	tiempo.minuto = 0;
+            tiempo.hora++;
+        }
+
+        // MOVIENDO TIMEPO SIMULADO: MINUTOS
+		if (vHoraSistema != ''){
+			if(tiemposistema.minuto >= 60)
+			{
+				tiemposistema.minuto = 0;
+				tiemposistema.hora++;
+			}
+		}	
+
+		// CRONOMETRO COMUN
+		var tiempoTxtHora = tiempo.hora < 10 ? '0' + tiempo.hora : tiempo.hora;
+		var tiempoTxtMin  = tiempo.minuto < 10 ? '0' + tiempo.minuto : tiempo.minuto;
+		var tiempoTxtSeg  = tiempo.segundo < 10 ? '0' + tiempo.segundo : tiempo.segundo;
+		
+		// CRONOMETRO SIMULADO
+		if (vHoraSistema != ''){
+		var XtiempoTxtHora = tiemposistema.hora < 10 ? '0' + tiemposistema.hora : tiemposistema.hora;
+		var XtiempoTxtMin  = tiemposistema.minuto < 10 ? '0' + tiemposistema.minuto : tiemposistema.minuto;
+		var XtiempoTxtSeg  = tiemposistema.segundo < 10 ? '0' + tiemposistema.segundo : tiemposistema.segundo;
+		var XtiempoSinSegs = XtiempoTxtHora +':' + XtiempoTxtMin;		
+			var XtiempoTxt = XtiempoTxtHora +':' + XtiempoTxtMin +':' + XtiempoTxtSeg ;
+		}
+
+		var tiempoTxt = tiempoTxtHora +':' + tiempoTxtMin +':' + tiempoTxtSeg ;
+
+		// ACTUALIZO EL CRONOMETRO SIMULADO
+		if (vHoraSistema != '')
+			$("#HoraSistema").val(XtiempoTxt);
+
+		$("#stopwatch").text(tiempoTxt);
+
+		}, 1000); //funcion setinterval..
+
+en las funciones que utilicen el dato de hora, poner una seleccion
+entre la hora sesion y la hora de sistema real
+		   var horaAUsar = '';
+		   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+
+//	*****************************************************************************
+//		agregar la funcion de actualizar hora de pantalla antes de volver
+//	*****************************************************************************
+		function updatehora(preid){
+			$("#"+preid).prop('disabled', true);
+		// por el momento solo guardo la competencia del formulario
+			var parametros = {
+				"TEXTOCLAVE" : "HORASISTEMA",
+				"origenrequest"		: $('#'+preid).val() //reuso clave origenrequest para
+				//   que directamente grabe la sesion
+			};
+
+			$.ajax({
+				url:   './abms/grabarsesion.php',
+				type:  'GET',
+				data: parametros ,
+				datatype:   'text json',
+				beforeSend: function () {},
+				done: function(data) {},
+				success:  function (r) {
+
+				},
+				error: function (xhr, ajaxOptions, thrownError) {console.log(thrownError);}
+								
+			});// falta el seleccion de la cancha, para cargar los campos..		  
+};
+
+reemplazar el volver por, tambien cualquier otra funcion que recargue la pantalla donde estamos usando la hora sesion.
+ function volver(urlEjecutar){
+	//aca tengo que grabar la hora simulada del sistema
+	checkHoraSistema();
+	window.location.href = urlEjecutar;
+}
+
+agregar funciones:
+		function checkHoraSistema(){
+			if($("#HoraSistema") != '') 
+				updatehora('HoraSistema');
+		}

@@ -365,7 +365,6 @@ $("#btnIngreso").click(function(){
 //**************** CIUDADES *********************************************/            
 
 //**************** COMPETENCIAS *********************************************/            
-
 $("#formConfig").on('submit', function(e){
 	    //e.preventDefault();
     //QUE SE RECARGUE CUANDO PRESIONO CLICK..
@@ -505,8 +504,9 @@ $("#AltaNumeros").click(function() {
 
  /******************************** alta numeros **************************************************/           
            
-$("#AltaCategoria").click(function(){ 
+$("#AltaCategoria").click(function(e){ 
     //QUE SE RECARGUE CUANDO PRESIONO CLICK..
+		//e.preventDefault();
     	//alert('Submit activado');
         // Guardamos el select de cursos
         if( ($("#categoria").val() != '') &&  ($("#edadi").val() != '') &&  ($("#edadf").val() != '') )

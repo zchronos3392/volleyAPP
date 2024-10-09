@@ -26,7 +26,7 @@ class Rotaciones
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
 			// no se estaba devolviendl el resultado en formato JSON
-			$comando->execute(array($idpartido,$fecha,$setnumero));	
+			$comando->execute();	
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
             return $comando->fetchAll(PDO::FETCH_ASSOC);
@@ -47,7 +47,7 @@ class Rotaciones
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-			$comando->execute(array($idpartido,$fecha,$setnumero,$secuenciaSet));			
+			$comando->execute();			
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -72,8 +72,7 @@ class Rotaciones
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(
-            array($idpartido,$fecha,$setnumero,$secuenciaSet,$a1,$a2,$a3,$a4,$a5,$a6,$b1,$b2,$b3,$b4,$b5,$b6,$mensaje,$clubRota));
+        return $sentencia->execute();
     }
 
 /**
@@ -95,7 +94,7 @@ class Rotaciones
 		echo "<br>$comando<br>";
 
         $cmd = Database::getInstance()->getDb()->prepare($comando);
-        $cmd->execute(array($idpartido,$fecha,$setnumero,$secuenciaSet,$clubRota));
+        $cmd->execute();
         return json_encode($cmd);
     }
 
@@ -115,7 +114,7 @@ class Rotaciones
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idpartido,$fecha,$setnumero,$secuenciaSet));
+        return $sentencia->execute();
     }
    public static function delete2($idpartido,$setnumero,$fecha)
     {
@@ -125,7 +124,7 @@ class Rotaciones
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idpartido,$setnumero,$fecha));
+        return $sentencia->execute();
     } 
     
    public static function deleteAll($idpartido,$fecha)
@@ -136,7 +135,7 @@ class Rotaciones
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idpartido,$fecha));
+        return $sentencia->execute();
     }        
 }
 

@@ -21,7 +21,16 @@ class Club
     public static function getAll()
     {
     		
-        $consulta = "SELECT * FROM vappclub order by clubabr";
+        //$consulta = "SELECT * FROM vappclub order by clubabr";
+        $consulta = "SELECT club.idclub,idciudad,club.nombre,clubabr,escudo,
+                    count(vs.idsede) as 'SedesRegistradas' , count(vc.idcancha) as 'CanchasRegistradas'
+                    FROM vappclub club
+                        left JOIN  vappsede vs
+                            ON club.idclub = vs.idclub
+                        left JOIN  vappcancha vc
+                            ON club.idclub = vc.idclub AND vc.idsede = vs.idsede
+                    GROUP BY  club.idclub
+                    order by clubabr";        
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -84,6 +93,68 @@ class Club
         }
     }    
 	
+    public static function getAllConJugadoresComp($ianio,$icompetencia){
+    		
+        // $consulta = "(SELECT equipo.anioEquipo,club.idclub,club.idciudad,club.nombre,club.clubabr 
+        //                     FROM vappclub club
+        //                     INNER JOIN vappequipo equipo
+        //                         on 	club.idclub =  equipo.idclub 
+        //                     INNER JOIN vapppartido partidos
+        //                         on 	(partidos.ClubA = equipo.idclub or
+        //                             partidos.ClubB = equipo.idclub) 
+        //                             and partidos.competencia = $icompetencia
+        //                     WHERE equipo.anioEquipo = $ianio
+        //                     GROUP by club.idclub,club.nombre,club.clubabr
+        //                 )
+        //                 UNION
+        //                 (SELECT equipo.anioEquipo,club.idclub,club.idciudad,club.nombre,club.clubabr 
+        //                         FROM vappclub club
+        //                         INNER JOIN vappequipo equipo
+        //                             on 	club.idclub =  equipo.idclub 
+        //                         INNER JOIN vapppartido partidos
+        //                             on 	(partidos.ClubA = equipo.idclub or
+        //                                 partidos.ClubB = equipo.idclub) 
+        //                                 and partidos.competencia = $icompetencia
+        //                         WHERE equipo.anioEquipo < ($ianio-1)
+        //                         AND NOT equipo.idclub IN
+        //                          (SELECT club.idclub FROM vappclub club
+        //                                 INNER JOIN vappequipo equipo
+        //                                     on 	club.idclub =  equipo.idclub 
+        //                                 INNER JOIN vapppartido partidos
+        //                                     on 	(partidos.ClubA = equipo.idclub or
+        //                                         partidos.ClubB = equipo.idclub) 
+        //                                         and partidos.competencia = $icompetencia
+        //                                 WHERE equipo.anioEquipo = $ianio
+        //                                 GROUP by club.idclub,club.nombre,club.clubabr)
+        //                 GROUP by club.idclub,club.nombre,club.clubabr);";
+        $consulta = "SELECT equipo.anioEquipo,club.idclub,club.idciudad,club.nombre,club.clubabr 
+                        FROM vappclub club
+                        INNER JOIN vappequipo equipo
+                                on 	club.idclub =  equipo.idclub 
+                        INNER JOIN vappanioequipo equipanio
+                                on equipanio.icompetencia = $icompetencia
+                                    AND equipanio.ianio = $ianio
+                                AND equipanio.idclub = equipo.idclub 
+                        WHERE equipo.anioEquipo = $ianio or (equipo.anioEquipo = ($ianio-1))
+                        GROUP by club.idclub,club.nombre,club.clubabr;";
+        try {
+            // Preparar sentencia
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            // Ejecutar sentencia preparada
+			// $comando->execute(array($ianio));			
+            $comando->execute();			
+			// no se estaba devolviendl el resultado en formato JSON
+			// con esta linea se logro...
+			// usar en vez de return echo, aunque no se si funcionara con ANDROID
+            return $comando->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            return ($e->getMessage());
+        }
+
+
+
+    }
     public static function getAllConJugadores($ianio)
     {
     		
@@ -97,7 +168,8 @@ class Club
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-			$comando->execute(array($ianio));			
+			// $comando->execute(array($ianio));			
+            $comando->execute();			
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -123,7 +195,7 @@ class Club
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-			$comando->execute(array($ianio));			
+			$comando->execute();			
 			// no se estaba devolviendl el resultado en formato JSON
 			// con esta linea se logro...
 			// usar en vez de return echo, aunque no se si funcionara con ANDROID
@@ -174,7 +246,7 @@ class Club
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idClub));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             //return $row;
@@ -209,7 +281,7 @@ class Club
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idClub));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return (array($row));
@@ -242,7 +314,7 @@ class Club
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($icluba,$iciudad,$nombre,$clubabr,$escudo));
+        $cmd->execute();
 
         return json_encode($cmd);
 		
@@ -258,13 +330,12 @@ class Club
      */
     public static function insert($nombre,$clubabr,$escudo,$iciudad){
         // Sentencia INSERT
-        $comando = "INSERT INTO vappclub ( nombre, clubabr,escudo,idciudad) VALUES( ?,?,?,?)";
+        $comando = "INSERT INTO vappclub ( nombre, clubabr,escudo,idciudad) VALUES( '$nombre','$clubabr','$escudo',$iciudad)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(
-            array($nombre,$clubabr,$escudo,$iciudad));
+        return $sentencia->execute();
 
     }
 
@@ -277,12 +348,12 @@ class Club
     public static function delete($idclub)
     {
         // Sentencia DELETE
-        $comando = "DELETE FROM vappclub WHERE idclub=?";
+        $comando = "DELETE FROM vappclub WHERE idclub=$idclub";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idclub));
+        return $sentencia->execute();
     }
 }
 

@@ -1,0 +1,316 @@
+Para usar un favicon personalizado para cada sitio web en un mismo servidor, puedes hacerlo de varias maneras:
+Ruta Directa en el HTML: En cada archivo HTML de los diferentes sitios, puedes incluir una etiqueta <link> que apunte a su favicon específico. Por ejemplo:
+Copiar
+<link rel="icon" href="/ruta/a/favicon1.ico" type="image/x-icon">
+
+Configuración en PHP: Si estás usando PHP, puedes configurar el favicon dinámicamente según la ruta del sitio. En el archivo de encabezado (header.php, por ejemplo), puedes hacer algo como esto:
+Copiar
+<link rel="icon" href="<?php echo '/ruta/a/favicon' . $sitioActual . '.ico'; ?>" type="image/x-icon">
+
+
+
+## **Comprendiendo tu consulta sobre favicons en WAMP**
+
+**Entiendo que deseas:**
+
+* **Identificar:** Si tu servidor local WAMP tiene alguna configuración específica que obligue a todos los sitios web a utilizar el mismo favicon.
+* **Ubicar:** La configuración exacta dentro de WAMP donde se podría establecer esta restricción.
+
+**Excelente pregunta!** Esta configuración puede ser crucial para mantener una imagen de marca consistente a lo largo de todos tus proyectos locales.
+
+## **Dónde buscar la configuración del favicon en WAMP**
+
+**La configuración del favicon en WAMP generalmente se establece a nivel de cada proyecto individual, no a nivel de servidor.** Esto significa que cada sitio web alojado en tu servidor WAMP puede tener su propio favicon, definido en su código HTML o en un archivo separado.
+
+**Sin embargo, existen algunas excepciones y posibilidades que podrías explorar:**
+
+1. **Archivos .htaccess:**
+   * **Personalización por directorio:** Cada directorio de tu proyecto puede tener un archivo .htaccess que contiene directivas para el servidor web Apache.
+   * **Reescritura de URLs:** Podrías tener una regla en un archivo .htaccess que reescriba las solicitudes de favicon y las redirija a un favicon específico.
+   * **Cómo verificar:** Revisa los archivos .htaccess en la raíz de cada proyecto y busca reglas relacionadas con el manejo de favicons o reescritura de URLs.
+
+2. **Configuración de Apache:**
+   * **VirtualHosts:** Si estás utilizando VirtualHosts en Apache para alojar múltiples sitios web, podrías tener una configuración global que afecte a todos los VirtualHosts.
+   * **Directivas globales:** Busca en los archivos de configuración de Apache (por ejemplo, httpd.conf o archivos de configuración de VirtualHosts) directivas que puedan afectar a la forma en que se sirven los favicons.
+   * **Cómo verificar:** Revisa los archivos de configuración de Apache en la carpeta de instalación de WAMP.
+
+3. **Temas o frameworks:**
+   * **Configuración predefinida:** Si estás utilizando un tema o framework predefinido para tus proyectos, podría tener una configuración predeterminada para el favicon.
+   * **Archivos de configuración:** Busca en los archivos de configuración del tema o framework para ver si hay alguna opción relacionada con el favicon.
+
+4. **Plugins de navegador:**
+   * **Interferencia:** En algunos casos, los plugins del navegador pueden interferir con la forma en que se cargan los favicons.
+   * **Desactivación temporal:** Desactiva temporalmente los plugins del navegador para ver si esto resuelve el problema.
+
+## **Cómo encontrar el favicon en tu proyecto**
+
+* **Código HTML:** Busca la etiqueta `<link>` en el encabezado de tu archivo HTML. El atributo `href` de esta etiqueta especifica la ubicación del favicon.
+* **Carpeta raíz:** El favicon suele estar ubicado en la carpeta raíz de tu proyecto, a menudo con el nombre `favicon.ico`.
+
+## **Ejemplo de una etiqueta `<link>` para un favicon:**
+```html
+<head>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+```
+
+**Si aún no encuentras la configuración específica que estás buscando, te recomiendo:**
+
+* **Buscar en línea:** Utiliza términos de búsqueda como "configurar favicon WAMP", "archivo .htaccess favicon", "configuración de Apache favicon" para encontrar tutoriales y ejemplos más específicos.
+* **Revisar la documentación de WAMP:** La documentación oficial de WAMP puede proporcionar información detallada sobre la configuración del servidor.
+* **Consultar la comunidad:** Los foros y comunidades en línea de WAMP pueden ser un excelente lugar para hacer preguntas y obtener ayuda de otros usuarios.
+
+**¿Necesitas más ayuda?** Proporciónanos más detalles sobre tu configuración de WAMP, como la versión que estás utilizando, si estás utilizando VirtualHosts, y cualquier mensaje de error que estés recibiendo. 
+
+
+
+
+Work Around
+El problema se arregla apagando el proxy en Windows (V16U11 y V17U0)
+O creando el archivo:
+
+chromium.proxy.disable
+
+en la raíz de instalación de GeneXus a partir de V17U1, inclusive.
+
+
+
+
+
+SELECT setPoint,matchPoint,textoSpecialPnt,puntoa,puntob,mensaje, vappset.* FROM
+vappset
+WHERE vappset.idpartido=2
+AND vappset.setnumero=1
+AND vappset.fecha='2024-09-01'
+order by secuencia desc;
+-------------------------------------------------
+SELECT equipo.nombre,categoria.descripcion, jpart.* FROM
+	vappjugpartido jpart
+    	inner join vappequipo equipo
+        	on equipo.idclub = jpart.idclub 
+              and equipo.idjugador = jugador
+              and  equipo.anioEquipo = 2024
+        inner join vappcategoria categoria
+         on categoria.idcategoria = equipo.categoria
+WHERE jpart.idpartido=2
+	AND jpart.setnumero=1
+	and jpart.idclub = 83
+	AND jpart.fecha='2024-09-01';
+
+delete from vappjugpartido jpart
+WHERE jpart.idpartido=2
+	AND jpart.setnumero=1
+	and jpart.idclub = 83
+	AND jpart.fecha='2024-09-01'
+    and jpart.hora='2024-09-30 23:27:24';
+------------------------------------------------------------------------------------------
+C:\wamp64\www\volleyAPP_desa\CSets2.php				-ESTOY DANDO DE ALTA AL EQUIPO
+	"idpartido" : <?php echo($_GET['id']); ?>,
+	"idset"     : $("#numerosetNuevo").val(),
+	"resa"      : 0,
+	"resb"      : 0,
+	"fechas"    : <?php echo("'".$_GET['fecha'])."'"; ?>,
+	"horas"     : horaAUsar,
+	"saque"     : 0,
+	"anioEquipo": $("#ianio").val() ,
+	"mensajeAlta" : 'Csets2::CrearSet',
+	"COPIARJUGADORES":	1 
+	  330,28:             url:   './abms/insertar_sets.php',
+
+C:\wamp64\www\volleyAPP_desa\NovedadesSet.php
+	"idpartido" : $("#partidoid").val(),
+	"idset"     : $("#numSet").text(),
+	"resa"      : $("#resa").text(),
+	"resb"      : $("#resb").text(),
+	"fechas"    : $("#fecha").text(),
+	"horas"     : horaAUsar,
+	"saque"     : $("#saque").val(),
+	"mensajeAlta" : 'Novedades::grabaPos',
+	"anioEquipo":	$("#ianio").val() 
+	  2223,28:             url:   './abms/insertar_sets.php',
+
+	  2269,28:             url:   './abms/insertar_sets_20.php',
+C:\wamp64\www\volleyAPP_desa\VerCSets.php
+  177,20: 				url:   './abms/insertar_sets.php',
+------------------------------------------------------------------------------------------
+
+
+$estrategiaB = '\'UNLIBERO\'', 
+$mensaje = '\'\'<br>Pausa por mitad TieBreak',
+
+
+ALTER TABLE `vappset` ADD `matchPoint` INT NOT NULL AFTER `ordenB`, ADD `setPoint` INT NOT NULL AFTER `matchPoint`;
+
+ALTER TABLE `vappset` CHANGE `matchPoint` `matchPoint` INT(11) NULL DEFAULT '0';
+ALTER TABLE `vappset` CHANGE `setPoint` `setPoint` INT(11) NULL DEFAULT '0';
+
+PLUS /NETO (160 VALOR HORA)
+0,50 MAS POR CADA HORA TRABAJADA
+
+20077	05/06/2024	21:30
+	GBEL	3	HACOAJ	0	BAIRES	
+25	18	
+25	19	
+25	22	
+0	0	
+0	0	
+----------
+75	59
+
+
+
+
+SUB18
+https://www.twitch.tv/videos/2144128158
+SUB21
+https://www.twitch.tv/videos/2144191115
+SUB16
+https://www.twitch.tv/videos/2144065589
+
+ARREGLOS SQL
+UPDATE `vapppartido` SET `ciudad` = '14' WHERE `vapppartido`.`Fecha` = '2018-06-09' AND `vapppartido`.`idPartido` = 1;
+UPDATE `vapppartido` SET `competencia` = '23' WHERE `vapppartido`.`Fecha` = '2021-10-02' AND `vapppartido`.`idPartido` = 2;
+UPDATE `vapppartido` SET `competencia` = '23' WHERE `vapppartido`.`Fecha` = '2019-09-19' AND `vapppartido`.`idPartido` = 1;
+INSERT INTO `vappcategoria` (`idcategoria`, `descripcion`, `EdadInicio`, `EdadFin`, `setMax`, `categoriaActiva`) VALUES ('1', 'MINI[CAB]', '8', '12', '4', '1');
+UPDATE `vapppartido` SET `categoria` = '2' WHERE `vapppartido`.`Fecha` = '2018-06-09' AND `vapppartido`.`idPartido` = 1;
+*********************************************************************************************************************************
+--CLUBSEDES ACTUALIZADAS
+select CanchaId,idPartido,Fecha,clubSedePartido from vapppartido 
+  	where fecha BETWEEN '2000-01-01' and '2018-12-31' and idsede = 0;
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS actualizarSEDECLUB//
+CREATE PROCEDURE actualizarSEDECLUB()
+BEGIN
+  DECLARE var_idpartido INTEGER;
+  DECLARE var_CanchaId INTEGER;
+  DECLARE var_FechaPartido DATETIME;*/
+  DECLARE var_final INTEGER DEFAULT 0; /* flag de fin de query/proceso */
+  DECLARE cursor1 CURSOR FOR select CanchaId,idPartido,Fecha from vapppartido 
+  	where fecha BETWEEN '2000-01-01' and '2018-12-31' and idsede = 0 and clubSedePartido = 0;
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET var_final = 1;
+  OPEN cursor1;
+  bucle: LOOP
+    /*FETCH cursor1 INTO var_id, var_titulo, var_paginas;*/
+    FETCH cursor1 INTO var_idpartido, var_CanchaId, var_FechaPartido;
+    IF var_final = 1 THEN
+      LEAVE bucle;
+    END IF;
+     update   vapppartido LISTAPPAL
+	set clubSedePartido = (select vappcancha.idclub from vappcancha 
+                                where vappcancha.idcancha = var_CanchaId )
+	WHERE fecha = var_FechaPartido and idpartido = var_idpartido
+
+    select idPartido,Fecha,clubSedePartido,idsede,CanchaId from vapppartido 
+	WHERE fecha = var_FechaPartido and idpartido = var_idpartido;
+  END LOOP bucle;
+  CLOSE cursor1;
+END//
+DELIMITER ;
+------------------------------------------------------------------------------------------------------------------------
+SP GUARDADO OK, CORRIO PARA 2018, SOLO CLUBSEDEPARTIDO basandome en la cancha guardada
+-------------------------------------------------------------------------------------------------------------
+match point
+señales arbitro
+
+
+VOLEY APP GESTION
+------------------------------------------------------------------------------------------------------------
+Armar tablero solo de valores y seleccion de saque para transmisiones youtubexobs
+CARGAR RESULTADO 
+1	20007	03/04/2024 21:30 HACOAJ	1	FERRO B	3	HACOAJ	19	25	25	10	23	25	23	25	0	0	90    85
+2	20009	10/04/2024 21:30 ULP	2	HACOAJ	3	ULP	20	25	23	25	31	29	30	28	13	15	117 122
+CARGAR RESULTADO 	
+6 	20043	08/05/2024 21:30 DMORENO 0	HACOAJ	0	DMORENO	0	0	0
+	dmoreno sin cancha ni sede
+8 	20060	22/05/2024 21:30 77FC	0	HACOAJ	0	77FC	0	0	0
+	77fc sin cancha ni sede
+10 	20077	05/06/2024 21:30 GBEL	0	HACOAJ	0	BAIRES	0	0	0
+	gbel sin cancha ni sede
+
+-------------------
+INTERFASES CON AJAX
+-------------------
+C:\wamp64\www\volleyAPP_desa\ingresar\ingresar.php
+C:\wamp64\www\volleyAPP_desa\ABMjugadores.php
+C:\wamp64\www\volleyAPP_desa\ActualizarPosicionJugPart.php
+C:\wamp64\www\volleyAPP_desa\AdministrarAPP.php
+C:\wamp64\www\volleyAPP_desa\CargarJugadores.php
+C:\wamp64\www\volleyAPP_desa\CargarPosiciones.php
+C:\wamp64\www\volleyAPP_desa\CargarPosiciones2.php
+C:\wamp64\www\volleyAPP_desa\Ccanchas.php
+C:\wamp64\www\volleyAPP_desa\Ccanchas20.php
+C:\wamp64\www\volleyAPP_desa\CCategorias.php
+C:\wamp64\www\volleyAPP_desa\Cciudades.php
+C:\wamp64\www\volleyAPP_desa\Cclubes.php
+C:\wamp64\www\volleyAPP_desa\Ccompetencia.php
+C:\wamp64\www\volleyAPP_desa\CDELUPD.php
+C:\wamp64\www\volleyAPP_desa\CEstados.php
+C:\wamp64\www\volleyAPP_desa\CEstrategias.php
+C:\wamp64\www\volleyAPP_desa\Cjugadores.php
+C:\wamp64\www\volleyAPP_desa\CNumeros.php
+C:\wamp64\www\volleyAPP_desa\Configuracion.php
+C:\wamp64\www\volleyAPP_desa\controlVoleyApp.php
+C:\wamp64\www\volleyAPP_desa\Cpartidos.php
+C:\wamp64\www\volleyAPP_desa\CPuestos.php
+C:\wamp64\www\volleyAPP_desa\Csedes.php
+C:\wamp64\www\volleyAPP_desa\CSets.php
+C:\wamp64\www\volleyAPP_desa\CSets2.php
+C:\wamp64\www\volleyAPP_desa\EstadisticasClub.php
+C:\wamp64\www\volleyAPP_desa\historial.php
+C:\wamp64\www\volleyAPP_desa\index.php
+C:\wamp64\www\volleyAPP_desa\ingreso.php
+C:\wamp64\www\volleyAPP_desa\jugadores_set.php
+C:\wamp64\www\volleyAPP_desa\MigrarCatjugadores.php
+C:\wamp64\www\volleyAPP_desa\ModPartido.php
+C:\wamp64\www\volleyAPP_desa\NovedadesSet.php
+C:\wamp64\www\volleyAPP_desa\TableroGrandev25.php
+C:\wamp64\www\volleyAPP_desa\torneos.php
+C:\wamp64\www\volleyAPP_desa\VerCSets.php
+C:\wamp64\www\volleyAPP_desa\VerPosiciones.php
+
+--------------------------------------------
+|   PROGRAMAS QUE MODIFICAN LA TABLA SET   |
+--------------------------------------------
+	NovedadesSet --> CARGAR LA SESION DE HORASISTEMA
+	CSets2  CONFIGURAR SETS PARTIDO
+		VerCSets AJUSTAR INFORMACION DEL PARTIDO/SET  --> CARGAR LA SESION DE HORASISTEMA
+	CargarPosiciones ASIGNAR POSICIONES INICIALES  --> CARGAR LA SESION DE HORASISTEMA
+
+		// RECUPERO LA HORA DEL SISTEMA, SI ES QUE SE GUARDÓ	
+		<?php
+			require_once('./abms/SesionTabla.php');
+			$HoraSistemaSaved =  SesionTabla::getsessionX("'HORASISTEMA'"); //texto clave
+			if(isset($HoraSistemaSaved["sesorigen"]))
+				echo "$('#HoraSistema').val('".$HoraSistemaSaved["sesorigen"]."');";
+		?>		
+		// RECUPERO LA HORA DEL SISTEMA, SI ES QUE SE GUARDÓ	
+
+
+--------------------------------------------
+|   PROGRAMAS QUE MODIFICAN LA TABLA SET   |
+--------------------------------------------
+APIS QUE LLAMAN A SETT
+NovedadesSet
+C:\wamp64\www\volleyAPP_desa\abms\cambiar_jugador_partido.php
+  579,13: 	$retorno = Sett::insert( $partido, $secuencia, $set, $fecha,$horaset,
+NovedadesSet
+C:\wamp64\www\volleyAPP_desa\abms\cerrarsetdata.php
+  112,13: 	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,
+NovedadesSet
+C:\wamp64\www\volleyAPP_desa\abms\insertar_sets_20.php
+  161,13: 	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,
+  343,13: 	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,
+NovedadesSet
+C:\wamp64\www\volleyAPP_desa\abms\insertarsetdata.php
+  505,13: 	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,
+---------------------------------------------------------
+|		COMPARTIDOS				|
+---------------------------------------------------------
+CSets2
+VerCSets
+C:\wamp64\www\volleyAPP_desa\abms\insertar_sets.php
+  199,13: 	$retorno = Sett::insert( $idpartido, $secuencia, $setnumero, $fecha2,$horaset,
+
+
+

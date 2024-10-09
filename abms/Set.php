@@ -65,10 +65,10 @@ class Sett
                   WHERE vappset.idpartido=$idpartido 
                   and vappset.fecha=$fecha 
                   and vappset.setnumero=$setnumero    
-                  and (mensaje ='Confirmando posiciones en planilla...' or  mensaje = 'Fin del set' or mensaje = '' or mensaje <> '')
+                  and (mensaje ='Confirmando posiciones en planilla...' or  mensaje = 'Fin del set' or mensaje = '' or mensaje <> '') 
                   GROUP BY setnumero";
         
-  //       echo "<br> getHoraInicioHoraFin :  <br>$consulta <br>";       
+       //  echo "<br> getHoraInicioHoraFin :  <br>$consulta <br>";       
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -163,7 +163,7 @@ class Sett
      // 29-08-2018, ver si aun funciona...			
 	//$consulta = "SELECT top 1 secuencia FROM vappset where idpartido=? and setnumero=? order by secuencia desc ";  
 	$consulta = "SELECT secuencia FROM vappset where idpartido=$idpartido and setnumero=$set and fecha=$fecha order by secuencia desc LIMIT 1";  
-//		echo "<br>$consulta <br>";
+		//echo "<br>$consulta <br>";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -184,15 +184,15 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
     {
     		// armar join a tablas descriptoras
 			// 29-08-2018, ver si aun funciona...
-/*
-			$consulta = "SELECT d.idpartido, (select t.hora from vappset t where t.fecha=$fecha and 
-						t.idpartido=$idpartido order by t.idpartido and t.hora desc Limit 1) as HoraInicial, 
-						d.hora as HoraFinal,TIMEDIFF (d.hora , (select t.hora from vappset t where 
-						t.idpartido=$idpartido and t.fecha=$fecha order by t.idpartido and t.hora desc Limit 1) )
-						as transcurrido
-							FROM vappset d where d.fecha=$fecha and d.idpartido=$idpartido order by d.hora desc 
-							limit 1";		
-*/
+
+			// $consulta = "SELECT d.idpartido, (select t.hora from vappset t where t.fecha=$fecha and 
+			// 			t.idpartido=$idpartido order by t.idpartido and t.hora desc Limit 1) as HoraInicial, 
+			// 			d.hora as HoraFinal,TIMEDIFF (d.hora , (select t.hora from vappset t where 
+			// 			t.idpartido=$idpartido and t.fecha=$fecha order by t.idpartido and t.hora desc Limit 1) )
+			// 			as transcurrido
+			// 				FROM vappset d where d.fecha=$fecha and d.idpartido=$idpartido order by d.hora desc 
+			// 				limit 1";		
+
 // NUEVA CONSUKLTA QUE TRAE EL TIEMPO TRANSCURRIDO EN HH:MM:SS							
 
 //select min(t.hora) from vappset t where t.fecha='2021-10-08' and t.idpartido=2
@@ -236,7 +236,8 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
     		// armar join a tablas descriptoras
 			// 29-08-2018, ver si aun funciona...
 			$consulta = "SELECT setnumero FROM vappset WHERE idpartido=$idpartido and fecha=$fecha ORDER BY secuencia,setnumero DESC LIMIT 1 ";  
-        try {
+            //echo $consulta;
+            try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
@@ -267,7 +268,7 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
             return $comando->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
-            return $e;
+            return ("MENSAJE DEL SQL : ".$e->getMessage());
         }
     }
 
@@ -288,7 +289,7 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
             return $comando->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
-            return $e;
+            return ("MENSAJE DEL SQL : ".$e->getMessage());
         }
     }
     /**
@@ -305,7 +306,7 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
         // 29-08-2018, ver si aun funciona...
 		$consulta = "SELECT partido.ClubA,partido.ClubB,partido.categoria, 1A as pa_1, 2A as pa_2, 3A as pa_3, 4A as pa_4, 5A as pa_5, 6A as pa_6,
 		1B as pb_1, 2B  as pb_2, 3B as pb_3, 4B as pb_4, 5B as pb_5, 6B as pb_6, vappset.estado,sts.descripcion, saque,puntoa,puntob,mensaje,CantPausaA,CantPausaB,codigoStratA,codigoStratB, 
-        ordenA,ordenB
+        ordenA,ordenB,matchPoint, setPoint ,textoSpecialPnt
 		FROM vappset 
 		       inner JOIN vapppartido partido
 			       on partido.idPartido = vappset.idpartido
@@ -318,7 +319,8 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idpartido,$setnum,$sec,$fecha ));
+            // $comando->execute(array($idpartido,$setnum,$sec,$fecha ));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return ($row);
@@ -327,7 +329,7 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
         } catch (PDOException $e) {
             // Aquí puedes clasificar el error dependiendo de la excepción
             // para presentarlo en la respuesta Json
-            return -1;
+            return ("MENSAJE DEL SQL : ".$e->getMessage());
         }
     }
 
@@ -343,14 +345,17 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
     	
         // Consulta de la sede
         // 29-08-2018, ver si aun funciona...
-		$consulta = "SELECT * FROM vappset 
-							WHERE vappset.idpartido= $idpartido and setnumero=$setnum and secuencia=$sec and vappset.fecha=$fecha ";
-      //  echo "$consulta";
+		$consulta = "
+                    SELECT * FROM vappset 
+							WHERE vappset.idpartido=$idpartido and setnumero=$setnum and secuencia=$sec and vappset.fecha=$fecha ;";
+//        echo "<br>$consulta<br>";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idpartido,$setnum,$sec,$fecha ));
+            //var_dump([$idpartido,$setnum,$sec,$fecha]);
+            // $comando->execute([$idpartido,$setnum,$sec,$fecha]);
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return ($row);
@@ -359,7 +364,7 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
         } catch (PDOException $e) {
             // Aquí puedes clasificar el error dependiendo de la excepción
             // para presentarlo en la respuesta Json
-            return -1;
+            return ("MENSAJE DEL SQL : ".$e->getMessage());
         }
     }
 
@@ -380,26 +385,71 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
     $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
     // Relacionar y ejecutar la sentencia
-    $cmd->execute(array($idpartido,$setnum,$sec,$fecha,$horamod ));
+    $cmd->execute();
 
     //return $cmd;
     //echo json_encode($cmd);
 
     }
+    public static function updatePuntoABByIdRegistro($idpartido,$setnum,$sec,$fecha,$puntoLocal,$puntoVisitante)
+    {
+        // Consulta de la sede
+        // 29-08-2018, ver si aun funciona...
+		$consulta = "UPDATE  vappset 
+                        SET puntoa=$puntoLocal,puntob=$puntoVisitante
+							WHERE vappset.idpartido= $idpartido and setnumero=$setnum and secuencia=$sec and vappset.fecha=$fecha ";
+     //ECHO "<BR> $consulta <BR>";   
+    // Preparar la sentencia
+    $cmd = Database::getInstance()->getDb()->prepare($consulta);
+
+    // Relacionar y ejecutar la sentencia
+    $cmd->execute();
+        return $cmd;
+    //echo json_encode($cmd);
+    }    
 
     public static function getResumenPartido($idpartido,$fecha )
     {
         // Consulta de la sede
         // 29-08-2018, ver si aun funciona...
-		$consulta = "Select setnumero, puntoa, puntob  FROM  vappset
-				       WHERE idpartido= $idpartido and fecha=$fecha 
-				           group by setnumero,puntoa,puntob ";
-        //echo($consulta);                
+        $consulta = "
+        SELECT secuencia, setnumero, puntoa, puntob, hora, 
+        (SELECT MAX(hora) FROM vappset 
+             WHERE (secuencia = (t.secuencia-1) OR secuencia = 1) 
+               AND idpartido = $idpartido
+               AND fecha = $fecha
+              AND ( (setnumero = t.setnumero)  OR (setnumero = t.setnumero-1) ) ) AS 'HoraAnterior' 
+            FROM vappset t
+            WHERE idpartido = $idpartido
+                AND fecha = $fecha
+            GROUP BY secuencia, setnumero, puntoa, puntob, hora
+            ORDER BY setnumero, secuencia;"; 
+        // $consulta = "SELECT secuencia, setnumero, puntoa, puntob, hora,
+        //                 (SELECT MAX(hora) FROM vappset WHERE secuencia = (t.secuencia-1)
+        //                    AND  idpartido = $idpartido
+        //                    AND fecha = $fecha
+        //                    AND setnumero = t.setnumero) AS 'HoraAnterior'
+        //             FROM vappset t
+        //             WHERE idpartido = $idpartido
+        //             AND fecha = $fecha
+        //             GROUP BY secuencia, setnumero, puntoa, puntob, hora
+        //             ORDER BY setnumero, secuencia;";
+
+        // $consulta = "Select secuencia,  setnumero, puntoa, puntob FROM vappset
+        //                 WHERE idpartido= $idpartido and fecha=$fecha 
+        //                 group by secuencia,setnumero,puntoa,puntob
+        //                 order by setnumero,secuencia;";
+
+//        $consulta = "Select setnumero, puntoa, puntob  FROM  vappset
+//				       WHERE idpartido= $idpartido and fecha=$fecha 
+//				           group by setnumero,puntoa,puntob ";
+//        echo($consulta);                
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idpartido,$fecha ));
+            // $comando->execute(array($idpartido,$fecha ));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetchAll(PDO::FETCH_ASSOC);
             return ($row);
@@ -423,14 +473,14 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
     public static function update($jugadorid,$equipoid,$descripcion,$numeroA,$numeroB,$estado,$idPartido,$setnum,$secuencia,$mensaje)
     { 
         // Creando consulta UPDATE
-        $consulta = "UPDATE vappset SET jugadorid=?,equipoid=?,descripcion=?,numeroA=?,numeroB=?,estado=?,mensaje=$mensaje ". 
-        "WHERE idpartido=? and setnumero=? and secuencia=?";
+        $consulta = "UPDATE vappset SET jugadorid=$jugadorid,equipoid=$equipoid,descripcion=$descripcion,numeroA=$numeroA,numeroB=$numeroB,estado=$estado,mensaje=$mensaje ". 
+        "WHERE idpartido=$idPartido and setnumero=$setnum and secuencia=$secuencia";
 
         // Preparar la sentencia
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($jugadorid,$equipoid,$descripcion,$numeroA,$numeroB,$estado,$idPartido,$setnum,$secuencia,$mensaje ));
+        $cmd->execute();
 
         //return $cmd;
 		echo json_encode($cmd);
@@ -454,16 +504,18 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($idPartido,$fecha,$setnum,$secuencia,$conteoA,$conteoB,$mensaje ));
+        $cmd->execute();
 
         //return $cmd;
 		echo json_encode($cmd);
 
     }
-    public static function updateZonasxSecuencia($idPartido,$fecha,$setnum,$secuencia,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6)
+
+    public static function updatePuntosEspeciales($idPartido,$fecha,$setnum,$secuencia,$QuienllegoSet,$QuienLLegoMatch,$mensaje)
     { 
         // Creando consulta UPDATE
-        $consulta = "UPDATE vappset SET 1A=$A1,2A=$A2,3A=$A3,4A=$A4,5A=$A5,6A=$A6,1B=$B1,2B=$B2,3B=$B3,4B=$B4,5B=$B5,6B=$B6 ". 
+        //	matchPoint(N11), setPoint(N11) ,textoSpecialPnt(V128)
+        $consulta = "UPDATE vappset SET textoSpecialPnt='$mensaje', matchPoint=$QuienLLegoMatch,setPoint=$QuienllegoSet ". 
         "WHERE idpartido=$idPartido and fecha=$fecha and setnumero=$setnum and secuencia=$secuencia";
 
 		//echo $consulta ;
@@ -471,7 +523,25 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($idPartido,$fecha,$setnum,$secuencia,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6));
+        $cmd->execute();
+
+        //return $cmd;
+		//echo json_encode($cmd);
+
+    }
+
+    public static function updateZonasxSecuencia($idPartido,$fecha,$setnum,$secuencia,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6)
+    { 
+        // Creando consulta UPDATE
+        $consulta = "UPDATE vappset SET 1A=$A1,2A=$A2,3A=$A3,4A=$A4,5A=$A5,6A=$A6,1B=$B1,2B=$B2,3B=$B3,4B=$B4,5B=$B5,6B=$B6 ". 
+        "WHERE idpartido=$idPartido and fecha=$fecha and setnumero=$setnum and secuencia=$secuencia";
+
+		// echo $consulta ;
+        // Preparar la sentencia
+        $cmd = Database::getInstance()->getDb()->prepare($consulta);
+
+        // Relacionar y ejecutar la sentencia
+        $cmd->execute();
 
         //return $cmd;
 		echo json_encode($cmd);
@@ -500,7 +570,7 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
 		
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
-        return $sentencia->execute(array( $idpartido, $secuencia, $setnumero, $fecha,$hora,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$estado,$puntoa, $puntob,$saque,$estrategiaA,$estrategiaB,$ordenLocal,$ordenVisita,$mensaje,$contadorpausasA,$contadorpausasB));
+        return $sentencia->execute();
     }
 
     /**
@@ -512,23 +582,23 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
     public static function delete($idpartido,$setNum,$secuencia,$fecha)
     {
         // Sentencia DELETE
-        $comando = "DELETE FROM vappset WHERE idpartido=? and setnumero=? and secuencia=? and fecha=?";
+        $comando = "DELETE FROM vappset WHERE idpartido=$idpartido and setnumero=$setNum and secuencia=$secuencia and fecha='$fecha'";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idpartido,$setNum,$secuencia,$fecha));
+        return $sentencia->execute();
     }
     
     public static function deleteAllSet($idpartido,$setNum,$fecha)
     {
         // Sentencia DELETE
-        $comando = "DELETE FROM vappset WHERE idpartido=? and setnumero=? and fecha=?";
-
+        $comando = "DELETE FROM vappset WHERE idpartido=$idpartido and setnumero=$setNum and fecha='$fecha'";
+        //echo "$comando";
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idpartido,$setNum,$fecha));
+        return $sentencia->execute();
     }
     
     public static function deleteAll($idpartido,$fecha)
@@ -539,7 +609,7 @@ public static function  TiempoTranscurrido($idpartido,$fecha)
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idpartido,$fecha));
+        return $sentencia->execute();
     }        
 }
 

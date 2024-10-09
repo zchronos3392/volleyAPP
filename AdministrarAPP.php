@@ -3,6 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="es">
     <head>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">    
+
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Administrar volleyAPP</title>
         <meta name="Administrar app" content="volley all app, partido."/>
@@ -15,6 +18,10 @@
 	   <!--SCRIPTS PRIMERO HAY QUE VINCULAR LA LIBERIA JQUERY PARA QUE RECONOZCA EL $-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<style>
+		.imgEstadoIndex_24{
+			display:none;
+		}
+
 		#imgEstadoAdmin:hover {opacity: 0.7;}
 		.TituloPop{
 			text-align: center;
@@ -206,14 +213,20 @@
 							text-decoration: none;
 							cursor: pointer;
 						}
+						.imgEstadoIndex_24{
+							display:inline-flex;
+							width: 50px;
+    						height: 50px;
+						}
+						.imgEstadoIndex_21{
+							display:none;
+						}					
+						.Pequenio{
+
+							height:3em;
+						}	
 			}
 											
-		
-		
-		
-		
-		
-		
 		
 		.btnCambioEstado{
 			 background: steelblue;
@@ -230,6 +243,55 @@
 		<script type="text/javascript">
 
 
+//+++++++++++++++ CREAMOS LOS VECTORES GLOBALES DESDE DONDE RE CARGAREMOS INFINITAMENTE LOS COMBOS..
+var vCompetencias = new Array();
+
+
+function cargarCompetenciasStart()
+{
+	iCompetencias = new Array();
+	$.ajax({ 
+		url:   './abms/obtener_comps.php',
+		 type:  'GET',
+		 dataType: 'json',
+		 async:false,
+		 // EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+		 beforeSend: function (){},
+		 done: function(data){},
+		 success:  function (r){
+			iCompetencias = Object.values(r['Competencias']);
+			 //console.log(iPosiciones);
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {}
+		 }); // FIN funcion ajax	
+ // TRAIGO UNA VEZ VECTOR DE PUESTOS			
+ //PROBANDO LA CARGA UNICA DE LAS POSICIONES
+ return iCompetencias;	
+}
+
+function creasCompetenciasx(nombreObj,competenciaSesion)
+{
+	var selectCompetencia = "";
+			// esto arreglo el tema del alta triplle..
+		$(vCompetencias).each(function(i, v)
+		{ // indice, valor
+			if(v.competenciaActiva == 1)
+				$("#"+nombreObj).append('<option value="' + v.idcomp + '">' + v.cnombre + '</option>');
+
+		});		
+		//alert(competenciaSesion);
+		if(competenciaSesion != 0)
+				$("#"+nombreObj).val(competenciaSesion);
+
+
+	return 	selectCompetencia ;
+}
+
+// +++++++++++++++++ FUNCIONES EXTRA ++++++++++++++++++++++++++++++++++++++
+
+
+
+
 		function filtrar(){
 
 			
@@ -241,9 +303,10 @@
 
 			var todos= 9999;			
 			var sinfiltros=0;
+			var icompetencia = $("#icompanio").val();
 			var parametros = 
 			{
-	        	"icomp" : todos,
+	        	"icomp" : icompetencia,
 	        	"icate" : sinfiltros,
 				"icity" : sinfiltros,
 				"icity2" : sinfiltros,
@@ -252,7 +315,8 @@
 					"fdesde" : $("#fecDde").val(),
 					"fdesdeOrden" : fechadesdeorden,
 					"fhasta" : $("#fecHta").val(),
-					"estado" : $("#ietats2").val()
+					"estado" : $("#ietats2").val(),
+					"estado2" : 4
 			};		  
 		/* agrego filtros como en INDEX */		
 		
@@ -273,16 +337,25 @@
 				$("#grid-ListaPart21").empty();
                 $(r['Partidos']).each(function(i, v)
                 { // indice, valor				
-				
+				var STS ='STS';
                 if (! $('#grid-ListaPart21').find("[name='PARTIDO"+v.Fecha+v.idPartido+"']").length)
 				{
 					
-				//var Tablero ='<a href="TableroGrande.php?id='+v.idPartido+'&fecha='+v.Fecha+'">';
-				var Tablero ='<a href="TableroGrandev25.php?id='+v.idPartido+'&fecha='+v.Fecha+'">';
-					Tablero +='<input type="button" id="verset" name="verset" class="btnVerSet_21  Verder Pequenio" value="(ver)" title="Ver Tablero"></input></a>';
-						
-				var verCSets ='<a href="CSets2.php?id='+v.idPartido+'&setmax='+v.setsnmax+'&fecha='+v.Fecha;
-					 verCSets += '"><input type="button" id="nuevoset" name="nuevoset" class="btnVerSet_21 Insta Pequenio" value="(+" title="Nuevo set"></input></a>';
+				//var Tablero ='<a href="TableroGrandev25.php?id='+v.idPartido+'&fecha='+v.Fecha+'">';
+				
+				var TableroTwitch ='<input type="button" id="verset" name="verset" class="btnVerSet_21  twitch Pequenio" value="(twitch)" title="Ver Tablero Twitch" '+
+					'onclick="window.location.href=\'TableroTwitch.php?id='+v.idPartido+'&fecha='+v.Fecha+'\'"'+
+					'></input></a>';
+
+
+					var Tablero ='<input type="button" id="verset" name="verset" class="btnVerSet_21  Verder Pequenio" value="(ver)" title="Ver Tablero" '+
+					'onclick="window.location.href=\'TableroGrandev25.php?id='+v.idPartido+'&fecha='+v.Fecha+'\'"'+
+					'></input></a>';
+					//'<a href="CSets2.php?id='+v.idPartido+'&setmax='+v.setsnmax+'&fecha='+v.Fecha;	
+					//var verCSets ='<a href="CSets2.php?id='+v.idPartido+'&setmax='+v.setsnmax+'&fecha='+v.Fecha;
+					 var verCSets = '<input type="button" id="nuevoset" name="nuevoset" class="btnVerSet_21 Insta Pequenio" value="(+" title="Nuevo set"'+
+					 				'onclick="window.location.href=\'CSets2.php?id='+v.idPartido+'&setmax='+v.setsnmax+'&fecha='+v.Fecha+'\'"'+
+									'></input>';
 					
 					var alta='<input type="button" id="volver" title="Cerrar partido" name="volver"'+
 						 	 ' class="btnVerSet_21 azulMa Pequenio" '+
@@ -291,11 +364,9 @@
 					var borrar='<input type="button" id="eliminar" title="Eliminar Partido" name="eliminar"'+
 						 	 ' class="btnVerSet_21 Manzana Pequenio" '+
 							 'value="DEL" onclick="BorrarPartido('+v.idPartido+',\''+v.Fecha+'\');"></input>';
-							 							 
-					var modifica ='<a href="ModPartido.php?id='+v.idPartido+'&fechapart='+v.Fecha+'">'+
-									'<input type="button" id="modifica" title="modifica partido" name="modifica"'+
-						 	 ' class="btnVerSet_21 turquE Pequenio" '+
-							 'value="MOD"></input></a>';
+					var modifica ='<input type="button" id="modifica" title="modifica partido" name="modifica"'+
+						 	 		' class="btnVerSet_21 turquE Pequenio" '+
+							 	  'value="MOD" onclick="window.location.href=\'ModPartido.php?id='+v.idPartido+'&fechapart='+v.Fecha+'\'"></input>';
 
 			        if(v.descripcion.includes('PROGR')) var img = './img/PartidoONOFFSQR.png';
 					if(v.descripcion.includes('SUSPENDIDO')) var img = './img/PartidoSSPND.png';
@@ -303,15 +374,15 @@
 			        if(v.descripcion.includes('LLUVI')){ 
 			        	var img = './img/rain-icon-png.jpg';
 	                		verCSets = '';
-	                		alta='<a href="VerCSets.php?id='+v.idPartido+'&setmax='+v.setsnmax+'&fecha='+v.Fecha;
-					  		alta+='"><input type="button" id="nuevoset" name="nuevoset" class="btnVerSet_21 Naranja Pequenio" value="(0/)" title="Revisar valores del Set"></input></a>';
+					  		alta='<input type="button" id="nuevoset" name="nuevoset" class="btnVerSet_21 Naranja Pequenio" value="(0/)" title="Revisar valores del Set"'+
+							  	   'onclick="window.location.href=\'VerCSets.php?id='+v.idPartido+'&setmax='+v.setsnmax+'&fecha='+v.Fecha+'\'" ></input>';
 					  	modifica='';		                
 	                }		
 	                if(v.descripcion.includes('FIN')){ 
 	                		var img = './img/PartidoOFFSQR.jpg';
 	                		verCSets = '';
-	                		alta='<a href="VerCSets.php?id='+v.idPartido+'&setmax='+v.setsnmax+'&fecha='+v.Fecha;
-					  		alta+='"><input type="button" id="nuevoset" name="nuevoset" class="btnVerSet_21 Naranja Pequenio" value="(0/)" title="Revisar valores del Set"></input></a>';
+					  		alta='<input type="button" id="nuevoset" name="nuevoset" class="btnVerSet_21 Naranja Pequenio" value="(0/)" title="Revisar valores del Set" '+
+							  	   'onclick="window.location.href=\'VerCSets.php?id='+v.idPartido+'&setmax='+v.setsnmax+'&fecha='+v.Fecha+'\'" ></input>';
 					  		modifica='';
 					}		
 	                if(v.descripcion.includes('CURSO')) var img = './img/PartidoONSQR.png';
@@ -322,14 +393,17 @@
 									  '<div class="ilp213 ADMIN">'+v.ClubB+'</div>'+
 									  '<div class="ilp214 ADMIN">'+v.ClubBRes+'</div>'+
 					  				  '<div class="imgdiv ilp215 ADMIN">'+
-					  					  '<img src="'+img+'" class="imgEstadoIndex_21" title="'+v.descripcion+'" onClick="levantarPopUp(this.title,'+v.idPartido+','+"'"+v.Fecha+"'"+');"></img>'+
 					  				  '</div>'+
-					  				 '<div class="ilp2116 ADMIN Pequenio">'+borrar+alta+modifica+Tablero+verCSets+'</div>'+ 
+					  				 '<div class="ilp2116 ADMIN Pequenio">'+borrar+alta+modifica+Tablero+TableroTwitch+verCSets+
+									   '<img src="'+img+'" class="imgEstadoIndex_21" title="'+v.descripcion+'" onClick="levantarPopUp(this.title,'+v.idPartido+','+"'"+v.Fecha+"'"+');"></img>'+
+									 '</div>'+ 
 								  		'<input type="hidden" name="PARTIDO'+v.Fecha+v.idPartido+'" />'+
 										 '<input type="hidden" id="fechaxpartido" value="'+v.Fecha+'" />'+
 										 '<input type="hidden" id="idxpartido" value="'+v.idPartido+'" />'+
 								 	 '</div>'+
-									  '<div class="ilp217 ADMIN">Competencia: '+v.cnombre+'</div>'+
+									  '<div class="ilp217 ADMIN"><div>'+v.cnombre+'</div><div>'+
+									  	'<img src="'+img+'" class="imgEstadoIndex_24" title="'+v.descripcion+'" onClick="levantarPopUp(this.title,'+v.idPartido+','+"'"+v.Fecha+"'"+');"></img>'+
+									  '</div></div>'+
 									  '<div class="ilp218 ADMIN">'+v.CatDesc+'</div>'+
 									  '<div class="ilp219 ADMIN">'+v.Fecha+'</div>'+
 									  '<div class="ilp2110 ADMIN">'+v.Inicio+'</div>'+
@@ -345,6 +419,31 @@
           } //fin funcion FILTRAR  
           
 
+		  function updateCompetencia(preid){
+		// por el momento solo guardo la competencia del formulario
+
+			var parametros = {
+				"TEXTOCLAVE" : "ICOMPANIO",
+				"origenrequest"		: $('#'+preid).val() //reuso clave origenrequest para
+				//   que directamente grabe la sesion
+			};
+
+			$.ajax({
+				url:   './abms/grabarsesion.php',
+				type:  'GET',
+				data: parametros ,
+				datatype:   'text json',
+				beforeSend: function () {
+						//console.log(' valor del select elegido:  '+preid);
+				},
+				done: function(data) {},
+				success:  function (r) {
+
+				},
+				error: function (xhr, ajaxOptions, thrownError) {console.log(thrownError);}
+								
+			});// falta el seleccion de la cancha, para cargar los campos..		  
+		};
 
 
 		function cambioEstadoPartido(){
@@ -461,22 +560,50 @@
 		
 		$(document).ready(function(){
 		
+
+		<?php
+			require_once('./abms/SesionTabla.php');
+			//$clave = "'".$_GET['TEXTOCLAVE']."'"; ICOMPANIO
+			$ingreso='';
+			$competenciaSesion = SesionTabla::getsessionx("'ICOMPANIO'");
+			$competenciaGuardada = 0;
+            if(isset($competenciaSesion["sesorigen"]))
+	            if ((int)$competenciaSesion["sesorigen"] !=0) {
+						$competenciaGuardada = (int)$competenciaSesion["sesorigen"];
+						echo("var competenciaSesion = $competenciaGuardada ;");
+				} else
+				{
+					echo('var competenciaSesion = 0 ; //NO TENIA VALOR, PERO ESTABA SETEADO');
+				}
+			else
+				 echo('var competenciaSesion = 0 ; //NO ESTA SETEADO EN SESION');
+		?>		
+
+
+		vCompetencias = cargarCompetenciasStart();
+			
+		creasCompetenciasx("icompanio",competenciaSesion);
+
 		$("#fecDdeAscDsc2").on("change click",function() {filtrar();});				
 
-		$("#ietats2").on("change click",function()
-		{
-			if($("#ietats2:contains('CURSO')"))
-			{
-			 var f=new Date();
-			 var dias = new Array ("01","02","03","04","05","06","07","08","09","10","11","12"
-			 				,"13","14","15","16","17","18","19","20","21","22","23","24","25","26"
-			 				,"27","28","29","30","31");
-			 var meses = new Array ("01","02","03","04","05","06","07","08","09","10","11","12");
-			 var fechapartidoDESDE = (f.getFullYear()) + "-" + meses['0'] + "-" +dias['0'];
-			 $("#fecDde").val(fechapartidoDESDE);
-			};	
+		$("#icompanio").on("change click", function () {
+				updateCompetencia("icompanio");
+				filtrar();
+		});
+
+
+		$("#ietats2").on("change", function () {
+			// if ($("#ietats2:contains('CURSO')").length > 0) {
+				if ($("#ietats2 option:selected").text().includes('CURSO')) {
+				//alert('la seleccion contiene la palabra CURSO '+ $("#ietats2").text());
+				var f = new Date();
+				var dias = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
+				var meses = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+				var fechapartidoDESDE = f.getFullYear() + "-" + meses[0] + "-" + dias[0];
+				$("#fecDde").val(fechapartidoDESDE);
+			};
 			filtrar();
-		});				
+		});
 
 		$("#fecDde").on("change click",function() {filtrar();});				
 		$("#fecHta").on("change click",function() {filtrar();});				
@@ -623,7 +750,6 @@
     
 <!--normal: 1070,<768:3288  -->
 		<div id="formbuscar" name="formbuscar" class="formbuscarv20"><!--normal 1077,<768:3295 -->
-
 		<div class="itemBusc1v20">
 	    	<div id="frmbuscardate" name="frmbuscardate" class="frmbuscardatev20"><!--normal 1088,<768:3306 -->
 				<div class="itemBusDate1v20">Desde</div> 
@@ -638,7 +764,11 @@
 		<div class="itemBusc3v20">
 			<select id="ietats2" class="SelList"><option value="1" selected>PROGRAMADO</option></select>
 		</div>
-		
+
+		<div class="itemBusc4v20">
+			<span >Competencias</span>
+			<select id="icompanio" class="SelList"><option value="1" selected>Seleccionar...</option></select>
+		</div>		
 	 </div>     
  
 <div class="grid-ListaPartTit21 Administrar" id="grid-ListaPartTit">

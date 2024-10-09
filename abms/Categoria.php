@@ -37,13 +37,66 @@ class Categoria
             return ($e->getMessage());
         }
     }
+    // OBTIENE UNA LISTA DE LAS ULTIMAS CATEGORIAS CARGADAS CERCANAS AL AÃ‘O QUE LLEGA POR 
+    // PARAMETRO Y PARA EL CLUB DADO
+    public static function getLastCategoriasConJugadores($ianio,$idclub)
+    {
+
+    /*no es necesario porqe el aï¿½o cargado significa qur tienen jugadores : and a.idclub = $iclub*/
+          $consulta = "SELECT *
+                        FROM (
+                            SELECT  
+                                a.anioEquipo AS anio,
+                                a.idclub,
+                                ROW_NUMBER() OVER (PARTITION BY a.idclub ORDER BY a.anioEquipo DESC) AS RowNum
+                            FROM 
+                                vappequipo a,
+                                vappcategoria b,
+                                vappclub c
+                            WHERE  
+                                a.categoria = b.idcategoria
+                                AND c.idclub = a.idclub
+                                AND c.idclub = $idclub
+                                AND a.anioEquipo < $ianio  -- Aseguramos que el aÃ±o del equipo sea menor o igual al aÃ±o actual
+                                AND EXISTS (
+                                    SELECT 1 
+                                    FROM vappequipo 
+                                    WHERE anioEquipo < a.anioEquipo 
+                                    AND anioEquipo >= (
+                                                        SELECT MIN(anioEquipo) 
+                                                        FROM vappequipo 
+                                                        WHERE anioEquipo < $ianio))
+                            GROUP BY  
+                                b.idcategoria, a.anioEquipo, a.idclub, c.nombre, b.descripcion, b.EdadInicio, b.EdadFin
+                            HAVING 
+                                COUNT(a.idjugador) > 0
+                        ) AS RankedResults
+                        WHERE RowNum = 1;";
+            
+            //echo "$consulta";
+            try {
+                // Preparar sentencia
+                $comando = Database::getInstance()->getDb()->prepare($consulta);
+                // Ejecutar sentencia preparada
+                $comando->execute();
+                // no se estaba devolviendl el resultado en formato JSON
+                // con esta linea se logro...
+                // usar en vez de return echo, aunque no se si funcionara con ANDROID
+                return $comando->fetch(PDO::FETCH_ASSOC);
     
+            } catch (PDOException $e) {
+                return ($e->getMessage());
+            }
+    }
+        // OBTIENE UNA LISTA DE LAS ULTIMAS CATEGORIAS CARGADAS CERCANAS AL AÃ‘O QUE LLEGA POR 
+    // PARAMETRO Y PARA EL CLUB DADO
+
     public static function getAllConJugadores($ianio,$iclub){
 
 	$filtro = "";
 	if($iclub != 0)
 		$filtro = " and a.idclub = $iclub ";
-/*no es necesario porqe el año cargado significa qur tienen jugadores : and a.idclub = $iclub*/
+/*no es necesario porqe el aï¿½o cargado significa qur tienen jugadores : and a.idclub = $iclub*/
         $consulta = "select  a.anioEquipo as anio ,b.idcategoria as CategoriaId , c.nombre,  b.descripcion,b.EdadInicio,b.EdadFin, count(a.idjugador) as 'ConJugadores' 
 						from vappequipo a , vappcategoria b, vappclub c
 							where  a.categoria = b.idcategoria
@@ -96,7 +149,7 @@ class Categoria
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idcate));
+            $comando->execute();
 
             return $comando->fetch(PDO::FETCH_ASSOC);
             echo json_encode($row);
@@ -120,20 +173,20 @@ class Categoria
                             EdadInicio,
                             EdadFin,setMax,categoriaActiva
                              FROM vappcategoria
-                             WHERE idcategoria = ?";
+                             WHERE idcategoria = $idcategoria";
 
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idcategoria));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
             //echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return -1;
         }
@@ -152,14 +205,14 @@ class Categoria
         // Creando consulta UPDATE
         $consulta = "UPDATE vappcategoria" .
             " SET descripcion=$descripcion , EdadInicio=$edadini , EdadFin=$edadfin, setMax=$setM, categoriaActiva=$activar WHERE idcategoria=$categoria";
-//		echo "$consulta";
+		//echo "$consulta";
         // Preparar la sentencia
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($categoria, $descripcion,$edadini,$edadfin,$setM,$activar));
+        $cmd->execute();
 
-        //return $cmd;
-		echo json_encode($cmd);
+        return $cmd;
+		//echo json_encode($cmd);
 
     }
 
@@ -167,19 +220,17 @@ class Categoria
      * Insertar un nuevo categoria
      *
      * @param $idcategoria      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
     public static function insert($descripcion,$edadini,$edadfin,$setM,$activar){
         // Sentencia INSERT
-        $comando = "INSERT INTO vappcategoria ( descripcion, EdadInicio,EdadFin,setMax,categoriaActiva) VALUES( ?,?,?,?,?)";
+        $comando = "INSERT INTO vappcategoria ( descripcion, EdadInicio,EdadFin,setMax,categoriaActiva) VALUES( '$descripcion',$edadini,$edadfin,$setM,$activar)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(
-            array($descripcion,$edadini,$edadfin,$setM,$activar)
-        );
+        return $sentencia->execute();
 
     }
 
@@ -187,17 +238,17 @@ class Categoria
      * Eliminar el registro con el identificador especificado
      *
      * @param $idcategoria identificador de la categoria
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($idcategoria)
     {
         // Sentencia DELETE
-        $comando = "DELETE FROM vappcategoria WHERE idcategoria=?";
+        $comando = "DELETE FROM vappcategoria WHERE idcategoria=$idcategoria";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idcategoria));
+        return $sentencia->execute();
     }
 }
 

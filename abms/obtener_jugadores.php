@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	if(isset($_GET['icatcab1'])) $categoria = (int)  $_GET['icatcab1'];
 	
 	$modo = "";
-	if(isset($_GET['modo'])) $modo = (int)  $_GET['modo'];
+	if(isset($_GET['modo'])) $modo =  $_GET['modo'];
 	$unJugador = 0;
 	if(isset($_GET['jugadorUn'])) $unJugador = (int)  $_GET['jugadorUn'];
 
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	if($xnomAll != 9999)
 		$xnombre = $xnomAll;
 		
-//	echo "<br>parametros que llegan : club: $club, anio : $anio, categoria: $categoria, modo: $modo<br>";
+	//echo "<br>parametros que llegan : club: $club, anio : $anio, categoria: $categoria, modo: $modo<br>";
 
 if($modo == "UPD")
 {
@@ -101,7 +101,7 @@ else
 //comentado : 22/05		else {
 			$jugadores = jugador::getJugadorxClubCate($club,$categoria,$anio,$inicio,$TAMANO_PAGINA,$xnombre);
 //comentado : 22/05			} 
-
+		//print_r($jugadores);
 	    if ($jugadores)
 	    {
 //	    	$partido =	$_GET["idpartido"];

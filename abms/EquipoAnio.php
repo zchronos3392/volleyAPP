@@ -26,62 +26,31 @@ class EquipoAnio
         $conteoFiltros = 0;
         if($ianio != 0){ 
                 $filtroQuery = " where vappanioequipo.ianio= $ianio ";
-                $filtroFecha   = "  where fecha >= '$ianio-01-01'    ";
+                // $filtroFecha   = "  where fecha >= '$ianio-01-01'    ";
                 $conteoFiltros++;
         }
 
-        // if($idclub != 0)
-        // {
-        //     if($conteoFiltros == 0)
-        //      $filtroQuery = "  where  idclub = $idclub ";
-        //     else 
-        //      $filtroQuery .= " and  idclub = $idclub ";
-        //      $conteoFiltros++;
-        // }
+
         if($icompetencia != 9999)
         {
             if($conteoFiltros == 0)
-                $filtroFecha = "  where  competencia = $icompetencia ";
+                $filtroQuery = "  where  icompetencia = $icompetencia ";
             else
-                $filtroFecha .= "  and  competencia = $icompetencia ";
+                $filtroQuery .= "  and  icompetencia = $icompetencia ";
             $conteoFiltros++;
 
         }
 
-        switch($icompetencia)
-        {
-            case 9999: //no viene competencia
-                    $consulta = "SELECT idequipoanio, vappanioequipo.idclub,vappclub.nombre,vappclub.clubabr, vappanioequipo.ianio, vappclub.escudo FROM vappanioequipo
-                                    inner join vappclub
-                                        on vappclub.idclub = vappanioequipo.idclub
-                                        $filtroQuery;";
-                    break;
-            default : //vino cargada una competencia
-                    $consulta = "SELECT  vappanioequipo.idequipoanio, iclub as 'idclub', clubLocal.nombre,clubLocal.clubabr,vappanioequipo.ianio,clubLocal.escudo
-                    FROM (
-                        SELECT DISTINCT  cluba as 'iclub'
-                        FROM `vapppartido` epartido
-                            $filtroFecha
-                        ) AS subconsulta1
-                    JOIN vappclub clubLocal ON clubLocal.idclub = iclub
-                    JOIN  vappanioequipo ON clubLocal.idclub =  vappanioequipo.idclub 
-                        $filtroQuery
-                    UNION
-                    SELECT vappanioequipo.idequipoanio, iclub as 'idclub',clubVisita.nombre,clubVisita.clubabr,vappanioequipo.ianio,clubVisita.escudo
-                    FROM (
-                        SELECT DISTINCT  ClubB as 'iclub'
-                        FROM `vapppartido` epartido
-                            $filtroFecha    
-                    ) AS subconsulta2
-                    JOIN vappclub clubVisita ON clubVisita.idclub = iclub
-                    JOIN  vappanioequipo ON clubVisita.idclub =  vappanioequipo.idclub 
-                        $filtroQuery
-                    ORDER BY iDclub;";        
+        $consulta = "SELECT idequipoanio, vappanioequipo.idclub,vappclub.nombre,vappclub.clubabr, vappanioequipo.ianio,
+                            vappclub.escudo,vappanioequipo.icompetencia
+                            FROM vappanioequipo
+                                inner join vappclub
+                                    on vappclub.idclub = vappanioequipo.idclub
+                                    $filtroQuery;";
 
-                     break;  
                
-         }           
-    //    echo "<br> $consulta <br>";
+//          }           
+//        echo "<br> $consulta <br>";
        try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -105,16 +74,15 @@ class EquipoAnio
      * @param $ianio        anio de juego
      * @return PDOStatement
      */
-    public static function insert( $idclub, $ianio){
+    public static function insert($icompetencia, $idclub, $ianio){
         // Sentencia INSERT
         //SELECT idequipoanio, idclub, ianio FROM vappanioequipo
-        $comando = "INSERT INTO vappanioequipo ( idclub, ianio) VALUES( $idclub, $ianio)";
+        $comando = "INSERT INTO vappanioequipo ( icompetencia,idclub, ianio) VALUES( $icompetencia,$idclub, $ianio)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(
-            array( $idclub, $ianio));
+        return $sentencia->execute();
 
     }
 
@@ -132,7 +100,7 @@ class EquipoAnio
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idequipoanio));
+        return $sentencia->execute();
     }
 }
 

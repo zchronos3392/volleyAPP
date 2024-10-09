@@ -1,11 +1,11 @@
 @charset 'utf-8';
 :root
 {
-    borde-linea: border: 1px solid white;
-    borde-Tablero: border: 2px solid white;
-    fondoPUNTOS: #13a8ff;
-    fondoRenglonTablero: transparent;
-    fondoTablero: transparent;
+    borde-linea{ border: 1px solid white};
+    borde-Tablero{ border: 2px solid white};
+    fondoPUNTOS{ #13a8ff;};
+    fondoRenglonTablero{ transparent;};
+    fondoTablero{ transparent;};
 }
 
 
@@ -13,16 +13,15 @@
 .ClaseRojo{background-color: #ff0000;}
 .ClaseVerde{background-color: #27ff00;}
 
-.btnVerSet_21Control{
-    
-}
 
+#ClubLocal{max-width: 50%;}
+
+/* 
 SELECT
 {
     appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-/*** estilo alocado dell SELECT *****/
     display: inline-block;
 	width: 100%;
 	cursor: pointer;
@@ -49,7 +48,8 @@ SELECT:hover
 {
 	background: #e4b51c;
     color: #130d2d;
-}
+} 
+*/
 
 
 .listaAccesos
@@ -103,7 +103,13 @@ SELECT:hover
 .ita2A{ grid-area: ita2A;   margin: 0.4rem;}
     .ita22A{ grid-area: ita22A;   margin: 0.4rem;}
     .ita22A SELECT { width: 100%;}
-.ita3A{ grid-area: ita3A;   margin: 0.4rem;}
+.ita3A{
+     grid-area: ita3A;   margin: 0.4rem;
+     display: flex;
+     flex-direction: column;
+     flex-wrap: nowrap;
+     justify-items: auto;
+}
 .ita4A{ 
     grid-area: ita4A;
 
@@ -115,7 +121,8 @@ SELECT:hover
 
 .itemAcceso1A{
     display:grid;
-	grid-template-areas: 'ita1A ita2A ita22A ita3A'
+	grid-template-areas: 'ita1A ita2A ita22A ita22A'
+                         'ita3A ita3A ita3A ita3A'
                          'ita4A ita4A ita4A ita4A';	
      box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
      border-radius: 5px;
@@ -273,11 +280,39 @@ SELECT:hover
     border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    border-radius: 7px;
    /*bordes redondeados*/	
    height: auto;	    
    padding: 1rem;
 
 }
+
+.GridCatNomExCant{
+    display: flex;
+    flex-direction:column;
+    gap: 0.2rem;
+    justify-content:flex-end;
+    align-items:start;
+    margin-bottom: 1em;
+ }
+.GridCatNomExCant DIV{
+    display: flex;
+    flex-direction:column;
+    gap: 0.2rem;
+    justify-content:flex-end;
+    align-items:start;
+     flex-wrap:wrap; 
+    /* configuracion FLEX */
+    /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: #ffa600;
+        color: #040c31;
+        /* margin: 1rem; */
+    /* configuracion general de la clase */
+}
+
+
 
 .GridCatNomCant{
     display: grid;
@@ -344,6 +379,7 @@ SELECT:hover
         /* configuracion general de la clase */
 
     }
+    
 
     .DatosPartido
     {
@@ -352,9 +388,28 @@ SELECT:hover
         border-radius: 5px;
         background-color: white;
         color: #040c31;
-        margin: 1rem;
+        /* margin: 1rem; */
     /* configuracion general de la clase */
 
+    }
+    
+    .CabeceraGestionPartido
+    {
+        /* configuracion FLEX */    
+            justify-content:center;
+            align-items: center;
+            display: flex;
+            flex-direction:column;
+            gap: 0.5rem;
+            flex-wrap: nowrap;
+        /* configuracion FLEX */
+        /* configuracion general de la clase */
+            box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+            border-radius: 5px;
+            background-color: white;
+            color: #040c31;
+            margin: 1rem;
+        /* configuracion general de la clase */
     }
 
     .Cabecera
@@ -378,7 +433,7 @@ SELECT:hover
     .SetMaximosGrid
     {
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 25% 25% 25% 25%;
     }
 
     .Botonera .btnCabecera
@@ -517,6 +572,21 @@ SELECT:hover
     .renEQ6{grid-area: renEQ6;}
     .renEQ7{grid-area: renEQ7;}
     .renEQ8{grid-area: renEQ8;}
+    
+    .renglonEquiposABM{
+        width: 95%;
+        display: grid; 
+        grid-template-areas: 'renEQ1 renEQ2 renEQ4 renEQ5' 
+                             'renEQ3 renEQ3 renEQ6 renEQ6';
+    /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        padding: 0.5rem;
+        /* margin TOP LEFT BOTTOM RIGHT */
+    }
+
     .renglonEquipos
     {
         width: 95%;
@@ -532,12 +602,24 @@ SELECT:hover
     /* configuracion general de la clase */
     }
 
-    .renUB1{grid-area: renUB1;}
-    .renUB2{grid-area: renUB2;}
-    .renUB3{grid-area: renUB3;}
-    .renUB4{grid-area: renUB4;}
-    .renUB5{grid-area: renUB5;}
-    .renUB6{grid-area: renUB6;}
+    .renglonUbicacionABM{
+        display: grid; 
+        width: 95%;
+        grid-template-areas: 'renUB8 renUB8 renUB9 renUB9'
+                             'renUB10 renUB10 renUB11 renUB11'
+                             'renUB5 renUB6 renUB1 renUB2'
+                             'renUB3 renUB3 renUB4 renUB4 ';
+        /* configuracion general de la clase */
+        box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+        border-radius: 5px;
+        background-color: white;
+        color: #040c31;
+        padding: 1rem;
+        /* margin TOP LEFT BOTTOM RIGHT */
+        /* configuracion general de la clase */
+
+    }
+
     .renglonUbicacion
     {
         display: grid; 
@@ -552,6 +634,20 @@ SELECT:hover
         /* margin TOP LEFT BOTTOM RIGHT */
         /* configuracion general de la clase */
     }
+
+    .renUB8{grid-area: renUB8;}
+    .renUB9{grid-area: renUB9;}
+    .renUB10{grid-area: renUB10;}
+    .renUB11{grid-area: renUB11;}
+
+
+    .renUB1{grid-area: renUB1;}
+    .renUB2{grid-area: renUB2;}
+    .renUB3{grid-area: renUB3;}
+    .renUB4{grid-area: renUB4;}
+    .renUB5{grid-area: renUB5;}
+    .renUB6{grid-area: renUB6;}
+
 
     .inputSets{width: 3em;height: 2em;}
     .Division
@@ -570,6 +666,13 @@ SELECT:hover
     .Division SELECT{width: 50%;}
     /* aca deberia arreglarse la pantalla grande */
 /* FIN DEL ESTILO DEL FORMULARIO PARA LA CARGA MULTIPLE DE PARTIDOS */
+
+
+/* TAMAÑO GRANDE DE PANTALLA */
+
+
+
+/* TAMAÑO GRANDE DE PANTALLA */
 
 @media (min-width:451px) and (max-width: 768px)
 {
@@ -671,7 +774,14 @@ SELECT:hover
 .ita2A{ grid-area: ita2A;   margin: 0.4rem;}
     .ita22A{ grid-area: ita22A;   margin: 0.4rem;}
     .ita22A SELECT { width: 100%;}
-.ita3A{ grid-area: ita3A;   margin: 0.4rem;}
+
+.ita3A{ grid-area: ita3A;
+       margin: 0.4rem;
+       display: flex;
+       flex-direction: column;
+       flex-wrap: nowrap;
+    }
+
 .ita4A{ 
     grid-area: ita4A;
 
@@ -683,7 +793,7 @@ SELECT:hover
 
 .itemAcceso1A{
     display:grid;
-	grid-template-areas: 'ita1A ita2A ita2A' 'ita22A ita22A ita3A '  'ita4A ita4A ita4A';	
+	grid-template-areas: 'ita1A ita2A ita2A' 'ita22A ita22A ita22A ' 'ita3A ita3A ita3A'  'ita4A ita4A ita4A';	
      box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
      border-radius: 5px;
 	background-color:white;
@@ -797,7 +907,7 @@ SELECT:hover
     border-radius: 5px;
     background-color: white;
     color: #040c31;
-    margin: 1rem;
+    /* margin: 1rem; */
 /* configuracion general de la clase */
 
 }
@@ -824,7 +934,7 @@ SELECT:hover
 .SetMaximosGrid
 {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 25% 25% 25% 25%;
 }
 
 
@@ -959,7 +1069,7 @@ display: grid;
     border-radius: 5px;
     background-color: white;
     color: #040c31;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     /* margin TOP LEFT BOTTOM RIGHT */
 /* configuracion general de la clase */
 }
@@ -972,17 +1082,31 @@ display: grid;
 .renEQ6{grid-area: renEQ6;}
 .renEQ7{grid-area: renEQ7;}
 .renEQ8{grid-area: renEQ8;}
-.renglonEquipos
-{
+
+.renglonEquiposABM{
     width: 95%;
-display: grid; 
+    display: grid; 
     grid-template-areas: 'renEQ1' 'renEQ2' 'renEQ3' 'renEQ4' 'renEQ5' 'renEQ6';
 /* configuracion general de la clase */
     box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
     border-radius: 5px;
     background-color: white;
     color: #040c31;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
+    /* margin TOP LEFT BOTTOM RIGHT */
+}
+
+.renglonEquipos
+{
+    width: 95%;
+    display: grid; 
+    grid-template-areas: 'renEQ1' 'renEQ2' 'renEQ3' 'renEQ4' 'renEQ5' 'renEQ6';
+/* configuracion general de la clase */
+    box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+    border-radius: 5px;
+    background-color: white;
+    color: #040c31;
+    /* padding: 0.5rem; */
     /* margin TOP LEFT BOTTOM RIGHT */
 /* configuracion general de la clase */
 }
@@ -993,16 +1117,22 @@ display: grid;
     width: 100%;
 }
 
-/* se agrega la SEDE */
-    .renUB10{grid-area: renUB10;}
-    .renUB11{grid-area: renUB11;}
 
-.renUB1{grid-area: renUB1;}
-.renUB2{grid-area: renUB2;}
-.renUB3{grid-area: renUB3;}
-.renUB4{grid-area: renUB4;}
-.renUB5{grid-area: renUB5;}
-.renUB6{grid-area: renUB6;}
+.renglonUbicacionABM{
+    display: grid; 
+    width: 95%;
+    grid-template-areas: 'renUB8' 'renUB9' 'renUB10' 'renUB11' 'renUB1' 'renUB2' 'renUB3' 'renUB4' 'renUB5' 'renUB6';
+    /* configuracion general de la clase */
+    box-shadow: 0 8px 10px -4px rgba(0,0,0,.6);
+    border-radius: 5px;
+    background-color: white;
+    color: #040c31;
+    /* padding: 1rem; */
+    /* margin TOP LEFT BOTTOM RIGHT */
+    /* configuracion general de la clase */
+
+}
+
 
 .renglonUbicacion
 {
@@ -1015,10 +1145,26 @@ display: grid;
     background-color: white;
     color: #040c31;
     padding: 0.5rem;
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
     /* margin TOP LEFT BOTTOM RIGHT */
     /* configuracion general de la clase */
 }
+/* se agrega la SEDE del CLUB PROPUESTO EN LA COMPETENCIA COMO SEDE AUNQUE NO JUEGUE*/
+.renUB8{grid-area: renUB8;}
+.renUB9{grid-area: renUB9;}
+
+/* se agrega la SEDE */
+    .renUB10{grid-area: renUB10;}
+    .renUB11{grid-area: renUB11;}
+
+.renUB1{grid-area: renUB1;}
+.renUB2{grid-area: renUB2;}
+.renUB3{grid-area: renUB3;}
+.renUB4{grid-area: renUB4;}
+.renUB5{grid-area: renUB5;}
+.renUB6{grid-area: renUB6;}
+
+
 
 .inputSets{width: 3em;height: 2em;}
 .Division

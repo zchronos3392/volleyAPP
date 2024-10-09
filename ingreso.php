@@ -18,7 +18,8 @@
 		$(document).ready(function()
 		{
 		// ACTUALIZACION DE TABLAS..	
-		
+			const dialog = document.getElementById("modalEsperar");
+
 		 $("#accesor").on("change keyup", function()
 		 {
 			 var parametros = {
@@ -30,14 +31,19 @@
 				type:  'GET',
 				data: parametros ,
 				datatype:   'text json',
-				beforeSend: function (){},
-				done: function(data){},
+				beforeSend: function (){
+					dialog.showModal();
+				},
+				done: function(data){
+				},
 				success:  function (r){
+					dialog.close();	
 				// como el resultado volvia en JSON ,hay que convertirlo a string
 				// o vector..o lo que sea leible..
 					vector = $.parseJSON(r);
 					if (vector.ultnumero == $("#accesor").val())
 					{
+
 						 $("#acceder").show() ;
 						 //$("#accederclub").show() ;
 					}	 
@@ -73,18 +79,58 @@
 //			$("#accederclub").on("click",function() {
 //						window.location.href = './ingresar/ingresar.php';
 //			});// falta el seleccion de la cancha, para cargar los campos..
-   		
 		});//document ready
 		</script>    
 <style>
+
+			.XModales,.XSModales
+			{
+				background-color: rgba(255,0,0,.55);
+				height:	-webkit-fill-available;
+			}
+
+			.XModalesWaiter
+			{
+
+				background-color: rgba(255, 0, 0, .55);
+    			height: -webkit-fill-available;
+			}
+			DIALOG{
+				inset-inline-start: 0px;
+				inset-inline-end: 0px;
+				width:100%;
+
+			}
+
+			@keyframes donut-spin {
+			0% {
+			transform: rotate(0deg);
+			}
+			100% {
+			transform: rotate(360deg);
+			}
+			}
+			.donut {
+			display: inline-block;
+			border: 4px solid rgba(0, 0, 0, 0.1);
+			border-left-color: #7983ff;
+			border-radius: 50%;
+			width: 30px;
+			height: 30px;
+			margin: 15%;		
+			padding: 40%;
+			animation: donut-spin 1.2s linear infinite;
+			}
+
+
 			/* afecta al logo del formualrio */
 			#page-wrapper{
 				height: 100%;
 				display: flex;
-				margin-top: 15%;
-				padding-left:15%;
-				padding-right: 15%;
+				padding:auto;
+				margin:auto;
 				flex-direction: column;
+				justify-content: space-around;
 					background:url('./img/voleyplaya.jpg');
 					background-size: cover;/*cubre todo bien*/
 
@@ -326,6 +372,11 @@ input, button, select, optgroup, textarea {
     </head>
 <body id="page-login-index" >
 
+
+<dialog id="modalEsperar" class="XModalesWaiter">
+		<div class="donut"></div>
+</dialog>
+
 <!--
 <header class="headerIngreso">
 	<section class="LogoApp" style="z-index: 0;">
@@ -347,7 +398,7 @@ input, button, select, optgroup, textarea {
 												<div class="row justify-content-md-center">
 													<div class="col-md-8">
 															<div class="gridAcceso" id="gridAcceso">
-															  <div class="lettera">INGRESE CLAVE DE ACCESO
+															  <div class="lettera">
 																	<input type="text" name="usuario" id="usuario" class="accesor" value="" placeholder="Nombre de usuario" autocomplete="username">
 																	<input class="accesor" id="accesor" type="password"
 																				placeholder="Clave de acceso" autocomplete="password"></input>

@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		$clave = "'".$_GET['TEXTOCLAVE']."'";
 		$leerFiltros = "";
 		$leerFiltros = SesionTabla::getsessionX($clave) ;
-		
+			//print_r($leerFiltros);		
 		$parametrosGuardados = array();
-		
+	
 		if($leerFiltros <> "")
 		{
 		$vectorX = explode(" ",$leerFiltros['sesorigen']);

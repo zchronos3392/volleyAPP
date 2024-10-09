@@ -94,14 +94,14 @@ class sede
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idclub,$idsede));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
             //echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return -1;
         }
@@ -124,7 +124,7 @@ class sede
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($idclub,$idsede,$nombresede,$direccion));
+        $cmd->execute();
 
         return json_encode($cmd);
 
@@ -134,17 +134,17 @@ class sede
      * Insertar un nuevo sede
      *
      * @param $idsede      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
     public static function insert($direccion,$idclub,$extras){
         // Sentencia INSERT
-        $comando = "INSERT INTO vappsede ( direccion, idclub,extras) VALUES(?, ?,?)";
+        $comando = "INSERT INTO vappsede ( direccion, idclub,extras) VALUES('$direccion',$idclub,'$extras')";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($direccion,$idclub,$extras));
+        return $sentencia->execute();
 
     }
 
@@ -152,17 +152,17 @@ class sede
      * Eliminar el registro con el identificador especificado
      *
      * @param $idsede identificador de la sede
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($idsede)
     {
         // Sentencia DELETE
-        $comando = "DELETE FROM vappsede WHERE idsede=?";
+        $comando = "DELETE FROM vappsede WHERE idsede=$idsede";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idsede));
+        return $sentencia->execute();
     }
 }
 

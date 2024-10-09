@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	//echo "que paso con JUGPARTIDOCAB ? -> $retorno3 <br>";
 	$retorno4 = Rotaciones::deleteAll($idpartido,$fecha);    
     
-    if($retorno)
+    if($retorno) 
     {
         // Codigo de �xito
         print(json_encode(array('estado' => '1','mensaje' => 'Se elimiono el partido ok')));

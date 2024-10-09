@@ -74,14 +74,14 @@ class Provincia
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idProvincia));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
             //echo json_encode($row);
 
         } catch (PDOException $e) {
-            // Aquí puedes clasificar el error dependiendo de la excepción
+            // Aquï¿½ puedes clasificar el error dependiendo de la excepciï¿½n
             // para presentarlo en la respuesta Json
             return -1;
         }
@@ -107,7 +107,7 @@ class Provincia
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($nombre,$idProvincia));
+        $cmd->execute();
 
         //return $cmd;
 		echo json_encode($cmd);
@@ -118,7 +118,7 @@ class Provincia
      * Insertar un nuevo Provincia
      *
      * @param $idProvincia      titulo del nuevo registro
-     * @param $nombre descripción del nuevo registro
+     * @param $nombre descripciï¿½n del nuevo registro
      * @return PDOStatement
      */
     public static function insert($nombre,$Provinciaabr){
@@ -128,7 +128,7 @@ class Provincia
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($nombre,$Provinciaabr));
+        return $sentencia->execute();
 
     }
 
@@ -136,7 +136,7 @@ class Provincia
      * Eliminar el registro con el identificador especificado
      *
      * @param $idProvincia identificador de la Provincia
-     * @return bool Respuesta de la eliminación
+     * @return bool Respuesta de la eliminaciï¿½n
      */
     public static function delete($idProvincia)
     {
@@ -146,7 +146,7 @@ class Provincia
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($idProvincia));
+        return $sentencia->execute();
     }
 }
 

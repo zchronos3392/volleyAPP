@@ -3,6 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="es">
     <head>
+
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">    
+
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Administrar volleyAPP</title>
         <meta name="Control Anual vAPP" content="volley all app, partido."/>
@@ -30,6 +34,16 @@
 		var vCompetencias = new Array();
 // +++++++++++++++++ FUNCIONES EXTRA ++++++++++++++++++++++++++++++++++++++
 
+
+function OrdenarPorFechaDescendente(x,y){
+//FUNCION QUE ORDENA POR FECHA DESCENDENTE EL ARREGLO
+        return ((x.Fecha == y.Fecha) ? 0 : ((x.Fecha > y.Fecha) ? 1 : -1));
+}
+
+function OrdenarPorFechaAscendente(x,y){
+//FUNCION QUE ORDENA POR FECHA DESCENDENTE EL ARREGLO
+        return ((x.Fecha == y.Fecha) ? 0 : ((x.Fecha < y.Fecha) ? 1 : -1));
+}
 
 function cargarItems(){
 	var TotalItems = $("#conteopartidos").val();
@@ -69,8 +83,11 @@ function CargaFechaDefecto(item)
 		 	//alert(fechapartido);
 		 	// EL FORMATO SIEMPRE TIENE QUE SER YYYY-MM-DD 
 			//fechapartido = '2018-10-16';
-$("#fechap_"+item).val(fechapartido);
-
+if($("#fechap_"+item).val() == '' || $("#fechap_"+item).val() == null )
+	if($("#FechaCabecera").val() != '' || $("#FechaCabecera").val() != null)
+		$("#fechap_"+item).val( $("#FechaCabecera").val() );
+	else
+		$("#fechap_"+item).val(fechapartido);
 
 }
 
@@ -145,40 +162,49 @@ function TraeSetMaxCategoria(itemNumero){
 // cuando PRESIONO CLICK , LO ACTUALIZO
 function buscarClub(origen,destinoId){
 	
-	var parametros = {
-    	"llamador" : "CPartidos",
-    	"funcion" : "buscarclub",			
-    	"filtro" : $("#"+origen).val(),
-		};		         
+	// var parametros = {
+    // 	"llamador" : "CPartidos",
+    // 	"funcion" : "buscarclub",			
+    // 	"filtro" : $("#"+origen).val(),
+	// 	};		         
 		
-         $.ajax({ 
-            url:   './abms/obtener_varios.php',
-            type:  'GET',
-            data: parametros,
-            dataType: 'json',
-			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
-            beforeSend: function (){
-				// Bloqueamos el SELECT de los cursos
-				$("#"+destinoId).empty();
-    		},
-            done: function(data){
-			},
-            success:  function (r){
- 					
-                $(r['Clubes']).each(function(i, v)
-                { // indice, valor
-              	if (! $("#"+destinoId).find("option[value='" + v.idclub + "']").length)
-                	{
-						$("#"+destinoId).append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
-					}		
-                });
-             },
-             error: function (xhr, ajaxOptions, thrownError) {
-			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
-			 console.log(xhr);
-			 console.log(thrownError);
-			}
-            }); // FIN funcion ajax CANCIONES todas:
+    //      $.ajax({ 
+    //         url:   './abms/obtener_varios.php',
+    //         type:  'GET',
+    //         data: parametros,
+    //         dataType: 'json',
+	// 		// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+    //         beforeSend: function (){
+	// 			// Bloqueamos el SELECT de los cursos
+	$("#"+destinoId).empty();
+    		// },
+            // done: function(data){
+			// },
+            // success:  function (r){
+	$(vEquipos).each(function(i, v)
+	{ // indice, valor
+		if( v.nombre.toLowerCase().indexOf($("#"+origen).val().toLowerCase()) !== -1 || v.clubabr.toLowerCase().indexOf($("#"+origen).val().toLowerCase()) !== -1 ) 
+		{
+			if (! $("#"+destinoId).find("option[value='" + v.idclub + "']").length)
+			{
+				$("#"+destinoId).append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
+			}		
+		}
+	});		
+                // $(r['Clubes']).each(function(i, v)
+                // { // indice, valor
+              	// if (! $("#"+destinoId).find("option[value='" + v.idclub + "']").length)
+                // 	{
+				// 		$("#"+destinoId).append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
+				// 	}		
+                // });
+            // // //  },
+            // // //  error: function (xhr, ajaxOptions, thrownError) {
+			// // // // LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+			// // //  console.log(xhr);
+			// // //  console.log(thrownError);
+			// // // }
+            // // // }); // FIN funcion ajax CANCIONES todas:
 };
 //**************** FUNCION DE BUSQUEDA DE CLUBES MODERNA *********************************************/ 
 
@@ -236,7 +262,7 @@ CadenaHTML +='<section id="DatosPartido_item_'+generaIdItem+'" class="itemDatosP
 					'<div class="renEQ1"><label for="iclub">Local</label></div>'+
 					'<div class="renEQ2"><input type="text" id="itextA'+generaIdItem+'" name="itextA" class="inputSearch"  onkeyup="buscarClub(this.id,\'icluba_'+generaIdItem+'\');"></div>'+
 					'<div class="renEQ3"><select name="icluba_'+generaIdItem+'" id="icluba_'+generaIdItem+'"  onchange="SeleccionaClubLocal(this.id,'+generaIdItem+');" onclick="SeleccionaClubLocal(this.id,'+generaIdItem+');"><option value="9999">Seleccione un Club...</option></select></div>'+
-					'<div class="renEQ4"><label for="iclub">Local</label></div>'+
+					'<div class="renEQ4"><label for="iclub">Visitante</label></div>'+
 					'<div class="renEQ5"><input type="text" id="itextB'+generaIdItem+'" name="itextB" class="inputSearch" onkeyup="buscarClub(this.id,\'iclubb_'+generaIdItem+'\');"></div>'+
 					'<div class="renEQ6"><select name="iclubb_'+generaIdItem+'" id="iclubb_'+generaIdItem+'"  ><option value="9999">Seleccione un Club...</option></select></div>'+
 				'</div>'+
@@ -257,7 +283,8 @@ CadenaHTML +='<section id="DatosPartido_item_'+generaIdItem+'" class="itemDatosP
 					'</div>'+
 				'</section>';
 	$("#DatosPartidoDetalle").append(CadenaHTML);
-
+	CargaFechaDefecto(generaIdItem);
+	if($("#ClubLocal").val() != 9999 )
 		creaCategoriasx('icate',generaIdItem);
 		
 		creaEquiposx("icluba",generaIdItem);
@@ -265,9 +292,9 @@ CadenaHTML +='<section id="DatosPartido_item_'+generaIdItem+'" class="itemDatosP
 
 		creaCanchasx('icancha',generaIdItem);
 		creasCiudadesx('icity',generaIdItem);
-
-		creasSedesx('isede',generaIdItem)
-
+		creasSedesx('isede',generaIdItem);
+		
+		SeleccionaClubLocal('icluba_'+generaIdItem,generaIdItem);
 
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -278,11 +305,20 @@ function SeleccionaCancha(objetoSede,item)
 		var idSede=idClub_sede.split('_')[1];
 		$(vCanchas).each(function(j, w)
 		{ // indice, valor
+			//v.idclub+'_'v.idsede+'_'+v.idcancha
+			var codigoEncriptado = '';	
 			if( (w.idsede == idSede ) && (w.idclub == idClub)  )
 			{
-				$("#icancha_"+item).val(w.idcancha);
+				codigoEncriptado = w.idclub+'_'+w.idsede+'_'+w.idcancha;
+				$("#icancha_"+item+" option[name="+ codigoEncriptado +"]").attr("selected",true);
+				//$("#icancha").val(w.idcancha);
 				return true; //	solo lo hace una vez
 			}
+			// if( (w.idsede == idSede ) && (w.idclub == idClub)  )
+			// {
+			// 	$("#icancha_"+item).val(w.idcancha);
+			// 	return true; //	solo lo hace una vez
+			// }
 		});
 }
 
@@ -393,16 +429,17 @@ function cargarEqupoStart(){
   return iEquipos;			
 }
 
-function creaEquiposx(nombreObj,idpartido){
+function creaEquiposx(nombreObj,idrenglon){
 	//	creaspuestosx(v.idjugador,puestoCategoria,'sjugadorp');
-	//	console.log('jugador : ' + idjugador +' puesto : ' +puesto+ ' cargar: ' + nombreObj);
+		//console.log('club seleccionado: ' + $("#ClubLocal").val());
 	var selectEquipos = "";
 			// esto arreglo el tema del alta triplle..
 		$(vEquipos).each(function(i, v)
 		{ // indice, valor
-				$("#"+nombreObj+"_"+idpartido).append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
-		});		
-	
+				$("#"+nombreObj+"_"+idrenglon).append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
+		});
+	if(nombreObj == 'icluba')	
+		$("#"+nombreObj+"_"+idrenglon).val( $("#ClubLocal").val()  ) ;				
 	return 	selectEquipos ;
 	};
 
@@ -472,7 +509,7 @@ function creaCanchasx(nombreObj,idpartido){
 			// esto arreglo el tema del alta triplle..
 		$(vCanchas).each(function(i, v)
 		{ // indice, valor
-				$("#"+nombreObj+"_"+idpartido).append('<option value="' + v.idcancha + '">' +v.clubabr+' - '+ v.extras+' - '+ v.nombre + '</option>');
+				$("#"+nombreObj+"_"+idpartido).append('<option value="' + v.idcancha + '" name="'+v.idclub+'_'+v.idsede+'_'+v.idcancha+'">' +v.clubabr+' - '+ v.extras+' - '+ v.nombre + '</option>');
 		});		
 	
 	return 	selectCanchas ;
@@ -501,7 +538,7 @@ function cargarCompetenciasStart()
 }
 
 
-function creasCompetenciasx(nombreObj)
+function creasCompetenciasx(nombreObj,competenciaSesion)
 {
 	var selectCompetencia = "";
 			// esto arreglo el tema del alta triplle..
@@ -511,7 +548,8 @@ function creasCompetenciasx(nombreObj)
 				$("#"+nombreObj).append('<option value="' + v.idcomp + '">' + v.cnombre + '</option>');
 
 		});		
-		
+			$("#"+nombreObj).val(competenciaSesion);
+
 	return 	selectCompetencia ;
 }
 
@@ -676,6 +714,31 @@ function agregarPartido(ESTADO,v)
 	};
 };
 
+function guardarFiltros(){
+// por el momento solo guardo la competencia del formulario
+var parametrosFiltros = new Array();
+  var parametros = {
+	  "TEXTOCLAVE" : "FILTROCOMPCARGAP",
+	  "origenrequest"		: $("#icompetencia").val() //reuso clave origenrequest para
+	//   que directamente grabe la sesion
+  };
+
+  $.ajax({
+	  url:   './abms/grabarsesion.php',
+	  type:  'GET',
+	  data: parametros ,
+	  datatype:   'text json',
+	  beforeSend: function () {},
+	  done: function(data) {},
+	  success:  function (r) {
+		  // 
+	  },
+	  error: function (xhr, ajaxOptions, thrownError) {console.log(thrownError);}
+					
+});// falta el seleccion de la cancha, para cargar los campos..		  
+}		
+
+
 function Ahora(objeto)
 {
 	var dt = new Date();
@@ -704,8 +767,9 @@ function Ahora(objeto)
 		var tiempoTxtMin  = tiempo.minuto < 10 ? '0' + tiempo.minuto : tiempo.minuto;
 	
 		var tiempoTxt = tiempoTxtHora +':' + tiempoTxtMin ; //+':' + tiempoTxtSeg 
-			
-		$("#"+objeto.id).val(tiempoTxt);
+		if($("#"+objeto.id).val() == '' || $("#"+objeto.id).val() == null)	
+				$("#"+objeto.id).val(tiempoTxt);
+
 
 }
 
@@ -740,6 +804,10 @@ $(document).ready(function(){
 				}
 			else
 				 echo('var sesion =0;');
+
+			$competenciaSaved =  SesionTabla::getsessionX("'FILTROCOMPCARGAP'"); //texto clave
+			if(isset($competenciaSaved["sesorigen"]))
+				echo "$('#icompetencia').val(".$competenciaSaved["sesorigen"].");";
 		?>		
 
 if (sesion == 0 )
@@ -756,7 +824,7 @@ for (var i = fechainicial; i < fechaFinal; i++)
 	else  $("#ianio").prepend('<option>' + (i + 1) + '</option>');
 }
 $("#ianio").val(FechaHoy);
-
+$("#ianioTxt").html(FechaHoy);
 
 
 
@@ -773,8 +841,14 @@ $("#ianio").val(FechaHoy);
 	vSedes   = cargarSedesStart();
 	vCiudades = cargarCiudadesStart();
 	vCompetencias = cargarCompetenciasStart();
-	creasCompetenciasx("icompetencia");
-	creasCompetenciasx("icompanio");
+	v_competencia = 0;
+	<?php
+			$competenciaSaved =  SesionTabla::getsessionX("'FILTROCOMPCARGAP'"); //texto clave
+			if(isset($competenciaSaved["sesorigen"]))
+				echo "v_competencia = ".$competenciaSaved["sesorigen"].";";
+	?>		
+	creasCompetenciasx("icompetencia",v_competencia);
+	creasCompetenciasx("icompanio",v_competencia);
 
 	$(".itemAcceso1").hide();
 	$(".itemAcceso1A").hide();
@@ -800,9 +874,11 @@ $("#icanchas").val(9999);
 
 });
 
-$("#icompanio").on("change",function(){
+$("#icompanio").on("change click",function(){
 
 	pedirEquiposAnio($("#ianio").val());
+	controlEquiposActivos(FechaHoy,"#grillaEquipos22"); //trae los equipos que tienen jugadores para ese año o vacio.
+	pedirPartidos(FechaHoy);
 
 
 });
@@ -817,9 +893,55 @@ $("#quitarRenglonesPartidos").on("click",function()
 	quitarRenglonesPartidos('#conteopartidos','#DatosPartidoDetalle','#DatosPartido_item_');
 });
 
+
+$("#seleccionclubes").on("click",function()
+{
+
+	var DetalleCatsClub = '';	
+	var parametros={"icompetencia":$("#icompanio").val(),"ianio":$("#ianio").val(),"iclub":$("#seleccionclubes").val()};
+
+	$.ajax({ 
+    url:   './abms/obtener_ultimaCategoriaAnioClub.php',
+    type:  'GET',
+    data: parametros ,
+    datatype:   'text json',
+	// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+    beforeSend: function (){},
+    done: function(data){},
+    success:  function (re){
+		//idpersona, usuariopersona, nombrepersona, tipopersona         	  
+		var r = JSON.parse(re);
+			//alert(r);
+			if($(r['Clubes']).length > 0) 
+					{ //1
+						$(r['Clubes']).each(function(i, v)
+						 { //2
+							DetalleCatsClub += v.descripcion+' con '+ v.ConJugadores +', ';
+						})
+					$("#infoClubCategorias").html('Categorias cargadas: ' + DetalleCatsClub);
+					}	 
+			else
+				$("#infoClubCategorias").html('Categorias cargadas: ' + r['Clubes']);
+
+
+			
+    },
+    error: function (xhr, ajaxOptions, thrownError)
+    	{
+			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+				$(".errores").append(xhr);
+		}
+    });	
+
+});
+
 $("#agregarclub").on("click",function()
 {
-	var parametros={"llamador":'controlador',"funcion":'agregarclubanio',"ianio":$("#ianio").val(),"iclub":$("#seleccionclubes").val(),"equipoanioID":0};
+	var parametros={"llamador":'controlador',"funcion":'agregarclubanio',
+					 "ianio":$("#ianio").val(),
+					 "iclub":$("#seleccionclubes").val(),
+					 "icompetencia": $("#icompanio").val(),
+					 "equipoanioID":0};
 
 	$.ajax({ 
     url:   './abms/abm_clubesporanio.php',
@@ -831,7 +953,8 @@ $("#agregarclub").on("click",function()
     done: function(data){},
     success:  function (re){
 		//idpersona, usuariopersona, nombrepersona, tipopersona         	  
-		//var r = JSON.parse(re);
+		var r = JSON.parse(re);
+			//alert(r);
 			pedirEquiposAnio($("#ianio").val());
     },
     error: function (xhr, ajaxOptions, thrownError)
@@ -846,43 +969,55 @@ $("#agregarclub").on("click",function()
 //**************** FUNCION DE BUSQUEDA DE CLUBES MODERNA *********************************************/   
 $("#buscarequipo").keyup(function()
 	//	on("keyup keydown",function()
-         {   
-			var parametros = {
-	        	"llamador" : "CONTROLAPP",
-	        	"funcion" : "buscarclub",			
-	        	"filtro" : $("#buscarequipo").val(),
-	        	"ianio" : $("#ianio").val()		
-				};		         
+  {   
+		// // // 	var parametros = {
+	    // // //     	"llamador" : "CONTROLAPP",
+	    // // //     	"funcion" : "buscarclub",			
+	    // // //     	"filtro" : $("#buscarequipo").val(),
+	    // // //     	"ianio" : $("#ianio").val()		
+		// // // 		};		         
 		
-         $.ajax({ 
-            url:   './abms/obtener_varios.php',
-            type:  'GET',
-            data: parametros,
-            dataType: 'json',
-			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
-            beforeSend: function (){
-				// Bloqueamos el SELECT de los cursos
-				$("#seleccionclubes").empty();
-    		},
-            done: function(data){
-			},
-            success:  function (r){
- 					
-                $(r['Clubes']).each(function(i, v)
-                { // indice, valor
+        // // //  $.ajax({ 
+        // // //     url:   './abms/obtener_varios.php',
+        // // //     type:  'GET',
+        // // //     data: parametros,
+        // // //     dataType: 'json',
+		// // // 	// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+        // // //     beforeSend: function (){
+		// // // 		// Bloqueamos el SELECT de los cursos
+		$("#seleccionclubes").empty();
+
+		$(vEquipos).each(function(i, v)
+		{ // indice, valor
+			if( v.nombre.toLowerCase().indexOf($("#buscarequipo").val().toLowerCase()) !== -1 || v.clubabr.toLowerCase().indexOf($("#buscarequipo").val().toLowerCase()) !== -1 ) 
+			{
               	if (! $('#seleccionclubes').find("option[value='" + v.idclub + "']").length)
-                	{
-						$("#seleccionclubes").append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
-					}		
-                });
-             },
-             error: function (xhr, ajaxOptions, thrownError) {
-			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
-			 console.log(xhr);
-			 console.log(thrownError);
-			}
-            }); // FIN funcion ajax CANCIONES todas:
-       });
+                {
+					$("#seleccionclubes").append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
+				}		
+		}
+		});		
+				
+    		// // // },
+            // // // done: function(data){
+			// // // },
+            // // // success:  function (r){
+ 					
+            // // //     $(r['Clubes']).each(function(i, v)
+            // // //     { // indice, valor
+            // // //   	if (! $('#seleccionclubes').find("option[value='" + v.idclub + "']").length)
+            // // //     	{
+			// // // 			$("#seleccionclubes").append('<option value="' + v.idclub + '">' +v.clubabr+' - ' + v.nombre + '</option>');
+			// // // 		}		
+            // // //     });
+            // // //  },
+            // // //  error: function (xhr, ajaxOptions, thrownError) {
+			// // // // LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+			// // //  console.log(xhr);
+			// // //  console.log(thrownError);
+			// // // }
+            // // // }); // FIN funcion ajax CANCIONES todas:
+});
 
 //**************** FUNCION DE BUSQUEDA DE CLUBES MODERNA *********************************************/ 
 		$(".icono1").on("click",function(){
@@ -945,6 +1080,11 @@ $("#buscarequipo").keyup(function()
 				$(".itemAcceso6").toggle();
 		});		
 
+		
+		$("#icompetencia").on('click', function(e){
+			//	FILTROCOMPCARGAP
+				guardarFiltros();
+		});
 
 		$("#altapm").on('click', function(e){
 
@@ -1099,8 +1239,8 @@ function controlEquiposActivos(ianiocargado,destinoID)
 {
 	//
 	    var categoriasCargadas='';
-
-		var parametros = {"ianio":ianiocargado,"todxs":1,"CategoriasXargadas":1};
+		var icompetencia = $("#icompanio").val();
+		var parametros = {"ianio":ianiocargado,"todxs":1,"CategoriasXargadas":1,"icompetencia" : icompetencia};
 				 $.ajax({ 
 					url:   './abms/obtener_clubes.php',
 					type:  'GET',
@@ -1184,7 +1324,7 @@ function pedirEquiposAnio(ianioVer)
 		            success:  function (r){
 					var v_sedes = '';
 					var v_canchas = '<select id="icanchas"><option value="9999">Sin canchas</option></select>';
-					var v_categorias='';
+					var v_categorias=v_excategorias='';
 					var escudoClub = '';
 
 					if($(r['Clubes']).length > 0) 
@@ -1202,6 +1342,24 @@ function pedirEquiposAnio(ianioVer)
 								   '<div class="itequipo1A" name="'+v.nombre+'">'+
 									v.nombre+escudoClub+'</div><div class="itequipo2A">';
 								 	//var CategoriasData = controlEquiposActivos(ianiocargado,destinoID,idclub);
+						
+						if (! $("#ClubLocal").find("[name='"+v.nombre+"']").length)	
+								$("#ClubLocal").append('<option value="'+v.idclub+'" name="'+v.nombre+'">'+v.nombre+'</option>');
+
+
+						
+						/************************** agregar ultima lista de categorias cargadas en año XXXX con los datos de la cantida de jugadores: *********/
+						 if($(v.ExCategorias).length > 0)
+								{//3
+									v_excategorias = '<div class="GridCatNomExCant">';//porque si viene vacia, ya la armo con el mensaje de VACIA			
+									$(v.ExCategorias).each(function(j, z){//4
+										//cargo categorias
+										v_excategorias+='<div class="gridcatnomexcatnit"> '+z.descripcion+' ( '+z.ConJugadores+' ) </div>' ;
+									});//4
+									v_excategorias+= '</div>';
+								}//3		
+								//else v_categorias= '<div class="GridCatNomCant"><div class="gridcatnomcatnit">Sin Categorias</div></div>';
+
 
 									 /************************** agregar lista de categorias con los datos de la cantida de jugadores: *********/
 								if($(v.Categorias).length > 0)
@@ -1256,7 +1414,7 @@ function pedirEquiposAnio(ianioVer)
 						//recorrer CANCHAS GUARDADAS EN VECTOR						
 						vClubes +=v_sedes+'</div><div class="itequipo3A">'+v_canchas+'</div>'+
 									  '<div class="itequipo4A"><button class="botonPequenio" id="eliminarclub" onclick="eliminaClubAnio('+v.idequipoanio+'); ">-</button></div>'+
-									  '<div class="itequipo5A">'+v_categorias+'</button></div>';
+									  '<div class="itequipo5A">'+v_excategorias+v_categorias+'</button></div>';
 						if (! $('#equiposAnio').find("[name='"+v.nombre+"']").length)	
 									$("#equiposAnio").append(vClubes);
 
@@ -1276,12 +1434,14 @@ function pedirPartidos(ianioVer){
 			
 	        var FechaDesde= asignarFecha(ianioVer,0,0);
 			var FechaHasta= asignarFecha(ianioVer,11,30);
+			var icompetencia = $("#icompanio").val();
+
 			//icomp=9999&icate=&icity=&icity2=9999&iclub=&fdesde=2021-01-01&fdesdeOrden=1&fhasta=2021-12-31&estado=0
 			//console.log('fechas desde '+FechaDesde);
 			//console.log('fecha hasta '+FechaHasta);
 			var parametros = 
 			{
-	        	"icomp" : 9999,
+	        	"icomp" : icompetencia,
 	        	"icate" : '',
 				"icity" : '',
 				"icity2" : 9999,
@@ -1316,13 +1476,20 @@ function pedirPartidos(ianioVer){
 //						}						 
  						//else   $("#grid-ListaPart21").append(r['nombre']);
 						
-						
-		                $(r['Partidos']).each(function(i, v)
+						//console.log(r['Partidos'].sort(OrdenarPorFechaDescendente));	
+						r['Partidos'].sort(OrdenarPorFechaDescendente);
+						 $(r['Partidos']).each(function(i, v)
 		                { // indice, valor				
-						
 						if(v.descripcion.includes('PROGR')){
 							agregarPartido('PROGRAMADO',v);
 						}
+					   });
+						
+					   //console.log(r['Partidos'].sort(OrdenarPorFechaAscendente));
+					   r['Partidos'].sort(OrdenarPorFechaAscendente);
+		                $(r['Partidos']).each(function(i, v)
+		                { // indice, valor				
+						if(v.descripcion.includes('PROGR')){}
 						else {
 							agregarPartido('OTROS',v);
 						}
@@ -1340,32 +1507,37 @@ function obtenerEscudo(idClub,idobjeto){
 	//console.log(idobjeto);
 	//var iEscudo='';
 	//var re='' ;	
-         var parametros = {"idClub" : idClub};	
-         $.ajax({ 
-            url:   './abms/obtener_club_por_id.php',
-            type:  'GET',
-            data: parametros ,
-            datatype:   'text json',
-			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
-            beforeSend: function (){
+         // // // // // var parametros = {"idClub" : idClub};	
+        // // // // //  $.ajax({ 
+        // // // // //     url:   './abms/obtener_club_por_id.php',
+        // // // // //     type:  'GET',
+        // // // // //     data: parametros ,
+        // // // // //     datatype:   'text json',
+		// // // // // 	// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+        // // // // //     beforeSend: function (){
 				
-    		},
-            done: function(data){
+    	// // // // // 	},
+        // // // // //     done: function(data){
             	
-			},
-            success:  function (r){
-				var re = JSON.parse(r);
-				//console.log(re['escudo']);
-				if(re['escudo'] !='')
-					$(idobjeto).html('<img  src="'+"img/escudos/"+re['escudo']+'" class="imgjugadorindex"></img>'); 
-    			else            	
-    				$(idobjeto).html('<img  src="img/jugadorGen.png" class="imgjugadorindex" ></img>'); 
-
-    		},
-             error: function (xhr, ajaxOptions, thrownError) 
-             {
-			 }
-            });
+		// // // // // 	},
+        // // // // //     success:  function (r){
+		// // // // // 		var re = JSON.parse(r);
+		// // // // // 		//console.log(re['escudo']);
+		$(vEquipos).each(function(i, v)
+		{ // indice, valor
+				if( v.idclub == idClub )
+				{
+					if(v.escudo !='')
+						$(idobjeto).html('<img  src="'+"img/escudos/"+v.escudo+'" class="imgjugadorindex"></img>'); 
+	    			else            	
+    					$(idobjeto).html('<img  src="img/jugadorGen.png" class="imgjugadorindex" ></img>'); 
+				}
+		});		
+    		// // // },
+            // // //  error: function (xhr, ajaxOptions, thrownError) 
+            // // //  {
+			// // //  }
+            // // // });
 
  	}
 
@@ -1476,7 +1648,8 @@ function obtenerEscudo(idClub,idobjeto){
 		<select id="seleccionclubes"><option></option></select>
 		</div>
 	<div class="ita3A">
-		<button class="botonPequenio" id="agregarclub" />+
+		<button class="botonPequenio" id="agregarclub">+</button>
+		<span class="infoClubCategorias" id="infoClubCategorias">Categorias cargadas:</span>
 	</div>  		   
 	<div class="ita4A" id="equiposAnio">
 	</div>  		
@@ -1485,7 +1658,7 @@ function obtenerEscudo(idClub,idobjeto){
 
 
 <div class="itemAcceso2"  id="AdmCarpetas">
-	<div  class="itequipo1">Categorias por Equipo</div>
+	<div  class="itequipo1">Categorias por Equipo cargadas para el año <span id="ianioTxt">####</span></div>
 	<div  class="itequipo2">
 	<!--	<select id="equiposcargados" class="colegioSel">
 			<option value="9999">Equipos...</option>
@@ -1567,6 +1740,15 @@ function obtenerEscudo(idClub,idobjeto){
 		</section>
 
 		<div class="DatosPartido">	
+		<section class="Botonera">
+				<span>Club Local</span>	
+				<select id="ClubLocal" class="ClubLocal"  name="ClubLocal">
+					<option value="9999" >Seleccione Club Local....</option>
+				</select>
+				<span>Fecha</span>	
+				<input type="date" id="FechaCabecera" name="FechaCabecera"   />
+			</section>
+
 			<section class="Botonera">
 				<span>Cant partidos</span>	
 				<input type="number" id="conteopartidos" name="conteopartidos" value="0" disabled />

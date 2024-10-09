@@ -12,9 +12,9 @@ require ('Numeros.php');
 //echo($_SERVER['REQUEST_METHOD']);
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		$tabla = "'".$_GET['TEXTOCLAVE']."'";
-//		print($tabla);
+		//print($tabla);
 	    $resultade = Numeros::getById($tabla);
-	    print_r($resultade); // viene un vector
+	    //print_r($resultade); // viene un vector
 	    if($resultade)
 	    {
 			 $_SESSION['INGRESO'] = 'SI' ; 

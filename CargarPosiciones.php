@@ -24,6 +24,38 @@
 		};
 
 
+//	*****************************************************************************
+//		agregar la funcion de actualizar hora de pantalla antes de volver
+//	*****************************************************************************
+		function updatehora(preid){
+			$("#"+preid).prop('disabled', true);
+		// por el momento solo guardo la competencia del formulario
+			var parametros = {
+				"TEXTOCLAVE" : "HORASISTEMA",
+				"origenrequest"		: $('#'+preid).val() //reuso clave origenrequest para
+				//   que directamente grabe la sesion
+			};
+
+			$.ajax({
+				url:   './abms/grabarsesion.php',
+				type:  'GET',
+				data: parametros ,
+				datatype:   'text json',
+				beforeSend: function () {},
+				done: function(data) {},
+				success:  function (r) {
+
+				},
+				error: function (xhr, ajaxOptions, thrownError) {console.log(thrownError);}
+								
+			});// falta el seleccion de la cancha, para cargar los campos..		  
+};
+
+function checkHoraSistema(){
+			if($("#HoraSistema") != '') 
+				updatehora('HoraSistema');
+		}
+
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ACTIVAR O  DESACTIVAR LIBEROS Y CENTRALES..
@@ -80,7 +112,7 @@ iaccion = array_accionjugador[0]; //CLUBIDCAT
 					console.log(xhr.responseText);
 				}// fin ERROR:FUNCT
 				}); // FIN funcion ajax JUGASPARTIDO..	
-
+				console.log('activacion::cargarDatosJugadores');	
 				cargarDatosJugadores();
 /*
   if(iaccion == 'ACTIVAR')	
@@ -138,7 +170,7 @@ function cargarDatosJugadores(){
 				"esVisualizar": $.urlParam('ver'),
 			    "categoriapartido" : $.urlParam('idcate')
 			 };
-			//console.log(parametros);	
+			
 			 $.ajax({ 
 				url:   './abms/obtener_jugpartido2.php',
 				type:  'GET',
@@ -153,6 +185,8 @@ function cargarDatosJugadores(){
 					$("#canchaA").empty('');		
 					//console.log('linea 165');	
 					$("#CuadroJugadoresA").html('');
+						$("#ContadorJugadores").val(0);
+						$("#ConteoCancha").val(0);
 
 				},
 				success:  function (r){
@@ -163,155 +197,164 @@ function cargarDatosJugadores(){
 				  $("#canchaA").html('');
 				  $("#liberos").empty('');
 					cont8='';
-				
-			   esVisualizar= $.urlParam('ver');
+				   esVisualizar= $.urlParam('ver');
 				
 				if(esVisualizar=='S')
 				{
 					 //$datos["JugadoresINI"] = $jugadores2;//es un array
-				// EACH ENLD JUGADORES POSICIONES INICIALES DEL SET EN VISUALIZAR	 
-				$(r['JugadoresINI']).each(function(i, v)
-				{ // indice,0 valor
-					//if(v.activoSN != null)
-					//		alert('ES NULL !!!! '+ v.activoSN);
-              		puestoPosta=0;
-//	if(v.secuencia == 1)					
-				if (! $('#canchaA').find("div[value='" + v.nombre + "']").length){
+					// EACH ENLD JUGADORES POSICIONES INICIALES DEL SET EN VISUALIZAR	 
+						conteoJugadores=0;
+						conteoCancha=0;
+						$(r['JugadoresINI']).each(function(i, v)
+						{ // indice,0 valor
+							//if(v.activoSN != null)
+							//		alert('ES NULL !!!! '+ v.activoSN);
+							puestoPosta=0;
+						//	if(v.secuencia == 1)					
+						if (! $('#canchaA').find("div[value='" + v.nombre + "']").length){
 
-						
-						var selecter='';
-						 
-						switch(v.posicion) {
-						  case "1":
-						    // code block
-								selecter='<div class="itemcjug2_1 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';
-						    break;
-						  case "2":
-								selecter='<div class="itemcjug2_2 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';						  
-						    // code block
-						    break;
-						  case "3":
-								selecter='<div class="itemcjug2_3 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';						  
-						    // code block
-						    break;
-						   case "4":
-								selecter='<div class="itemcjug2_4 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';						   
-						    // code block
-						    break;
-						  case "5":
-								selecter='<div class="itemcjug2_5 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';						  
-						    // code block
-							    break;
-						 case "6":
-								selecter='<div class="itemcjug2_6 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';						 
-						    // code block
-						    break;
-						  default:
-						  			selecter='<div class="itemcjug2_7 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_7" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_7" >Sup</div>';
-						    // code block
-						   }
-						//CARGAR GRILLA DE LIBEROS
-						//	alert(v.nombre+ ' puesto por default: '+v.puestoxcat + ' se cambio por:  ' +v.puesto );
-						 puestoPosta =v.puestoxcat;	
-						 puestoCategoria=v.puestoxcat;
-						if(v.puestoxcat != v.puesto) puestoPosta = v.puesto;
-						
-						if(puestoPosta==2) // LIBERO
-							if (! $('#liberos').find("div[value='" + v.nombre + "']").length){
-									cont8+='<div class="itemL"  value="'+v.nombre +'"   >'+v.nombre +'('+v.numero+')' +'</div>';
-							}
-						//CARGAR GRILLA DE LIBEROS
-						botonPuestos = "";
-						botonNewPuesto="";
-						//CARGAR INDICADOR DE PUESTO ACTUAL 
-						botonCentral='';	
-						// ES PUNTA
-						if(puestoPosta == 4)						
-						{
-							//contador++;
-							//alert(v.nombre+ ' ES UN ARMADOR, POR '+contador+ ' VEZ' );
-							botonCentral='<button id="central_pos_'+v.idjugador+'" name="punta" class="itemcjug4 punta" title="marcar central al jugador" >{P}</button>';
-						}
-						
-						// ES CENTRAL
-						if(puestoPosta == 6){
-							//alert(v.nombre+ ' ES UN central ' );
-							botonCentral='<button id="central_pos_'+v.idjugador+'" name="central" class="itemcjug4 central" title="marcar central al jugador" >{C}</button>';
-						}						
-						
-						if(puestoPosta == 3)	//ARMADOR..					
-						{
-							//contador++;
-							//alert(v.nombre+ ' ES UN ARMADOR, POR '+contador+ ' VEZ' );
-							botonCentral='<button id="central_pos_'+v.idjugador+'" name="armador" class="itemcjug4 armador" title="marcar armador al jugador" >{a}</button>';							
-						}
-						if(puestoPosta == 5)	//OPUESTO..
-						{
-							//alert(v.nombre+ ' ES UN opuesto ' );							
-							botonCentral='<button id="central_pos_'+v.idjugador+'" name="opuesto" class="itemcjug4 opuesto" title="marcar opuesto al jugador" >{o}</button>';
-						}					
+								
+								var selecter='';
+								
+								if(v.posicion == "1"|| v.posicion == 1)	{
+									// code block
+										selecter='<div class="itemcjug2_1 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';
+										conteoCancha++;
+								}
+								if(v.posicion == "2"|| v.posicion == 2)	{
+										selecter='<div class="itemcjug2_2 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';						  
+										conteoCancha++;
+									// code block
+								}
+								if(v.posicion == "3"|| v.posicion == 3)	{
+										selecter='<div class="itemcjug2_3 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';						  
+										conteoCancha++;
+									// code block
+								}
+								if(v.posicion == "4"|| v.posicion == 4)	{
+										selecter='<div class="itemcjug2_4 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';						   
+										conteoCancha++;
+									// code block
+								}
+								if(v.posicion == "5"|| v.posicion == 5)	{
+										selecter='<div class="itemcjug2_5 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';						  
+										conteoCancha++;
+									// code block
+								}
+								if(v.posicion == "6"|| v.posicion == 6)	{
+										selecter='<div class="itemcjug2_6 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_"   >'+v.posicion+'</div>';						 
+										conteoCancha++;
+									// code block
+								}
+								if(v.posicion == "7"|| v.posicion == 7)	{
+											selecter='<div class="itemcjug2_7 redondo Grisado"   id="jugadorubi_'+v.idclub+'_'+v.idjugador+'_'+v.categoria+'_7" name="jugadorubi_'+v.idclub+'_'+v.idjugador+'_7" >Sup</div>';
+											conteoCancha++;
+									// code block
+								}
+								
+								//CARGAR GRILLA DE LIBEROS
+								//	alert(v.nombre+ ' puesto por default: '+v.puestoxcat + ' se cambio por:  ' +v.puesto );
+								puestoPosta =v.puestoxcat;	
+								puestoCategoria=v.puestoxcat;
+								if(v.puestoxcat != v.puesto) puestoPosta = v.puesto;
+								
+								if(puestoPosta==2) // LIBERO
+									if (! $('#liberos').find("div[value='" + v.nombre + "']").length){
+											cont8+='<div class="itemL"  value="'+v.nombre +'"   >'+v.nombre +'('+v.numero+')' +'</div>';
+									}
+								//CARGAR GRILLA DE LIBEROS
+								botonPuestos = "";
+								botonNewPuesto="";
+								//CARGAR INDICADOR DE PUESTO ACTUAL 
+								botonCentral='';	
+								// ES PUNTA
+								if(puestoPosta == 4)						
+								{
+									//contador++;
+									//alert(v.nombre+ ' ES UN ARMADOR, POR '+contador+ ' VEZ' );
+									botonCentral='<button id="central_pos_'+v.idjugador+'" name="punta" class="itemcjug4 punta" title="marcar central al jugador" >{P}</button>';
+								}
+								
+								// ES CENTRAL
+								if(puestoPosta == 6){
+									//alert(v.nombre+ ' ES UN central ' );
+									botonCentral='<button id="central_pos_'+v.idjugador+'" name="central" class="itemcjug4 central" title="marcar central al jugador" >{C}</button>';
+								}						
+								
+								if(puestoPosta == 3)	//ARMADOR..					
+								{
+									//contador++;
+									//alert(v.nombre+ ' ES UN ARMADOR, POR '+contador+ ' VEZ' );
+									botonCentral='<button id="central_pos_'+v.idjugador+'" name="armador" class="itemcjug4 armador" title="marcar armador al jugador" >{a}</button>';							
+								}
+								if(puestoPosta == 5)	//OPUESTO..
+								{
+									//alert(v.nombre+ ' ES UN opuesto ' );							
+									botonCentral='<button id="central_pos_'+v.idjugador+'" name="opuesto" class="itemcjug4 opuesto" title="marcar opuesto al jugador" >{o}</button>';
+								}					
 
-						if(puestoPosta == 2){	//libero..
-							//alert(v.nombre+ ' es un libero ' );
-							botonCentral='<button id="central_pos_'+v.idjugador+'" name="libero" class="itemcjug4 libero" title="marcar opuesto al jugador" >{L}</button>';
-						}	
-						//CARGAR INDICADOR DE PUESTO ACTUAL 						
-						var nombreData = v.nombre;
-						if(v.FechaEgreso != null)
-							nombreData = v.nombre + ' (BAJA)';
+								if(puestoPosta == 2){	//libero..
+									//alert(v.nombre+ ' es un libero ' );
+									botonCentral='<button id="central_pos_'+v.idjugador+'" name="libero" class="itemcjug4 libero" title="marcar opuesto al jugador" >{L}</button>';
+								}	
+								//CARGAR INDICADOR DE PUESTO ACTUAL 						
+								var nombreData = v.nombre;
+								if(v.FechaEgreso != null)
+									nombreData = v.nombre + ' (BAJA)';
+								conteoJugadores++;	
+								$("#CuadroJugadoresA").append(
+								'<div id="pos_'+v.idjugador+'" name="pos_'+v.idjugador+'" class="gridConfigJug">'+
+							'<div class="itemcnfju1">'+
+								'<span class="itemcjug1 NumeroJugador">'+v.numero+'</span>'+
+								'<span class="itemcjug2  nombreJugador">'+nombreData+'</span>'+
+								botonPuestos +
+								botonCentral+
+								botonNewPuesto+'</div>'+
+								'<div class="itemcnfju2" >'+
+									selecter+				   	  														  
+								'</div>'+
+							'</div>');
+							$("#ContadorJugadores").val(conteoJugadores);
+							//alert(v.posicion);	
 							
-						$("#CuadroJugadoresA").append(
-						'<div id="pos_'+v.idjugador+'" name="pos_'+v.idjugador+'" class="gridConfigJug">'+
-				   	   '<div class="itemcnfju1">'+
-				   	  	'<span class="itemcjug1 NumeroJugador">'+v.numero+'</span>'+
-				   	  	'<span class="itemcjug2  nombreJugador">'+nombreData+'</span>'+
-						botonPuestos +
-			  	    	botonCentral+
-			  	    	botonNewPuesto+'</div>'+
-				   	  	'<div class="itemcnfju2" >'+
-							selecter+				   	  														  
-				   	  	'</div>'+
-				   	  '</div>');
-					//alert(v.posicion);	
-					switch(v.posicion)
-					{
-						case "1" :	
-									stringcontenido += '<div id="canchaa1"  class="gridcanchaBetaA" value="'+v.nombre+'">POS 1 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "2" :
-									stringcontenido += '<div id="canchaa2"  class="gridcanchaBetaB">POS 2 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "3" :
-									stringcontenido += '<div id="canchaa3"  class="gridcanchaBetaC">POS 3 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "4" :
-									stringcontenido += '<div id="canchaa4"  class="gridcanchaBetaD">POS 4 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "5" :
-									stringcontenido += '<div id="canchaa5"  class="gridcanchaBetaE">POS 5 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "6" :
-									stringcontenido += '<div id="canchaa6"  class="gridcanchaBetaF">POS 6 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "7" :
-									//$("#canchaA").append();
-									break;
- 					   };
- 					   	
-				    }
-				  });// EACH ENLD JUGADORES POSICIONES INICIALES DEL SET EN VISUALIZAR
+							if(v.posicion == "1"|| v.posicion == 1)	{
+											stringcontenido += '<div id="canchaa1"  class="gridcanchaBetaA" value="'+v.nombre+'">POS 1 '+v.nombre +'('+v.numero+')' +'</div>';
+							}
+							if(v.posicion == "2"|| v.posicion == 2)	{
+											stringcontenido += '<div id="canchaa2"  class="gridcanchaBetaB">POS 2 '+v.nombre +'('+v.numero+')' +'</div>';
+												}
+							if(v.posicion == "3"|| v.posicion == 3)	{
+											stringcontenido += '<div id="canchaa3"  class="gridcanchaBetaC">POS 3 '+v.nombre +'('+v.numero+')' +'</div>';
+								}
+							if(v.posicion == "4"|| v.posicion == 4)	{
+											stringcontenido += '<div id="canchaa4"  class="gridcanchaBetaD">POS 4 '+v.nombre +'('+v.numero+')' +'</div>';
+								}
+							if(v.posicion == "5"|| v.posicion == 5)	{
+											stringcontenido += '<div id="canchaa5"  class="gridcanchaBetaE">POS 5 '+v.nombre +'('+v.numero+')' +'</div>';
+								}
+							if(v.posicion == "6"|| v.posicion == 6)	{
+											stringcontenido += '<div id="canchaa6"  class="gridcanchaBetaF">POS 6 '+v.nombre +'('+v.numero+')' +'</div>';
+								}
+							if(v.posicion == "7"|| v.posicion == 7)	{
+											//$("#canchaA").append();
+								}
+							
+								
+							}
+						});// EACH ENLD JUGADORES POSICIONES INICIALES DEL SET EN VISUALIZAR
 				};	 //HASTA ACA ES VISUALIZAR..
-				
-				//ACA YA SE ESTA MODIFICANDO POSICIONES..	
+
+				conteoJugadores=0;
+				conteoCancha=0;
+				//ENTRA ACA CUANDO YA SE ESTA MODIFICANDO POSICIONES..para mostrarlo en CANCHA
 				$(r['Jugadores']).each(function(i, v)
 				{ // indice,0 valor
 					//if(v.activoSN != null)
 					//		alert('ES NULL !!!! '+ v.activoSN);
               		puestoPosta=0;
-//	if(v.secuencia == 1)					
-				if (! $('#canchaA').find("div[value='" + v.nombre + "']").length){
-
-						
+				//	if(v.secuencia == 1)					
+				if (! $('#canchaA').find("div[value='" + v.nombre + "']").length)
+				{
 						var selecter='';
 							var Activado = ' onclick="enviapos(this);" ';
 							if(v.FechaEgreso != null)
@@ -410,6 +453,7 @@ function cargarDatosJugadores(){
 							nombreData = v.nombre + ' (BAJA)';
 						//CONFIGURACION DE CADA JUGADOR PREVIA ELECCION
 						if(v.FechaEgreso == null){
+							conteoJugadores++;
 						$("#CuadroJugadoresA").append(
 						'<div id="pos_'+v.idjugador+'" name="pos_'+v.idjugador+'" class="gridConfigJug">'+
 				   	   '<div class="itemcnfju1">'+
@@ -425,46 +469,58 @@ function cargarDatosJugadores(){
 				   	  //LO PUEDO MODIFICAR O CARGAR..
 				   	  creaspuestosx(v.idjugador,puestoCategoria,'sjugadorp');
 					  creaspuestosx(v.idjugador,puestoPosta,'jugadorpuesto');
-						}
-					//alert(v.posicion);	
-					switch(v.posicion)
-					{
-						case "1" :	
+					  $("#ContadorJugadores").val(conteoJugadores);
+				}
+				//alert('posicion que llega de '+nombreData+' ' + v.posicion);	
+					// switch(v.posicion)
+					// {
+						if(v.posicion == "1"|| v.posicion == 1)	{
 									stringcontenido += '<div id="canchaa1"  class="gridcanchaBetaA '
-									+ clasePuesto +'" value="'+v.nombre+'">POS 1 '+v.nombre +'('+v.numero+')' +'</div>';
-									
-									break;
-						case "2" :
+													+ clasePuesto +'" value="'+v.nombre+'">POS 1 '+v.nombre +'('+v.numero+')' +'</div>';
+									conteoCancha++;				
+						}
+						if(v.posicion == "2"|| v.posicion == 2)	{
 									stringcontenido += '<div id="canchaa2"  class="gridcanchaBetaB '
-									+ clasePuesto +'">POS 2 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "3" :
+												    + clasePuesto +'">POS 2 '+v.nombre +'('+v.numero+')' +'</div>';
+									conteoCancha++;								
+						}
+						if(v.posicion == "3"|| v.posicion == 3)	{
 									stringcontenido += '<div id="canchaa3"  class="gridcanchaBetaC '
-									+ clasePuesto +'">POS 3 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "4" :
+													+ clasePuesto +'">POS 3 '+v.nombre +'('+v.numero+')' +'</div>';
+									conteoCancha++;								
+						}
+						if(v.posicion == "4"|| v.posicion == 4)	{
 									stringcontenido += '<div id="canchaa4"  class="gridcanchaBetaD '
-									+ clasePuesto +'">POS 4 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "5" :
+												    + clasePuesto +'">POS 4 '+v.nombre +'('+v.numero+')' +'</div>';
+									conteoCancha++;
+						}
+						if(v.posicion == "5"|| v.posicion == 5)	{
 									stringcontenido += '<div id="canchaa5"  class="gridcanchaBetaE '
-									+ clasePuesto +'">POS 5 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "6" :
+													+ clasePuesto +'">POS 5 '+v.nombre +'('+v.numero+')' +'</div>';
+									conteoCancha++;								
+						}
+						if(v.posicion == "6"|| v.posicion == 6)	{
 									stringcontenido += '<div id="canchaa6"  class="gridcanchaBetaF '
-									+ clasePuesto +'">POS 6 '+v.nombre +'('+v.numero+')' +'</div>';
-									break;
-						case "7" :
+													+ clasePuesto +'">POS 6 '+v.nombre +'('+v.numero+')' +'</div>';
+									conteoCancha++;																	
+						}
+						if(v.posicion == "7"|| v.posicion == 7)	{
 									//$("#canchaA").append();
-									break;
- 					   };
- 					   	
-				    }
+						}
+
+				   }
 				  });// EACH ENLD
 				 }; 
+				 //alert(stringcontenido);
 				 $("#canchaA").html(stringcontenido);
+				 	$("#ConteoCancha").val(conteoCancha);
 				 $("#liberos").html(cont8);
 				 if(r['todos']['0'].setjugok==0){ $("#cargaSetjugadores").prop('disabled', true);$("#cargaSetjugadores").prop('title', 'Se cargaron todos los jugadores seleccionados');$("#cargaSetjugadores").css('background', '#A9AAC5');  }; 
+				//  if(r['todos']['0'].setjugok!=0){ 
+				// 	$("#cargaSetjugadores").prop('disabled', true);
+				// 		$("#MensajesError").append('Error en la carga de los jugadores seleccionados.(Jug da baja asignado?)');
+				// 	$("#cargaSetjugadores").css('background', '#A9AAC5');  
+				// }; 
 				  //console.log("todos: "+r['todos']);
 				 	if(r['todos'] < 0){$("#MensajesError").append('NO SE CARGARON JUGADORES NI POSICIONES EN ESTE SET');  }
     			
@@ -580,39 +636,40 @@ function enviapos(select_pos){
 		success:  function (r){
 		$("#canchaA").empty('');
 		$("#CuadroJugadoresA").empty('');
-		var anio = $("#ianio").val();	
-			var params00 = 
-	 		{
-	 			"idpartido" : $.urlParam('idpartido'),
-				"iclubescab" : idclub,
-				"fechapartido": <?php echo("'".$_GET['fecha']."'");?>,
-				"anioEquipo" : anio,
-				"setdata" : $.urlParam('set'),
-				"categoriapartido" : $.urlParam('idcate')
-			};
-	 	$.ajax({ 
-			url:   './abms/obtener_jugpartido2.php',
-			type:  'GET',
-			data: params00,
-			dataType: 'text json',
-		// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
-			beforeSend: function (){
+		//var anio = $("#ianio").val();	
+		// 	var params00 = 
+	 	// 	{
+	 	// 		"idpartido" : $.urlParam('idpartido'),
+		// 		"iclubescab" : idclub,
+		// 		"fechapartido": <?php // echo("'".$_GET['fecha']."'");?>,
+		// 		"anioEquipo" : anio,
+		// 		"setdata" : $.urlParam('set'),
+		// 		"categoriapartido" : $.urlParam('idcate')
+		// 	};
+	 	// $.ajax({ 
+		// 	url:   './abms/obtener_jugpartido2.php',
+		// 	type:  'GET',
+		// 	data: params00,
+		// 	dataType: 'text json',
+		// // EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+		// 	beforeSend: function (){
 				
-			},
-			done: function(data){
+		// 	},
+		// 	done: function(data){
 				
-				//console.log('se limpio la cancha..');			
-			},
-			success:  function (r){
-				//location.reload();
+		// 		//console.log('se limpio la cancha..');			
+		// 	},
+		// 	success:  function (r){
+		// 		//location.reload();
+				console.log('enviapos::cargarDatosJugadores');	
 				cargarDatosJugadores();
-			},// SUCCESS	
-		 error: function (xhr, ajaxOptions, thrownError) {
-		// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
-		console.log(thrownError);
-		console.log(xhr.responseText);
-		}// fin ERROR:FUNCT
-		});	//ajax
+		// 	},// SUCCESS	
+		//  error: function (xhr, ajaxOptions, thrownError) {
+		// // LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+		// console.log(thrownError);
+		// console.log(xhr.responseText);
+		// }// fin ERROR:FUNCT
+		// });	//ajax
 		}, //succes del alta
 		error: function (xhr, ajaxOptions, thrownError) {
 	// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
@@ -625,6 +682,15 @@ function enviapos(select_pos){
 		
 		$(document).ready(function()
 		{
+
+		// RECUPERO LA HORA DEL SISTEMA, SI ES QUE SE GUARDÓ	
+		<?php
+			require_once('./abms/SesionTabla.php');
+			$HoraSistemaSaved =  SesionTabla::getsessionX("'HORASISTEMA'"); //texto clave
+			if(isset($HoraSistemaSaved["sesorigen"]))
+				echo "$('#HoraSistema').val('".$HoraSistemaSaved["sesorigen"]."');";
+		?>		
+
 			//var contador=0;
 			var f=new Date();
 			var fechapartido = f.getFullYear()-1 ;
@@ -671,6 +737,7 @@ function enviapos(select_pos){
           //      	console.log('posicion '+v.nombre+' ('+ v.idPosicion+') ');
 		 //	});		
 		//PROBANDO LA CARGA UNICA DE LAS POSICIONES	
+		console.log('ready::cargarDatosJugadores');	
 		cargarDatosJugadores();				
 			
 			
@@ -721,9 +788,7 @@ function enviapos(select_pos){
 			            
 			            success:  function (r){
 							//LLER DATOS DE JUGADORES BASICOS LUEGO DEL ALTA PARTIDO/SET
-				    			//cargaCancha();
-											location.reload();
-								//console.log(r);
+									location.reload();
 			            },
 			            //error: function() {
 						error: function (xhr, ajaxOptions, thrownError) {
@@ -786,6 +851,7 @@ function enviapos(select_pos){
 			
 		$("#volver").on("click",function(e){
 			e.preventDefault();
+				checkHoraSistema();
 			//encotnrar quien lo llama...
 				parent.history.back();
 				return false;
@@ -853,43 +919,84 @@ function enviapos(select_pos){
 
 
 // TRAIGO LOS DATOS DEL PARTIDO
-
-		var dt = new Date();
-//		var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+// *****************************
+// 	AVANZAR CRONOMETRO		
+// *****************************
+var dt = new Date();
 	    var tiempo = {
 	        hora: dt.getHours(),
 	        minuto: dt.getMinutes(),
 	        segundo: dt.getSeconds()
 	    };
 
-    	var tiempo_corriendo = null;
+		var vHoraSistema = $("#HoraSistema").val();
+		if (vHoraSistema != '')	
+				var a1 = vHoraSistema.split(':'); // [18, 30, 01] -hora fingida sistema
 
+		// FINGIENDO QUE LA HORA DE SISTEMA SIMULADA ESTA AVANZANDO MILI A MILIPILIsegundos
+		if (vHoraSistema != '')	{
+		var tiemposistema = {
+	        hora: a1['0'],
+	        minuto: a1['1'],
+	        segundo: a1['2'] 
+		}
+		}
+    	var tiempo_corriendo = null;
 		tiempo_corriendo = setInterval(function(){
         // Segundos
         tiempo.segundo++;
+		// MOVIENDO EL TIEMPO SIMULADO EN UN SOLO CRONOMETRO:SEGUNDOS
+		if (vHoraSistema != '')
+			tiemposistema.segundo++;
         if(tiempo.segundo >= 60)
         {
         	tiempo.segundo = 0;
             tiempo.minuto++;
         }      
-
+		// MUEVO EL TIEMPO SIMULADOR TAMBIEN:SEGUNDOS+MINUTO
+		if (vHoraSistema != ''){
+			if(tiemposistema.segundo >= 60)
+			{
+				tiemposistema.segundo = 0;
+				tiemposistema.minuto++;
+			}      		
+		}	
         // Minutos
         if(tiempo.minuto >= 60)
         {
         	tiempo.minuto = 0;
             tiempo.hora++;
         }
-
+        // MOVIENDO TIMEPO SIMULADO: MINUTOS
+		if (vHoraSistema != ''){
+			if(tiemposistema.minuto >= 60)
+			{
+				tiemposistema.minuto = 0;
+				tiemposistema.hora++;
+			}
+		}	
+		// CRONOMETRO COMUN
 		var tiempoTxtHora = tiempo.hora < 10 ? '0' + tiempo.hora : tiempo.hora;
 		var tiempoTxtMin  = tiempo.minuto < 10 ? '0' + tiempo.minuto : tiempo.minuto;
 		var tiempoTxtSeg  = tiempo.segundo < 10 ? '0' + tiempo.segundo : tiempo.segundo;
-		
+		// CRONOMETRO SIMULADO
+		if (vHoraSistema != ''){
+		var XtiempoTxtHora = tiemposistema.hora < 10 ? '0' + tiemposistema.hora : tiemposistema.hora;
+		var XtiempoTxtMin  = tiemposistema.minuto < 10 ? '0' + tiemposistema.minuto : tiemposistema.minuto;
+		var XtiempoTxtSeg  = tiemposistema.segundo < 10 ? '0' + tiemposistema.segundo : tiemposistema.segundo;
+		var XtiempoSinSegs = XtiempoTxtHora +':' + XtiempoTxtMin;		
+			var XtiempoTxt = XtiempoTxtHora +':' + XtiempoTxtMin +':' + XtiempoTxtSeg ;
+		}
 		var tiempoTxt = tiempoTxtHora +':' + tiempoTxtMin +':' + tiempoTxtSeg ;
-				
+		// ACTUALIZO EL CRONOMETRO SIMULADO
+		if (vHoraSistema != '')
+			$("#HoraSistema").val(XtiempoTxt);
 		$("#stopwatch").text(tiempoTxt);
-
 		}, 1000); //funcion setinterval..
-		
+
+// *****************************
+// 	AVANZAR CRONOMETRO		
+// *****************************
 
 }); // document READY
 // CARGAR JUGADORES POR CATEGORIA..
@@ -898,6 +1005,7 @@ function enviapos(select_pos){
 <span id="stopwatch" style="display: none;"></span>
 </head>
 <body>
+
 <div id="stikcy">
 <header class="headerIngreso_2">
 	<section class="LogoApp fijaLogo" style="z-index: 0;">
@@ -906,21 +1014,40 @@ function enviapos(select_pos){
 		</a>
 	</section>	
 </header>
-   <div class="ControlesPosicion21_2 ">
-	 <div class="control1"><select id="ianio" name="ianio" class="ianio">
-			<option value="9999">Seleccionar año...</option>
-		  </select>
-	 </div>
-	 <div class="control2"><button id="volver" name="altajug" class="altajug" title="agregar registros"><<</button></div>
-	 <div class="control3"><button id="cargaSetjugadores" name="altajug" class="altajugsetpartido" title="Trae lista jugadores">(+)</button></div>
-	 <div class="control4"><button id="borraSetjugadores" name="bajajugs" class="bajajugsetpartido" title="Borrar">(Del)</button></div>	 		
-
-	 <div class="control5">
+   <div class="ControlesPosicion21_3 ">
+	<div class="control3_1">
+			<select id="ianio" name="ianio" class="ianio">
+				<option value="9999">Seleccionar año...</option>
+		  	</select>
+	 <!-- </div> -->
+	 <!-- <div class="control2"> -->
+			<button id="volver" name="altajug" class="btnSet2021" title="agregar registros"><<</button>
+	<!-- </div> -->
+	 <!-- <div class="control3"> -->
+			<button id="cargaSetjugadores" name="altajug" class="altajugsetpartido" title="Trae lista jugadores">(+)</button>
+	<!-- </div> -->
+	 <!-- <div class="control4"> -->
+			<button id="borraSetjugadores" name="bajajugs" class="bajajugsetpartido" title="Borrar">(Del)</button>
+	</div>	 		
+	 <div class="control3_2">
 	 		<input id="EsLocalVisitante" name="EsLocalVisitante"	disabled /> 
-	 </div>
-	 <div class="control6"><input id="clubNombre" name="clubNombre"	disabled /> </div>
-	 <div class="control8"></div>
-	 <div class="control7"><input id="categoria" name="categoria"  disabled />  </div>	 		
+	 <!-- </div> -->
+	 <!-- <div class="control6"> -->
+			<input id="clubNombre" name="clubNombre"	disabled /> 
+	<!-- </div> -->
+	 <!-- <div class="control8"></div> -->
+	 	<!-- <div class="control7"> -->
+			<input id="categoria" name="categoria"  disabled />  
+	</div>	 		
+	 <div class="control3_3">
+		<span>Tot.Jug.</span>
+	 	<input id="ContadorJugadores" class="Contador" name="ContadorJugadores"  disabled value="0"/>  
+		 <span>Tot.Cancha</span>
+		<input id="ConteoCancha" class="Contador" name="ConteoCancha"  disabled value="0"/>  
+
+		<div>Hora Forzada</div>
+		<input type="datetime" id="HoraSistema" name="HoraSistema" disabled />
+	</div>
 
    </div>	
  	<section id="MensajesError" name="MensajesError" class=""></section>

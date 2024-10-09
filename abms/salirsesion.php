@@ -9,10 +9,12 @@
 require_once('SesionTabla.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-		$clave = "'".$_GET['TEXTOCLAVE']."'";
-		$return = SesionTabla::deletesession($clave);
+		$clave = "'".$_POST['TEXTOCLAVE']."'";
+		//echo "CLAVE: $clave";
+		//$comando = "DELETE FROM vappsesiones WHERE sesusuario=$ipconeccion";
+		$return = SesionTabla::deletesessionOrigen($clave);
 		//header("Location: ../index.php");	
-		echo($return);
+			echo($return);
 		
 }
 else if ($_SERVER['REQUEST_METHOD'] == 'GET') {

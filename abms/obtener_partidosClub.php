@@ -95,7 +95,6 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
 			// chequeo si tiene alguno para parametrizar...
 			if (($icomp != 0) || ($icate != 0) || ($iclub != 0) || ($icity != 0) || ($fecDde != "''") || ($fecHta != "''"))
 					$partidos = Partido::getAllcparmsClub($icomp,$icate,$iclub,$icity,$fecDde,$fecHta,$fecOrden,$estado);
-//			$partidos = Partido::getAllcparms($icomp,$icate,$iclub,$icity,$fecDde,$fecHta);
 			
 		    if ($partidos)
 		    {

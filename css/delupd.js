@@ -348,10 +348,10 @@ $("#btnEliminaComp").click(
 
 //**************** ELIMINO sede con jquery *********************************************/      
 $("#btnEliminaSede").click(
-	function()
+	function(e)
 	{ 
 			var parametros = {"isede2" : $("#isede2 option:selected").val()}
-           
+           		//e.preventDefault();
             $.ajax({ //el signo de pregunta apunta a la direccion url base que es donde corre equipos.php
             url:   './abms/borrar_sede.php',
             type:  'POST',

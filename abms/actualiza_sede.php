@@ -5,6 +5,7 @@
 require ('Sede.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+
 	 $idsede = (int) $_POST['idsede'];
 	 $idclub = (int) $_POST['idclub'];
 	 $nombresede =  $_POST['snom'];

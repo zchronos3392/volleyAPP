@@ -568,12 +568,12 @@ function realizaCambio($modo,$partido,$fecha,$iclub,$categoriaPartido,$set,$anio
 
 	$retorno =0;
 	if($modo == "PRESAQUEINICIAL")
-			$mensaje = "'por cambio de Liberos por Centrales (INICIO)...'";
+			$mensaje = "'cambio de Liberos por Centrales (INICIO)...'";
 		else
 		  if($modo == "CAMBIOAUTOMLIBCEN")
-		  			$mensaje = "'por cambio de Liberos por Centrales (ROTACION)...'";
+		  			$mensaje = "'cambio de Liberos por Centrales (ROTACION)...'";
 		  	else
-		  			$mensaje = "'por cambio de jugadores...'";
+		  			$mensaje = "'cambio de jugadores...'";
 
 	//reubico los jugadores de la cancha segun quien entro y quien salió..
 	$retorno = Sett::insert( $partido, $secuencia, $set, $fecha,$horaset,
@@ -583,7 +583,7 @@ function realizaCambio($modo,$partido,$fecha,$iclub,$categoriaPartido,$set,$anio
 							 $mensaje,$contadorpausasA,$contadorpausasB);
 
 	$retornoRotaciones = 0;
-	$mensaje = "'por cambio de Liberos por Centrales en posicion.$posicionEnSet'";
+	$mensaje = "'cambio de Liberos por Centrales en posicion.$posicionEnSet'";
 	// Actualizo Rotaciones para poder verlo mas tarde o para recuperar posiciones viejas..
 		$retornoRotaciones = Rotaciones::insert($partido,$fecha,$set,$secuencia,$A1,$A2,$A3,$A4,$A5,$A6,$B1,$B2,$B3,$B4,$B5,$B6,$mensaje,$iclub);
 

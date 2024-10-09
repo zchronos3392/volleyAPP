@@ -1,0 +1,70 @@
+
+isedeFiltro
+
+
+DIALOGS INSTALACION
+	PANTALLA DE ESPERA MIENTRAS SE TERMINA DE VOLVER DEL SERVIDOR..
+---------------------------------------------------------------------------
+----------------------------------------------------------------------------
+en STYLES DE LA PANTALLA
+<style>
+
+			.XModales,.XSModales
+			{
+				background-color: rgba(255,0,0,.55);
+				height:	-webkit-fill-available;
+			}
+			DIALOG{
+				inset-inline-start: 0px;
+				inset-inline-end: 0px;
+				width:100%;
+
+			}
+
+			@keyframes donut-spin {
+			0% {
+			transform: rotate(0deg);
+			}
+			100% {
+			transform: rotate(360deg);
+			}
+			}
+			.donut {
+			display: inline-block;
+			border: 4px solid rgba(0, 0, 0, 0.1);
+			border-left-color: #7983ff;
+			border-radius: 50%;
+			width: 30px;
+			height: 30px;
+			margin: 15%;		
+			padding: 40%;
+			animation: donut-spin 1.2s linear infinite;
+			}
+------------------------------------------------------------------
+luego del ready, para tenerlo a mano en toda la pantalla	
+	const dialog = document.getElementById("modalEsperar");
+------------------------------------------------------------------
+luego del body
+HTML
+<dialog id="modalEsperar" class="XModales">
+		<div class="donut"></div>
+</dialog>
+------------------------------------------------------------------
+usarlo en 
+				beforeSend: function (){
+					dialog.showModal();
+desactivarlo en 
+				success: function (){
+					dialog.showModal();
+---------------------------------------------------------------------------
+DIALOG EN CONFIGURACION START NECESITO EL QUERYSELECTOR PARA OBTENER TODO EL OBJETO
+SINO NO FUNCIONA BIEN EL OCULTAR DEL DIALOG
+Y LAS ACCIONES A TOMAR SIEMPRE TIENEN QUE SER ESAS
+	// ventana modal en si.LA ASOCIAMOS A UNA VARIABLE A TRAVES DE QUERYSELECTOR
+	const modalSUPL_A =
+		document.querySelector("#modalSuplentesA");
+ACCIONES A TOMAR,
+		ON BEFORE 
+		modalSUPL_A.showModal(); 
+		ON COMPLETE O ON SUCCESS
+		modalSUPL_A.close();

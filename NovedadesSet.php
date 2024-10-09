@@ -15,6 +15,9 @@
 
 
 	   <style>
+			.nRemeraNovedad{
+				font-size:x-large;
+			}
 			.XModales::backdrop,.XSModales::backdrop
 			{
 			background-color: rgba(0,0,0,.55);
@@ -201,6 +204,46 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++inicio del procesamiento de la arotacion animada++++++++++++++++++
 
+function updatehora(preid){
+			$("#"+preid).prop('disabled', true);
+		// por el momento solo guardo la competencia del formulario
+			var parametros = {
+				"TEXTOCLAVE" : "HORASISTEMA",
+				"origenrequest"		: $('#'+preid).val() //reuso clave origenrequest para
+				//   que directamente grabe la sesion
+			};
+
+			$.ajax({
+				url:   './abms/grabarsesion.php',
+				type:  'GET',
+				data: parametros ,
+				datatype:   'text json',
+				beforeSend: function () {},
+				done: function(data) {},
+				success:  function (r) {
+						//location.reload(); 
+				},
+				error: function (xhr, ajaxOptions, thrownError) {console.log(thrownError);}
+								
+			});// falta el seleccion de la cancha, para cargar los campos..		  
+};
+
+
+function volver(urlEjecutar){
+
+	//aca tengo que grabar la hora simulada del sistema
+	if($("#HoraSistema") != '')
+		updatehora('HoraSistema');
+
+		window.location.href = urlEjecutar;
+
+
+}
+
+function  AccionOcultarControles(){
+		$("#xgrid-container22").toggle();
+		$(".bloqueFotos").toggle();
+}
 
 function invertirColorHex(hex) {
   hex = hex.replace('#', '');
@@ -582,11 +625,14 @@ function creaspuestosx(idjugador,puesto,nombreObj){
 return 	selectPuesto ;
 };
 
+
 function asignaPosCancha(select_pos,equipo)
 {
 // obtener las claves desde el id
 // ACA LO TENGO QUE "ACTIVAR"
-var arraids = select_pos.id.split('_');
+//var arraids = select_pos.id.split('_');
+var arraids = select_pos.split('_');
+
 	var idclub = arraids[1] ;
 	var idjugador = arraids[2];	  
 	var categoria = arraids[3];
@@ -609,6 +655,10 @@ var arraids = select_pos.id.split('_');
 	 	var nombrePuesto = $("#jugadorpuestoV_"+idjugador+ ' option:selected').html() ;
 		 posicionEnSet =  "B"+pos_nueva;
 	}		
+
+	var horaAUsar = '';
+		   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+
 	var parametros =
 		{
 	    "idpartido" : $.urlParam('id'),
@@ -620,8 +670,10 @@ var arraids = select_pos.id.split('_');
 		"puestoSet": puesto,
 		"setdata" : $.urlParam('setid'),
 		"zona"    : posicionEnSet,
-		"horas"     : $("#stopwatch").text()
+		"horas"     : horaAUsar
 		};
+	
+//	console.log(parametros);
 	
 	 $.ajax({ 
 		url:   './abms/forzarposicion.php',
@@ -635,7 +687,7 @@ var arraids = select_pos.id.split('_');
 					cargaCancha();	
 		}, //succes del alta
 		error: function (xhr, ajaxOptions, thrownError) {
-	// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+		// ES UN ERROR PORQUE NO DEVUELVE NADA
 			console.log(thrownError);
 			console.log(xhr.responseText);
 		}// fin ERROR:FUNCT
@@ -647,7 +699,8 @@ function enviapos(select_pos,equipo)
 {
 // obtener las claves desde el id
 // ACA LO TENGO QUE "ACTIVAR"
-	var arraids = select_pos.id.split('_');
+//	var arraids = select_pos.id.split('_');
+	var arraids = select_pos.split('_');
 	var idclub = arraids[1] ;
 	var idjugador = arraids[2];	  
 	var categoria = arraids[3];
@@ -667,6 +720,10 @@ function enviapos(select_pos,equipo)
 		var puesto = $("#jugadorpuestoV_"+idjugador).val(); 
 	 	var nombrePuesto = $("#jugadorpuestoV_"+idjugador+ ' option:selected').html() ;
 	}		
+
+	var horaAUsar = '';
+		   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+
 	var parametros =
 		{
 	    "idpartido" : $.urlParam('id'),
@@ -677,9 +734,9 @@ function enviapos(select_pos,equipo)
 		"posicion":pos_nueva,
 		"puestoSet": puesto,
 		"setdata" : $.urlParam('setid'),
-		"horas"     : $("#stopwatch").text()
+		"horas"     : horaAUsar
 		};
-	
+	// console.log(parametros);
 	 $.ajax({ 
 		url:   './abms/inserta_jugador_set.php',
 		type:  'POST',
@@ -692,7 +749,7 @@ function enviapos(select_pos,equipo)
 					cargaCancha();	
 		}, //succes del alta
 		error: function (xhr, ajaxOptions, thrownError) {
-	// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+			// ES UN ERROR PORQUE NO DEVUELVE NADA
 			console.log(thrownError);
 			console.log(xhr.responseText);
 		}// fin ERROR:FUNCT
@@ -755,6 +812,10 @@ iaccion ='ACTIVAR';
 //	alert('fecha partido : ' +fechas);
 //	alert('set nro : ' + idset);
 
+var horaAUsar = '';
+		   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+
+
 		var parametros =
 			{
 		    "idpartido"   : idpartido,
@@ -763,7 +824,7 @@ iaccion ='ACTIVAR';
 			"idjugador"   : idjugador,
 			"iclub"       : idclub,
 			"icategoria"  : idcategoria,
-			"horas"       : $("#stopwatch").text(),
+			"horas"       : horaAUsar,
 			"ianio"       :	$("#ianio").val(),
 			"accion"      : iaccion
 			};
@@ -831,6 +892,9 @@ iaccion ='SUBIR';
 	// alert('fecha partido : ' +fechas);
 	// alert('set nro : ' + idset);
 
+	var horaAUsar = '';
+		   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+
 		var parametros =
 			{
 		    "idpartido"   : idpartido,
@@ -839,7 +903,7 @@ iaccion ='SUBIR';
 			"idjugador"   : idjugador,
 			"iclub"       : idclub,
 			"icategoria"  : idcategoria,
-			"horas"       : $("#stopwatch").text(),
+			"horas"       : horaAUsar,
 			"ianio"       :	$("#ianio").val(),
 			"accion"      : iaccion,
 			"ordenCaptado":ordenCaptado
@@ -856,7 +920,9 @@ iaccion ='SUBIR';
 				success:  function (r)
 				{
 					var horaEnString = $("#stopwatch").text();
-					$("#ordenLiberoMSG_"+idjugador+'_'+idclub+'_'+idcategoria).val('Orden actualizado en db tmb a las '+horaEnString);
+					var horaAUsar = '';
+						   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+					$("#ordenLiberoMSG_"+idjugador+'_'+idclub+'_'+idcategoria).val('Orden actualizado en db tmb a las '+horaAUsar);
 
 				},// SUCCESS	
 				error: function (xhr, ajaxOptions, thrownError) {
@@ -925,6 +991,9 @@ var idsuplente =0;
 		var array_suplente =	$(".bordeSeleccion").attr("id").split("_");
 		var idsuplente = array_suplente[0];
 
+		var horaAUsar = '';
+		   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+
 //		fechaJuego = "'"+fechaJuego+"'";
 		var parametros =
 			{
@@ -936,7 +1005,7 @@ var idsuplente =0;
 			"idjugadorSale":idjugador,
 			"posenset":posCancha,
 			"setnumero" : SetNumero,
-			"horas"     : $("#stopwatch").text(),
+			"horas"     : horaAUsar,
 			"posicion"  :posicionumerica,
 			"ianio":	$("#ianio").val()
 			};
@@ -1107,7 +1176,7 @@ function elegirSuplente(dataSelector,claseOrigen){
             type:  'POST',
             data: parametros,
             beforeSend: function (){
-			
+				AccionOcultarControles(); //muestro el control de reanudar
             },
             success:  function (r){
             	//console.log(r);
@@ -1159,6 +1228,9 @@ function elegirSuplente(dataSelector,claseOrigen){
 		
 		function adelantarRotacion(idclub){
 			// viene 'idcluba'
+			var horaAUsar = '';
+		   		horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+			
 			 var idclubAntiRota = $("#"+idclub).val();
 			 //alert(idclubAntiRota);
 		var parametros =
@@ -1168,7 +1240,7 @@ function elegirSuplente(dataSelector,claseOrigen){
     			"resa"      : $("#resa").text(),
     			"resb"      : $("#resb").text(),
     			"fechas"    : $("#fecha").text(),
-    			"horas"     : $("#stopwatch").text(),
+    			"horas"     : horaAUsar,
     			"saque"     : $("#saque").val(),
     			"anioEquipo":	$("#ianio").val(),
     			"antirotacion"  : "S",
@@ -1214,6 +1286,9 @@ function elegirSuplente(dataSelector,claseOrigen){
 			// viene 'idcluba'
 			 var idclubAntiRota = $("#"+idclub).val();
 			 //alert(idclubAntiRota);
+			 var horaAUsar = '';
+				   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+
 		var parametros =
     		 {
     			"idpartido" : $("#partidoid").val(),
@@ -1221,7 +1296,7 @@ function elegirSuplente(dataSelector,claseOrigen){
     			"resa"      : $("#resa").text(),
     			"resb"      : $("#resb").text(),
     			"fechas"    : $("#fecha").text(),
-    			"horas"     : $("#stopwatch").text(),
+    			"horas"     : horaAUsar	,
     			"saque"     : $("#saque").val(),
     			"anioEquipo":	$("#ianio").val(),
     			"antirotacion"  : "S",
@@ -1323,12 +1398,15 @@ function elegirSuplente(dataSelector,claseOrigen){
 		function  cerrarSet()
 		{ // esta funcion cierra el set y vuelve a la pagina de CargaSets
 		//console.log('cerrarSet()');
+		var horaAUsar = '';
+		   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+
 			var parametros =
     		 {
     			"idpartido" : $("#partidoid").val(),
     			"idset"     : $("#numSet").text(),
     			"fechas"    : $("#fecha").text(),
-    			"horas"     : $("#stopwatch").text()
+    			"horas"     : horaAUsar
 			 };
 			$.ajax({ //el signo de pregunta apunta a la direccion url base que es donde corre equipos.php
             url:   './abms/cerrarsetdata.php',
@@ -1355,6 +1433,9 @@ function elegirSuplente(dataSelector,claseOrigen){
 /* +++++++++++++++ FUNCION ENVIAR ESTRATEGIA MANUALMENTE ++++++++++*/
 function   enviaEstrategia(resa,resb,rotar)
 {
+		var horaAUsar = '';
+			   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+
 		//quite este parametro: "debeRotar" : $("#NOROTA").text()    			
    		var parametros =
     		 {
@@ -1363,11 +1444,11 @@ function   enviaEstrategia(resa,resb,rotar)
     			"resa"      : resa,
     			"resb"      : resb,
     			"fechas"    : $("#fecha").text(),
-    			"horas"     : $("#stopwatch").text(),
+    			"horas"     : horaAUsar,
     			"rotacion" : rotar,
     			"estrategiaLA": $("#estrategiaLA").val(),
     			"estrategiaLB": $("#estrategiaLB").val(),    			
-    			"mensajeAlta" : 'Novedades30::ESTRATEGIA'
+    			"mensajeAlta" : 'Novedades::ESTRATEGIA'
 			 };
     		
     		$.ajax({ //el signo de pregunta apunta a la direccion url base que es donde corre equipos.php
@@ -1391,7 +1472,11 @@ function   enviaEstrategia(resa,resb,rotar)
 
 
 		function reanudar(resa,resb,rotar){
-			//quite este parametro: "debeRotar" : $("#NOROTA").text()    			
+			//quite este parametro: "debeRotar" : $("#NOROTA").text()
+			
+			var horaAUsar = '';
+			   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+	
    		var parametros =
     		 {
     			"idpartido" : $("#partidoid").val(),
@@ -1399,9 +1484,9 @@ function   enviaEstrategia(resa,resb,rotar)
     			"resa"      : resa,
     			"resb"      : resb,
     			"fechas"    : $("#fecha").text(),
-    			"horas"     : $("#stopwatch").text(),
+    			"horas"     : horaAUsar,
     			"rotacion" : rotar,
-    			"mensajeAlta" : 'Novedades30::REANUDAR'
+    			"mensajeAlta" : 'Novedades::REANUDAR'
 				
 			 };
     		
@@ -1413,8 +1498,9 @@ function   enviaEstrategia(resa,resb,rotar)
 			
             },
             success:  function (r){
-						DetectarGanador(resultado01,resultado02,clubadetc,clubbdetc);
+						//DetectarGanador(resultado01,resultado02,clubadetc,clubbdetc);
 						cargaCancha(); //para que se actualice solo...
+						AccionOcultarControles();
 						//cargarpuntosaque();
 			},
             //error: function() {
@@ -1425,7 +1511,10 @@ function   enviaEstrategia(resa,resb,rotar)
 /* +++++++++++++++ FIN FUNCION ROTAR ++++++++++*/		
 		function enviarJugada(resa01,resa02)
 		{
-			//quite este parametro: "debeRotar" : $("#NOROTA").text()    			
+			//quite este parametro: "debeRotar" : $("#NOROTA").text()
+			var horaAUsar = '';
+			   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+    			
    		var parametros =
     		 {
     			"idpartido" : $("#partidoid").val(),
@@ -1433,7 +1522,7 @@ function   enviaEstrategia(resa,resb,rotar)
     			"resa"      : resa01,
     			"resb"      : resa02,
     			"fechas"    : $("#fecha").text(),
-    			"horas"     : $("#stopwatch").text(),
+    			"horas"     : horaAUsar,
     			"estrategiaLA": $("#estrategiaLA").val(),
     			"estrategiaLB": $("#estrategiaLB").val()    			
 				
@@ -1474,9 +1563,24 @@ function   enviaEstrategia(resa,resb,rotar)
             }); // FIN funcion ajax
 		};
 		
-//		$(document).ready(function(){
+//		$(document).ready(function()
 		$(window).on('load', function() 
 		{
+
+		// RECUPERO LA HORA DEL SISTEMA, SI ES QUE SE GUARDÓ	
+		<?php
+			require_once('./abms/SesionTabla.php');
+			$HoraSistemaSaved =  SesionTabla::getsessionX("'HORASISTEMA'"); //texto clave
+			if(isset($HoraSistemaSaved["sesorigen"])){
+				echo "$('#HoraSistema').val('".$HoraSistemaSaved["sesorigen"]."');";
+
+				//$fechaHora = DateTime::createFromFormat('Y-m-d H:i:s.u', $HoraSistemaSaved["seshorainicio"]);
+				//$soloHora = $fechaHora->format('H:i:s');
+					//echo "$('#HoraTREAL').val('".$soloHora."');";
+			}	
+		?>		
+		// RECUPERO LA HORA DEL SISTEMA, SI ES QUE SE GUARDÓ	
+
 		//LIBEROS LOCAL
 		//controles de apertura y cierra modal
 		const btnAbrirModalLibLocal =
@@ -1498,7 +1602,7 @@ function   enviaEstrategia(resa,resb,rotar)
 		});
 
 // SUPLENTES LOCAL		
-		//controles de apertura y cierra modal
+ // CONTROLES DE  Apertura y Cierre modal
 		const btnAbrirModalSUPL_A =
 		 document.querySelector("#Local");
 		const btnCerrarModalSUPL_A =
@@ -1515,8 +1619,30 @@ function   enviaEstrategia(resa,resb,rotar)
 		btnCerrarModalSUPL_A.addEventListener("click",()=>
 		{
 			modalSUPL_A.close();
+			$("#cambiarLocal").val(0);
 		});
+// CONTROLES DE  Apertura y Cierre modal		
+// CONTROLES DE  RECARGA DE GRILLA JUGADORES LOCALES AGREGADOS 
+		const btnRecargaSUPL_A =
+		document.querySelector("#btn-recargar-modalSuplA");
+		// ventana modal en si.
+		btnRecargaSUPL_A.addEventListener("click",()=>
+		{
+			iclub = $("#PlanillaClubLocal").val();
+			ianio = $("#ianio").val();
+			cambioPlanillaJugadores(ianio,iclub,'local');
+			//if($("#cambiarLocal").val() == 1)
+			//{
+			cargaCancha();
+			//}	
+			//else
+			//	alert('sin cambios');
+
+		});
+// CONTROLES DE  RECARGA DE GRILLA JUGADORES LOCALES AGREGADOS
+
 // SUPLENTES LOCAL		
+
 
 // SUPLENTES VISITA		
 		//controles de apertura y cierra modal
@@ -1536,7 +1662,29 @@ function   enviaEstrategia(resa,resb,rotar)
 		btnCerrarModalSUPL_B.addEventListener("click",()=>
 		{
 			modalSUPL_B.close();
+			$("#cambiarVisita").val(0);
 		});
+
+// CONTROLES DE  RECARGA DE GRILLA JUGADORES VISITANTE AGREGADOS 
+		const btnRecargaSUPL_B =
+		document.querySelector("#btn-recargar-modalSuplB");
+		// ventana modal en si.
+		btnRecargaSUPL_B.addEventListener("click",()=>
+		{
+			iclub = $("#PlanillaClubVisita").val();
+			ianio = $("#ianio").val();
+			cambioPlanillaJugadores(ianio,iclub,'visita');
+			//if($("#cambiarVisita").val() == 1)
+			//{
+			cargaCancha();
+			//}	
+			//else
+			//alert('sin cambios');
+
+		});
+// CONTROLES DE  RECARGA DE GRILLA JUGADORES VISITANTE AGREGADOS 
+
+
 // SUPLENTES VISITA
 
 //CENTRALES Local
@@ -1698,7 +1846,10 @@ function   enviaEstrategia(resa,resb,rotar)
 								//$("#nomA").text(v.ClubA + "  ("+v.ClubARes +")");
 								$("#jugATitulo").text(v.ClubA);
 								$("#nomA").append('<input id="idcluba" type="hidden" value="'+v.idcluba+'"/></div>');
-				        	  	$("#HoraInicial").val(r['horainicio']);
+								$("#HoraInicial").val(r['transcurrido']);
+
+								$("#HoraIniciadoPartido").append(r['horainicio']);
+								$("#HoraInicioPartido").val(r['horainicio']);
 								iclubescab1 = v.idcluba;
 								//$("#nomB").text(v.ClubB+"  ("+v.ClubBRes +")");
 				        	  	$("#HoraInicioSet").val(r['valorHoraInicioSet']);
@@ -1716,24 +1867,26 @@ function   enviaEstrategia(resa,resb,rotar)
 								$("#saque").append('<option value="'+v.idclubb+'">'+v.ClubB+'</option>');
 /* INCORPORAMOS LA CARGA DEL ESCUDO DE CADA CLUB */
 
-							if(r['saque'] == v.idcluba)
-							{ 
-								//textoClubA = v.ClubA;
-								escudoAMarco = "bordeRojo";
-								escudoBMarco = "NoBorde"; 
-							}
-							
-							if(r['saque'] == v.idclubb)
-							{ 
-								//textoClubB  = v.ClubB;
-								escudoAMarco = "NoBorde";
-								escudoBMarco = "bordeRojo"; 
-							}
+						if(r['saque'] == v.idcluba)
+						{ 
+							//textoClubA = v.ClubA;
+							escudoAMarco = "bordeRojo";
+							escudoBMarco = "NoBorde"; 
+						}
+						
+						if(r['saque'] == v.idclubb)
+						{ 
+							//textoClubB  = v.ClubB;
+							escudoAMarco = "NoBorde";
+							escudoBMarco = "bordeRojo"; 
+						}
 			// CARGO LOS ESCUDOS DE CADA EQUIPO JUNTO CON EL RESULTADO ACTUAL DEL SET
+							
+						 puntoEspecialLOCAL = '<div class="itmidclub3a" id="setmatchpointA"></div>';				
+			 			 puntoEspecialVisita = '<div class="itmidclub3a" id="setmatchpointB"></div>';				
+			
 						var ESCUDOA = '<span id="escudoAMarco" class="'+escudoAMarco+'"><img  src="img/jugadorGen.png" class="imgjugadorTablero2" ></img></span>';
-						
-						
-						var textoClubA ='<div class="grillaIdClubv20"><div class="itmidclub2a" id="escudoA">'+ESCUDOA+'</div><div class="itmidclub1a"><span id="nombrelocal">'+v.ClubA+'</span></div>'+
+						var textoClubA ='<div class="grillaIdClubv20">'+puntoEspecialLOCAL+'<div class="itmidclub2a" id="escudoA">'+ESCUDOA+'</div><div class="itmidclub1a"><span id="nombrelocal">'+v.ClubA+'</span></div>'+
 							 '<div id="nomA" class="" >'+
 							 '<input id="idcluba" type="hidden" value="'+v.idcluba+'"/>'+
 							'</div>'+
@@ -1743,15 +1896,12 @@ function   enviaEstrategia(resa,resb,rotar)
 						$("#ClubVisitanteCentrales").text(v.ClubB);
 							$("#ClubVisitaSuplentes").text(v.ClubB);
 	
-						
 						$("#ClubLocalLibero").text(v.ClubA);
 						$("#ClubLocalCentrales").text(v.ClubA);
 							$("#ClubLocalSuplentes").text(v.ClubA);
 						
-
 						var ESCUDOB = '<span id="escudoBMarco" class="'+escudoBMarco+'"><img  src="img/jugadorGen.png" class="imgjugadorTablero2" ></img></span>';
-						
-						var textoClubB  = '<div class="grillaIdClubv20"><div class="itmidclub2a" id="escudoB" >'+ESCUDOB+'</div><div class="itmidclub1a"><span id="nombrevisita">'+v.ClubB+'</span></div>'+
+						var textoClubB  = '<div class="grillaIdClubv20">'+puntoEspecialVisita+'<div class="itmidclub2a" id="escudoB" >'+ESCUDOB+'</div><div class="itmidclub1a"><span id="nombrevisita">'+v.ClubB+'</span></div>'+
 							 '<div id="nomB" class="" >'+
 							 	'<input id="idclubb" type="hidden" value="'+v.idclubb+'"/>'+
 							'</div>'+
@@ -1794,16 +1944,42 @@ function   enviaEstrategia(resa,resb,rotar)
 	        segundo: dt.getSeconds()
 	    };
 
+		
+		var vHoraSistema = $("#HoraSistema").val();
+		if (vHoraSistema != '')	
+				var a1 = vHoraSistema.split(':'); // [18, 30, 01] -hora fingida sistema
+
+		// FINGIENDO QUE LA HORA DE SISTEMA SIMULADA ESTA AVANZANDO MILI A MILIPILIsegundos
+		if (vHoraSistema != '')	{
+		var tiemposistema = {
+	        hora: a1['0'],
+	        minuto: a1['1'],
+	        segundo: a1['2'] 
+		}
+		}
+
     	var tiempo_corriendo = null;
 
 		tiempo_corriendo = setInterval(function(){
         // Segundos
         tiempo.segundo++;
+		// MOVIENDO EL TIEMPO SIMULADO EN UN SOLO CRONOMETRO:SEGUNDOS
+		if (vHoraSistema != '')
+			tiemposistema.segundo++;
+
         if(tiempo.segundo >= 60)
         {
         	tiempo.segundo = 0;
             tiempo.minuto++;
         }      
+		// MUEVO EL TIEMPO SIMULADOR TAMBIEN:SEGUNDOS+MINUTO
+		if (vHoraSistema != ''){
+			if(tiemposistema.segundo >= 60)
+			{
+				tiemposistema.segundo = 0;
+				tiemposistema.minuto++;
+			}      		
+		}	
 
         // Minutos
         if(tiempo.minuto >= 60)
@@ -1812,31 +1988,64 @@ function   enviaEstrategia(resa,resb,rotar)
             tiempo.hora++;
         }
 
+        // MOVIENDO TIMEPO SIMULADO: MINUTOS
+		if (vHoraSistema != ''){
+			if(tiemposistema.minuto >= 60)
+			{
+				tiemposistema.minuto = 0;
+				tiemposistema.hora++;
+			}
+		}	
+
+		// CRONOMETRO COMUN
 		var tiempoTxtHora = tiempo.hora < 10 ? '0' + tiempo.hora : tiempo.hora;
 		var tiempoTxtMin  = tiempo.minuto < 10 ? '0' + tiempo.minuto : tiempo.minuto;
 		var tiempoTxtSeg  = tiempo.segundo < 10 ? '0' + tiempo.segundo : tiempo.segundo;
 		var tiempoSinSegs = tiempoTxtHora +':' + tiempoTxtMin;		
+
+		// CRONOMETRO SIMULADO
+		if (vHoraSistema != ''){
+		var XtiempoTxtHora = tiemposistema.hora < 10 ? '0' + tiemposistema.hora : tiemposistema.hora;
+		var XtiempoTxtMin  = tiemposistema.minuto < 10 ? '0' + tiemposistema.minuto : tiemposistema.minuto;
+		var XtiempoTxtSeg  = tiemposistema.segundo < 10 ? '0' + tiemposistema.segundo : tiemposistema.segundo;
+		var XtiempoSinSegs = XtiempoTxtHora +':' + XtiempoTxtMin;		
+			var XtiempoTxt = XtiempoTxtHora +':' + XtiempoTxtMin +':' + XtiempoTxtSeg ;
+		}
+
 		var tiempoTxt = tiempoTxtHora +':' + tiempoTxtMin +':' + tiempoTxtSeg ;
 		$("#stopwatch").text(tiempoTxt);
-		var horaDesde = $("#HoraInicial").val();
+		// ACTUALIZO EL CRONOMETRO SIMULADO
+		if (vHoraSistema != '')
+			$("#HoraSistema").val(XtiempoTxt);
+
+		var HoraDesde = $("#HoraInicioPartido").val();
 		var horaInicioRealSet = $("#HoraInicioSet").val();
-		var TiempoTranscurridoActual = '';
-		// console.log('trancurrido principal:');
-		var TiempoTranscurridoActual = calculoTiempoRestante(horaDesde,tiempoSinSegs);		
-		// console.log('trancurrido del set:');
-		var TTranscurridoSetActual = calculoTiempoRestante(horaInicioRealSet,tiempoSinSegs);		
 		
+		var TiempoTranscurridoTotal = '';
+		var TSIMTranscurridoSetActual ='';
+			// // console.log('trancurrido principal:');
+		 var TiempoTranscurridoTotal = calculoTiempoRestante(HoraDesde,tiempoSinSegs);		
+				//alert('trancurrido del set:'+ TiempoTranscurridoTotal);
+		var TTranscurridoSetActual = calculoTiempoRestante(horaInicioRealSet,tiempoSinSegs);		
+		if (vHoraSistema != ''){
+		// horaInicioRealSet deberia cambiarse por una hora modificada o algo asignaPosCancha
+		// relacionado a la hora simulada del sistema.POR AHORA DEJO ESA
+		TSIMTranscurridoSetActual = calculoTiempoRestante(horaInicioRealSet,XtiempoSinSegs);		
+		// HORA DE INICIO DEL SET A PARTIR DE LA SIMULADA
+		$("#HoraTREAL").val(TSIMTranscurridoSetActual);
+		}
+
 		$("#horaactual").text(tiempoTxt);
 		$("#tiempotranscurridoSet").text(TTranscurridoSetActual);				
-		$("#tiempotranscurrido").text(TiempoTranscurridoActual);
+
+//		$("#tiempotranscurrido").text(horaDesde);
+		$("#tiempotranscurrido").text(TiempoTranscurridoTotal);
 		}, 1000); //funcion setinterval..
 					
 		 var resA = 0;
 		 var resB = 0;
 		$("#ocultaControles").click(function(){
-				
-			$("#xgrid-container22").toggle();
-			$(".bloqueFotos").toggle();
+				AccionOcultarControles();
 		});
 				
 		$("#incremA").click(function(){
@@ -1954,13 +2163,16 @@ function   enviaEstrategia(resa,resb,rotar)
 		    SetNumero       = $("#numSet").text();
 		    fechaJuego  = $("#fecha").text();
 		
+			var horaAUsar = '';
+			   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+
 		var parametros =
 			{
 		    "idpartido" : idpartido,
 			"fechapartido": fechaJuego,
 			"setnumero" : SetNumero,
 			"ianio":	$("#ianio").val(),
-			"horas"     : $("#stopwatch").text(),
+			"horas"     : horaAUsar,
 			"MODO" : "PRESAQUEINICIAL"
 			};
 
@@ -1975,6 +2187,7 @@ function   enviaEstrategia(resa,resb,rotar)
 				success:  function (r)
 				{
 					cargaCancha();
+						AccionOcultarControles();
 				},// SUCCESS	
 				error: function (xhr, ajaxOptions, thrownError) {
 					console.log(thrownError);
@@ -1987,6 +2200,10 @@ function   enviaEstrategia(resa,resb,rotar)
 		
 		$("#grabarPos").click(function(){		
 		// SETEA PARAMETROS INICIALES !!!! NO SIRVE PARA OTRA COSA
+
+		var horaAUsar = '';
+			   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+			//aca deberia grabar al libero si es que hay uno solo ACTIVO..
 		var parametros =
     		 {
     			"idpartido" : $("#partidoid").val(),
@@ -1994,9 +2211,9 @@ function   enviaEstrategia(resa,resb,rotar)
     			"resa"      : $("#resa").text(),
     			"resb"      : $("#resb").text(),
     			"fechas"    : $("#fecha").text(),
-    			"horas"     : $("#stopwatch").text(),
+    			"horas"     : horaAUsar,
     			"saque"     : $("#saque").val(),
-    			"mensajeAlta" : 'Novedades30::grabaPos',
+    			"mensajeAlta" : 'Novedades::grabaPos',
     			"anioEquipo":	$("#ianio").val() 
     		};
     		
@@ -2026,47 +2243,13 @@ function   enviaEstrategia(resa,resb,rotar)
             }
 		   });
 		});    
-/*            
-		$("#grabarPos_20").click(function(){		
-		var parametros =
-    		 {
-    			"idpartido" : $("#partidoid").val(),
-    			"idset"     : $("#numSet").text(),
-    			"resa"      : $("#resa").text(),
-    			"resb"      : $("#resb").text(),
-    			"fechas"    : $("#fecha").text(),
-    			"horas"     : $("#stopwatch").text(),
-    			"saque"     : $("#saque").val(),
-    			"anioEquipo":	$("#ianio").val()
-    		};
-    		
-			///funciona : alert(JSON.stringify(parametros));
-    		//mandar por ajax a novedadSet
-    		// capaz un insertar set 2
-    		$.ajax({ //el signo de pregunta apunta a la direccion url base que es donde corre equipos.php
-            url:   './abms/insertar_sets_20.php',
-            type:  'POST',
-            data: parametros,
-            beforeSend: function (){
-				// Bloqueamos el SELECT de los cursos
-    			//$("#iclub").prop('disabled', true);
-            },
-            
-            success:  function (r){
-				//LLER DATOS DE JUGADORES BASICOS LUEGO DEL ALTA PARTIDO/SET
-	    				cargaCancha();
-            },
-            //error: function() {
-			error: function (xhr, ajaxOptions, thrownError) {
-			// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
-				//$("#iclub").append('<option value="9998">' + 'SUBMIT:: Error en el servidor ..</option>');
-            }            
-           }); // FIN funcion ajax
-    	});//fin grabarPOS QUE NO EXISTE ACA...	
-*/
 
     	
 		$("#ContinuarP").click(function(){		
+
+			var horaAUsar = '';
+			   horaAUsar = ( $("#HoraSistema").val() != '') ? $("#HoraSistema").val() : $("#stopwatch").text();
+			
 		var parametros =
     		 {
     			"idpartido" : $("#partidoid").val(),
@@ -2074,7 +2257,7 @@ function   enviaEstrategia(resa,resb,rotar)
     			"resa"      : $("#resa").text(),
     			"resb"      : $("#resb").text(),
     			"fechas"    : $("#fecha").text(),
-    			"horas"     : $("#stopwatch").text(),
+    			"horas"     : horaAUsar,
     			"saque"     : $("#saque").val(),
     			"anioEquipo":	$("#ianio").val()
     		};
@@ -2159,6 +2342,12 @@ function   enviaEstrategia(resa,resb,rotar)
 		            }
 		            }); // FIN funcion ajax
 		});
+		
+		// var DetectarSimulacionHora = $("#HoraSistema").val();
+		// if(DetectarSimulacionHora != '')	
+		// 		FUNCIONA OK
+		// else
+		// 		FUNCIONA OK
 
     	
 		});// document,.ready 	
@@ -2234,7 +2423,53 @@ PARAMETRO posicionBuscada NO SE USA MAS, DEPRECADO..
 
 }		
 
-	
+function cambioPlanillaJugadores(ianio,iclub,equipo)
+{
+	// alert('año a analizar: '+ianio+' para el club: '+iclub);
+	$("#erroresmensajes").empty();
+	var avisoRecarga = false;
+//	idpartido=2&iclubescab=83&icatcab=20&ianio=2023&fechapartido=2023-09-09&categoriaPartido=20&setdata=5
+
+	var params2 =
+	 {
+		"idpartido" : $("#partidoid").val(),
+		"fechapartido"    : <?php echo("'".$_GET['fecha']."'");?>,
+		"iclubescab"     :iclub,
+		"ianio"		: ianio,
+		"setdata"     : $("#numSet").text()
+	};
+		
+		$.ajax({ 
+				url:   './abms/obtener_jugpartidoUpdates.php',
+				type:  'GET',
+				data: params2,
+				dataType: 'json',
+				async:false,
+				// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+				beforeSend: function (){},
+				done: function(data){},
+				success:  function (r){
+					//alert(r['estado']);
+					if(r['estado'] == 1)
+					{	
+						if(equipo == 'local') 
+							{$("#cambiarLocal").val(1);}//alert('cambios en local');}
+						else
+						 	{$("#cambiarVisita").val(1);}//alert('cambios en visita');}
+					} 		
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+				// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
+						console.log(thrownError);
+						console.log(xhr.responseText);
+							$("#erroresmensajes").html(xhr.responseText);
+				}
+				}); // FIN funcion ajax set partido
+				//LLER DATOS DE JUGADORES BASICOS LUEGO DEL ALTA PARTIDO/SET
+
+}
+
+
 function cargaCancha(){
 //CARGAMOS LA CANCHA DE AMBOS EQUIPOS..	
 //	console.log('cargaCancha()');
@@ -2255,6 +2490,7 @@ var mensajesCentrales='';
 				type:  'GET',
 				data: params2,
 				dataType: 'json',
+				async:false,
 				// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
 				beforeSend: function (){
 					
@@ -2312,25 +2548,25 @@ var mensajesCentrales='';
 										var jugActivo = " fondoActivo ";
 										if(w.activoSN != 1) jugActivo = '';
 										
-										LiberosActivosLocal +='<div class="GrillaActivos" id="Libero_'+w.idjugador +'">';
-										LiberosActivosLocal +='<div class="grillaActivos_1">'+w.numero+'</div>';
-										LiberosActivosLocal +='<div class="grillaActivos_2 '+jugActivo+'" id="nombreactivar_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'">'+w.nombre +'</div>';
-										LiberosActivosLocal +='<div class="grillaActivos_3">';
+										LiberosActivosLocal +='<div class="GrillaLiberosActivos" id="Libero_'+w.idjugador +'">';
+										LiberosActivosLocal +='<div class="grillaLIBActivos_1">'+w.numero+'</div>';
+										LiberosActivosLocal +='<div class="grillaLIBActivos_2 '+jugActivo+'" id="nombreactivar_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'">'+w.nombre +'</div>';
+										LiberosActivosLocal +='<div class="grillaLIBActivos_3">';
 										LiberosActivosLocal +='<button  class="botonMas" id="activarLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="activarLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" onclick="activacion(this.id);">+</button>';
 										LiberosActivosLocal +='</div>';
-										LiberosActivosLocal +='<div class="grillaActivos_4">';
-										LiberosActivosLocal +='<button class="botonMenos" id="desactivarLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="desactivarLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" onclick="activacion(this.id);">-</button>';
-											LiberosActivosLocal +='<div class="grillaActivos_5">Orden</div>';
-											LiberosActivosLocal +='<div class="grillaActivos_6" id="nombreactivar_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'">';
+										LiberosActivosLocal +='<div class="grillaLIBActivos_4">';
+										LiberosActivosLocal +='<button class="botonMenos" id="desactivarLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="desactivarLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" onclick="activacion(this.id);">-</button></div>';
+											LiberosActivosLocal +='<div class="grillaLIBActivos_5">Orden</div>';
+											LiberosActivosLocal +='<div class="grillaLIBActivos_6" id="nombreactivar_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'">';
 											LiberosActivosLocal +='<input type="text" id ="ordenL_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="ordenL_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" value="'+w.orden +'" disabled></input></div>';
-											LiberosActivosLocal +='<div class="grillaActivos_7">';
+											LiberosActivosLocal +='<div class="grillaLIBActivos_7">';
 											LiberosActivosLocal +='<button  class="botonMas" id="ordenMasLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="ordenMasLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" onclick="admOrden(this.id);">+</button>';
 											LiberosActivosLocal +='</div>';
-											LiberosActivosLocal +='<div class="grillaActivos_8">';
+											LiberosActivosLocal +='<div class="grillaLIBActivos_8">';
 											LiberosActivosLocal +='<button class="botonMenos" id="ordenMenosLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="ordenMenosLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" onclick="admOrden(this.id);">-</button>';
 											LiberosActivosLocal +='</div>';
 
-											LiberosActivosLocal +='<div class="grillaActivos_9">';
+											LiberosActivosLocal +='<div class="grillaLIBActivos_9">';
 											LiberosActivosLocal +='<input type="text" id="ordenLiberoMSG_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="ordenLiberoMSG_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" value="" disabled></input>';
 											LiberosActivosLocal +='</div>';
 
@@ -2391,9 +2627,12 @@ var mensajesCentrales='';
 									&& (puestoPostaX != 2) )
 									{
 //										var Activado = ' onclick="elegirSuplente(this.id,this.class);" ';
-										var Activado = ' onclick="enviapos(this,\'L\');asignaPosCancha(this,\'L\');" ';
-										if(w.FechaEgreso != null)
+										var Activado = ' onclick="enviapos(this.id,\'L\');asignaPosCancha(this.id,\'L\');" ';
+										var AccEnSelect = ' onchange="enviapos(\'jugadorubi_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_'+w.posicion+'\',\'L\');asignaPosCancha(\'jugadorubi_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_'+w.posicion+'\',\'L\');" ';
+										if(w.FechaEgreso != null){
 											var Activado = ' onclick="alert(\'Jugador no disponible\');" ';
+											var AccEnSelect = '  ';
+										}
 										var selecter='';
 
 											if(w.posicion==1) selecter+='<div class="itemcjug2_1 redondo Grisado"   id="jugadorubi_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_1" name="jugadorubi_'+w.idclub+'_'+w.idjugador+'_1"  value="1" label="1" '+Activado+' >1</div>'
@@ -2418,9 +2657,9 @@ var mensajesCentrales='';
 											else selecter+='<div class="itemcjug2_7 redondo"   id="jugadorubi_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_7" name="jugadorubi_'+w.idclub+'_'+w.idjugador+'_7"   value="7" label="7" '+Activado+' >Sup</div>';
 
 										//elegirSuplente(this.id,this.class);
-										var nombreData = w.nombre;
+										var nombreData = w.nombre +'<span class="nRemeraNovedad"> '+w.numero+'</span>';
 										if(w.FechaEgreso != null)
-											nombreData = w.nombre + ' (BAJA)';
+											nombreData = w.nombre +'<span class="nRemeraNovedad"> '+w.numero+'</span>' +' (BAJA)';
 										//CARGAR INDICADOR DE PUESTO ACTUAL 
 										botonCentral='';	
 										// ES PUNTA
@@ -2447,8 +2686,9 @@ var mensajesCentrales='';
 											botonCentral='<button id="central_pos_'+w.idjugador+'" name="libero" class="itemcjug4 libero" title="marcar opuesto al jugador" >{L}</button>';
 										}	
 										//CARGAR INDICADOR DE PUESTO ACTUAL 
-										
-										botonNewPuesto = '<select class="itemcjug5" id=\'jugadorpuestoL_'+w.idjugador+'\' name=\'jugadorpuestoL_'+w.idjugador+'\' ></select>';
+										//'jugadorubi_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_'+w.posicion+'"'
+										//botonNewPuesto = '<input type="hidden" id=\'xjugadorpuestoL_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_'+w.posicion+'\' >';
+										botonNewPuesto = '<select class="itemcjug5" id=\'jugadorpuestoL_'+w.idjugador+'\' name=\'jugadorpuestoL_'+w.idjugador+'\''+AccEnSelect +'  ></select>';
 
 										xAllA += '<div id="pos_'+w.idjugador+'" name="pos_'+w.idjugador+'" class="grillaAllJug">'+
 														'<div class="grillaAll_1">'+
@@ -2497,6 +2737,7 @@ var mensajesCentrales='';
 						
 					$("#liberosA").html(contlibA);	
 					$("#agregarLiberosA").html(LiberosActivosLocal);
+					$("#PlanillaClubLocal").val( $("#idcluba").val() );
 					$("#agregarJugadoresA").html(xAllA);
 
 					$(r['Sets']).each(function(i, v)
@@ -2546,27 +2787,27 @@ var mensajesCentrales='';
 												if(w.activoSN != 1) jugActivo = '';
 
 										//Cargo en lista de Activos.
-											LiberosActivosVis +='<div class="GrillaActivos" id="Libero_'+w.idjugador +'">';
-											LiberosActivosVis +='<div class="grillaActivos_1">'+w.numero+'</div>';
-											LiberosActivosVis +='<div class="grillaActivos_2 '+jugActivo+'" id="nombreactivar_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'">'+w.nombre +'</div>';
-											LiberosActivosVis +='<div class="grillaActivos_3">';
+											LiberosActivosVis +='<div class="GrillaLiberosActivos" id="Libero_'+w.idjugador +'">';
+											LiberosActivosVis +='<div class="grillaLIBActivos_1">'+w.numero+'</div>';
+											LiberosActivosVis +='<div class="grillaLIBActivos_2 '+jugActivo+'" id="nombreactivar_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'">'+w.nombre +'</div>';
+											LiberosActivosVis +='<div class="grillaLIBActivos_3">';
 											LiberosActivosVis +='<button  class="botonMas" id="activarLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="activarLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" onclick="activacion(this.id);">+</button>';
 											LiberosActivosVis +='</div>';
-											LiberosActivosVis +='<div class="grillaActivos_4">';
+											LiberosActivosVis +='<div class="grillaLIBActivos_4">';
 											LiberosActivosVis +='<button class="botonMenos" id="desactivarLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="desactivarLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" onclick="activacion(this.id);">-</button>';
 											LiberosActivosVis +='</div>';
 
-											LiberosActivosVis +='<div class="grillaActivos_5">Orden</div>';
-											LiberosActivosVis +='<div class="grillaActivos_6" id="nombreactivar_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'">';
+											LiberosActivosVis +='<div class="grillaLIBActivos_5">Orden</div>';
+											LiberosActivosVis +='<div class="grillaLIBActivos_6" id="nombreactivar_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'">';
 											LiberosActivosVis +='<input type="text" id ="ordenL_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="ordenL_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" value="'+w.orden +'" disabled></input></div>';
-											LiberosActivosVis +='<div class="grillaActivos_7">';
+											LiberosActivosVis +='<div class="grillaLIBActivos_7">';
 											LiberosActivosVis +='<button  class="botonMas" id="ordenMasLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="ordenMasLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" onclick="admOrden(this.id);">+</button>';
 											LiberosActivosVis +='</div>';
-											LiberosActivosVis +='<div class="grillaActivos_8">';
+											LiberosActivosVis +='<div class="grillaLIBActivos_8">';
 											LiberosActivosVis +='<button class="botonMenos" id="ordenMenosLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="ordenMenosLibero_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" onclick="admOrden(this.id);">-</button>';
 											LiberosActivosVis +='</div>';
 
-											LiberosActivosVis +='<div class="grillaActivos_9">';
+											LiberosActivosVis +='<div class="grillaLIBActivos_9">';
 											LiberosActivosVis +='<input type="text" id="ordenLiberoMSG_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" name="ordenLiberoMSG_'+w.idjugador+'_'+w.idclub+'_'+w.categoria+'" value="" disabled></input>';
 											LiberosActivosVis +='</div>';
 
@@ -2621,10 +2862,14 @@ var mensajesCentrales='';
 											if ((! $('#suplentesB').find("div[value='" + w.nombre + "']").length )
 											&& (puestoPostaX != 2) )
 											{
-											   var Activado = ' onclick="enviapos(this,\'V\');asignaPosCancha(this,\'V\');" ';
+											   var Activado = ' onclick="enviapos(this.id,\'V\');asignaPosCancha(this.id,\'V\');" ';
+											   
+											   var AccEnSelect = ' onchange="enviapos(\'jugadorubi_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_'+w.posicion+'\',\'V\');asignaPosCancha(\'jugadorubi_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_'+w.posicion+'\',\'V\');" ';
 
-												if(w.FechaEgreso != null)
+												if(w.FechaEgreso != null){
 													var Activado = ' onclick="alert(\'Jugador no disponible\');" ';
+													var AccEnSelect = ' ';
+												}
 												var selecter='';
 												if(w.posicion==1) selecter+='<div class="itemcjug2_1 redondo Grisado"   id="jugadorubi_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_1" name="jugadorubi_'+w.idclub+'_'+w.idjugador+'_1"  value="1" label="1" '+Activado+' >1</div>'
 												else selecter+='<div class="itemcjug2_1 redondo"   id="jugadorubi_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_1" name="jugadorubi_'+w.idclub+'_'+w.idjugador+'_1"  value="1" label="1" '+Activado+' >1</div>';
@@ -2648,9 +2893,9 @@ var mensajesCentrales='';
 												else selecter+='<div class="itemcjug2_7 redondo"   id="jugadorubi_'+w.idclub+'_'+w.idjugador+'_'+w.categoria+'_7" name="jugadorubi_'+w.idclub+'_'+w.idjugador+'_7"   value="7" label="7" '+Activado+' >Sup</div>';
 
 											    //elegirSuplente(this.id,this.class);
-												var nombreData = w.nombre;
+												var nombreData = w.nombre +'<span class="nRemeraNovedad"> '+w.numero+'</span>';
 												if(w.FechaEgreso != null)
-													nombreData = w.nombre + ' (BAJA)';
+													nombreData = w.nombre+'<span class="nRemeraNovedad"> '+w.numero+'</span>' + ' (BAJA)';
 												//CARGAR INDICADOR DE PUESTO ACTUAL 
 												botonCentral='';	
 												// ES PUNTA
@@ -2677,8 +2922,9 @@ var mensajesCentrales='';
 													botonCentral='<button id="central_pos_'+w.idjugador+'" name="libero" class="itemcjug4 libero" title="marcar opuesto al jugador" >{L}</button>';
 												}	
 												//CARGAR INDICADOR DE PUESTO ACTUAL 
-												botonNewPuesto = '<select class="itemcjug5" id=\'jugadorpuestoV_'+w.idjugador+'\' name=\'jugadorpuestoV_'+w.idjugador+'\' ></select>';
-												xAllB += '<div id="pos_'+w.idjugador+'" name="pos_'+w.idjugador+'" class="grillaAllJug">'+
+												
+												botonNewPuesto = '<select class="itemcjug5" id=\'jugadorpuestoV_'+w.idjugador+'\' name=\'jugadorpuestoV_'+w.idjugador+'\' '+AccEnSelect +'></select>';
+												xAllB += '<div id="pos_'+w.idjugador+'" name="pos_'+w.idjugador+'" class="grillaAllJug" >'+
 																'<div class="grillaAll_1">'+
 																	'<span class="itemcjug2  nombreJugador">'+nombreData+'</span>'+
 																	botonCentral+
@@ -2725,6 +2971,7 @@ var mensajesCentrales='';
 					});		
 								
 					$("#liberosB").html(contlibB);	
+					$("#PlanillaClubVisita").val( $("#idclubb").val() );
 					$("#agregarJugadoresB").html(xAllB);
 						$("#suplentesB").html(xSuplentesB);
 					$("#agregarLiberosB").html(LiberosActivosVis);
@@ -2746,7 +2993,7 @@ var mensajesCentrales='';
 					var esLibero  = '';
 					var esArmador = '';
 
-/********* CARGAMOS ESCUDO, NOMBRE Y QUIEN SACA...de ambos EQUIPOS ************/	
+				/********* CARGA CANCHA::CARGAMOS ESCUDO, NOMBRE Y QUIEN SACA...de ambos EQUIPOS ************/	
 					$(r['PartidoData']).each(function(i,v)
 					{
 							var escudoAMarco=escudoBMarco='NoBorde';
@@ -2768,17 +3015,55 @@ var mensajesCentrales='';
 								escudoAMarco = "NoBorde";
 								escudoBMarco = "bordeRojo"; 
 							}
-							
+
+						puntoEspecialLOCAL = '<div class="itmidclub3a" id="setmatchpointA"></div>';				
+			 			puntoEspecialVisita = '<div class="itmidclub3a" id="setmatchpointB"></div>';				
+
 						var ESCUDOA = '<span id="escudoAMarco" class="'+escudoAMarco+'"><img  src="img/jugadorGen.png" class="imgjugadorTablero2" ></img></span>';
-						var textoClubA ='<div class="grillaIdClubv20"><div class="itmidclub2a" id="escudoA">'+ESCUDOA+'</div><div class="itmidclub1a">'+v.ClubA+'</div></div>';
+						var textoClubA ='<div class="grillaIdClubv20">'+puntoEspecialLOCAL+'<div class="itmidclub2a" id="escudoA">'+ESCUDOA+'</div><div class="itmidclub1a">'+v.ClubA+'</div></div>';
 						var ESCUDOB = '<span id="escudoBMarco" class="'+escudoBMarco+'"><img  src="img/jugadorGen.png" class="imgjugadorTablero2" ></img></span>';
-						var textoClubB  = '<div class="grillaIdClubv20"><div class="itmidclub2a" id="escudoB" >'+ESCUDOB+'</div><div class="itmidclub1a">'+v.ClubB+'</div></div>';
+						var textoClubB  = '<div class="grillaIdClubv20">'+puntoEspecialVisita+'<div class="itmidclub2a" id="escudoB" >'+ESCUDOB+'</div><div class="itmidclub1a">'+v.ClubB+'</div></div>';
 								
 						obtenerEscudo(v.ClubA,"escudoA",escudoAMarco) ;
 						obtenerEscudo(v.ClubB,"escudoB",escudoBMarco) ;
-						
+
 					idclubLocal     = v.ClubA;
 					idclubVisitante = v.ClubB;
+
+					// analizamos si debemos mostrar mensaje de SET/MATCH POINT
+						$("#setmatchpointA").html('');
+						$("#setmatchpointA").removeClass('MATCHPOINT');
+						$("#setmatchpointB").html('');
+						$("#setmatchpointB").removeClass('MATCHPOINT');
+
+							// if(r["textoSpecialPnt"] != null )
+							// 	$("#mensajes2").html('<span class="mensajeSetClass">'+r["textoSpecialPnt"]+'</span>');			
+
+							//setPoint":0,"matchPoint":0
+							if(idclubLocal == v.setPoint)
+								if(v.setPoint != 0)
+										$("#setmatchpointA").html('SET POINT');
+
+							if(idclubLocal == v.matchPoint)	
+								if(v.matchPoint != 0)
+								{
+									$("#setmatchpointA").html('MATCH POINT');
+									$("#setmatchpointA").addClass('MATCHPOINT');
+								}
+
+							if(idclubVisitante == v.setPoint)
+								if(v.setPoint != 0)
+									$("#setmatchpointB").html('SET POINT');
+								
+							if(idclubVisitante == v.matchPoint)
+									if(v.matchPoint != 0)
+									{
+										$("#setmatchpointB").html('MATCH POINT');
+										$("#setmatchpointB").addClass('MATCHPOINT');
+									}
+
+					// analizamos si debemos mostrar mensaje de SET/MATCH POINT
+
 
 					});
 /********* CARGAMOS ESCUDO, NOMBRE Y QUIEN SACA...de ambos EQUIPOS ************/	
@@ -3091,7 +3376,7 @@ var mensajesCentrales='';
 
 					});
 /********* CARGAMOS LA LISTA DE JUGADORES EN SU POSICION...de ambos EQUIPOS ************/	
-				  } // fin estado != 0	
+					} // fin estado != 0	
 			},
 				 error: function (xhr, ajaxOptions, thrownError) {
 				// LA TABLA VACIA, ES UN ERROR PORQUE NO DEVUELVE NADA
@@ -3136,9 +3421,9 @@ function QuienSaque(clubsaque)
 		</select>
 	</div>
 	<div class="item22_0b">
-    <a href="CSets2.php?id=<?php echo $idpartido; ?>&setmax=<?php echo($_GET['setmax']); ?>&fecha=<?php echo($_GET['fecha']);?>">
-    <button id="volver" title="volver a partidos" name="volver" class="btnPop29"> << </button>
-    </a>
+    <!-- <a href="CSets2.php?id=<?php echo $idpartido; ?>&setmax=<?php echo($_GET['setmax']); ?>&fecha=<?php echo($_GET['fecha']);?>"> -->
+    	<button id="volver" title="volver a partidos" name="volver" class="btnPop29" onclick="volver('CSets2.php?id=<?php echo $idpartido; ?>&setmax=<?php echo($_GET['setmax']); ?>&fecha=<?php echo($_GET['fecha']);?>');"> << </button>
+    <!-- </a> -->
 	</div>
 	<div class="item22_0c">
  		<button id="ocultaControles" name="CierraSet" class="btnPop3">X</button>
@@ -3158,7 +3443,12 @@ function QuienSaque(clubsaque)
 	<div class="item22_3"><div id="fecha" name="fecha" >FECHA - </div></div>		
 	<div class="item22_4" id="stopwatch"></div>	
 	<div class="item22_5" id="partidoCancha"></div>
-	<div class="item22_6" id="numSet" ><?php echo($idnewset);?></div>	
+	
+	<div class="item22_6">
+		<div id="TituloSet">Set Nro</div>
+		<div id="numSet"><?php echo($idnewset);?></div>
+	</div>
+
 	<div class="item22_7">
 		<select id="saque" name="saque" class="SELECTEXTREMO">
 			<option value="9999">Tiene saque..</option>
@@ -3191,6 +3481,8 @@ function QuienSaque(clubsaque)
 	</div>	
 </div> 
  <div class="grid-containerAlfa">
+ 	<div class="itemA_00"	id="TitHoraIniciadoPartido"> Hora Inicial posta </div>	
+ 	<div class="itemA_01"	id="HoraIniciadoPartido"></div>
  	<div class="itemA_1">
  		<input type="text" id="medidas" name="medidas" value="" disabled/>
  	</div>
@@ -3207,7 +3499,20 @@ function QuienSaque(clubsaque)
  	<div class="itemA_7">Hora Actual</div>
 	<div class="itemA_8">
 		<span id="horaactual" name="horaactual"></span>
-	</div>	 	
+	</div>	 
+	<div class="itemA_9">
+		Hora Simulada sistema
+	</div>	
+	<div class="itemA_10">
+			<input type="time" id="HoraSistema" name="HoraSistema" disabled />
+	</div>		
+	 <div class="itemA_11">
+		Tiempo Set Simulado
+	</div>	
+	<div class="itemA_12">
+			<input type="text" id="HoraTREAL" name="HoraTREAL" disabled />
+	</div>			 -
+	
  </div>   
 
     <section id="botoneraAx" class="botoneraAx">
@@ -3260,7 +3565,11 @@ function QuienSaque(clubsaque)
 <div class="TabsGeneral">
 	<ul class="ul">
 		<li class="li" id="Local" >Local</li>
-		<li class="li" id="Visitante" >Visitante</li>
+		<li class="li visitante" id="Visitante" >Visitante</li>
+		<li  id="SelLiberosA" class="li">Liberos Local</li>
+		<li  id="SelLiberosB" class="li visitante">Liberos Vis</li>
+		<li  id="SelCentralesA" class="li">Central Local</li>
+		<li  id="SelCentralesB" class="li visitante">Central Vis</li>
 	</ul>
 	<div class="SubTab">	
 		<div class="BloqueSubTab"></div>
@@ -3278,8 +3587,8 @@ function QuienSaque(clubsaque)
 		<button id="itemAtrasA"  name="itemAtrasA" class="btnPop27" onclick="retrasarRotacion('idcluba') ;"> Backwrd </button>
 	<!-- nueva incoporacion funcional.dic.07.12.22.	
 		Seleccionar Liberos y Centrales Activos x Equipo -->
-	    <button id="SelLiberosA" title="Seleccionar el o los líberos activos del equipo local" name="SelLiberosA" class="btnPop3">Liberos Loc</button>
-    	<button id="SelCentralesA" title="Seleccionar el o los líberos activos del equipo local" name="SelCentralesA" class="btnPop3">Cent.Loc.</button>	
+	    <!-- <button id="SelLiberosA" title="Seleccionar el o los líberos activos del equipo local" name="SelLiberosA" class="btnPop3">Liberos Loc</button>
+    	<button id="SelCentralesA" title="Seleccionar el o los líberos activos del equipo local" name="SelCentralesA" class="btnPop3">Cent.Loc.</button>	 -->
 		
 	</section>
     	<section class="repararrotacion">		
@@ -3290,8 +3599,8 @@ function QuienSaque(clubsaque)
 
 	<!-- nueva incoporacion funcional.dic.07.12.22.	
 		Seleccionar Liberos y Centrales Activos x Equipo -->
-    <button id="SelLiberosB" title="Seleccionar el o los líberos activos del equipo visit" name="SelLiberosA" class="btnPop3">Liberos Vis</button>
-    <button id="SelCentralesB" title="Seleccionar el o los líberos activos del equipo visit" name="SelCentralesA" class="btnPop3">Cent.Vis.</button>	
+    <!-- <button id="SelLiberosB" title="Seleccionar el o los líberos activos del equipo visit" name="SelLiberosA" class="btnPop3">Liberos Vis</button>
+    <button id="SelCentralesB" title="Seleccionar el o los líberos activos del equipo visit" name="SelCentralesA" class="btnPop3">Cent.Vis.</button>	 -->
 	</section>    	    	
     </section>
 <!-- SOLO SUMAR Y RESTAR -->
@@ -3312,11 +3621,18 @@ function QuienSaque(clubsaque)
 <dialog id="modalSuplentesA" class="XSModales">
 	<div  class="CabGrillaSuplentes">
 		<h2 id="ClubLocalSuplentes">HACOAJ</h2>
-		<button id="btn-cerrar-modalSuplA">X</button>
+		<div class="dosAcciones">
+			<button id="btn-cerrar-modalSuplA">X</button>
+			<button id="btn-recargar-modalSuplA">
+				<span class="icon-loop"></span>
+			</button>
+		</div>	
 	
 	</div> 
 	<div class="GrillaListaSuplentes">
 		<div>Grilla Jugadores</div>
+		<input type="hidden" id="PlanillaClubLocal" value="" />
+		<input type="hidden" id="cambiarLocal" value="" />
 		<div id="agregarJugadoresA"></div>
 	</div>
 </dialog>
@@ -3324,11 +3640,17 @@ function QuienSaque(clubsaque)
 <dialog id="modalSuplentesB" class="XSModales">
 	<div  class="CabGrillaSuplentes">
 		<h2 id="ClubVisitaSuplentes">---</h2>
-		<button id="btn-cerrar-modalSuplB">X</button>
-	
+		<div class="dosAcciones">
+			<button id="btn-cerrar-modalSuplB">X</button>
+			<button id="btn-recargar-modalSuplB">
+				<span class="icon-loop"></span>
+			</button>
+		</div>	
 	</div> 
 	<div class="GrillaListaSuplentes">
 		<div>Grilla Jugadores</div>
+		<input type="hidden" id="PlanillaClubVisita" value="" />
+		<input type="hidden" id="cambiarVisita" value="" />
 		<div id="agregarJugadoresB"></div>
 	</div>
 </dialog>
@@ -3405,6 +3727,7 @@ function QuienSaque(clubsaque)
 							 	<input id="idcluba" type="hidden" value=""/>
 							</div>	
 								<div class="grillaIdClub">
+									<div class="itmidclub3"></div>	
 									<div class="itmidclub2"></div>
 									<div class="itmidclub1"></div>
 								</div>
@@ -3423,6 +3746,7 @@ function QuienSaque(clubsaque)
 							 	<input id="idclubb" type="hidden" value=""/>
 							</div>	
 								<div class="grillaIdClub">
+									<div class="itmidclub3"></div>	
 									<div class="itmidclub2"></div>
 									<div class="itmidclub1"></div>
 								</div>
@@ -3463,43 +3787,11 @@ function QuienSaque(clubsaque)
 				</div>
 <!--	  </section>	 -->
 	<input id="HoraInicial" name="HoraInicial" value="" type="hidden"/>
+	<input id="HoraInicioPartido" name="HoraInicioPartido" value="" type="hidden"/>
 	<input id="HoraInicioSet" name="HoraInicioSet" value="" type="hidden"/>	
 
-	<!-- <section id="liberosA" class="ControlLiberos"></section>	 -->
-	<!-- <section id="suplentesA" class="ControlSuplentes"></section>		 -->
-    <!-- <section id="canchaA" class="canchaversion2">
-		<div id="canchaa5" class="canchaversion2item5" >EN 5A - REMERA ##</div>
-		<div id="canchaa4" class="canchaversion2item4  bordeRight" >JUGADOR EN 4A - REMERA ##</div>
-		<div id="canchaa6" class="canchaversion2item6" >JUGADOR EN 6A - REMERA ##</div>
-		<div id="canchaa3" class="canchaversion2item3  bordeRight" >JUGADOR EN 3A - REMERA ##</div>
-		<div id="canchaa1" class="canchaversion2item1" >JUGADOR EN 1A - REMERA ##</div>
-		<div id="canchaa2" class="canchaversion2item2  bordeRight" >JUGADOR EN 2A - REMERA ##</div>
-    </section> -->
-
-	<!-- <section id="liberosB" class="ControlLiberos segundoControl"></section>	 -->
-	<!-- <section id="suplentesB" class="ControlSuplentes tercerControl"></section>		 -->
-    <!-- <section id="canchaV" class="canchaversion2">
-    <div id="canchab2" class="canchaversion2item2  bordeLeft" >JUGADOR EN 2B - REMERA ##</div>
-    <div id="canchab1" class="canchaversion2item1" >JUGADOR EN 1B - REMERA ##</div>
-    <div id="canchab3" class="canchaversion2item3  bordeLeft" >JUGADOR EN 3B - REMERA ##</div>
-    <div id="canchab6" class="canchaversion2item6" >JUGADOR EN 6B - REMERA ##</div>
-    <div id="canchab4" class="canchaversion2item4  bordeLeft" >JUGADOR EN 4B - REMERA ##</div>
-    <div id="canchab5" class="canchaversion2item5" >JUGADOR EN 5B - REMERA ##</div>
-    </section> -->
-
 <!-- SECTOR DE LA NUEVA VISUALIZACION DE CANCHA -->
-<div class="itmtbljugTIT">
-<div class="itmtbljugTIT1">Suplentes Local</div>
-<div class="itmtbljugTIT2"></div>
-<div class="itmtbljugTIT3"></div>
-<div class="itmtbljugTIT4"></div>
-<div class="itmtbljugTIT5"></div>
-</div>
-<section id="suplentesA" class="verSuplentes"></section>
-<span>Liberos (Loc)</span>
-	<section id="liberosA" class="verSuplentes xControlLiberos"></section>	 
-
-<section id="cancha" class="canchaversion3 LetrasBlancas">
+<section id="cancha" class="canchaversion4 LetrasBlancas">
 	<div id="canchaa5" class="canchaversion3item1" >V LOC</div>
 	<div id="canchaa4" class="canchaversion3item2" >IV LOC</div>
 	<div id="canchab2" class="canchaversion3item3" >II VIS</div>
@@ -3513,17 +3805,21 @@ function QuienSaque(clubsaque)
 	<div id="canchab4" class="canchaversion3item11" >IV VIS</div>
 	<div id="canchab5" class="canchaversion3item12" >V VIS</div>
 </section>
-<span>Liberos (Vis)</span>
-<section id="liberosB" class="verSuplentes xControlLiberos"></section>	 
-<div class="itmtbljugTIT">
-<div class="itmtbljugTIT1">Suplentes Visitante</div>
-<div class="itmtbljugTIT2"></div>
-<div class="itmtbljugTIT3"></div>
-<div class="itmtbljugTIT4"></div>
-<div class="itmtbljugTIT5"></div>
-</div>
-<section id="suplentesB" class="verSuplentes"></section>
 <!-- SECTOR DE LA NUEVA VISUALIZACION DE CANCHA -->
+<section class="Jugadores">
+	 <section class="local">
+		<div class="jugTIT">Liberos Loc.</div>
+		<section id="liberosA" class="xControlLiberosTablero"></section>
+		<div class="jugTIT">Suplentes Loc.</div>
+		<section id="suplentesA" class=""></section>
+	</section>
+	<section class="visita">
+	<div class="jugTIT">Liberos Vte.</div>
+		<section id="liberosB" class="xControlLiberosTablero"></section>
+		<div class="jugTIT">Suplentes Vte.</div>
+		<section id="suplentesB" class=""></section>
+	</section>
+</section>	
 
 </body>
 </html>

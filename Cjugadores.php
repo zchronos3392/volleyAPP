@@ -15,11 +15,186 @@ require ('./abms/Jugador.php');
         <meta name="viewport" content="width=device-width, initial-scale=1">
 	   <!-- ESTILOS -->
 	   <link rel="stylesheet" href="./css/nsanz_style.css">
+		<style>
+
+			.dialogo
+			{
+				width:50%;
+			 flex-direction:row;
+				 background-color:#e8ae17;
+			    color:#fff;
+			}
+
+			.dialogo BUTTON
+			{
+				height: 2em;
+				border: 1px solid #000000;
+				-moz-border-radius: 7px;
+				-webkit-border-radius: 7px;
+				background: #452e03;
+				color: #fff;
+				text-decoration: none;
+				font-size: 10px;
+				font: icon;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				top: 0px;
+
+			}
+
+			.dialogo::backdrop,.dialogo::backdrop
+			{
+			background-color: rgba(0,0,0,.55);
+
+			}
+
+			.xsmodrenglon1,.xsmodrenglon2,.xsmodrenglon3{
+				display:flex;
+				 flex-direction:row;
+				 justify-content: space-between;
+			}
+
+			.XSModales
+			{
+			 display:flex;
+			 flex-direction:column;
+			 justify-content: space-between;
+				 background-color:#e8ae17;
+			    color:#fff;
+			}
+
+			.XSModales BUTTON
+			{
+				height: 2em;
+				border: 1px solid #000000;
+				-moz-border-radius: 7px;
+				-webkit-border-radius: 7px;
+			
+				background: #f99;
+				color: #fff;
+				text-decoration: none;
+				font-size: 10px;
+				font: icon;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				top: 0px;
+
+			}
+
+			.XSModales SELECT
+			{
+				height: 3em;
+				width: 6em;
+			}
+
+			.XSModales input[type="number"]
+			{
+				height: 3em;
+				width: 50%;
+			}
+			@media (max-width: 450px)
+			{
+				.dialogo
+				{
+					width:100%;
+					flex-direction:row;
+					background-color:#e8ae17;
+					color:#fff;
+				}
+			}
+
+
+		</style>
 	   <!--SCRIPTS PRIMERO HAY QUE VINCULAR LA LIBERIA JQUERY PARA QUE RECONOZCA EL $-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	   <!--SCRIPTS-->
-	   <script type="text/javascript">
+		<script type="text/javascript">
 		// cuando PRESIONO CLICK , LO ACTUALIZO
+//+++++++++++++++ CREAMOS LOS VECTORES GLOBALES DESDE DONDE RE CARGAREMOS INFINITAMENTE LOS COMBOS..
+		var vPuestos = new Array();
+		var unJugadorDatos = new Array();
+
+function actualizarPuesto(modoDB,idnumero){
+
+//	alert('MODO '+ modoDB+' , id '+ idnumero);
+
+var parametros = {
+			"ianio":$("#idunanio_"+idnumero).val(),
+			"idjugador":$("#idjugador_"+idnumero).val(),
+			"iclubescab": $("#idclub_"+idnumero).val(),
+			"icate":$("#idcategoria_"+idnumero).val(),
+			"indice":idnumero,
+			"remeranum":$("#xRemeraNum2_"+idnumero).val(),
+			"puestocate":$("#sxjugadorpuesto_"+idnumero).val(),
+		};
+$.ajax({ 
+            url:   './abms/api_puestosjugador.php',
+            type:  'GET',
+            dataType: 'json',
+			data:parametros,
+			async:false,
+			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+            beforeSend: function (){},
+            done: function(data){},
+            success:  function (r){
+				location.reload();
+			},
+             error: function (xhr, ajaxOptions, thrownError) {}
+        }); // FIN funcion ajax CLUBES		
+
+if(modoDB == 'INS'){
+	//$idjugador,$indice,$fecha,$remeraNum,$icate,$puestoCate,$ianio,$iclubescab)
+    	//idjugador	idpuestoJug	FechaPuestoAlta	FechaPuestoMod	remeraNum	pjcategoria,puestoxcat
+    	//idjugador es autonumerico..
+    	// $comando = "INSERT INTO vapppuestojugador (idjugador,idpuestoJug,anioEquipo,idclub,FechaPuestoAlta,FechaPuestoMod,remeraNum,pjcategoria,puestoxcat) ".
+		// " VALUES ( $idjugador,$indice,$ianio,$iclubescab,$fecha,$fecha,$remeraNum,$icate,$puestoCate ) " ;   
+
+}
+
+if(modoDB == 'UPD'){
+
+
+	
+}
+
+
+
+}
+
+function cerrarModal(){
+
+	const puestosADD =
+				document.querySelector("#modalPuestosAdd");
+				puestosADD.close();
+
+}		
+
+function cargarPuestosStart(){
+
+
+	var ipuestoss = new Array();
+
+	$.ajax({ 
+            url:   './abms/obtener_puestos.php',
+            type:  'GET',
+            dataType: 'json',
+			async:false,
+			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+            beforeSend: function (){},
+            done: function(data){},
+            success:  function (r){
+				ipuestoss = Object.values(r['Posiciones']);
+			},
+             error: function (xhr, ajaxOptions, thrownError) {}
+            }); // FIN funcion ajax CLUBES		
+ // TRAIGO UNA VEZ VECTOR DE PUESTOS			
+ //PROBANDO LA CARGA UNICA DE LAS POSICIONES
+ 
+  return ipuestoss;				
+}		
+// +++++++++++++++++ FUNCIONES EXTRA ++++++++++++++++++++++++++++++++++++++
 
 
 function cargarCategorias(){
@@ -78,6 +253,7 @@ function cargarCategorias(){
 	            }); // FIN funcion ajax categorias
 }
 function ObtenerJugadoresParm(paginaPedida,quienLLama,iclubescab,icatcab){
+	vPuestos = cargarPuestosStart();
 		//alert($("#icatcab").val());
 	if(icatcab == null || (typeof catcab == 'undefined') )  vicatcab = $("#icatcab").val();
 	else vicatcab = icatcab;
@@ -94,6 +270,8 @@ url:   './abms/obtener_jugadores.php',
 type:  'GET',
 data: parametros,
 dataType: 'text json',
+async:false,
+
 // EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
 beforeSend: function (){
 	$("#cargajug").empty('');
@@ -116,6 +294,7 @@ success:  function (r){
 	$("#regsj").append('<div id="regridjug1" class="regridjug1">'+
 				'<div class="regjug11">Accion</div>'+
 				'<div class="regjug12">Accion</div>'+
+				'<div class="regjug122">Accion</div>'+
 				'<div class="regjug13">Puesto</div>'+
 				'<div class="regjug135">Club</div>'+
 				'<div class="regjug14">Numero</div>'+
@@ -137,26 +316,31 @@ success:  function (r){
 	{ // indice,0 valor
 	    $('[name="ijugclubFull"]').show();
 		var eliminarJugador = '';
-		eliminarJugador  = '<div class="EliminarJugClass">';
-				eliminarJugador  += '<button  name="eliminarJugador" title="eliminarJugador" class="butSquareEqOrang" onClick="eliminarJugadorX('+v.idclub+','+v.idjugador+','+v.anioEquipo+','+v.categoria+');" >(X)</button></div>';
+		//eliminarJugador  = '<div class="EliminarJugClass">';
+				eliminarJugador  += '<button  name="eliminarJugador" title="eliminarJugador" class="butSquareEqOrang" onClick="eliminarJugadorX('+v.idclub+','+v.idjugador+','+v.anioEquipo+','+v.categoria+');" >(X)</button>';
+		//eliminarJugador  += '</div>';
 	var modificaJugador  = '';	
 		modificaJugador  = '<div class="ModificarJug">';
-		modificaJugador  += '<button  name="modificaJugador" title="Modificar Jugador" class="butSquareEqBlu" onClick="modifcarJugadorX('+v.idclub+','+v.idjugador+','+v.anioEquipo+','+v.categoria+');" >(/)</button></div>';
+		modificaJugador  += '<button  name="modificaJugador" title="Modificar Jugador" class="butSquareEqBlu" onClick="modifcarJugadorX('+v.idclub+','+v.idjugador+','+v.anioEquipo+','+v.categoria+');" >Modif.</button></div>';
 
+	var agregaPuestoJugador  = '';	
+		agregaPuestoJugador = '<div class="PuestoJug">';
+		agregaPuestoJugador  += '<button  name="agregapuestoJugador" title="Puesto Add" class="butSquareEqRedRackam" onClick="agregarPuestoJugadorX('+v.idclub+','+v.idjugador+','+v.anioEquipo+','+v.categoria+',\''+v.CategoriaActual+'\',\''+v.nombre+'\');" >Puesto++</button></div>';		
 				//$("#GridControlPaginador").css("display","none");
 			var jugadotrActivo = '<div id="regridjug1" class="regridjug1">';
 			
 			if(v.FechaEgreso != null)
 			{
 				jugadotrActivo = '<div id="regridjug1" class="regridjug1 BAJA">';
-				console.log(v.FechaEgreso);
+				
 			}
 			
 			$("#regsj").append(
 				jugadotrActivo +
 				'<div class="regjug11">'+eliminarJugador+'</div>'+
 				'<div class="regjug12">'+modificaJugador+'</div>'+
-				'<div class="regjug13"><select id=\'sjugadorp_'+v.idjugador+'\' name=\'sjugadorp_'+v.idjugador+'\' disabled=\'true\'></select>'+creaspuestos(v.idjugador,v.puestoxcat)+'<input type="hidden" id="numero1" name="nume" value="'+v.numero+'" ></input><input type="hidden" id="nombre1" name="nom1" value="'+v.nombre+'" ></input></div>'+
+				'<div class="regjug122">'+agregaPuestoJugador+'</div>'+
+				'<div class="regjug13"><select id=\'sjugadorp_'+v.idjugador+'\' name=\'sjugadorp_'+v.idjugador+'\' disabled=\'true\'></select>'+'<input type="hidden" id="numero1" name="nume" value="'+v.numero+'" ></input><input type="hidden" id="nombre1" name="nom1" value="'+v.nombre+'" ></input></div>'+
 				'<div class="regjug135">'+v.ClubNombre+'</div>'+
 				'<div class="regjug14">'+v.numero+'</div>'+
 				'<div class="regjug15">'+v.nombre+'</div>'+
@@ -164,7 +348,7 @@ success:  function (r){
 				'<div class="regjug17">'+v.CategoriaActual+'</div>'+
 				'<div class="regjug175">'+v.anioEquipo+'</div>'+	
 				'</div>');
-		//	
+				creaspuestos(v.idjugador,v.puestoxcat,vPuestos);
 		Ultima = r['TotalPaginas'];
 //		if( ! $("#ijugclub option").length > 0)
 		if( quienLLama != "ijugclub")
@@ -243,6 +427,7 @@ function ObtenerJugadores(paginaPedida,quienLLama){
 // valor del campo iclubescab,
 // valor del campo ianio
 // valor del campo icatcab	
+	vPuestos = cargarPuestosStart();
 var parametros = {"iclubescab1" : $("#iclubescab").val(),"icatcab1" : $("#icatcab").val(),"ianio":$("#ianio").val(),"pag":paginaPedida,"xnombre":$("#ijugclub").val(),"xnomAll" : $("#ijugclubAll").val() };
 
 	// console.log("pagina pedida: "+ paginaPedida +" " +$("#iclubescab").val());
@@ -276,6 +461,7 @@ success:  function (r){
 	$("#regsj").append('<div id="regridjug1" class="regridjug1">'+
 				'<div class="regjug11">Accion</div>'+
 				'<div class="regjug12">Accion</div>'+
+				'<div class="regjug122">Accion</div>'+
 				'<div class="regjug13">Puesto</div>'+
 				'<div class="regjug135">Club</div>'+
 				'<div class="regjug14">Numero</div>'+
@@ -298,13 +484,18 @@ success:  function (r){
 	{ // indice,0 valor
 	    $('[name="ijugclubFull"]').show();
 		var eliminarJugador = '';
-		eliminarJugador  = '<div class="EliminarJugClass">';
-				eliminarJugador  += '<button  name="eliminarJugador" title="eliminarJugador" class="butSquareEqOrang" onClick="eliminarJugadorX('+v.idclub+','+v.idjugador+','+v.anioEquipo+','+v.categoria+');" >(X)</button></div>';
+		//eliminarJugador  = '<div class="EliminarJugClass">';
+				eliminarJugador  += '<button  name="eliminarJugador" title="eliminarJugador" class="butSquareEqOrang" onClick="eliminarJugadorX('+v.idclub+','+v.idjugador+','+v.anioEquipo+','+v.categoria+');" >(X)</button>';
+		//eliminarJugador  += '</div>';
 	var modificaJugador  = '';	
 		modificaJugador  = '<div class="ModificarJug">';
 		modificaJugador  += '<button  name="modificaJugador" title="Modificar Jugador" class="butSquareEqBlu" onClick="modifcarJugadorX('+v.idclub+','+v.idjugador+','+v.anioEquipo+','+v.categoria+');" >(/)</button></div>';
 
-				//$("#GridControlPaginador").css("display","none");
+		var agregaPuestoJugador  = '';	
+		agregaPuestoJugador = '<div class="PuestoJug">';
+		agregaPuestoJugador  += '<button  name="agregapuestoJugador" title="Puesto Add" class="butSquareEqRedRackam" onClick="agregarPuestoJugadorX('+v.idclub+','+v.idjugador+','+v.anioEquipo+','+v.categoria+',\''+v.CategoriaActual+'\',\''+v.nombre+'\');" >Puesto++</button></div>';				
+		
+		//$("#GridControlPaginador").css("display","none");
 			var jugadotrActivo = '<div id="regridjug1" class="regridjug1">';
 			
 			if(v.FechaEgreso != null)
@@ -317,7 +508,8 @@ success:  function (r){
 				jugadotrActivo +
 				'<div class="regjug11">'+eliminarJugador+'</div>'+
 				'<div class="regjug12">'+modificaJugador+'</div>'+
-				'<div class="regjug13"><select id=\'sjugadorp_'+v.idjugador+'\' name=\'sjugadorp_'+v.idjugador+'\' disabled=\'true\'></select>'+creaspuestos(v.idjugador,v.puestoxcat)+'<input type="hidden" id="numero1" name="nume" value="'+v.numero+'" ></input><input type="hidden" id="nombre1" name="nom1" value="'+v.nombre+'" ></input></div>'+
+				'<div class="regjug122">'+agregaPuestoJugador+'</div>'+
+				'<div class="regjug13"><select id=\'sjugadorp_'+v.idjugador+'\' name=\'sjugadorp_'+v.idjugador+'\' disabled=\'true\'></select><input type="hidden" id="numero1" name="nume" value="'+v.numero+'" ></input><input type="hidden" id="nombre1" name="nom1" value="'+v.nombre+'" ></input></div>'+
 				'<div class="regjug135">'+v.ClubNombre+'</div>'+
 				'<div class="regjug14">'+v.numero+'</div>'+
 				'<div class="regjug15">'+v.nombre+'</div>'+
@@ -325,6 +517,7 @@ success:  function (r){
 				'<div class="regjug17">'+v.CategoriaActual+'</div>'+
 				'<div class="regjug175">'+v.anioEquipo+'</div>'+	
 				'</div>');
+			creaspuestos(v.idjugador,v.puestoxcat,vPuestos);
 		//	
 		Ultima = r['TotalPaginas'];
 //		if( ! $("#ijugclub option").length > 0)
@@ -417,36 +610,38 @@ function parametroURL(_par) {
   return _p;
 }
 
-function creaspuestos(idjugador,puesto){
-	//alert(puesto);
-	var selectPuesto = "";
-        // esto arreglo el tema del alta triplle..
-         $.ajax({ 
-            url:   './abms/obtener_puestos.php',
-            type:  'GET',
-            dataType: 'json',
-			// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
-            beforeSend: function (){},
-            done: function(data){},
-            success:  function (r){
-                $(r['Posiciones']).each(function(i, v)
+function creaspuestosDialogo(objetoID,vPuestos){
+
+	// esto arreglo el tema del alta triplle..
+		$(vPuestos).each(function(i, v)
                 { // indice, valor
-                	//alert(v.codigo);
+						$(objetoID).append('<option value="' + v.idPosicion + '" label="'+v.nombre+'">' +v.nombre +'</option>');
+					//alert(selectPuesto);
+				});		
+
+}
+
+function creaspuestos(idjugador,puesto,vPuestos){
+	//alert('jugador que llega: '+idjugador+' valor del puesto: '+puesto);
+
+	var inombre = "";
+        // esto arreglo el tema del alta triplle..
+		$(vPuestos).each(function(i, v)
+                { // indice, valor
+					inombre = v.nombre ;
                 	if(puesto != 0 && v.idPosicion == puesto )
                 		$("#sjugadorp_"+idjugador).append('<option value="' + v.idPosicion + '" label="'+v.nombre+'" selected>' +v.nombre +'</option>');
                 	else
 						$("#sjugadorp_"+idjugador).append('<option value="' + v.idPosicion + '" label="'+v.nombre+'">' +v.nombre +'</option>');
 					//alert(selectPuesto);
 				});		
-             },
-             error: function (xhr, ajaxOptions, thrownError) {}
-            }); // FIN funcion ajax CLUBES	
-	
+	if(puesto == null)
+			$("#sjugadorp_"+idjugador).append('<option value="99" label="Sin puesto aun" selected>Sin puesto aun</option>');
 
-return 	selectPuesto ;
 }
 
-		function eliminarJugadorX(unclub,unjugador,unanio,unacategoria){			
+
+function eliminarJugadorX(unclub,unjugador,unanio,unacategoria){			
 					// alert('un club: '+ unclub);
 					// alert("jugador id interno: "+ ijugador);
 					// alert("anio: "+ anioEqu);					
@@ -487,16 +682,142 @@ return 	selectPuesto ;
 //********************* FIN funcion ajax ELIMINAR JUGADOR					**************************
 		};
 		
+		function getdatosPuestoJugador(clubJugador,aniojugador,jugadorId){
+			var unjugador = new Array();
+
+			var parametros = {"idjugador": jugadorId,"ianio":aniojugador,"iclubescab":clubJugador};
+					 $.ajax({ 
+						url:   './abms/obtener_puestojug.php',
+						type:  'GET',
+						data: parametros,
+						dataType: 'text json',
+						async:false,
+						// EVENTOS QUE PODRIAN OCURRIR CUANDO ESTEMOS PROCESANDO EL AJAX		            
+						beforeSend: function (){},
+						done: function(data){},
+						success:  function (r){
+							if(r['PuestosJug'] != undefined )
+									unjugador =  Object.values(r['PuestosJug']);
+
+						},
+			             error: function (xhr, ajaxOptions, thrownError) {}
+            			}); // FIN funcion ajax jugador
+	
+		return unjugador;
+
+		}
+
+
+		function agregarPuestoJugadorX(unclub,unjugador,unanio,unacategoria,laCategoria,elNombre){			
+
+		const puestosADD =
+				document.querySelector("#modalPuestosAdd");
+				$("#modalPuestosAdd").html('<button id="btn-cerrar-modal" onclick="cerrarModal();" >X</button>');
+
+		var estructuraDialogo =	'';
+			
+			unJugadorDatos = getdatosPuestoJugador(unclub,unanio,unjugador);
+			//v.nombreJug+"</div>"+v.idpuestoJug+v.pjcategoria+v.remeraNum+v.idpuestoJug+v.puestoxcat+v.FechaPuestoAlta
+			var iremera = ipuestocategoria = 0 ;
+			var	iFchAlta =	'';
+			var conteoRenglonPuestos = 0;
+			var f=new Date();
+						var dias = new Array ("01","02","03","04","05","06","07","08","09","10","11","12"
+						,"13","14","15","16","17","18","19","20","21","22","23","24","25","26"
+						,"27","28","29","30","31");
+						var meses = new Array ("01","02","03","04","05","06","07","08","09","10","11","12");
+						var xfechaDIA = f.getFullYear() + "-" + meses[f.getMonth()] + "-" +dias[(f.getDate()-1)] ;
+			var Fechatoday = '';	
+			if(unJugadorDatos.length > 0 ){
+			$(unJugadorDatos).each(function(i, v)
+                { // indice, valor
+					iremera  = v.remeraNum ;
+					iFchAlta =	v.FechaPuestoAlta;
+					ipuestocategoria = v.puestoxcat;
+					//conteoRenglonPuestos++;
+					// CARGAMOS LA FECHA DEL DIA O LA DE PRIMERA INSERCION
+						// EL FORMATO SIEMPRE TIENE QUE SER YYYY-MM-DD 
+						if(iFchAlta == '')
+							Fechatoday =xfechaDIA;
+						else
+							Fechatoday =iFchAlta;
+					estructuraDialogo ='<div  class="XSModales">'+ 
+										'	<div class="xsmodrenglon1">'+
+										'		<div  id="xNombre_'+v.idpuestoJug+'" name="xNombreJugador_'+v.idpuestoJug+'" >'+elNombre+'</div>'+
+										'		<input type="hidden" id="idjugador_'+v.idpuestoJug+'" value="'+unjugador+'">'+
+										'		<input type="hidden" id="idclub_'+v.idpuestoJug+'" value="'+unclub+'">'+
+										'		<input type="hidden" id="idunanio_'+v.idpuestoJug+'" value="'+unanio+'">'+
+										'		<input type="hidden" id="idcategoria_'+v.idpuestoJug+'" value="'+unacategoria+'">'+
+										'		<div  id="xCategoriaJugador_'+v.idpuestoJug+'" name="xCategoriaJugador_'+v.idpuestoJug+'" >'+v.descCat+'</div>'+
+										'		<button id="btn-guardaPuesto_'+v.idpuestoJug+'" onclick="actualizarPuesto(\'UPD\','+v.idpuestoJug+');">'+
+										'			<span class="icon-cloud"></span>'+
+										'		</button>'+
+										'	</div>'+	
+										'	<div class="xsmodrenglon2">'+
+										'		<div  id="xRemeraNum" name="xRemeraNum"  >Remera Nro </div>'+
+										'		<input type="number" id="xRemeraNum2_'+v.idpuestoJug+'" name="xRemeraNum2_'+v.idpuestoJug+'" value="'+iremera+'" ></input>'+
+										'		<select id="sxjugadorpuesto_'+v.idpuestoJug+'" name="sxjugadorpuesto_'+v.idpuestoJug+'" ></select>'+
+										'	</div>'+
+										'	<div class="xsmodrenglon3">	'+
+										'		<input type="date" id="xFechaInicioPuesto_'+v.idpuestoJug+'" name="xFechaInicioPuesto_'+v.idpuestoJug+'"  value="'+Fechatoday+'"></input>'+
+										'	</div>'	+
+										'</div>' ; 
+						$("#modalPuestosAdd").append(estructuraDialogo);
+						creaspuestosDialogo('#sxjugadorpuesto_'+v.idpuestoJug,vPuestos);
+						$('#sxjugadorpuesto_'+v.idpuestoJug).val(ipuestocategoria);
+				});	
+			}
+			else
+			{
+			//  cargo formulario vacio para agregar puesto
+				conteoRenglonPuestos++;
+				//(unclub,unjugador,unanio,unacategoria,laCategoria,elNombre)
+				estructuraDialogo ='<div  class="XSModales">'+ 
+										'	<div class="xsmodrenglon1">'+
+										'		<div  id="xNombre_'+conteoRenglonPuestos+'" name="xNombreJugador_'+conteoRenglonPuestos+'" >'+elNombre+'</div>'+
+										'		<div  id="xCategoriaJugador_'+conteoRenglonPuestos+'" name="xCategoriaJugador_'+conteoRenglonPuestos+'" >'+laCategoria+'</div>'+
+										'		<input type="hidden" id="idjugador_'+conteoRenglonPuestos+'" value="'+unjugador+'">'+
+										'		<input type="hidden" id="idclub_'+conteoRenglonPuestos+'" value="'+unclub+'">'+
+										'		<input type="hidden" id="idunanio_'+conteoRenglonPuestos+'" value="'+unanio+'">'+
+										'		<input type="hidden" id="idcategoria_'+conteoRenglonPuestos+'" value="'+unacategoria+'">'+
+										'		<button id="btn-guardaPuesto_'+conteoRenglonPuestos+'" onclick="actualizarPuesto(\'INS\','+conteoRenglonPuestos+');" >'+
+										'			<span class="icon-cloud"></span>'+
+										'		</button>'+
+										'	</div>'+	
+										'	<div class="xsmodrenglon2">'+
+										'		<div  id="xRemeraNum" name="xRemeraNum"  >Asignar nro remera </div>'+
+										'		<input type="number" id="xRemeraNum2_'+conteoRenglonPuestos+'" name="xRemeraNum2_'+conteoRenglonPuestos+'" value="" ></input>'+
+										'		<select id="sxjugadorpuesto_'+conteoRenglonPuestos+'" name="sxjugadorpuesto_'+conteoRenglonPuestos+'" ></select>'+
+										'	</div>'+
+										'	<div class="xsmodrenglon3">	'+
+										'		<input type="date" id="xFechaInicioPuesto_'+conteoRenglonPuestos+'" name="xFechaInicioPuesto_'+conteoRenglonPuestos+'"  value="'+xfechaDIA+'"></input>'+
+										'	</div>'	+
+										'</div>' ; 
+						$("#modalPuestosAdd").append(estructuraDialogo);
+							// lo creo vacio
+							creaspuestosDialogo('#sxjugadorpuesto_'+conteoRenglonPuestos,vPuestos);
+						//$('#sxjugadorpuesto_'+conteoRenglonPuestos).val(ipuestocategoria);
+			}		
+			puestosADD.showModal();
+            			
+			// window.location.href='ABMjugadores.php?MODO=UPD&unjugador='+unjugador+'&ianio='+unanio+'&iclubescab='+unclub+'&icatcab='+unacategoria;
+
+//********************* FIN funcic ajax ELIMINAR JUGADOR					**************************
+		};		
+
+
 		function modifcarJugadorX(unclub,unjugador,unanio,unacategoria){			
 			//alert('llamamos a modificar');
 			//option A
-            $("#altajugador").submit(function(e){e.preventDefault();});			
+            //$("#altajugador").submit(function(e){e.preventDefault();});			
 			window.location.href='ABMjugadores.php?MODO=UPD&unjugador='+unjugador+'&ianio='+unanio+'&iclubescab='+unclub+'&icatcab='+unacategoria;
 
 //********************* FIN funcic ajax ELIMINAR JUGADOR					**************************
 		};		
 		
 		$(document).ready(function(){
+			vPuestos = cargarPuestosStart();
+
 			$('[name="ijugclubFull"]').hide();
 			
 				<?php
@@ -542,7 +863,7 @@ return 	selectPuesto ;
 	       $("#altaGenerica").on("click",function(e){
 		    	//e.preventDefault();
 	    	//QUE SE RECARGUE CUANDO PRESIONO CLICK..
-	    	$("#altajugador").submit(function(e){e.preventDefault();});			//BORRAR
+	    	//$("#altajugador").submit(function(e){e.preventDefault();});			//BORRAR
 			//	e.preventDefault();
 	    	
 	    	//
@@ -574,10 +895,10 @@ return 	selectPuesto ;
 							//alert('Alta concedida....');
 							iclubescab = parametroURL('iclubescab');
 							icatcab    = parametroURL('icatcab');
-							if(iclubescab != null && icatcab != null )
-								location.href='Cjugadores.php?icatcab='+icatcab+'&iclubescab='+iclubescab;
-							else
-							location.href='Cjugadores.php';
+							// // // if(iclubescab != null && icatcab != null )
+							// // // 	location.href='Cjugadores.php?icatcab='+icatcab+'&iclubescab='+iclubescab;
+							// // // else
+							// // // 	location.href='Cjugadores.php';
 							//recargar la grilla...de Jugadores...
 		            },
 					error: function (xhr, ajaxOptions, thrownError) {
@@ -924,8 +1245,9 @@ $("#itextbuscar").keyup(function()
 		</script>
     </head>
     <body>
+
 		<?php include('includes/newmenu.php'); ?>
-    
+
 <!-- ********************************************************************************* -->
 <!-- **********************LADO DE ALTA DE JUGADORES, ACA VA EL FORM**************** -->
 <!-- ********************************************************************************* -->
@@ -1005,27 +1327,27 @@ $("#itextbuscar").keyup(function()
 				</div>
 				<div id="" class="controlEq6" >	
 					<select class="numeros" id="gencuantos" name="gencuantos" disabled="true">
-						<option class="numero" value="0" selected>Seleccionar...</option>
-						<option class="numero"  value="1">1</option>
-						<option class="numero"  value="2">2</option>
-						<option class="numero"  value="3">3</option>
-						<option class="numero"  value="4">4</option>
-						<option class="numero"  value="5">5</option>
-						<option class="numero"  value="6">6</option>
-						<option class="numero"  value="7">7</option>
-						<option class="numero"  value="8">8</option>
-						<option class="numero"  value="9">9</option>
-						<option class="numero"  value="10">10</option>
-						<option class="numero"  value="11">11</option>
-						<option class="numero"  value="12">12</option>
-						<option class="numero"  value="13">13</option>
-						<option class="numero"  value="14">14</option>
-						<option class="numero"  value="15">15</option>
-						<option class="numero"  value="16">16</option>
-						<option class="numero"  value="17">17</option>
-						<option class="numero"  value="18">18</option>
-						<option class="numero"  value="19">19</option>
-						<option class="numero"  value="20">20</option>
+						<option class="CantidadJugadores" value="0" selected>Seleccionar...</option>
+						<option class="CantidadJugadores"  value="1">1</option>
+						<option class="CantidadJugadores"  value="2">2</option>
+						<option class="CantidadJugadores"  value="3">3</option>
+						<option class="CantidadJugadores"  value="4">4</option>
+						<option class="CantidadJugadores"  value="5">5</option>
+						<option class="CantidadJugadores"  value="6">6</option>
+						<option class="CantidadJugadores"  value="7">7</option>
+						<option class="CantidadJugadores"  value="8">8</option>
+						<option class="CantidadJugadores"  value="9">9</option>
+						<option class="CantidadJugadores"  value="10">10</option>
+						<option class="CantidadJugadores"  value="11">11</option>
+						<option class="CantidadJugadores"  value="12">12</option>
+						<option class="CantidadJugadores"  value="13">13</option>
+						<option class="CantidadJugadores"  value="14">14</option>
+						<option class="CantidadJugadores"  value="15">15</option>
+						<option class="CantidadJugadores"  value="16">16</option>
+						<option class="CantidadJugadores"  value="17">17</option>
+						<option class="CantidadJugadores"  value="18">18</option>
+						<option class="CantidadJugadores"  value="19">19</option>
+						<option class="CantidadJugadores"  value="20">20</option>
 					</select>		
 					<!--<input type="number" name="gencuantos" id="gencuantos" class="gencuantos" value="0" readonly></input>-->
 				</div>
@@ -1054,13 +1376,14 @@ $("#itextbuscar").keyup(function()
 					<a href="" title="ultima pag.">Ultimo >></a>
 				</div>
 			</div>
-			<div id="regsj">
-			</div>
-			
-			<div id="renglonesAltaMasiva">
-			</div>
-			</form>		
+		</form>					
+		<div id="regsj"></div>
+		<div id="renglonesAltaMasiva"></div>
 
+
+<dialog id="modalPuestosAdd" class="dialogo">
+	<button id="btn-cerrar-modal" onclick="cerrarModal();">X</button>
+</dialog>		
 			
 			
 <!-- ********************************************************************************* -->
@@ -1073,7 +1396,7 @@ $("#itextbuscar").keyup(function()
 <!-- ********************************************************************************* -->
 
 			   <!-- GRILLA DE JUGADORES FILTRADA POR CLUB Y CATEGORIA-->		
-<!-- *********************************************************************************->
+<!-- *********************************************************************************-->
 <!-- **********************LADO DE VISTA DE JUGADORES********************************* -->
 <!-- ********************************************************************************* -->
           <!-- GRILLA FORMULARIO DE ALTA DE JUGADORES Y DE LISTADO DE LOS MISMOS....-->		

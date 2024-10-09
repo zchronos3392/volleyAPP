@@ -243,7 +243,7 @@ function buscarCiudadClub(clubOrigen)
 			// esto arreglo el tema del alta triplle..
 		$(vCanchas).each(function(i, v)
 		{ // indice, valor
-				$("#"+nombreObj).append('<option value="' + v.idcancha + '">' +v.clubabr+' - '+ v.extras+' - '+ v.nombre + '</option>');
+				$("#"+nombreObj).append('<option value="' + v.idcancha + '" name="'+v.idclub+'_'+v.idsede+'_'+v.idcancha+'">' +v.clubabr+' - '+ v.extras+' - '+ v.nombre + '</option>');
 		});		
 	
 	return 	selectCanchas ;
@@ -305,6 +305,29 @@ function creasSedesx(nombreObj)
 
 
 // +++++++++++++++++++++++ FUNCIONES EN GENERAL +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// SELECCIONAR AUTOMATICAMENTE LA CANCHA A PARTIR DE LA SELECCION DE LA SEDE, SUPONIENDO UNA CANCHA POR SEDE 
+// EN CASO DE HABER MAS, SE POSICIONARA EN LA PRIMERA DE LA SEDE DEBIDO A ESTE CRITERIO
+function SeleccionaCancha(objetoID){
+		var idClub_sede = $("#"+objetoID).val();
+		var idClub=idClub_sede.split('_')[0];
+		var idSede=idClub_sede.split('_')[1];
+		//console.log('Sede ' + idSede+ ' club '+ idClub);
+		$(vCanchas).each(function(j, w)
+		{ // indice, valor
+			//v.idclub+'_'v.idsede+'_'+v.idcancha
+			var codigoEncriptado = '';	
+			if( (w.idsede == idSede ) && (w.idclub == idClub)  )
+			{
+				codigoEncriptado = w.idclub+'_'+w.idsede+'_'+w.idcancha;
+				//console.log('codigoEncriptado ' + codigoEncriptado);
+				$("#icancha option[name="+ codigoEncriptado +"]").attr("selected",true);
+				//$("#icancha").val(w.idcancha);
+				return true; //	solo lo hace una vez
+			}
+		});
+}
+
+
 function SeleccionaClubLocal(objetoClubID)
 {
 	var clubOrigen = $("#"+objetoClubID).val();
@@ -482,27 +505,23 @@ function buscarCanchasClub(clubOrigen,destinoId){
             },
             
             success:  function (r){
-               	// DESBloqueamos el SELECT de los cursos
-    			//$("#isede").prop('disabled', false);
-    			//$("mensaje").append('Partido ingresado');
-					// console.log(r);
-    				// if(vieneDeNovedad == 1){
-					// 	window.location='NovedadesSet.php?'+'id='+partidoID+'&setid='+
-					// 		<?php 
-					// 			$setID=0;
-					// 		    if(isset($_GET['setid'])) $setID = (int) $_GET['setid'];
-					// 			echo($setID );
-					// 		?>+'&setmax='+
-					// 	<?php 
-					// 		$setMAX =0;
-					// 		if(isset($_GET['setmax'])) $setMAX = (int) $_GET['setmax'];
-					// 		echo($setMAX);
-					// 	?>+'&fecha='+<?php echo("'".$_GET['fechapart'])."'"; ?>+'&continuar=0';	
-					// }
-					// else
-    				// {
-					// 	window.location='AdministrarAPP.php';
-					// };
+    			alert('Partido modificado');
+				refe='';
+				if(vieneDeNovedad == 1){
+						window.location='NovedadesSet.php?'+'id='+partidoID+'&setid='+
+						<?php 
+						$setID=0;
+						if(isset($_GET['setid'])) $setID = (int) $_GET['setid'];
+						echo($setID );
+						?>+'&setmax='+
+						<?php 
+						$setMAX =0;
+						if(isset($_GET['setmax'])) $setMAX = (int) $_GET['setmax'];
+						echo($setMAX);
+						?>+'&fecha='+<?php echo("'".$_GET['fechapart'])."'"; ?>+'&continuar=0';	
+				}
+				else
+						{window.location='AdministrarAPP.php';};
             },
             //error: function() {
 			error: function (xhr, ajaxOptions, thrownError) {
@@ -576,7 +595,10 @@ function buscarCanchasClub(clubOrigen,destinoId){
 								$("#SetMaxComp").val(v.setsnmax);
 							$("#iclubb").val(v.idclubb);
 							$("#iclub").val(v.idcluba);
-							$("#icancha").val(v.CanchaId);
+							var codigoEncriptado = '';	
+							codigoEncriptado = v.idcluba+'_'+v.idsede+'_'+v.CanchaId;
+							//$("#icancha").val(v.CanchaId);
+							$("#icancha option[name="+ codigoEncriptado +"]").attr("selected",true);	
 							$("#isede").val(v.idcluba+"_"+v.idsede);
 							$("#icity").val(v.ciudad);	
 						});},
@@ -632,7 +654,7 @@ function buscarCanchasClub(clubOrigen,destinoId){
 								echo $fecpartidoCLAVE;
 				?>" />
 		<section class="Botonera">
-				<span>Alta Partidos</span>
+				<span>::Modificar Partido::</span>
 				<button class="btnCabecera" id="altap" name="altap" value="altap">(A+)</button>
 						<input type="button" id="volver" title="volver a partidos" name="volver" class="btnNoCabecera" value="<<"></input>
 			</section>
@@ -643,7 +665,7 @@ function buscarCanchasClub(clubOrigen,destinoId){
 				</select>
 				<div class="SetMaximosGrid">
 					<label>Sets</label>
-					<input type="text" id="SetMaxComp" name="SetMaxComp" class="inputSets" disabled="">
+					<input type="text" id="SetMaxComp" name="SetMaxComp" class="inputSets">
 				</div>	
 			</section>
 
@@ -736,7 +758,7 @@ function buscarCanchasClub(clubOrigen,destinoId){
 										<label for="icancha">Sedes</label>
 								</div>
 								<div class="renUB11">
-								<select id="isede" name="isede" class="SelList">
+								<select id="isede" name="isede" class="SelList" onchange="SeleccionaCancha(this.id);" onclick="SeleccionaCancha(this.id);" >
 												<option value="9999" selected="">Seleccione una sede</option>
 										</select>
 								</div>

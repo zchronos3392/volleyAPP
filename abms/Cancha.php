@@ -22,13 +22,14 @@ class Cancha
     {
     		
         //$consulta = "SELECT * FROM vappcancha";
-        
-        $consulta  = "SELECT vappclub.clubabr, vappsede.extras 
-        			,vappcancha. * FROM vappcancha inner join vappclub 
-        			on vappclub.idclub = vappcancha.idclub inner join
-        			vappsede on vappsede.idclub = vappcancha.idclub 
-        	and vappsede.idsede = vappcancha.idsede 
-        	  order by vappclub.clubabr ";
+        $consulta  = "SELECT vappclub.clubabr,vappclub.nombre as clubnombre, vappsede.extras ,vappcancha.*
+                         FROM vappcancha 
+                            inner join vappclub 
+        			            on vappclub.idclub = vappcancha.idclub 
+                            inner join vappsede 
+                                on vappsede.idclub = vappcancha.idclub 
+        	                   and vappsede.idsede = vappcancha.idsede 
+        	            order by vappclub.clubabr ";
         
         try {
             // Preparar sentencia
@@ -92,7 +93,7 @@ class Cancha
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idclub,$idsede));
+            $comando->execute();
             return $comando->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
@@ -139,7 +140,7 @@ class Cancha
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($idcancha,$idclub,$idsede));
+            $comando->execute();
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;
@@ -164,12 +165,14 @@ class Cancha
         // Creando consulta UPDATE
         $consulta = "UPDATE vappcancha" .
             " SET nombre='$nombre' , ubicacion='$direccion',dimensiones='$dimensiones' WHERE idclub=$idclub AND idsede=$idsede AND idcancha=$idcancha";
+            
+            //echo "$consulta";
 
         // Preparar la sentencia
         $cmd = Database::getInstance()->getDb()->prepare($consulta);
 
         // Relacionar y ejecutar la sentencia
-        $cmd->execute(array($idcancha,$idclub,$idsede,$nombre,$direccion,$dimensiones));
+        $cmd->execute();
 
         return json_encode($cmd);
 
@@ -204,12 +207,13 @@ class Cancha
      */
     public static function insert($club,$sede,$canchaid,$nombre,$foto,$ubicacion,$dimensiones){
         // Sentencia INSERT
-        $comando = "INSERT INTO vappcancha ( idclub, idsede,idcancha, nombre, foto,ubicacion,dimensiones) VALUES(?,?,?,?,?,?,?)";
-
+        $comando = "INSERT INTO vappcancha ( idclub, idsede,idcancha, nombre, foto,ubicacion,dimensiones) 
+                                     VALUES($club,$sede,$canchaid,'$nombre',$foto,'$ubicacion','$dimensiones')";
+//        echo "$comando";
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($club,$sede,$canchaid,$nombre,$foto,$ubicacion,$dimensiones));
+        return $sentencia->execute();
     }
 
     /**
@@ -221,12 +225,12 @@ class Cancha
     public static function delete($club,$sede,$cancha)
     {
         // Sentencia DELETE
-        $comando = "DELETE FROM vappcancha WHERE idclub=? and idsede=? and idcancha=?";
+        $comando = "DELETE FROM vappcancha WHERE idclub=$club and idsede=$sede and idcancha=$cancha";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($club,$sede,$cancha));
+        return $sentencia->execute();
     }
 }
 

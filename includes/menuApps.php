@@ -13,7 +13,7 @@
 
 			function main(){
 
-			$(window).on('resize', function()
+			$(window).on('load', function()
 			{
 					var win = $(this); //this = window
 					$("#medidas").text('RESPONSIVE DATA:W: ' + win.width()+' - H: '+ win.height());
@@ -64,7 +64,7 @@
 					},
 					success:  function (r) {
 						//window.location.href='index.php';
-						location.reload(true);
+							//location.reload(true);
 						},
 					error: function (xhr, ajaxOptions, thrownError) {console.log(xhr);}
 				}); // FIN funcion ajax CLUBES
@@ -82,27 +82,32 @@
 		<nav class="MENUNUEVO">
 			<ul>
 					<!-- MENU CONFIG GRDIMENUAPPS V MODAL -->
-					<li><a href="AdministrarAPP.php" title="administracion general"><img src="./img/menuapps/administrar.jpg" class="eConoapp" ><span>Partidos</span></a></li>
+					<li><a href="ABMPartidos.php" title="Administracion de partidos"><img src="./img/menuapps/administrar.jpg" class="eConoapp" ><span>Gestión Partidos</span></a></li>
 					
 					<li><a href="Cpartidos.php" title="partidos"><img src="./img/menuapps/escudo_base_blancogrey_partidos.jpg" class="eConoapp"><span>Crear Partido</span></a></li>
+					
+					<li><a href="AdministrarAPP.php" title="administracion general"><img src="./img/menuapps/administrar.jpg" class="eConoapp" ><span>Jugar Partidos</span></a></li>
 				
 					<li><a href="controlVoleyApp.php" title="tablero control anual"><img src="./img/menuapps/tableroControl.jpg" class="eConoapp" ><span>Tablero Anual</span></a></li>
 				
 					<li><a href="EstadisticasClub.php" title="estadisticas"><img src="./img/menuapps/escudo_base_blancogrey_estadisticas.jpg" class="eConoapp" /><span>Estadisticas</span></a></li>		
 
 					<li><a href="CCategorias.php" title="categorias"><img src="./img/menuapps/escudo_base_blancogrey_categorias.jpg" class="eConoapp"><span>Categorias</span></a></li>
-				
-					<li><a href="Cclubes.php" title="alta clubes"><img src="./img/menuapps/escudo_base_blancogrey.jpg" class="eConoapp"><span>Clubes</span></a></li>
-				
+					<li><a href="Ccompetencia.php" title="competencias"><img src="./img/menuapps/escudo_base_blancogrey_competencia.jpg" class="eConoapp"><span>Comps.</span></a></li>
 					<li><a href="Cciudades.php" title="ciudades"><img src="./img/menuapps/escudo_base_blancogrey_ciudad.jpg" class="eConoapp"><span>Ciudades</span></a></li>
 				
-					<li><a href="Ccompetencia.php" title="competencias"><img src="./img/menuapps/escudo_base_blancogrey_competencia.jpg" class="eConoapp"><span>Comps.</span></a></li>
+					<li>
+						<a href="Cclubes.php" title="alta clubes"><img src="./img/menuapps/escudo_base_blancogrey.jpg" class="eConoapp"><span>Clubes</span></a>
+						<a href="CDELUPD.php" title="FUNCIONES EXTRA"><img src="./img/menuapps/escudo_base_blancogrey_abms.jpg" class="eConoapp"><span> >> Club::extras</span></a>
+					</li>
+					<li><a href="Csedes.php" title="sedes"><img src="./img/menuapps/escudo_base_blancogrey_sedes.jpg" class="eConoapp"><span>Sedes</span></a></li>
 				
 					<li><a href="Ccanchas.php" title="canchas"><img src="./img/menuapps/escudo_base_blancogrey_cancha.jpg" class="eConoapp"><span>Canchas</span></a></li>
 				
 					<li><a href="Cjugadores.php" title="jugadores"><img src="./img/menuapps/escudo_base_blancogrey_jugadores_equipo.jpg" class="eConoapp"><span>Jugadores</span></a></li>
 
-					<li><a href="Csedes.php" title="sedes"><img src="./img/menuapps/escudo_base_blancogrey_sedes.jpg" class="eConoapp"><span>Sedes</span></a></li>
+					<li><a href="CArchivos.php" title="archivos"><img src="./img/menuapps/escudo_base_blancogrey_archivos.jpg" class="eConoapp"><span>Archivos</span></a></li>
+
 				
 					<li><a href="CEstados.php" title="estados"><img src="./img/menuapps/escudo_base_blancogrey_estados.jpg" class="eConoapp"><span>Estados</span></a></li>
 				
@@ -112,11 +117,8 @@
 
 					<li><a href="CEstrategias.php" title="estrategias libero"><img src="./img/menuapps/escudo_base_blancogrey_strats1.png" class="eConoapp"/><span>Estrategia Lib.</span></a></li>
 
-
-					<li><a href="CDELUPD.php" title="abms delUpd"><img src="./img/menuapps/escudo_base_blancogrey_abms.jpg" class="eConoapp"><span>ABMS generales</span></a></li>
 				
-				
-					<li><a href="#" id="ad" name="salirsesionv" ><img src="./img/menuapps/boton salir.jpg" class="eConoapp" ><span>Salir</span></a></li>
+					<li><a href="#" id="salirsesionv" name="salirsesionv" ><img src="./img/menuapps/boton salir.jpg" class="eConoapp" ><span>Salir</span></a></li>
 			</ul>
 		</nav>
 </div>
